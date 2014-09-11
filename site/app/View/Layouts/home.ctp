@@ -54,7 +54,7 @@
 			<div class="wrap">
 				<div class="footer-text">
 					<div class="copy">
-						<p> © 2013 All rights Reserved | Design by <a href="http://w3layouts.com">W3Layouts</a></p>
+						<p> © 2013 Gorges viado | Design by <a href="http://w3layouts.com">W3Layouts</a></p>
 					</div>
 				</div>	
 			</div>
