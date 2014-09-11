@@ -75,7 +75,6 @@
 					//$this->User->Telefone->save($savedata);
 	    			$this->Session->setFlash(__('Administrador criado com sucesso.'), "flash_notification");
 	    			return $this->redirect(array('action' => 'index'));
-					
 	    		}
 	    		$this->Session->setFlash(__('Erro ao criar Administrador.'));
 	    	}

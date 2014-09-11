@@ -6,9 +6,7 @@
 		public $useTable = "tb_profissional";
 		public $primaryKey = "id";
 	
-	    public $actsAs = array( 'Inherit' ); 
-	
-		public $hasMany = array(
+	    public $hasMany = array(
 			"Anuncio" => array(
 				"className" => "Anuncio",
 				"foreign_key" => "id_profissional",
@@ -20,5 +18,7 @@
 				"exclusive" => true,
 				"finderQuery" => "")
 		);
+		
+		public $actsAs = array( 'Inherit' ); 
 	}
 ?>
