@@ -79,11 +79,51 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-					<h2>Pedidos</h2>
+					<h2>Novo Anúncio</h2>
 					<hr>
-						<p>Aqui você encontra o profissional para o serviço que você precisa! </p>
 					
-					<a href="/profinder/site/pages/criarAnuncio"> Criar Anúncio </a>	
+					<?php
+						echo $this->Form->create('Anuncio', array('action' => 'add'));
+						echo $this->Form->input('titulo_anuncio');
+						
+						App::import('Controller', 'Anuncios');
+			
+						$anuncios = new AnunciosController;
+						$anuncios->constructClasses();
+						$servicos=$anuncios->nomeServico();
+						$contador=0;
+						$options= array();
+						
+						while($contador<sizeof($servicos))
+						{
+							array_push($options, array($servicos[$contador]['Servico']['id'] => $servicos[$contador]['Servico']['nome_servico']));
+							$contador++;
+						}
+						echo "Serviço: ";
+						echo $this->Form->select('id_servico', $options);
+					
+						echo $this->Form->input('modo_atendimento', array('label' => 'Modo de atendimento: ', 'options' => array(
+							'online' => 'On-line',
+							'domiciliar' => 'Domiciliar',
+							'escritorio' => 'Escritório',))
+						);
+						
+						echo $this->Form->input('id_profissional', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
+
+						echo $this->Form->button(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
+								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
+						);
+						echo " ";
+						echo $this->Html->link(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
+								array('controller' => 'Users', 'action' => 'index'),
+								array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
+						);
+						
+						echo $this->Form->end();
+				?>
+					
 			 	</div>
 			</div>
 		</div>

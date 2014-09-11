@@ -68,11 +68,11 @@
 	    			$savedata = Array('User' => $this->request->data['User']);
 					$this->User->save($savedata);
 					
-					$savedata = Array('User', 'Telefone' => $this->request->data['User']);
-					$savedata['User'] = array('id' => $this->User->getLastInsertId());
+				//	$savedata = Array('User', 'Telefone' => $this->request->data['User']);
+					//$savedata['User'] = array('id' => $this->User->getLastInsertId());
 					
-					$this->User->Telefone->create();
-					$this->User->Telefone->save($savedata);
+					//$this->User->Telefone->create();
+					//$this->User->Telefone->save($savedata);
 	    			$this->Session->setFlash(__('Administrador criado com sucesso.'), "flash_notification");
 	    			return $this->redirect(array('action' => 'index'));
 					

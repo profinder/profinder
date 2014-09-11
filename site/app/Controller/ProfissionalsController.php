@@ -75,6 +75,5 @@
 				return $this->redirect(array('action' => 'index'));
 			}
 		}
-	
 	}
 ?>

@@ -11,8 +11,13 @@
 	<?php
 		echo $this->Html->meta('icon');
 
+		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('bootstrap.css');
 		echo $this->Html->css('bootstrap.min.css');
 		echo $this->Html->css('bootstrap-theme.min.css');
+		echo $this->Html->css('bootstrap-theme.css');
+		echo $this->Html->css('slider.css');
+		echo $this->Html->css('swipebox.css');
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -42,6 +47,28 @@
 	        $('#slider').nivoSlider();
 	    });
 	</script>
+	<script src="js/jquery_min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script>
+	  	$(function() {
+		    $( "#dialog" ).dialog({
+		      autoOpen: false,
+		      show: {
+		        effect: "blind",
+		        duration: 1000
+		      },
+		      hide: {
+		        effect: "explode",
+		        duration: 1000
+		      }
+		    });
+		 
+		    $( "#opener" ).click(function() {
+		      $( "#dialog" ).dialog( "open" );
+		    });
+	  	});
+ 	</script>
+	
 </head>
 <body>
 	<div class="header">	
@@ -86,6 +113,8 @@
 				<div class="footer-text">
 					<div class="copy">
 						<p> © 2013 All rights Reserved | Design by <a href="http://w3layouts.com">W3Layouts</a></p>
+					
+						IADIHSUIFHDSIUH
 					</div>
 				</div>	
 			</div>

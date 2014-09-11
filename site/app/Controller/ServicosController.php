@@ -89,5 +89,10 @@
 			$conditions = array("Servico.id_categoria" => $id_categoria);
 			return $this->Servico->find('all', array( 'conditions'=>$conditions));
 		}	
+		
+		public function nomeServico() 
+		{
+			return $this->Servico->find('all');
+		}
 	}
 ?>

@@ -4,7 +4,7 @@
 	class User extends AppModel
 	{
 		public $useTable = "tb_pessoa";
-		public $hasMany = "Telefone";
+		//public $hasMany = "Telefone";
 		public $validate = array(
 				'nome_pessoa' => array(
 						'rule' => 'notEmpty'),

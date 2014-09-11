@@ -16,15 +16,16 @@
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/edit">Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/perfilProfissional">Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/anunciosProfissional">Meus anúncios</a></li>
 			               		<li><a href="#">Notificações</a></li>
 			               		<li class="divider"></li>
+								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
+
 		               		</ul>
 						</li>
 					</ul>
-					
-					
         				
 				</div>
 		 		
@@ -78,27 +79,10 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-
-				<h1><center> Editar usuario </center></h1>
-				<?php
-					$id=AuthComponent::user('id');
-					echo $id;
-					$this->redirect(array('controller' => 'pages','action' => 'homeCliente'));
-					echo $this->Form->create('User');
-					echo $this->Form->input('nome_pessoa', array('label' => 'Nome:'));
-					echo $this->Form->input('username', array('label' => 'E-mail:'));
-					echo $this->Form->input('password', array('label' => 'Senha:'));
-					echo $this->Form->input('role', array('label' => 'Regra:'));
-				
-					echo $this->Form->input('id', array('type' => 'hidden'));
-					echo $this->Form->button(
-							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-							array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
-					);
-					echo " ";
-					echo $this->Form->end();
-				?>
-															
+			
+					<h2>Meus anúncios</h2>
+							
+					
 			 	</div>
 			</div>
 		</div>
