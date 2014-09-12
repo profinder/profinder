@@ -83,10 +83,10 @@
 						echo "Nome: ".AuthComponent::user('nome_pessoa')."</br>";
 						echo "E-mail: ".AuthComponent::user('username')."</br>";
 						echo $this->Html->link(
-							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
-							array('controller' => 'users', 'action' => 'edit', $user['User']['id'], 'role' => 'button'),
-							array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
-							"data-target"=>"#myModal"));
+	        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
+	        			array('controller' => 'Users', 'action' => 'edit', $user['User']['id'], 'role' => 'button'),
+						array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
+						"data-target"=>"#myModal"));
 							
 							
 					?>

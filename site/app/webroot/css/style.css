@@ -111,18 +111,19 @@ body{
 	color:#8F6442;
 }
 .header-text .phone {
-	color:#8A8803;
+	color:#8F6442;
 	font:16px/1.2em Arial, Helvetica, sans-serif;
 	padding-left: 20px;
 	display: inline-block;
 	margin: 0;
 }
 .banner{
-	background:#C49E68;
-	padding-bottom:2%;
+	background:#8F6442;
+	
+	padding-bottom:3%;
 }
 .about-banner{
-	background:#C49E68;
+	background:#8F6442;
 }
 .main{
 	padding:3% 0;
@@ -168,7 +169,7 @@ hr {
   	width: 16.72%;
 }
 .span_1_of_5  h3{
-	color: #C49E68;
+	color: #8F6442;
 	margin-bottom: .5em;
 	font-size: 1.2em;
 	line-height: 1.2;
@@ -248,7 +249,7 @@ hr {
 	letter-spacing: -1px;
 }
 .span_1_of_4  h3 a:hover{
-	color:#C49E68;
+	color:#8F6442;
 }
 /***** Media Quries *****/
 @media only screen and (max-width: 1024px) {
@@ -283,7 +284,7 @@ hr {
 	}
 }
 .caption{
-	background: #C49E68;
+	background: #8F6442;
 	padding:20px;
 	text-align:center;
 }
@@ -311,7 +312,7 @@ time {
 	margin-bottom: 8px;
 }
 .lnk {
-	color:#C49E68;
+	color:#8F6442;
 	font-size: 1.2em;
 	line-height: 1.2;
 	font-family: 'PT Sans', sans-serif;
@@ -333,7 +334,7 @@ time {
 } 
 .btn.btn-primary {
 	box-shadow: none;
-	background: #C49E68;
+	background: #8F6442;
 	position: relative;
 	font-size: 0.99em;
 	display: inline-block;
@@ -345,7 +346,7 @@ time {
 	letter-spacing: 0;
 	text-transform: uppercase;
 	text-decoration: none;
-	border-bottom: 4px solid #C49E68;
+	border-bottom: 4px solid #8F6442;
 	-webkit-transition: all 0.25s ease;
 	-moz-transition: all 0.25s ease;
 	-o-transition: all 0.25s ease;
@@ -368,7 +369,7 @@ time {
 }
 /*--footer--*/
 .footer {
-	background: #C49E68;
+	background: #8F6442;
 	text-align:center;
 	padding:3% 0;
 	width: 100%;

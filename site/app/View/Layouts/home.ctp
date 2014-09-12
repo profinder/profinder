@@ -54,12 +54,12 @@
 			<div class="wrap">
 				<div class="footer-text">
 					<div class="copy">
-						<p> © 2013 ProFindeeeeeeer | Design by <a href="http://w3layouts.com">W3Layouts</a></p>
+						<p> © 2014 ProFinder</p>
 					</div>
 				</div>	
 			</div>
 		</div>
 
-    </div> <!-- /container -->
+     <!-- /container -->
 </body>
 </html>
