@@ -162,24 +162,26 @@
       <div class="modal-body">
       	
         <?php
-			echo $this->Form->create('Endereco', array('action' => 'add'));
-			echo $this->Form->input('Cliente.nome_pessoa', array('default' => 'oi'), array('label' => 'Nome '));
-			echo $this->Form->input('Cliente.username', array('default' => 'oi'), array('label' => 'E-mail '));
-			echo $this->Form->input('Cliente.password', array('default' => 'oi'), array('label' => 'Senha '));
+			echo $this->Form->create('Cliente', array('action' => 'add'));
+			echo $this->Form->input('Cliente.nome_pessoa', array('default' => 'oi', 'label' => 'Nome '));
+			echo $this->Form->input('Cliente.username', array('default' => 'oi', 'label' => 'E-mail '));
+			echo $this->Form->input('Cliente.password', array('default' => 'oi', 'label' => 'Senha '));
 			echo $this->Form->input('Cliente.role', array('type' => 'hidden', 'default' => 'cliente'));
 			
+			echo $this->Form->create('Endereco', array('action' => 'add'));
 			echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacep(this.value)'), array('label' => 'CEP '));
-			echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro'), array('label' => 'Rua '));
-			echo $this->Form->input('Endereco.localidade', array('id' => 'localidade'), array('label' => 'Cidade '));
-			echo $this->Form->input('Endereco.bairro', array('id' => 'bairro'), array('label' => 'Bairro '));
-			echo $this->Form->input('Endereco.uf', array('id' => 'uf'), array('label' => 'Estado '));
+			echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Rua '));
+			echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'label' => 'Cidade '));
+			echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'label' => 'Bairro '));
+			echo $this->Form->input('Endereco.uf', array('id' => 'uf', 'label' => 'Estado '));
 			
-			echo $this->Form->input('Telefone.0.ddd_telefone', array('label' => 'DDD '));
-			echo $this->Form->input('Telefone.0.numero_telefone', array('label' => 'Telefone '));
+			echo $this->Form->create('Telefone', array('action' => 'add'));
+			echo $this->Form->input('Telefone.ddd_telefone', array('label' => 'DDD '));
+			echo $this->Form->input('Telefone.numero_telefone', array('label' => 'Telefone '));
 			$options = array();
 			array_push($options, 'Celular', 'Residencial', 'Comercial');
 			echo "Tipo Telefone";
-			echo $this->Form->select('Telefone.0.tipo_telefone',$options);
+			echo $this->Form->select('Telefone.tipo_telefone',$options);
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",

@@ -17,7 +17,7 @@
 		                	</a>
 							<ul class="dropdown-menu">
 								
-			               		<li><a href="/profinder/site/pages/perfilCliente">Perfil</a></li>
+			               		<li><a href="/profinder/site/clientes/perfilCliente">Perfil</a></li>
 			               		<li><a href="#">Notificações</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
