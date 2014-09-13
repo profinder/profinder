@@ -34,13 +34,13 @@
 					$this->request->data['Cliente']['endereco_id'] = $this->Endereco->id;
 					$this->Endereco->Cliente->save($this->request->data);
 				
-					$this->Session->setFlash(__('Endereco salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array('action' => 'index'));
+					//$this->Session->setFlash(__('Endereco salvo com sucesso.'), "flash_notification");
+					return $this->redirect(array($this->referer(), $this->Endereco->id));
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
-			$enderecos = $this->Endereco->Cliente->find('list');
-         	$this->set(compact('clientes'));
+			//$enderecos = $this->Endereco->Cliente->find('list');
+         	//$this->set(compact('clientes'));
 		}
 	
 		public function edit($id = null)
