@@ -4,7 +4,12 @@
 	class User extends AppModel
 	{
 		public $useTable = "tb_pessoa";
-		public $hasMany = array("Telefone");
+		public $hasMany = array(
+	      'Telefone' => array(
+	         'className' => 'Telefone',
+	         'foreignKey' => 'pessoa_id'
+	      )
+	   );
 		public $validate = array(
 				'nome_pessoa' => array(
 						'rule' => 'notEmpty'),

@@ -5,6 +5,6 @@
 		public $useTable = "tb_telefone";
 		public $belongsTo = array ("User" =>
 									array("className" => "User",
-									"ForeignKey" => "pessoa_id"));
+									"foreignKey" => "pessoa_id"));
 	}
 ?>

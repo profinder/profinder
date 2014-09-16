@@ -35,7 +35,7 @@
 					$this->Endereco->Cliente->save($this->request->data);
 				
 					//$this->Session->setFlash(__('Endereco salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array($this->referer(), $this->Endereco->id));
+					return $this->redirect($this->referer());
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
