@@ -3,7 +3,7 @@
 	{
 		public $useTable = "tb_endereco";
 		
-		public $belongsTo = array(
+		public $hasMany = array(
 	      'Cliente' => array(
 	         'className' => 'Cliente',
 	         'foreignKey' => 'endereco_id'

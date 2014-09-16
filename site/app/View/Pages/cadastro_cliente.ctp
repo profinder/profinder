@@ -21,8 +21,8 @@
 					<div class="panel-body">
 
 						<?php
-						echo $this->Form->create('Cliente', array('action' => 'add'));
-        	//echo $this->Form->create('Endereco', array('action' => 'add'));
+						//echo $this->Form->create('Cliente', array('action' => 'add'));
+        	echo $this->Form->create('Endereco', array('action' => 'add'));
         	echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacep(this.value)'), array('label' => 'CEP '));
         	echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Rua '));
         	echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'label' => 'Cidade '));
@@ -41,7 +41,8 @@
 			echo $this->Form->input('Telefone.0.numero_telefone', array('label' => 'Telefone '));
 			$options = array();
 			array_push($options, 'Celular', 'Residencial', 'Comercial');
-			echo $this->Form->select('Telefone.0.tipo_telefone',$options, array('empty' => 'Tipo telefone'));
+			echo "Tipo telefone ";
+			echo $this->Form->select('Telefone.0.tipo_telefone',$options);
 
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
