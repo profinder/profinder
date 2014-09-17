@@ -38,10 +38,13 @@
 			//$this->set('categorias', $this->Categoria->find('all'));	
 		}
 		
-		public function homeCliente()
+		public function perfilCliente()
 		{
+			$this->layout = 'homeUsuario';
+			var_dump('oi');
 		}
 		
+
 		public function homeProfissional()
 		{
 		}

@@ -21,8 +21,8 @@
 					<div class="panel-body">
 
 						<?php
-						//echo $this->Form->create('Cliente', array('action' => 'add'));
-        	echo $this->Form->create('Endereco', array('action' => 'add'));
+						echo $this->Form->create('Cliente', array('action' => 'add'));
+        	//echo $this->Form->create('Endereco', array('action' => 'add'));
         	echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacep(this.value)'), array('label' => 'CEP '));
         	echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Rua '));
         	echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'label' => 'Cidade '));
@@ -30,14 +30,22 @@
         	echo $this->Form->input('Endereco.uf', array('id' => 'uf', 'label' => 'Estado '));
         	
 			
-			echo $this->Form->input('Cliente.nome_pessoa', array('default' => 'oi', 'label' => 'Nome '));
-			echo $this->Form->input('Cliente.username', array('default' => 'oi', 'label' => 'E-mail '));
-			echo $this->Form->input('Cliente.password', array('default' => 'oi', 'label' => 'Senha '));
-			echo $this->Form->input('Cliente.role', array('type' => 'hidden', 'default' => 'cliente'));
+			echo $this->Form->input('nome_pessoa', array('default' => 'oi', 'label' => 'Nome '));
+			?>
+			<div class="input-group input-group-lg">
+				<span class="input-group-addon">@</span>
+				<?php
+				echo $this->Form->input('username', array('default' => 'oi', 'label' => 'E-mail '));
+				?>
+			</div>
+			<?php 
+			echo $this->Form->input('password', array('default' => 'oi', 'label' => 'Senha '));
+			echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'cliente'));
 			
 			
 			//echo $this->Form->create('Telefone', array('action' => 'add'));
-			echo $this->Form->input('Telefone.0.ddd_telefone', array('label' => 'DDD '));
+			echo $this->Form->input('Telefone.0.ddd_telefone',array('label' => 'DDD'));
+			
 			echo $this->Form->input('Telefone.0.numero_telefone', array('label' => 'Telefone '));
 			$options = array();
 			array_push($options, 'Celular', 'Residencial', 'Comercial');
@@ -53,7 +61,7 @@
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
 					array('controller' => 'Clientes','action' => 'index'),
 					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
-			);
+			);	
 			
 			echo $this->Form->end();
 		?>

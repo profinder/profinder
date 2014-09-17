@@ -83,6 +83,7 @@
 	    
 	    public function edit($id = null) 
 	    {
+	    	$this->layout = 'clean';
 	    	if (!$id) {
 	    		throw new NotFoundException(__('Administrador inválido 1'));
 	    	}

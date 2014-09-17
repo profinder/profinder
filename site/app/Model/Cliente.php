@@ -7,6 +7,7 @@
 		public $useTable = "tb_cliente";
 		public $primaryKey = "id";
 		
+		
 		public $belongsTo = array ("Endereco" =>
 								array("className" => "Endereco",
 								"foreignKey" => "endereco_id"));

@@ -37,10 +37,10 @@ class EnderecosController extends AppController {
 				
 				// Because our User hasOne Profile, we can access
 				// the Profile model through the User model:
-				$this->Endereco->Cliente->save($this->request->data);
+				$this->Endereco->Cliente->Telefone->save($this->request->data);
 				
-				$this->request->data ['Telefone'] ['pessoa_id'] = $this->Cliente->id;
-				$this->Cliente->Telefone->save ( $this->request->data );
+				//$this->request->data ['Telefone'] ['pessoa_id'] = $this->Cliente->id;
+				//$this->Cliente->Telefone->save ( $this->request->data );
 			}
 		}
 		// $enderecos = $this->Endereco->Cliente->find('list');

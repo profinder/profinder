@@ -18,34 +18,33 @@ class ClientesController extends AppController {
 		}
 		$this->set ( 'cliente', $cliente );
 	}
-	public function add()
-	{
-		$this->layout = 'clean';
-		if ($this->request->is('post'))
+public function add()
 		{
-			$this->Endereco->create();
-			if ($this->Endereco->save($this->request->data))
+			$this->layout = 'clean';
+			if ($this->request->is('post'))
 			{
+				$this->Cliente->create();
+				var_dump($this->request->data);
+				if ($this->Cliente->saveAssociated($this->request->data))
+				{
 					
-				$this->request->data['Cliente']['endereco_id'] = $this->Endereco->id;
-				$this->Endereco->Cliente->save($this->request->data);
-				$this->request->data['Telefone']['pessoa_id'] = $this->Cliente->Telefone->id;
-				$this->Cliente->Telefone->save($this->request->data);
-	
-				//$this->Session->setFlash(__('Endereco salvo com sucesso.'), "flash_notification");
-				return $this->redirect($this->referer());
+					$this->Session->setFlash(__('Cliente salvo com sucesso.'), "flash_notification");
+					return $this->redirect($this->referer());
+				}
+				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
-			$this->Session->setFlash(__('Erro ao salvar dados!'));
+			//$enderecos = $this->Endereco->Cliente->find('list');
+         	//$this->set(compact('clientes'));
 		}
-		//$enderecos = $this->Endereco->Cliente->find('list');
-		//$this->set(compact('clientes'));
-	}
-	public function edit($id_cliente = null) {
-		if (! $id_cliente) {
+		
+	public function edit($id = null) {
+		
+		var_dump('oi');
+		if (! $id) {
 			throw new NotFoundException ( __ ( 'Cliente inválido!' ) );
 		}
 		
-		$cliente = $this->Cliente->findById ( $id_cliente );
+		$cliente = $this->Cliente->findById ( $id );
 		if (! $cliente) {
 			throw new NotFoundException ( __ ( 'Cliente não encontrado' ) );
 		}
@@ -54,13 +53,14 @@ class ClientesController extends AppController {
 				'post',
 				'put' 
 		) )) {
-			$this->Cliente->id = $id_cliente;
+			
+			$this->Cliente->id = $id;
 			if ($this->Cliente->save ( $this->request->data )) {
 				$this->Session->setFlash ( __ ( 'Cliente salvo com sucesso!' ), "flash_notification" );
-				return $this->redirect ( array (
+				/*return $this->redirect ( array (
 						'controller' => 'cliente',
 						'action' => 'index' 
-				) );
+				) );*/
 			}
 			$this->Session->setFlash ( __ ( 'Erro ao salvar dados!' ) );
 		}
