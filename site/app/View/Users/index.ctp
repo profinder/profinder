@@ -5,11 +5,11 @@
 <br/><br/>
 <table>
     <tr>
-        <th>Código</th>
+        <th>CÃ³digo</th>
         <th>Nome</th>
         <th>Login</th>
         <th>Regra</th>
-        <th>Ações</th>
+        <th>AÃ§Ãµes</th>
     </tr>
 
     <?php foreach ($usuarios as $user): ?>
@@ -85,7 +85,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Dados do Bairro</h4>
+        <h4 class="modal-title" id="myModalLabel">Dados do UsuÃ¡rio</h4>
       </div>
       <div class="modal-body">
       	

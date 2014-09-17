@@ -16,7 +16,7 @@
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/perfilCliente">Perfil</a></li>
+			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'perfilCliente')); ?></li>
 			               		<li><a href="#">Notificações</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
@@ -83,10 +83,10 @@
 						echo "Nome: ".AuthComponent::user('nome_pessoa')."</br>";
 						echo "E-mail: ".AuthComponent::user('username')."</br>";
 						echo $this->Html->link(
-							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
-							array('controller' => 'users', 'action' => 'edit', $user['User']['id'], 'role' => 'button'),
-							array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
-							"data-target"=>"#myModal"));
+	        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editarrrr",
+	        			array('controller' => 'Clientes', 'action' => 'edit', $user['User']['id'], 'role' => 'button'),
+						array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
+						"data-target"=>"#myModal"));
 							
 							
 					?>
@@ -102,7 +102,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Dados do UsuÃ¡rio</h4>
+        <h4 class="modal-title" id="myModalLabel">Dados do Usuário</h4>
       </div>
       <div class="modal-body">
       	

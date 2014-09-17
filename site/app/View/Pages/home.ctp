@@ -117,22 +117,22 @@
 						<div class="grid_img">
 							<img src="img/profinder.png" alt=""/>
 						</div>
-						<h3>1. Conte-nos o que voc� precisa</h3>
-						<p>Responda algumas perguntas que v�o nos ajudar a encontrar os melhores profissionais para voc�.</p>
+						<h3>1. Conte-nos o que você precisa</h3>
+						<p>Responda algumas perguntas que vão nos ajudar a encontrar os melhores profissionais para você.</p>
 					</div>
 					<div class="col_1_of_5 span_1_of_5">
 						<div class="grid_img">
 							<img src="img/profinder.png" alt=""/>
 						</div>
-						<h3>2. Encontre at� 7 profissionais</h3>
-						<p>N�s pesquisamos at� 7 profissionais pr�ximos � sua regi�o e te indicamos em at� 24 horas.</p>
+						<h3>2. Encontre até 7 profissionais</h3>
+						<p>Nós pesquisamos até 7 profissionais próximos à sua região e te indicamos em até 24 horas.</p>
 					</div>
 					<div class="col_1_of_5 span_1_of_5">
 						<div class="grid_img">
 							<img src="img/profinder.png" alt=""/>
 						</div>
 						<h3>3. Compare e contrate o melhor</h3>
-						<p>Voc� compara os or�amentos e avalia��es dos profissionais, negocia e contrata o melhor profissional.</p>
+						<p>Você compara os orçamentos e avaliações dos profissionais, negocia e contrata o melhor profissional.</p>
 					</div>
 					<div class="col_1_of_5 span_1_of_5">
 						<div class="grid_img">
@@ -152,10 +152,7 @@
 		
 				<div class="clear"></div>
 			</div>
-		</div>
-	   </div>
-	</div>
-	
+		
 </body>
 <!-- Modal -->
 <div class="modal fade" id="myModalCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -168,6 +165,7 @@
       <div class="modal-body">
       	
         <?php
+<<<<<<< HEAD
 			echo $this->Form->create('Endereco', array('action' => 'add'));
 			echo $this->Form->input('Cliente.nome_pessoa', array('label' => 'Nome: '));
 			echo $this->Form->input('Cliente.username', array('label' => 'E-mail: '));
@@ -222,6 +220,28 @@
 			echo $this->Form->input('Profissional.username', array('label' => 'E-mail: '));
 			echo $this->Form->input('Profissional.password', array('label' => 'Senha: '));
 			echo $this->Form->input('Profissional.role', array('type' => 'hidden', 'default' => 'profissional'));
+=======
+        	echo $this->Form->create('Endereco', array('action' => 'add'));
+        	echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacep(this.value)'), array('label' => 'CEP '));
+        	echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Rua '));
+        	echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'label' => 'Cidade '));
+        	echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'label' => 'Bairro '));
+        	echo $this->Form->input('Endereco.uf', array('id' => 'uf', 'label' => 'Estado '));
+        	
+			echo $this->Form->create('Cliente', array('action' => 'add'));
+			echo $this->Form->input('Cliente.nome_pessoa', array('default' => 'oi', 'label' => 'Nome '));
+			echo $this->Form->input('Cliente.username', array('default' => 'oi', 'label' => 'E-mail '));
+			echo $this->Form->input('Cliente.password', array('default' => 'oi', 'label' => 'Senha '));
+			echo $this->Form->input('Cliente.role', array('type' => 'hidden', 'default' => 'cliente'));
+			
+			
+			echo $this->Form->create('Telefone', array('action' => 'add'));
+			echo $this->Form->input('Telefone.ddd_telefone', array('label' => 'DDD '));
+			echo $this->Form->input('Telefone.numero_telefone', array('label' => 'Telefone '));
+			$options = array();
+			array_push($options, 'Celular', 'Residencial', 'Comercial');
+			echo $this->Form->select('Telefone.tipo_telefone',$options, array('empty' => 'Tipo telefone'));
+>>>>>>> origin/master
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",

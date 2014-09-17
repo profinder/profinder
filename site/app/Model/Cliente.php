@@ -7,16 +7,16 @@
 		public $useTable = "tb_cliente";
 		public $primaryKey = "id";
 		
+		
 		public $belongsTo = array ("Endereco" =>
 								array("className" => "Endereco",
-								"ForeignKey" => "endereco_id"));
+								"foreignKey" => "endereco_id"));
 		
 		
-		/*public $hasOne = "Endereco";/*array(
+		/*public $hasOne = array(
 	      'Endereco' => array(
 	         'className' => 'Endereco',
-	         'foreignKey' => 'id',
-	         'dependent' => true
+	         'foreignKey' => 'endereco_id'
 	      )
 	   );*/
 		

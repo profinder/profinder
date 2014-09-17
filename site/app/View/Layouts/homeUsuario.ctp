@@ -30,7 +30,7 @@
     <meta name="author" content="">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="/profinder/site/js/bootstrap.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -47,8 +47,7 @@
 	        $('#slider').nivoSlider();
 	    });
 	</script>
-	<script src="js/jquery_min.js"></script>
-    <script src="js/bootstrap.js"></script>
+	
     <script>
 	  	$(function() {
 		    $( "#dialog" ).dialog({

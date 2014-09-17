@@ -38,11 +38,17 @@
 			//$this->set('categorias', $this->Categoria->find('all'));	
 		}
 		
-		public function homeCliente()
+		public function perfilCliente()
 		{
+<<<<<<< HEAD
 			
+=======
+			$this->layout = 'homeUsuario';
+			var_dump('oi');
+>>>>>>> origin/master
 		}
 		
+
 		public function homeProfissional()
 		{
 		}

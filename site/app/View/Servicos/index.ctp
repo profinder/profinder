@@ -5,10 +5,10 @@
 <br/><br/>
 <table>
     <tr>
-        <th>Código</th>
+        <th>CÃ³digo</th>
         <th>Nome</th>
-		<th>Id categoria</th>
-        <th>Açõees</th>
+		<th>CÃ³digo Categoria</th>
+        <th>AÃ§Ãµes</th>
         
     </tr>
 

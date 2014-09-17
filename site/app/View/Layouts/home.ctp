@@ -26,7 +26,7 @@
     <meta name="author" content="">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="/profinder/site/js/bootstrap.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -56,12 +56,12 @@
 			<div class="wrap">
 				<div class="footer-text">
 					<div class="copy">
-						<p> © 2013 ProFindeeeeeeer | Design by <a href="http://w3layouts.com">W3Layouts</a></p>
+						<p> © 2014 ProFinder</p>
 					</div>
 				</div>	
 			</div>
 		</div>
 
-    </div> <!-- /container -->
+     <!-- /container -->
 </body>
 </html>
