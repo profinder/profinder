@@ -102,6 +102,8 @@
 					array('controller' => 'Cidades','action' => 'index'),
 					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
 			
+				
+					
 			echo $this->Form->end();
 		?>
       </div>

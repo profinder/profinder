@@ -40,6 +40,7 @@
 		
 		public function homeCliente()
 		{
+			
 		}
 		
 		public function homeProfissional()
@@ -67,9 +68,19 @@
 			return $servicos->nomeServicos($id_categoria);	
 		}
 		
+		public function anuncios($profissional_id) 
+		{
+			App::import('Controller', 'Anuncios');
+			$anuncios = new AnunciosController;
+			$anuncios->constructClasses();
+			return $anuncios->anuncios($profissional_id);	
+		}
+		
 		public function beforeFilter() 
 		{
 			$this->Auth->allow('homeCliente', 'homeProfissional', 'display');
 		}
+		
+		
 	}
 ?>

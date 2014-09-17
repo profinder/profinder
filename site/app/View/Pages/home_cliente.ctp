@@ -92,6 +92,8 @@
 				        		array('controller' => 'users', 'action' => 'edit', $user['User']['id'], 'role' => 'button'),
 								array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
 								"data-target"=>"#myModal"));
+							
+							
 							?>
 			 	</div>
 			</div>

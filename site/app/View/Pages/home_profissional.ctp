@@ -79,9 +79,9 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-					<h2>Pedidos</h2>
+					<h2>Anúncios</h2>
 					<hr>
-						<p>Aqui você encontra o profissional para o serviço que você precisa! </p>
+						<p>Aqui você cria anúncios para seus serviços! </p>
 					
 					<a href="/profinder/site/pages/criarAnuncio"> Criar Anúncio </a>	
 			 	</div>

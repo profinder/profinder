@@ -108,7 +108,7 @@
 							'escritorio' => 'Escritório',))
 						);
 						
-						echo $this->Form->input('id_profissional', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
+						echo $this->Form->input('profissional_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
 
 						echo $this->Form->button(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",

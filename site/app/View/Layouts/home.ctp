@@ -7,7 +7,8 @@
 		ProFinder
 	</title>
 	<?php
-		echo $this->Html->meta('icon');
+
+	echo $this->Html->meta('icon');
 
 		echo $this->Html->css('bootstrap.min.css');
 		echo $this->Html->css('bootstrap-theme.min.css');
@@ -15,6 +16,7 @@
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+		
 	?>
 	
 	<meta charset="utf-8">

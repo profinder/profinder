@@ -194,7 +194,7 @@
 			echo " ";
 			echo $this->Html->link(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller' => 'Clientes','action' => 'index'),
+					array('controller' => 'Pages','action' => 'display'),
 					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
 			);
 			
@@ -230,7 +230,7 @@
 			echo " ";
 			echo $this->Html->link(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller' => 'Clientes','action' => 'index'),
+					array('controller' => 'Pages','action' => 'display'),
 					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
 			);
 			
@@ -267,7 +267,6 @@
 		}
 	
 	    </script>
-
 </html>
 
 
