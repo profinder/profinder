@@ -1,4 +1,5 @@
 <link href="/profinder/site/css/style2.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
 	
 <div class="header">	
 	<div class="wrap"> 
@@ -109,7 +110,19 @@
 						);
 						
 						echo $this->Form->input('profissional_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
+						?>
+						<select id="estado" name="estado" type="display"></select></br>
 
+						<select id="cidade" name="cidade" type="display:none"></select>
+						
+						<select id="bairro" name="bairro" type="display:inline"></select>
+						<?php
+						echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacepAnuncio(this.value)'));
+						echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro'));
+						echo $this->Form->input('Endereco.localidade', array('id' => 'localidade'));
+						echo $this->Form->input('Endereco.bairro', array('id' => 'bairro'));
+						echo $this->Form->input('Endereco.uf', array('id' => 'uf'));
+						
 						echo $this->Form->button(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
 								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
@@ -122,8 +135,39 @@
 						);
 						
 						echo $this->Form->end();
+				
 				?>
-					
+				<script type="text/javascript">
+						window.onload = function() {
+						new dgCidadesEstados(document.getElementById('estado'), document.getElementById('cidade'), true);
+						}
+				</script>
+				
+				<script>
+					$function(){
+						$("cidade").change(function(){
+							var nome = $(this).val();
+							$.ajax({
+								type: "POST",
+								url: "exibe_bairro.php?nome="+nome,
+								dataType:"text",
+								success: function(res){
+									$("#bairro").append(res);
+								}
+							)
+						});
+					}
+				</script>
+				
+				<script>
+					function buscarBairro(var cidade){
+					  //$this->query('select tb_bairro.nome_bairro from tb_bairro inner join tb_logradouro on tb_logradouro.id_bairro=tb_bairro.id inner join tb_localidade on tb_logradouro.id_cidade=tb_localidade.id where tb_localidade.nome_localidade='.cidade);
+					  alert(cidade);
+					}
+					function addCampo() {
+						document.getElementById("duplicaCampo").innerHTML += "<input type='text' name='campo[]' />";
+					}
+					</script>
 			 	</div>
 			</div>
 		</div>
