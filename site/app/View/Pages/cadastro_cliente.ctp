@@ -27,7 +27,7 @@
 					<table border="1" width="700">
 						<tr>
 							<td>
-								<div class="input-group" width="2000">
+								<div class="input-group">
 									<span class="input-group-addon">Nome</span>
 									<?php
 										echo $this->Form->input('nome_pessoa', array('class' => 'form-control', 'label' => ''));
@@ -171,8 +171,6 @@
 				
 						
 			<?php 
-
-			//echo $this->Form->create('Telefone', array('action' => 'add'));
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
@@ -194,7 +192,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 <script>
 	    function consultacep(cep){
 	      cep = cep.replace(/\D/g,"")
