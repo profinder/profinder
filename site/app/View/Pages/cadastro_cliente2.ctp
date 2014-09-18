@@ -10,20 +10,14 @@ height="70" width="338" style="padding-top: 0px"> </a>
 		</div>
 	</div>
 </div>
- <div class="banner">
-      <div class="wrap">
-		   <div class="cssmenu">
-		   <ul>
-				
-				   <li class="dropdown">
-		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro de Cliente</a>
-		                  </li>
-		                  </ul>
-		                  </div>
-		                  </ul>
-		                  </div>
-		                  </div>
-		                  
+<div class="main">					
+	<div class="wrap">
+		<div class="content-top">
+			<div class="top-box">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">Novo Cliente</h2>
+					</div>
 					<div class="panel-body">
 					<?php
 						echo $this->Form->create('Cliente', array('action' => 'add'));
@@ -86,19 +80,21 @@ height="70" width="338" style="padding-top: 0px"> </a>
 							
 							<td></td>
 							<td> 
-								<div class="input-group" width="2000">
-									<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
-									
-										<?php 
-										echo $this->Form->input('Telefone.0.tipo_telefone', array('class' => 'form-control', 'label' => '', 'options' => array(
-											'residencial' => 'Residencial',
-											'celular' => 'Celular',
-											'escritorio' => 'Escritório',))
-										);
-										
-										?>
-										</div>
-							</td>
+							
+							  <div class="input-group">
+  <div class="input-group-btn">
+     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+  </div>
+  <input type="text" class="form-control">
+</div>
 						</tr>
 						<tr>
 							<td>

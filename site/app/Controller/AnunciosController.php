@@ -30,7 +30,6 @@
 				$this->Anuncio->create();
 				if ($this->Anuncio->save($this->request->data))
 				{
-					
 					$this->Session->setFlash(__('Anuncio salvo com sucesso.'), "flash_notification");
 					return $this->redirect(array('action' => 'index'));
 				}
@@ -89,6 +88,12 @@
 		public function nomeAnuncio($id_servico)
 		{
 			$conditions = array("Anuncio.id_servico" => $id_servico);
+			return $this->Anuncio->find('all', array( 'conditions'=>$conditions));
+		}
+		
+		public function anuncios($id_profissional)
+		{
+			$conditions = array("Anuncio.profissional_id" => $id_profissional);
 			return $this->Anuncio->find('all', array( 'conditions'=>$conditions));
 		}
 	}
