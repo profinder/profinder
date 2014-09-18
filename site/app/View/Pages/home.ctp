@@ -31,10 +31,7 @@
             					</div>
             					<button type="submit" class="btn btn-success">Entrar</button>
           				</form>
-			
-	    				<button class="btn btn-primary btn" data-toggle="modal" data-target="#myModalCliente">Cadastro cliente</button>
-	    				<button class="btn btn-primary btn" data-toggle="modal" data-target="#myModalProfissional">Cadastro Profissional</button>
-	    			
+					
 	    				<br/>
 	    				
 	    				</div>

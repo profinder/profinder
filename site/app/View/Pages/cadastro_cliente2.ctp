@@ -10,14 +10,20 @@ height="70" width="338" style="padding-top: 0px"> </a>
 		</div>
 	</div>
 </div>
-<div class="main">					
-	<div class="wrap">
-		<div class="content-top">
-			<div class="top-box">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h2 class="panel-title">Novo Cliente</h2>
-					</div>
+ <div class="banner">
+      <div class="wrap">
+		   <div class="cssmenu">
+		   <ul>
+				
+				   <li class="dropdown">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro de Cliente</a>
+		                  </li>
+		                  </ul>
+		                  </div>
+		                  </ul>
+		                  </div>
+		                  </div>
+		                  
 					<div class="panel-body">
 					<?php
 						echo $this->Form->create('Cliente', array('action' => 'add'));

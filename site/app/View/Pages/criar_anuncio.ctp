@@ -1,4 +1,4 @@
-<link href="/profinder/site/css/style2.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
 	
 <div class="header">	

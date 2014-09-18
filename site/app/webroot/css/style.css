@@ -46,7 +46,7 @@ body{
 }
 .logo h1 a{
 	color: #8F6442;
-	font-size: 6em;
+	font-size: 4em;
 	font-family: 'bebas_neueregular';
 }
 /*--menu--*/
@@ -96,17 +96,19 @@ body{
 	font: normal 15px/15px PT Sans, sans-serif;
 	color: #FFF;
 	display: block;
-	line-height: 3.8em;
-	padding: 5px 10px;
-	letter-spacing: 1px;
+	/* MUDARRRRRR LINHAAAAAAA */
+	line-height: 2.8em;
+	padding: 10px 10px;
+	letter-spacing: 0px;
 }
+
 .header{
 	background: #fff;
 	padding: 0px;
 }
 .header-text {
 	float: right;
-	margin: -100px 20px;
+	margin: -60px 20px;
 	font-size: 1em;
 	color:#8F6442;
 }
@@ -118,9 +120,10 @@ body{
 	margin: 0;
 }
 .banner{
+	/* CORRRRRRRR DO CATEGORIAS */
 	background:#8F6442;
-	
-	padding-bottom:3%;
+	/* LARGURAAAAAA DO CATEGORIAS */
+	padding-bottom:0%;
 }
 .about-banner{
 	background:#8F6442;
@@ -132,9 +135,9 @@ body{
 .top-box h2{
 	text-align: center;
 	color: #888;
-	font-size: 3em;
+	font-size: 2em;
 	font-family: 'bebas_neueregular';
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 hr {
 	border-bottom: 1px solid #CCC;
