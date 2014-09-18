@@ -1,38 +1,14 @@
 <?php
-<<<<<<< HEAD
-	class ClientesController extends AppController
-	{
-		public $helpers = array('Html', 'Form');
-			
-		public function index()
-		{
-			$this->set('cliente', $this->Cliente->find('all'));
-		}
-	
-		public function view($id = null) 
-		{
-			$this->layout = 'clean';
-			if (!$id) {
-				throw new NotFoundException(__('Cliente inválido'));
-			}
-	
-			$cliente = $this->Cliente->findById($id);
-			if (!$cliente) {
-				throw new NotFoundException(__('Cliente não encontrada'));
-			}
-			$this->set('cliente', $cliente);
-		}
-	
-		public function add()
-=======
 class ClientesController extends AppController {
 	public $helpers = array (
 			'Html',
 			'Form' 
 	);
+	
 	public function index() {
 		$this->set ( 'clientes', $this->Cliente->find ( 'all' ) );
 	}
+	
 	public function view($id_cliente = null) {
 		if (! $id_cliente) {
 			throw new NotFoundException ( __ ( 'Usuário inválido' ) );
@@ -44,64 +20,13 @@ class ClientesController extends AppController {
 		}
 		$this->set ( 'cliente', $cliente );
 	}
-public function add()
->>>>>>> origin/master
+	
+	public function add()
 		{
 			$this->layout = 'clean';
 			if ($this->request->is('post'))
 			{
 				$this->Cliente->create();
-<<<<<<< HEAD
-				if ($this->Cliente->save($this->request->data))
-				{
-					$this->Session->setFlash(__('Cliente salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array('action' => 'index'));
-				}
-				$this->Session->setFlash(__('Erro ao salvar dados!'));
-			}
-		}
-	
-		public function edit($id = null)
-		{
-			if (!$id) {
-				throw new NotFoundException(__('Cliente inválido'));
-			}
-		  
-			$cliente = $this->Cliente->findById($id);
-			if (!$cliente) {
-				throw new NotFoundException(__('Cliente não encontrada'));
-			}
-			$this->layout = 'clean';
-			if ($this->request->is(array('post', 'put'))) {
-				$this->Cliente->id = $id;
-				if ($this->Cliente->save($this->request->data)) {
-					$this->Session->setFlash(__('Cliente salvo com sucesso'),
-		    					"flash_notification");
-					return $this->redirect(array('action' => 'index'));
-				}
-				$this->Session->setFlash(__('Erro ao salvar dados.'));
-			}
-		  
-			if (!$this->request->data) {
-				$this->request->data = $cliente;
-			}
-		}
-	
-		public function delete($id) 
-		{
-			if ($this->request->is('get')) {
-				throw new MethodNotAllowedException();
-			}
-		  
-			if ($this->Cliente->delete($id)) {
-				$this->Session->setFlash(
-				__('Cliente excluido com sucesso.', "flash_notification")
-				);
-				return $this->redirect(array('action' => 'index'));
-			}
-		}
-	}
-=======
 				var_dump($this->request->data);
 				if ($this->Cliente->saveAssociated($this->request->data))
 				{
@@ -159,5 +84,4 @@ public function add()
 		}
 	}
 }
->>>>>>> origin/master
 ?>

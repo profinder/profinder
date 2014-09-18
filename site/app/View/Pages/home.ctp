@@ -165,7 +165,6 @@
       <div class="modal-body">
       	
         <?php
-<<<<<<< HEAD
 			echo $this->Form->create('Endereco', array('action' => 'add'));
 			echo $this->Form->input('Cliente.nome_pessoa', array('label' => 'Nome: '));
 			echo $this->Form->input('Cliente.username', array('label' => 'E-mail: '));
@@ -220,7 +219,7 @@
 			echo $this->Form->input('Profissional.username', array('label' => 'E-mail: '));
 			echo $this->Form->input('Profissional.password', array('label' => 'Senha: '));
 			echo $this->Form->input('Profissional.role', array('type' => 'hidden', 'default' => 'profissional'));
-=======
+
         	echo $this->Form->create('Endereco', array('action' => 'add'));
         	echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacep(this.value)'), array('label' => 'CEP '));
         	echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Rua '));
@@ -241,7 +240,7 @@
 			$options = array();
 			array_push($options, 'Celular', 'Residencial', 'Comercial');
 			echo $this->Form->select('Telefone.tipo_telefone',$options, array('empty' => 'Tipo telefone'));
->>>>>>> origin/master
+
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
