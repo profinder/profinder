@@ -101,8 +101,11 @@
 							array_push($options, array($servicos[$contador]['Servico']['id'] => $servicos[$contador]['Servico']['nome_servico']));
 							$contador++;
 						}
+						
+						echo $this->Form->input('descricao_anuncio');
+												
 						echo "Serviço: ";
-						echo $this->Form->select('id_servico', $options);
+						echo $this->Form->select('servico_id', $options);
 					
 						echo $this->Form->input('modo_atendimento', array('label' => 'Modo de atendimento: ', 'options' => array(
 							'online' => 'On-line',
@@ -117,7 +120,9 @@
 						<select id="cidade" name="cidade" style="display:none;"></select><br />
 						
 						<?php
+						
 							echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'type'=>'hidden', 'onblur' => 'consultacepAnuncio(this.value)'), array('label' => 'CEP '));
+							echo "<br />";
 							echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Rua ', 'type'=>'hidden'));
 							echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'label' => 'Cidade ', 'type'=>'hidden'));
 							echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'label' => 'Bairro ', 'type'=>'hidden'));
@@ -133,6 +138,8 @@
 									array('controller' => 'Users', 'action' => 'index'),
 									array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
 							);
+							
+							echo $this->Form->button('Limpar', array('type'=>'reset', 'class' => 'btn btn-success', 'escape' => false));
 							
 							echo $this->Form->end();
 						?>

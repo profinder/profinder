@@ -86,7 +86,7 @@
 		
 		public function nomeServicos($id_categoria)
 		{
-			$conditions = array("Servico.id_categoria" => $id_categoria);
+			$conditions = array("Servico.categoria_id" => $id_categoria);
 			return $this->Servico->find('all', array( 'conditions'=>$conditions));
 		}	
 		

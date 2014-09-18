@@ -4,7 +4,7 @@
 <br/>
 <li><p>Nome: <?php echo h($servico['Servico']['nome_servico']); ?></p></li>
 <br/>
-<li><p>Código da categoria: <?php echo h($servico['Servico']['id_categoria']); ?></p></li>
+<li><p>Código da categoria: <?php echo h($servico['Servico']['categoria_id']); ?></p></li>
 
 <br/> <br/><center>
 <?php

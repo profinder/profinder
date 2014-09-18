@@ -31,14 +31,9 @@
             					</div>
             					<button type="submit" class="btn btn-success">Entrar</button>
           				</form>
-<<<<<<< HEAD
-					
-=======
 			
 	    				<a href="pages/cadastroCliente"><button class="btn btn-primary btn">Cadastro cliente</button></a>
-	    				<button class="btn btn-primary btn" data-toggle="modal" data-target="#myModalProfissional">Cadastro Profissional</button>
-	    			
->>>>>>> origin/master
+	    				
 	    				<br/>
 	    				
 	    				</div>

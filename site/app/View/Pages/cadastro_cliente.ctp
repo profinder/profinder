@@ -28,11 +28,8 @@ height="70" width="338" style="padding-top: 0px"> </a>
 						<tr>
 							<td>
 								<div class="input-group">
-<<<<<<< HEAD
+
 									<span class="input-group-addon">Nome &nbsp &nbsp &nbsp &nbsp &nbsp</span>
-=======
-									<span class="input-group-addon">Nome</span>
->>>>>>> origin/master
 									<?php
 										echo $this->Form->input('nome_pessoa', array('class' => 'form-control', 'label' => ''));
 									?>

@@ -23,7 +23,7 @@
         </td>
 		<td>
             <?php
-            	echo $this->Html->link($servico['Servico']['id_categoria'],
+            	echo $this->Html->link($servico['Servico']['categoria_id'],
 				array('controller' => 'servicos', 'action' => 'view', $servico['Servico']['id']));
 			?>
         </td>
@@ -75,7 +75,7 @@
 				$contador++;
 			}
 			
-			echo $this->Form->select('id_categoria', $options);
+			echo $this->Form->select('categoria_id', $options);
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
 					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));

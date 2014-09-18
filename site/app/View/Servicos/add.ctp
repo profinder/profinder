@@ -2,7 +2,7 @@
 <?php
 	echo $this->Form->create('Servico');
 	echo $this->Form->input('nome_servico');
-	echo $this->Form->input('id_categoria');
+	echo $this->Form->input('categoria_id');
 	
 	echo $this->Form->button(
 			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",

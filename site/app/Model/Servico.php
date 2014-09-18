@@ -6,7 +6,7 @@
 		public $useTable = "tb_servico";
 		
 		public $validate = array(
-				'id_categoria' => array(
+				'categoria_id' => array(
 						'rule' => 'notEmpty'),
 				'nome_servico' => array(
 						'required' => array(

@@ -8,7 +8,7 @@
 									"Condições" => "",
 									"Ordem" => "",
 									"Dependente" => true,
-									"ForeignKey" => "id_profissional"));
+									"ForeignKey" => "profissional_id"));
 		/*public $validate = array(
 				'numero_endereco' => array(
 						'rule' => 'notEmpty')
