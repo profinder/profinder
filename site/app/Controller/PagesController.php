@@ -82,11 +82,5 @@
 		{
 			$this->Auth->allow('homeCliente', 'homeProfissional', 'display');
 		}
-
-	
-	
-	
-	
-	
 	}
 ?>
