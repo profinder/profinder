@@ -74,7 +74,7 @@
 		            <ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                		Op��es
+		                		Opções
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
