@@ -19,23 +19,25 @@
 						<h2 class="panel-title">Novo Cliente</h2>
 					</div>
 					<div class="panel-body">
-
-						<?php
+					<table class="table">
+					<?php
 						echo $this->Form->create('Cliente', array('action' => 'add'));
         	//echo $this->Form->create('Endereco', array('action' => 'add'));
-        	echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacep(this.value)'), array('label' => 'CEP '));
+     	   echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacep(this.value)'), array('label' => 'CEP '));
         	echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Rua '));
         	echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'label' => 'Cidade '));
         	echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'label' => 'Bairro '));
         	echo $this->Form->input('Endereco.uf', array('id' => 'uf', 'label' => 'Estado '));
-        	
-			
+        	?>
+					</table>
+						
+			<?php 
 			echo $this->Form->input('nome_pessoa', array('default' => 'oi', 'label' => 'Nome '));
 			?>
-			<div class="input-group input-group-lg">
-				<span class="input-group-addon">@</span>
+			<div class="input-group">
+				<span class="input-group-addon">E-mail</span>
 				<?php
-				echo $this->Form->input('username', array('default' => 'oi', 'label' => 'E-mail '));
+				echo $this->Form->input('username', array('class' => 'form-control', 'label' => ''));
 				?>
 			</div>
 			<?php 

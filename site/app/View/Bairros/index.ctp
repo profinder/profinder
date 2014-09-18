@@ -5,10 +5,10 @@
 <br/><br/>
 <table>
     <tr>
-        <th>Código</th>
+        <th>CÃ³digo</th>
         <th>Nome</th>
         <th>Estado</th>
-        <th>Ações</th>
+        <th>AÃ§Ãµes</th>
         
     </tr>
    
