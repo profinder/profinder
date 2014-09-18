@@ -40,12 +40,9 @@
 		
 		public function perfilCliente()
 		{
-<<<<<<< HEAD
-			
-=======
+
 			$this->layout = 'homeUsuario';
 			var_dump('oi');
->>>>>>> origin/master
 		}
 		
 
