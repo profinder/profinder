@@ -92,10 +92,10 @@
 			return $this->Anuncio->find('all', array( 'conditions'=>$conditions));
 		}
 		
-		public function anuncios($id_profissional)
+		public function anuncios($profissional_id)
 		{
-			$conditions = array("Anuncio.profissional_id" => $id_profissional);
-			return $this->Anuncio->find('all', array( 'conditions'=>$conditions));
+			$sql=$this->Anuncio->query("SELECT tb_anuncio.titulo_anuncio, tb_anuncio.id FROM tb_anuncio WHERE tb_anuncio.profissional_id='".$profissional_id."';");
+			return $sql;
 		}
 	}
 ?>

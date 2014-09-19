@@ -13,6 +13,7 @@
 
 		//echo $this->Html->meta('profinder_icon.ico');
 
+
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.css');
 		echo $this->Html->css('bootstrap-theme.css');
