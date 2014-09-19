@@ -6,9 +6,16 @@
 	<title>
 		ProFinder
 	</title>
+		<link rel="shortcut icon" type="image/x-icon" href="profinder.ico">
+	
 	<?php
 
+<<<<<<< HEAD
 		//echo $this->Html->meta('icon', $this->Html->url('/favicon.png'));
+=======
+	//echo $this->Html->meta('icon');
+
+>>>>>>> origin/master
 		echo $this->Html->css('bootstrap.min.css');
 		echo $this->Html->css('bootstrap-theme.min.css');
 		
