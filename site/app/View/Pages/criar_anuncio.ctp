@@ -129,8 +129,12 @@
 						echo "<br />";
 						echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'label' => 'Bairro ', 'type'=>'hidden'));
 						echo "<br />";
-						echo $this->Form->input('Endereco.uf', array('id' => 'uf', 'label' => 'Estado ', 'type'=>'hidden'));
+						echo $this->Form->input('Endereco.estado', array('id' => 'uf', 'label' => 'Estado ', 'type'=>'hidden'));
 						echo "<br />";	
+						echo $this->Form->input('Endereco.numero_endereco', array('label' => 'Número ', 'type'=>'hidden', 'value' => '1'));
+						echo "<br />";	
+						
+						
 						echo $this->Form->button(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
 								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)

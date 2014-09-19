@@ -20,5 +20,7 @@
 				"exclusive" => true,
 				"finderQuery" => "")
 		);
+		
+		
 	}
 ?>

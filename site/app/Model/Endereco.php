@@ -10,7 +10,11 @@
 	      )
 	   );
 				
-		
-		
+		public $hasMany = array(
+	      'Anuncio' => array(
+	         'className' => 'Anuncio',
+	         'foreignKey' => 'endereco_id'
+	      )
+	   );	   
 	}
 ?>

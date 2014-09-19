@@ -14,5 +14,9 @@
 						'rule' => 'notEmpty')
 		);*/
 		
+		public $belongsTo = array ("Endereco" =>
+								array("className" => "Endereco",
+								"foreignKey" => "endereco_id"));
+		
 	}
 ?>
