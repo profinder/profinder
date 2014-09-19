@@ -55,6 +55,7 @@
 	        $this->set('user', $user);
 	    }
 	    
+	 	
 	    public function add()
 	    {
 	    	$this->layout = 'clean';

@@ -1,14 +1,65 @@
-<div class="panel panel-info">
-	<div class="panel-heading">
-		<h3 class="panel-title">Home</h3>
-	</div>
-	<div class="panel-body">
-	
-		<input type="button" value="Bairros" onClick="location.href='/profinder/site/Bairros'" /><br> <br>
-		<input type="button" value="Categorias" onClick="location.href='/profinder/site/Categorias'" /><br> <br>
-		<input type="button" value="Cidades" onClick="location.href='/profinder/site/Cidades'" /><br> <br>
-		<input type="button" value="Administradores" onClick="location.href='/profinder/site/Users'" /><br> <br>
-		<input type="button" value="Serviços" onClick="location.href='/profinder/site/Servicos'" /><br> <br>
-		
-	</div>
-</div>
+<center><h4> Olá <?php echo AuthComponent::user('nome_pessoa'); ?>! </h4></center>
+
+<table>
+	<tr>
+		<td>
+			<div class="top-box">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						Para o realizar o cadastro de administradores, entre:
+						<br />
+						<a href = "/profinder/site/Users">aqui</a>
+					</div>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div class="top-box">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						Para o realizar o gerenciamento de bairros, entre:
+						<br />
+						<a href = "/profinder/site/Bairros">aqui</a>
+					</div>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>
+			<div class="top-box">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						Para o realizar o gerenciamento de categorias, entre:
+						<br />
+						<a href = "/profinder/site/Categorias">aqui</a>
+					</div>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div class="top-box">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						Para o realizar o gerenciamento de cidades, entre:
+						<br />
+						<a href = "/profinder/site/Cidades">aqui</a>
+					</div>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div class="top-box">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						Para o realizar o gerenciamento de serviços, entre:
+						<br />
+						<a href = "/profinder/site/Servicos">aqui</a>
+					</div>
+				</div>
+			</div>
+		</td>		
+	</tr>
+</table>

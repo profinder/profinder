@@ -94,6 +94,14 @@
 			return $anuncios->remover($anuncio_id);	
 		}
 		
+		public function anunciosServico($servico_id) 
+		{
+			App::import('Controller', 'Anuncios');
+			$anuncios = new AnunciosController;
+			$anuncios->constructClasses();
+			return $anuncios->anunciosServico($servico_id);	
+		}
+				
 		public function beforeFilter() 
 		{
 			$this->Auth->allow('homeCliente', 'homeProfissional', 'display');

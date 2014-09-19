@@ -109,5 +109,11 @@
 			$sql= $this->Anuncio->query("DELETE FROM tb_anuncio WHERE tb_anuncio.id = '".$anuncio_id."';");
 			return $sql;
 		}
+		
+		public function anunciosServico($servico_id)
+		{
+			$sql= $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio INNER JOIN tb_servico ON tb_anuncio.servico_id = tb_servico.id WHERE tb_servico.nome_servico = '".$servico_id."';");
+			return $sql;
+		}
 	}
 ?>

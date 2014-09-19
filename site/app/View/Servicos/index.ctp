@@ -1,4 +1,4 @@
-<h4>Gerenciamento de Servicos</h4>
+<center><h4>Gerenciamento de Servicos</h4></center>
 <br/>
 
 <button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Novo</button>
@@ -23,23 +23,22 @@
         </td>
 		<td>
             <?php
-            	echo $this->Html->link($servico['Servico']['categoria_id'],
-				array('controller' => 'servicos', 'action' => 'view', $servico['Servico']['id']));
+            	echo $servico['Servico']['categoria_id'];
 			?>
         </td>
         <td>
         	<?php
         		echo $this->Html->link(
-	        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
+	        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . "",
 	        		array('controller' => 'servicos', 'action' => 'edit', $servico['Servico']['id'], 'role' => 'button'),
-					array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
+					array('class' => 'btn btn-default', 'escape' => false, "data-toggle"=>"modal",
 					"data-target"=>"#myModal"));
         	?>
         	<?php
         		echo $this->Form->postLink(
-	        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Remover",
+	        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
 	        		array('controller' => 'servicos','action' => 'delete', $servico['Servico']['id']),
-	        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
+	        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
         	?>
         </td>
     </tr>
@@ -48,46 +47,46 @@
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Dados do Servico</h4>
-      </div>
-      <div class="modal-body">
+<div class="modal fade" data-backdrop="static" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        			<h4 class="modal-title" id="myModalLabel">Dados do Servico</h4>
+      		</div>
+      		<div class="modal-body">
       	
-        <?php        
-			echo $this->Form->create('Servico', array('action' => 'add'));
-			echo $this->Form->input('nome_servico', array('label' => 'Nome:'));
-
-			App::import('Controller', 'Servicos');
-			
-			$servicos = new ServicosController;
-			$servicos->constructClasses();
-			$categorias=$servicos->nomeCategorias();
-			$contador=0;
-			$options= array();
-			
-			while($contador<sizeof($categorias))
-			{
-				array_push($options, array($categorias[$contador]['Categoria']['id'] => $categorias[$contador]['Categoria']['nome_categoria']));
-				$contador++;
-			}
-			
-			echo $this->Form->select('categoria_id', $options);
-			echo $this->Form->button(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
-			echo " ";
-			echo $this->Html->link(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller'=>'Servicos','action'=>'index'), 
-					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-			
-			echo $this->Form->end();
-		?>
-      </div>
-    </div>
-  </div>
+		        <?php        
+					echo $this->Form->create('Servico', array('action' => 'add'));
+					echo $this->Form->input('nome_servico', array('label' => 'Nome:'));
+		
+					App::import('Controller', 'Servicos');
+					
+					$servicos = new ServicosController;
+					$servicos->constructClasses();
+					$categorias=$servicos->nomeCategorias();
+					$contador=0;
+					$options= array();
+					
+					while($contador<sizeof($categorias))
+					{
+						array_push($options, array($categorias[$contador]['Categoria']['id'] => $categorias[$contador]['Categoria']['nome_categoria']));
+						$contador++;
+					}
+					
+					echo $this->Form->select('categoria_id', $options);
+					echo $this->Form->button(
+							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
+							array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
+					echo " ";
+					echo $this->Html->link(
+							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
+							array('controller'=>'Servicos','action'=>'index'), 
+							array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
+					
+					echo $this->Form->end();
+				?>
+      		</div>
+    	</div>
+	</div>
 </div>

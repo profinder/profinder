@@ -1,4 +1,4 @@
-<h4>Gerenciamento de Administradores</h4>
+<center><h4>Gerenciamento de Administradores</h4></center>
 <br/>
 
 <button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Novo</button>

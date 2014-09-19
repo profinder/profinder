@@ -6,19 +6,13 @@
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
-<link rel="shortcut icon" type="image/x-icon" href="profinder.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="profinder.ico">
 	<?php
-
-		//echo $this->Html->meta('icon', $this->Html->url('/favicon.png'));
-
-		//echo $this->Html->meta('profinder_icon.ico');
-
-
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.css');
 		echo $this->Html->css('bootstrap-theme.css');
 		echo $this->Html->css('slider.css');
-		echo $this->Html->css('styleAdmin.css');
+		echo $this->Html->css('style.css');
 		echo $this->Html->css('swipebox.css');
 		//echo $this->Html->css('fitness.css');
 
@@ -53,62 +47,60 @@
 
 <body>
 	<div class="header">
+		 <ul class="nav navbar-nav navbar-right">
+		 	<br />
+			<li class="dropdown">
+		    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		    		<span class="glyphicon glyphicon-cog"></span>
+			        Opções<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+			        	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			            <li class="divider"></li>
+			            <li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+					</ul>
+			</li>
+		</ul>
+		
 		<div class="logo">
 			<h1><a href="/profinder/site"><img src="img/logo1.png" height="70" width="338" style="padding-top:0px"></a></h1>
 		</div>
-			 
-		<div class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-		        	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			            <span class="sr-only">Toggle navigation</span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-		            </button>
-				</div>
-		        <div class="navbar-collapse collapse">
-		        	<ul class="nav navbar-nav">
-			            <li><a href="/profinder/site/Dashboard">Home</a></li>
-			            <li><a href="/profinder/site/Bairros">Bairro</a></li>
-			            <li><a href="/profinder/site/Categorias">Categorias</a></li>
-			            <li><a href="/profinder/site/Cidades">Cidades</a></li>
-			            <li><a href="/profinder/site/Users">Administradores</a></li>
-			            <li><a href="/profinder/site/Servicos">Serviços</a></li>
-			        </ul>
-		            <ul class="nav navbar-nav navbar-right">
+		
+		<div class="banner">
+	    	<div class="wrap">
+				<div class="cssmenu">
+					
+					<ul>
 						<li class="dropdown">
-		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                		Opções
-		                		<b class="caret"></b>
-		                	</a>
-							<ul class="dropdown-menu">
-			                	<li><a href="#">Perfil</a></li>
-			                  	<li><a href="#">Notificações</a></li>
-			                  	<li class="divider"></li>
-			                  	<li><a href="/profinder/site/users/logout">Sair</a></li>
-		                	</ul>
+							<a href="/profinder/site/dashboard">Home</a>
+						</li>
+						<li class="dropdown">
+							<a href="/profinder/site/Users">Administradores</a>
+						</li>
+						<li class="dropdown">
+							<a href="/profinder/site/Bairros">Bairros</a>
+						</li>
+						<li class="dropdown">
+							<a href="/profinder/site/Categorias">Categorias</a>
+						</li>
+						<li class="dropdown">
+							<a href="/profinder/site/Cidades">Cidades</a>
+						</li>
+						<li class="dropdown">
+							<a href="/profinder/site/Servicos">Serviços</a>
 						</li>
 					</ul>
-					
-				</div><!--/.nav-collapse -->
-			</div><!--/.container-fluid -->
+				</div>
+			</div>
 		</div>
+			 
+		
 	</div>
 	<div id="content" style="width:95%;margin:auto;">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="row">
 					<div class="col-xs-2">
-						<div class="panel panel-info">
-							<div class="panel-heading">
-								<h3 class="panel-title">Ol� <?php echo AuthComponent::user('nome_pessoa'); ?>!</h3>
-							</div>
-							<div class="panel-body">
-							    <div>
-								</div>
-						    </div>
-						</div>
+						
 					</div>
 					<div class="col-xs-10">
 						<?php echo $this->Session->flash(); ?>
