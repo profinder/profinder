@@ -78,6 +78,22 @@
 			return $anuncios->anuncios($profissional_id);	
 		}
 		
+		public function enderecoAnuncio($anuncio_id) 
+		{
+			App::import('Controller', 'Anuncios');
+			$anuncios = new AnunciosController;
+			$anuncios->constructClasses();
+			return $anuncios->enderecoAnuncio($anuncio_id);	
+		}
+		
+		public function removerAnuncio($anuncio_id) 
+		{
+			App::import('Controller', 'Anuncios');
+			$anuncios = new AnunciosController;
+			$anuncios->constructClasses();
+			return $anuncios->remover($anuncio_id);	
+		}
+		
 		public function beforeFilter() 
 		{
 			$this->Auth->allow('homeCliente', 'homeProfissional', 'display');

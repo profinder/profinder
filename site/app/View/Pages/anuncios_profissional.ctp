@@ -1,4 +1,4 @@
-<link href="/profinder/site/css/style2.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	
 <div class="header">	
 	<div class="wrap"> 
@@ -85,80 +85,72 @@
 					<?php 
 						$pages = new PagesController;
 						$pages->constructClasses();
-						$anuncios=$pages->anuncios(AuthComponent::user('id'));
-						//var_dump($anuncios);
+						$anuncios = $pages->anuncios(AuthComponent::user('id'));
 						
 						$contador=0;
 						while ($contador!=sizeof($anuncios))
 						{
-							$anuncio_titulo = $anuncios[$contador]['tb_anuncio']['titulo_anuncio'];
-							$anuncio_id=$anuncios[$contador]['tb_anuncio']['id'];
+							$titulo = $anuncios[$contador]['tb_anuncio']['titulo_anuncio'];
+							$id = $anuncios[$contador]['tb_anuncio']['id'];
+							$descricao = $anuncios[$contador]['tb_anuncio']['descricao_anuncio'];
+							$modo_atendimento = $anuncios[$contador]['tb_anuncio']['modo_atendimento'];
+							
 							//echo $anuncio_titulo;
 							//echo "<br/>";
 							
 					?>
-							
-							
-							<div class="top-box">
-								<div class="panel panel-default">
-									<div class="panel-body">
-										<table border="1" width="550" height = "150">
-											<tr>
-												<td>
-												<?php echo $anuncio_titulo; ?>
-												</td>
-											</tr>
-											</table>
-									</div>
-								</div>
+					<div class="top-box">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h2 class="panel-title"><?php echo $titulo; ?></h2>
 							</div>
+							<div class="panel-body">
+								<table border="2" width="40" height = "60">
+									<tr>
+										<td>
+											<li>Descrição:</li> 
+												<div class="top-box">
+													<div class="panel panel-default">
+								        				<?php echo $descricao; ?>
+								        			</div>
+								        		</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li>Modo de Atendimento:</li> 
+												<div class="top-box">
+													<div class="panel panel-default">
+								        				<?php echo $modo_atendimento; ?>
+								        			</div>
+								        		</div>
+										</td>
+										<td>
+											<?php echo $this->Html->link(
+								        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . "",
+								        			array('controller' => 'anuncios', 'action' => 'edit', $id, 'role' => 'button'),
+													array('class' => 'btn btn-default', 'escape' => false, "data-toggle"=>"modal",
+													"data-target"=>"#myModal"));
+								        	?>
+								        	<?php
+								        		echo $this->Form->postLink(
+								        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
+								        			array('controller' => 'pages', 'action' => 'removerAnuncio', $id),
+								        			array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
+								        	?>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					
 					<?php 		
 							$contador++;
 						}
 					?>
 													
-					<table>
-					<tr>
-						<th>Código</th>
-						<th>Título do anúncio</th>
-						<th>Modo de atendimento</th>
-						<th>Tipo de serviço</th>
-						<th>Ações</th>
-						
-					</tr>
-				   
-					<?php foreach ($anuncios as $anuncio): ?>
-					<tr><td>
-					<?php echo $anuncio['Anuncio']['titulo_anuncio']; ?></td>
-						<td>
-							<?php
-								echo $anuncio['Anuncio']['modo_atendimento'];
-							?>
-						</td>
-						<td>
-							<?php
-								echo $anuncio['Anuncio']['servico_id'];
-							?>
-						</td>
-						<td>
-							<?php
-								echo $this->Html->link(
-									$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
-									array('controller' => 'anuncios', 'action' => 'edit', $anuncio['Anuncio']['id'], 'role' => 'button'),
-									array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
-									"data-target"=>"#myModal"));
-							?>
-							<?php
-								echo $this->Form->postLink(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Remover",
-								array('controller' => 'anuncios','action' => 'delete', $anuncio['Anuncio']['id']),
-								array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-							?>
-						</td>
-					</tr>
-					<?php endforeach; ?>
-					<?php unset($cliente); ?>
-					</table>
+					
 			 	</div>
 			</div>
 		</div>

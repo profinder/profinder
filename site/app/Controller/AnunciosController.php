@@ -70,9 +70,9 @@
 				throw new MethodNotAllowedException();
 			}
 		  
-			if ($this->Bairro->delete($id)) {
+			if ($this->Anuncio->delete($id)) {
 				$this->Session->setFlash(
-				__('Bairro excluido com sucesso.', "flash_notification")
+				__('Anuncio excluido com sucesso.', "flash_notification")
 				);
 				return $this->redirect(array('action' => 'index'));
 			}
@@ -94,7 +94,19 @@
 		
 		public function anuncios($profissional_id)
 		{
-			$sql=$this->Anuncio->query("SELECT tb_anuncio.titulo_anuncio, tb_anuncio.id FROM tb_anuncio WHERE tb_anuncio.profissional_id='".$profissional_id."';");
+			$sql=$this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.profissional_id='".$profissional_id."';");
+			return $sql;
+		}
+		
+		public function enderecoAnuncio($anuncio_id)
+		{
+			$sql=$this->Anuncio->query("SELECT tb_endereco.* FROM tb_endereco INNER JOIN tb_anuncio WHERE tb_anuncio.endereco_id = tb_endereco.id AND tb_anuncio.id ='".$anuncio_id."';");
+			return $sql;
+		}
+		
+		public function remover($anuncio_id)
+		{
+			$sql= $this->Anuncio->query("DELETE FROM tb_anuncio WHERE tb_anuncio.id = '".$anuncio_id."';");
 			return $sql;
 		}
 	}
