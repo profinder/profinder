@@ -17,11 +17,12 @@
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
+								<li><a href="/profinder/site/pages/perfilCliente"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
 			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'perfilCliente')); ?></li>
 			               		<li><a href="#">Notificações</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
+								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 		               		</ul>
 						</li>
 					</ul>

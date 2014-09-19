@@ -108,7 +108,7 @@
 						</td>
 						<td>
 							<?php
-								echo $anuncio['Anuncio']['id_servico'];
+								echo $anuncio['Anuncio']['servico_id'];
 							?>
 						</td>
 						<td>
