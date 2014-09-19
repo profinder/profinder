@@ -6,9 +6,9 @@
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
-	
+<link rel="shortcut icon" type="image/x-icon" href="profinder.ico">
 	<?php
-		echo $this->Html->meta('icon');
+		//echo $this->Html->meta('profinder_icon.ico');
 
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.css');
