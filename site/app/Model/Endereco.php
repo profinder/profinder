@@ -7,10 +7,7 @@
 	      'Cliente' => array(
 	         'className' => 'Cliente',
 	         'foreignKey' => 'endereco_id'
-	      )
-	   );
-				
-		public $hasMany = array(
+	      ),
 	      'Anuncio' => array(
 	         'className' => 'Anuncio',
 	         'foreignKey' => 'endereco_id'

@@ -29,7 +29,7 @@
 			if ($this->request->is('post'))
 			{
 				$this->Anuncio->create();
-				if ($this->Anuncio->save($this->request->data))
+				if ($this->Anuncio->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Anuncio salvo com sucesso.'), "flash_notification");
 					return $this->redirect(array('action' => 'index'));
