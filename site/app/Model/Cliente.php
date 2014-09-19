@@ -12,6 +12,7 @@
 								"foreignKey" => "endereco_id"));
 		
 		
+		
 		/*public $hasOne = array(
 	      'Endereco' => array(
 	         'className' => 'Endereco',
