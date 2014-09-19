@@ -8,12 +8,12 @@
 	</title>
 <link rel="shortcut icon" type="image/x-icon" href="profinder.ico">
 	<?php
-<<<<<<< HEAD
+
 		//echo $this->Html->meta('icon', $this->Html->url('/favicon.png'));
-=======
+
 		//echo $this->Html->meta('profinder_icon.ico');
 
->>>>>>> origin/master
+
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.css');
 		echo $this->Html->css('bootstrap-theme.css');

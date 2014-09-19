@@ -119,5 +119,11 @@
 	    		return $this->redirect(array('action' => 'index'));
 	    	}
 	    }
+	    
+		public function listarAdministradores()
+		{
+			$sql=$this->User->query("SELECT tb_pessoa.* FROM tb_pessoa WHERE tb_pessoa.role = 'admin'");
+			return $sql;
+		}
 	}
 ?>

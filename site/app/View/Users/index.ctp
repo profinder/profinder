@@ -8,43 +8,43 @@
         <th>Código</th>
         <th>Nome</th>
         <th>Login</th>
-        <th>Regra</th>
-        <th>Ações</th>
     </tr>
 
-    <?php foreach ($usuarios as $user): ?>
-    <tr><td>
-    <?php echo $user['User']['id']; ?></td>
-        <td>
-        	<?php
-            	echo $this->Html->link($user['User']['nome_pessoa'],
-				array('controller' => 'users', 'action' => 'view', $user['User']['id']),
-				array('escape' => false, "data-toggle"=>"modal", "data-target"=>"#myModalView"));
-		?>	
-        </td>
-        <td><?php echo $user['User']['username']; ?></td>
-        <td><?php echo $user['User']['role']; ?></td>
-        <td>
-        	<?php
-        	echo $this->Html->link(
-        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . "", 
-        		array('controller' => 'users', 'action' => 'edit', $user['User']['id'], 'role' => 'button'),
-				array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
-				"data-target"=>"#myModal"));
-        	?>
-        	<?php
-        	echo $this->Form->postLink(
-        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-        		array('controller' => 'users','action' => 'delete', $user['User']['id']),
-        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
-        	);
-        	?>
-        </td>
-    </tr>
-    <?php endforeach; ?>
-    <?php unset($user); ?>
+	<?php 
+		$users = new UsersController;
+		$users->constructClasses();
+		$administradores=$users->listarAdministradores();
+		//var_dump($administradores);
+						
+		$contador=0;
+		while ($contador!=sizeof($administradores))
+		{
+			$id_admin = $administradores[$contador]['tb_pessoa']['id'];
+			$nome_admin = $administradores[$contador]['tb_pessoa']['nome_pessoa'];
+			$username_admin = $administradores[$contador]['tb_pessoa']['username'];
+			
+			//$anuncio_id=$anuncios[$contador]['tb_anuncio']['id'];
+			//echo $anuncio_titulo;
+			//echo "<br/>";
+	?>
+		<tr>
+			<td>
+	    		<?php echo $id_admin; ?>
+	    	</td>
+	    	<td>
+	    		<?php echo $nome_admin; ?>
+	    	</td>
+	    	<td>
+	    		<?php echo $username_admin; ?>
+	    	</td>
+	    </tr>
+	    <?php 
+			$contador++;
+		}
+	?>  
 </table>
 
+	
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -60,7 +60,7 @@
 			echo $this->Form->input('nome_pessoa', array('label' => 'Nome:'));
 			echo $this->Form->input('username', array('label' => 'E-mail:'));
 			echo $this->Form->input('password', array('label' => 'Senha:'));
-			echo $this->Form->input('role', array('label' => 'Regra:'));
+			echo $this->Form->input('role', array('type' => 'hidden', 'value' => 'admin'));
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",

@@ -81,13 +81,42 @@
 				<div class="top-box">
 			
 					<h2>Meus anúncios</h2>
-					<?php
-					App::import('Controller', 'Pages');
-					$anuncios = new PagesController;
-					$pages->constructClasses();
-					$anuncios=$pages->anuncios(AuthComponent::user('id'));
 					
+					<?php 
+						$pages = new PagesController;
+						$pages->constructClasses();
+						$anuncios=$pages->anuncios(AuthComponent::user('id'));
+						//var_dump($anuncios);
+						
+						$contador=0;
+						while ($contador!=sizeof($anuncios))
+						{
+							$anuncio_titulo = $anuncios[$contador]['tb_anuncio']['titulo_anuncio'];
+							$anuncio_id=$anuncios[$contador]['tb_anuncio']['id'];
+							//echo $anuncio_titulo;
+							//echo "<br/>";
+							
 					?>
+							
+							
+							<div class="top-box">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<table border="1" width="550" height = "150">
+											<tr>
+												<td>
+												<?php echo $anuncio_titulo; ?>
+												</td>
+											</tr>
+											</table>
+									</div>
+								</div>
+							</div>
+					<?php 		
+							$contador++;
+						}
+					?>
+													
 					<table>
 					<tr>
 						<th>Código</th>
