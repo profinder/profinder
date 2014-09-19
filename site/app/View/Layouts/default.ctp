@@ -8,8 +8,7 @@
 	</title>
 	
 	<?php
-		echo $this->Html->meta('icon');
-
+		//echo $this->Html->meta('icon', $this->Html->url('/favicon.png'));
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.css');
 		echo $this->Html->css('bootstrap-theme.css');
@@ -22,6 +21,7 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 	
 	<script src="js/jquery_min.js"></script>
     <script src="js/bootstrap.js"></script>

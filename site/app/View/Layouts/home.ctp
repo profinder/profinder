@@ -8,8 +8,7 @@
 	</title>
 	<?php
 
-	echo $this->Html->meta('icon');
-
+		//echo $this->Html->meta('icon', $this->Html->url('/favicon.png'));
 		echo $this->Html->css('bootstrap.min.css');
 		echo $this->Html->css('bootstrap-theme.min.css');
 		
@@ -18,6 +17,7 @@
 		echo $this->fetch('script');
 		
 	?>
+	<link rel="shortcut icon" href="profinder/site/app/webroot/img/favicon.png" type="image/x-icon">
 	
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
