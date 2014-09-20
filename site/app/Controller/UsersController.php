@@ -133,7 +133,7 @@
 			$Email->to($dest);
 			$Email->subject('Automagically generated email');
 			$Email->replyTo('the_mail_you_want_to_receive_replies@yourdomain.com');
-			$Email->message('ahduuha');
+			$Email->message('teste');
 			$Email->from ('profindertcc@gmail.com');
 			$Email->send();
 			return $this->redirect(array('action' => 'index'));

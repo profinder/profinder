@@ -164,8 +164,9 @@
       <div class="modal-body">
       	
         <?php
-        	echo $this->Form->Create('User', array('action' => 'send_email'));
+        	
 			echo $this->Form->input('username', array('label' => 'E-mail:'));
+			//chamar o método send_email do UsersController
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
