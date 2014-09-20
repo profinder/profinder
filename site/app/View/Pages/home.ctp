@@ -32,7 +32,7 @@
             					<button type="submit" class="btn btn-success">Entrar</button>
           				</form>
 			
-	    				<a href="pages/cadastroCliente"><button class="btn btn-primary btn">Cadastro cliente</button></a>
+	    				<button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Esqueci minha senha</button>
 	    				
 	    				<br/>
 	    				
@@ -154,45 +154,27 @@
 		
 </body>
 <!-- Modal -->
-<div class="modal fade" id="myModalCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Novo Usuário</h4>
+        <h4 class="modal-title" id="myModalLabel">Dados do Usuário</h4>
       </div>
       <div class="modal-body">
       	
         <?php
-			echo $this->Form->create('Endereco', array('action' => 'add'));
-			echo $this->Form->input('Cliente.nome_pessoa', array('label' => 'Nome: '));
-			echo $this->Form->input('Cliente.username', array('label' => 'E-mail: '));
-			echo $this->Form->input('Cliente.password', array('label' => 'Senha: '));
-			echo $this->Form->input('Cliente.role', array('type' => 'hidden', 'default' => 'cliente'));
+        	echo $this->Form->Create('User', array('action' => 'send_email'));
+			echo $this->Form->input('username', array('label' => 'E-mail:'));
 			
-			echo "Dados do endereço: ";
-			echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacep(this.value)', 'label' => 'CEP: '));
-			echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Logradouro: '));
-			echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'label' => 'Cidade: '));
-			echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'label' => 'Bairro: '));
-			echo $this->Form->input('Endereco.uf', array('id' => 'uf', 'label' => 'Estado: '));
-			echo $this->Form->input('Endereco.numero_endereco', array('label' => 'Número: '));
-			echo $this->Form->input('Endereco.complemento', array('Label' => 'Complemento: '));
-			
-			/*echo $this->Form->input('Telefone.0.ddd_telefone');
-			echo $this->Form->input('Telefone.0.numero_telefone');
-			echo $this->Form->input('Telefone.0.tipo_telefone');
-			*/
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
-			);
+					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
 			echo " ";
 			echo $this->Html->link(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller' => 'Pages','action' => 'display'),
-					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
-			);
+					array('controller' => 'Users','action' => 'index'),
+					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
 			
 			echo $this->Form->end();
 		?>
@@ -202,89 +184,8 @@
 </div>
 
 
-<div class="modal fade" id="myModalProfissional" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Cadastrar Profissional</h4>
-      </div>
-      <div class="modal-body">
-      	
-        <?php
-        
-			echo $this->Form->create('Profissional', array('action' => 'add'));
-			echo $this->Form->input('Profissional.nome_pessoa', array('label' => 'Nome: '));
-			echo $this->Form->input('Profissional.username', array('label' => 'E-mail: '));
-			echo $this->Form->input('Profissional.password', array('label' => 'Senha: '));
-			echo $this->Form->input('Profissional.role', array('type' => 'hidden', 'default' => 'profissional'));
 
-        	echo $this->Form->create('Endereco', array('action' => 'add'));
-        	echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'onblur' => 'consultacep(this.value)'), array('label' => 'CEP '));
-        	echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Rua '));
-        	echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'label' => 'Cidade '));
-        	echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'label' => 'Bairro '));
-        	echo $this->Form->input('Endereco.uf', array('id' => 'uf', 'label' => 'Estado '));
-        	
-			echo $this->Form->create('Cliente', array('action' => 'add'));
-			echo $this->Form->input('Cliente.nome_pessoa', array('default' => 'oi', 'label' => 'Nome '));
-			echo $this->Form->input('Cliente.username', array('default' => 'oi', 'label' => 'E-mail '));
-			echo $this->Form->input('Cliente.password', array('default' => 'oi', 'label' => 'Senha '));
-			echo $this->Form->input('Cliente.role', array('type' => 'hidden', 'default' => 'cliente'));
-			
-			
-			echo $this->Form->create('Telefone', array('action' => 'add'));
-			echo $this->Form->input('Telefone.ddd_telefone', array('label' => 'DDD '));
-			echo $this->Form->input('Telefone.numero_telefone', array('label' => 'Telefone '));
-			$options = array();
-			array_push($options, 'Celular', 'Residencial', 'Comercial');
-			echo $this->Form->select('Telefone.tipo_telefone',$options, array('empty' => 'Tipo telefone'));
 
-			
-			echo $this->Form->button(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
-			);
-			echo " ";
-			echo $this->Html->link(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller' => 'Pages','action' => 'display'),
-					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
-			);
-			
-			echo $this->Form->end();
-		?>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-	    function consultacep(cep){
-	      cep = cep.replace(/\D/g,"")
-	      url="http://cep.correiocontrol.com.br/"+cep+".js"
-	      s=document.createElement('script')
-	      s.setAttribute('charset','utf-8')
-	      s.src=url
-	      document.querySelector('head').appendChild(s)
-	    }
-	 
-	    function correiocontrolcep(valor){
-	      if (valor.erro) {
-	        alert('Cep não encontrado');       
-	        return;
-	      };
-	      document.getElementById('logradouro').value=valor.logradouro
-	      document.getElementById('bairro').value=valor.bairro
-	      document.getElementById('localidade').value=valor.localidade
-	      document.getElementById('uf').value=valor.uf
-		}
-		
-		function addCampo() {
-			document.getElementById("duplicaCampo").innerHTML += "<input type='text' name='campo[]' />";
-		}
-	
-	    </script>
 </html>
 
 

@@ -1,5 +1,6 @@
 <?php
 	App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+	App::uses('CakeEmail', 'Network/Email');
 	
 	class UsersController extends AppController
 	{
@@ -125,6 +126,17 @@
 		{
 			$sql=$this->User->query("SELECT tb_pessoa.* FROM tb_pessoa WHERE tb_pessoa.role = 'admin'");
 			return $sql;
+		}
+		public function send_email($dest=null)
+		{
+			$Email = new CakeEmail('gmail');
+			$Email->to($dest);
+			$Email->subject('Automagically generated email');
+			$Email->replyTo('the_mail_you_want_to_receive_replies@yourdomain.com');
+			$Email->message('ahduuha');
+			$Email->from ('profindertcc@gmail.com');
+			$Email->send();
+			return $this->redirect(array('action' => 'index'));
 		}
 	}
 ?>
