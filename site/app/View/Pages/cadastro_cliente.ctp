@@ -24,7 +24,7 @@
 						<?php
 							echo $this->Form->create('Cliente', array('action' => 'add'));	
 						?>
-						<table>
+						<table height = "200">
 							<tr>
 								<td>
 									<div class="top-box">
@@ -35,7 +35,7 @@
 											
 											<div class="panel-body">
 											<center>
-												<table border="1" width="550" height = "150">
+												<table border="1" width="550" height = "300">
 													<tr>
 														<td>
 															<div class="input-group">
@@ -85,7 +85,7 @@
 												
 											<div class="panel-body">
 												<center>
-												<table border="1" width="550" height = "150">
+												<table border="1" width="550" height = "300">
 													<tr>
 														<td>
 															<div class="input-group">
@@ -111,6 +111,7 @@
 																
 																	<?php 
 																		echo $this->Form->input('Telefone.0.tipo_telefone', array('class' => 'form-control', 'label' => '', 'options' => array(
+																			'' => '',
 																			'residencial' => 'Residencial',
 																			'celular' => 'Celular',
 																			'escritorio' => 'Escritório',))
@@ -119,6 +120,75 @@
 															</div>
 														</td>
 													</tr>
+	<tr>
+														<td>
+															<div class="input-group">
+																<span class="input-group-addon">DDD</span>
+																	<?php
+																		echo $this->Form->input('Telefone.1.ddd_telefone', array('class' => 'form-control', 'label' => ''));
+																	?>
+															</div>
+														</td>	
+														<td>
+															<div class="input-group">
+																<span class="input-group-addon">Número</span>
+																	<?php
+																		echo $this->Form->input('Telefone.1.numero_telefone', array('class' => 'form-control', 'label' => ''));
+																	?>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td> 
+															<div class="input-group">
+																<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
+																
+																	<?php 
+																		echo $this->Form->input('Telefone.1.tipo_telefone', array('class' => 'form-control', 'label' => '', 'options' => array(
+																			'' => '',
+																			'residencial' => 'Residencial',
+																			'celular' => 'Celular',
+																			'escritorio' => 'Escritório',))
+																		);
+																	?>
+															</div>
+														</td>
+													</tr>
+	<tr>
+														<td>
+															<div class="input-group">
+																<span class="input-group-addon">DDD</span>
+																	<?php
+																		echo $this->Form->input('Telefone.2.ddd_telefone', array('class' => 'form-control', 'label' => ''));
+																	?>
+															</div>
+														</td>	
+														<td>
+															<div class="input-group">
+																<span class="input-group-addon">Número</span>
+																	<?php
+																		echo $this->Form->input('Telefone.2.numero_telefone', array('class' => 'form-control', 'label' => ''));
+																	?>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td> 
+															<div class="input-group">
+																<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
+																
+																	<?php 
+																		echo $this->Form->input('Telefone.2.tipo_telefone', array('class' => 'form-control', 'label' => '', 'options' => array(
+																			'' => '',
+																			'residencial' => 'Residencial',
+																			'celular' => 'Celular',
+																			'escritorio' => 'Escritório',))
+																		);
+																	?>
+															</div>
+														</td>
+													</tr>
+													
 												</table>	
 												</center>		
 											</div>
