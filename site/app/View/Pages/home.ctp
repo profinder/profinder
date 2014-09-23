@@ -51,7 +51,7 @@
 					$pages = new PagesController;
 					$pages->constructClasses();
 					$categorias=$pages->nomeCategorias();
-					$pages->email('uuu');
+					//$pages->email('uuu');
 					$contador=0;
 				?>
 				<ul>
@@ -166,7 +166,7 @@
       <div class="modal-body">
       	
         <?php
-        	echo $this->Form->Create('Cliente', array('action' => 'email'));
+        //	echo $this->Form->Create('Cliente', array('action' => 'email'));
 			echo $this->Form->input('username', array('label' => 'E-mail:'));
 			//chamar o método send_email do UsersController
 			

@@ -4,7 +4,7 @@
 	echo $this->Form->input('nome_pessoa');
 	echo $this->Form->input('username');
 	echo $this->Form->input('password');
-	echo $this->Form->input('role');
+	echo $this->Form->input('role', array('type' => 'hidden', 'value' => 'admin'));
 	
 	echo $this->Form->input('id', array('type' => 'hidden'));
 	echo $this->Form->button(
