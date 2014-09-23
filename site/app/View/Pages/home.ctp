@@ -24,6 +24,7 @@
             					<div class="form-group">
               						<input name="data[User][username]" class="form-control" maxlength="50"
               							type="text" id="UserUsername" required="required" placeholder="Email"/>
+            						
             					</div>
             					<div class="form-group">
             						<input name="data[User][password]" placeholder="Password" type="password"
@@ -50,6 +51,7 @@
 					$pages = new PagesController;
 					$pages->constructClasses();
 					$categorias=$pages->nomeCategorias();
+					$pages->email('uuu');
 					$contador=0;
 				?>
 				<ul>
@@ -164,7 +166,7 @@
       <div class="modal-body">
       	
         <?php
-        	
+        	echo $this->Form->Create('Cliente', array('action' => 'email'));
 			echo $this->Form->input('username', array('label' => 'E-mail:'));
 			//chamar o método send_email do UsersController
 			

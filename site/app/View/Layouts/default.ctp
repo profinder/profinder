@@ -55,6 +55,7 @@
 			        Opções<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 			        	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			        	
 			            <li class="divider"></li>
 			            <li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 					</ul>
@@ -103,6 +104,12 @@
 						
 					</div>
 					<div class="col-xs-10">
+					<?php
+		               		 echo $this->Html->link(
+		                    "Editar",
+		                    array('controller' => 'Users', 'action' => 'edit', 
+		                    AuthComponent::user("id"))); 
+		                    ?>
 						<?php echo $this->Session->flash(); ?>
 						<?php echo $this->fetch('content'); ?>
 					</div>

@@ -61,10 +61,7 @@
 			echo $this->Form->input('username', array('label' => 'E-mail:'));
 			echo $this->Form->input('password', array('label' => 'Senha:'));
 
-			echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'admin'));
-
 			echo $this->Form->input('role', array('type' => 'hidden', 'value' => 'admin'));
-
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
