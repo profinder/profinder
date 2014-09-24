@@ -85,7 +85,7 @@
 						echo "Nome: ".AuthComponent::user('nome_pessoa')."</br>";
 						echo "E-mail: ".AuthComponent::user('username')."</br>";
 						echo $this->Html->link(
-	        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editarrrr",
+	        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
 	        			array('controller' => 'Clientes', 'action' => 'edit', AuthComponent::user('id'), 'role' => 'button'),
 						array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
 						"data-target"=>"#myModal"));

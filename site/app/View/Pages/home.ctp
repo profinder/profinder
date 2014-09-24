@@ -23,11 +23,11 @@
         					<input type="hidden" name="_method" value="POST"/>
             					<div class="form-group">
               						<input name="data[User][username]" class="form-control" maxlength="50"
-              							type="text" id="UserUsername" required="required" placeholder="Email"/>
+              							type="text" id="UserUsername" required="required" placeholder="E-mail"/>
             						
             					</div>
             					<div class="form-group">
-            						<input name="data[User][password]" placeholder="Password" type="password"
+            						<input name="data[User][password]" placeholder="Senha" type="password"
             							id="UserPassword" required="required" class="form-control"/>
             					</div>
             					<button type="submit" class="btn btn-success">Entrar</button>

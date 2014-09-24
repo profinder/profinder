@@ -30,11 +30,15 @@
 				if ($this->request->is('post'))
 				{
 					$this->Cliente->create();
-					//var_dump($this->request->data);
+					var_dump($this->request->data);
 					if ($this->Cliente->saveAssociated($this->request->data))
 					{
-						$this->Session->setFlash(__('Cliente salvo com sucesso.'), "flash_notification");
-						return $this->redirect($this->referer());
+						
+						$this->Session->setFlash(__('Cliente salvo com sucesso!'), "flash_notification");
+						return $this->redirect( array (
+							'controller' => 'pages',
+							'action' => 'perfil_cliente' 
+					) );
 					}
 					$this->Session->setFlash(__('Erro ao salvar dados!'));
 				}
@@ -44,7 +48,6 @@
 			
 		public function edit($id = null) {
 			
-			$this->layout = 'clean';
 			var_dump('oi');
 			if (! $id) {
 				throw new NotFoundException ( __ ( 'Cliente inválido!' ) );
@@ -54,7 +57,7 @@
 			if (! $cliente) {
 				throw new NotFoundException ( __ ( 'Cliente não encontrado' ) );
 			}
-			
+			$this->layout = 'clean';
 			if ($this->request->is ( array (
 					'post',
 					'put' 
