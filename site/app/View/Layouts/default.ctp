@@ -58,7 +58,7 @@
 			        	<span class='glyphicon glyphicon-user'></span>
 			        	<?php
 		               		 echo $this->Html->link(
-		                    "Editar",
+		                    "Perfil",
 		                    array('controller' => 'Users', 'action' => 'edit', 
 		                    AuthComponent::user("id"))); 
 		                   ?></li>

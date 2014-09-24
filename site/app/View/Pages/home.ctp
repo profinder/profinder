@@ -31,6 +31,7 @@
             							id="UserPassword" required="required" class="form-control"/>
             					</div>
             					<button type="submit" class="btn btn-success">Entrar</button>
+          						
           				</form>
 			
 	    				<button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Esqueci minha senha</button>
@@ -55,6 +56,7 @@
 					$contador=0;
 				?>
 				<ul>
+				
 					<?php
 						while($contador<sizeof($categorias))
 						{
@@ -90,7 +92,7 @@
 		                <img src="img/empregada-domestica.jpg" alt="" />
 		                <img src="img/dj.jpg" alt="" />
 		                <img src="img/jardineira.jpg" alt="" />
-		                
+		      			
 		                </div>
 		             </div>
 			</div>
@@ -106,7 +108,14 @@
 						<hr>
 						<p>Aqui você encontra o profissional para o serviço que você precisa! </p>
 			 	</div>
-		    	<div class="section group">
+			 	<div class="top-box">
+			 		<p><a href = "/profinder/site/pages/cadastro_cliente">Cadastro de Cliente</a>
+			 		<hr>
+			 		<p><a href = "/profinder/site/pages/cadastro_profissional">Cadastro de Profissional</a>
+		    	</p>
+			 	</div>
+			 	
+			 	<div class="section group">
 		    	<div class="col_1_of_5 span_1_of_5">
 					<div class="grid_img">
 					 		<img src="img/find.png" alt=""/>

@@ -51,7 +51,8 @@
 															<div class="input-group">
 																<span class="input-group-addon">Email &nbsp &nbsp &nbsp &nbsp</span>
 																	<?php
-																		echo $this->Form->input('username', array('class' => 'form-control', 'label' => ''));
+																	
+																		echo $this->Form->input('username', array('class' => 'form-control', 'label' => '', 'placeholder' => 'email@email.com'));
 																	?>
 															</div>
 														</td>
@@ -120,7 +121,7 @@
 															</div>
 														</td>
 													</tr>
-	<tr>
+													<tr>
 														<td>
 															<div class="input-group">
 																<span class="input-group-addon">DDD</span>
@@ -154,7 +155,7 @@
 															</div>
 														</td>
 													</tr>
-	<tr>
+													<tr>
 														<td>
 															<div class="input-group">
 																<span class="input-group-addon">DDD</span>

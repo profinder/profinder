@@ -27,10 +27,10 @@
 			if ($this->request->is('post'))
 			{
 				$this->Profissional->create();
-				if ($this->Profissional->save($this->request->data))
+				if ($this->Profissional->saveAssociated($this->request->data))
 				{
-					$this->Session->setFlash(__('Usuário salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array('action' => 'index'));
+					$this->Session->setFlash(__('Profissional salvo com sucesso.'), "flash_notification");
+					return $this->redirect($this->referer());
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}

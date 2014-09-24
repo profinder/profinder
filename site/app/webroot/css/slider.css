@@ -33,6 +33,7 @@
 .slider{
 	position:relative;
 }
+
 .theme-default .nivoSlider {
 	position:relative;
 	background:#fff url(../images/loading.gif) no-repeat 50% 50%; 

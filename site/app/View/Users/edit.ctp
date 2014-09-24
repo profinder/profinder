@@ -1,9 +1,9 @@
-<h4>Dados do Administrador</h4>
+<center><h4>Dados do Administrador</h4></center>
 <?php
 	echo $this->Form->create('User');
-	echo $this->Form->input('nome_pessoa');
-	echo $this->Form->input('username');
-	echo $this->Form->input('password');
+	echo $this->Form->input('nome_pessoa', array('label' => 'Nome:'));
+	echo $this->Form->input('username', array('label' => 'E-mail:'));
+	echo $this->Form->input('password', array('label' => 'Senha:'));
 	echo $this->Form->input('role', array('type' => 'hidden', 'value' => 'admin'));
 	
 	echo $this->Form->input('id', array('type' => 'hidden'));

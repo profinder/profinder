@@ -20,7 +20,7 @@
 
 		echo $this->Html->css('bootstrap.min.css');
 		echo $this->Html->css('bootstrap-theme.min.css');
-		
+		echo $this->Html->css('getninjas.css');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');

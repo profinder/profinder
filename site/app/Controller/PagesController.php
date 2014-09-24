@@ -40,10 +40,17 @@
 		
 		public function perfilCliente()
 		{
-			$this->layout = 'homeUsuario';
-			var_dump('oi');
 		}
 		
+		
+		
+		public function edit($id = null)
+		{
+			App::import('Controller', 'Clientes');
+			$clientes = new ClientesController;
+			$clientes->constructClasses();
+			return $clientes->edit($id);
+		}
 
 		public function homeProfissional()
 		{

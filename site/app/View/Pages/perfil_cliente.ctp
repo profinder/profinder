@@ -86,18 +86,20 @@
 						echo "E-mail: ".AuthComponent::user('username')."</br>";
 						echo $this->Html->link(
 	        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editarrrr",
-	        			array('controller' => 'Clientes', 'action' => 'edit', $user['User']['id'], 'role' => 'button'),
+	        			array('controller' => 'Clientes', 'action' => 'edit', AuthComponent::user('id'), 'role' => 'button'),
 						array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
 						"data-target"=>"#myModal"));
 							
 						
+		               		
 		               		 echo $this->Html->link(
-		                    "Editar",
-		                    array('controller' => 'Clientes', 'action' => 'edit', 
+		                    "Perfil",
+		                    array('controller' => 'Pages', 'action' => 'edit', 
 		                    AuthComponent::user("id"))); 
+		                   
 		                   	
 					?>
-					
+					<li><a href="/profinder/site/Pages/edit/2">Perfil</a></li>
 			 	</div>
 			</div>
 		</div>
@@ -114,7 +116,8 @@
       <div class="modal-body">
       	
         <?php
-			echo $this->Form->create('User', array('action' => 'add'));
+        
+			echo $this->Form->create('Cliente', array('action' => 'add'));
 			echo $this->Form->input('nome_pessoa', array('label' => 'Nome:'));
 			echo $this->Form->input('username', array('label' => 'E-mail:'));
 			echo $this->Form->input('password', array('label' => 'Senha:'));

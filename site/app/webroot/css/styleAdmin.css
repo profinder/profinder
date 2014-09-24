@@ -104,7 +104,7 @@ body{
 	/* MUDARRRRRR LINHAAAAAAA */
 	line-height: 2.8em;
 	padding: 10px 10px;
-	letter-spacing: 1px;
+	letter-spacing: 0px;
 }
 
 .navbar-fixed-bottom .dropdown .caret {
@@ -163,9 +163,9 @@ body{
 .top-box h2{
 	text-align: center;
 	color: #888;
-	font-size: 3em;
+	font-size: 2em;
 	font-family: 'bebas_neueregular';
-	margin-bottom: 20px;
+	margin-bottom: 2px;
 }
 hr {
 	border-bottom: 1px solid #CCC;
