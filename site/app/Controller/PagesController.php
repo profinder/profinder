@@ -42,14 +42,13 @@
 		{
 		}
 		
-		
-		
-		public function edit($id = null)
+		public function editarCliente($id = null)
 		{
-			App::import('Controller', 'Clientes');
+			/*App::import('Controller', 'Clientes');
 			$clientes = new ClientesController;
 			$clientes->constructClasses();
-			return $clientes->edit($id);
+			return $clientes->edit($id);*/
+			//return $this->redirect('editar_cliente');
 		}
 
 		public function homeProfissional()
@@ -77,12 +76,20 @@
 			return $servicos->nomeServicos($id_categoria);	
 		}
 		
-		public function anuncios($profissional_id) 
+		public function idServico($nome_servico)
+		{
+			App::import('Controller', 'Servicos');
+			$servicos = new ServicosController;
+			$servicos->constructClasses();
+			return $servicos->idServico($nome_servico);	
+		}
+		
+		public function anunciosProfissional($profissional_id) 
 		{
 			App::import('Controller', 'Anuncios');
-			$anuncios = new AnunciosController;
-			$anuncios->constructClasses();
-			return $anuncios->anuncios($profissional_id);	
+			$anunciosProfissional = new AnunciosController;
+			$anunciosProfissional->constructClasses();
+			return $anunciosProfissional->anunciosProfissional($profissional_id);	
 		}
 		
 		public function enderecoAnuncio($anuncio_id) 

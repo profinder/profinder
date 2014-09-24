@@ -29,7 +29,7 @@
 			if ($this->request->is('post'))
 			{
 				$this->Anuncio->create();
-				if ($this->Anuncio->saveAssociated($this->request->data))
+				if ($this->Anuncio->save($this->request->data))
 				{
 					$this->Session->setFlash(__('Anuncio salvo com sucesso.'), "flash_notification");
 					return $this->redirect(array('action' => 'index'));
@@ -92,7 +92,14 @@
 			return $this->Anuncio->find('all', array( 'conditions'=>$conditions));
 		}
 		
-		public function anuncios($profissional_id)
+		/*public function anuncios()
+		{
+			$servico = $_POST["id_servico"];	
+			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.servico_id='".$servico."';");
+			return $sql;
+		}*/
+		
+		public function anunciosProfissional($profissional_id)
 		{
 			$sql=$this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.profissional_id='".$profissional_id."';");
 			return $sql;

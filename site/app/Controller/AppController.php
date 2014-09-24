@@ -30,7 +30,7 @@
 		}
 		
 		public function beforeFilter() {
-			$this->Auth->allow('display', 'add');
+			$this->Auth->allow('display', 'add', 'anuncios');
 		}
 	}
 ?>

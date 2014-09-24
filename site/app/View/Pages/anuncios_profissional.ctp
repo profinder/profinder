@@ -85,15 +85,15 @@
 					<?php 
 						$pages = new PagesController;
 						$pages->constructClasses();
-						$anuncios = $pages->anuncios(AuthComponent::user('id'));
+						$anunciosProfissional = $pages->anunciosProfissional(AuthComponent::user('id'));
 						
 						$contador=0;
-						while ($contador!=sizeof($anuncios))
+						while ($contador!=sizeof($anunciosProfissional))
 						{
-							$titulo = $anuncios[$contador]['tb_anuncio']['titulo_anuncio'];
-							$id = $anuncios[$contador]['tb_anuncio']['id'];
-							$descricao = $anuncios[$contador]['tb_anuncio']['descricao_anuncio'];
-							$modo_atendimento = $anuncios[$contador]['tb_anuncio']['modo_atendimento'];
+							$titulo = $anunciosProfissional[$contador]['tb_anuncio']['titulo_anuncio'];
+							$id = $anunciosProfissional[$contador]['tb_anuncio']['id'];
+							$descricao = $anunciosProfissional[$contador]['tb_anuncio']['descricao_anuncio'];
+							$modo_atendimento = $anunciosProfissional[$contador]['tb_anuncio']['modo_atendimento'];
 							
 							//echo $anuncio_titulo;
 							//echo "<br/>";

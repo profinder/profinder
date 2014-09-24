@@ -94,7 +94,7 @@
 		               		
 		               		 echo $this->Html->link(
 		                    "Perfil",
-		                    array('controller' => 'Pages', 'action' => 'edit', 
+		                    array('controller' => 'Pages', 'action' => 'editarCliente', 
 		                    AuthComponent::user("id"))); 
 		                   
 		                   	

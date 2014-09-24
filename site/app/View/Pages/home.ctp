@@ -43,7 +43,7 @@
 	   			</div>
    			</div>	
 		</div>
-    
+    <form id = "formulario" action = "anuncios/anuncios" method = "post">
 	<div class="banner">
     	<div class="wrap">
 			<div class="cssmenu">
@@ -71,7 +71,7 @@
 									while($contadorServicos<sizeof($servicos))
 									{
 								?>
-								<li><a href="anuncios/anuncios"><?php echo $servicos[$contadorServicos]['Servico']['nome_servico'] ?></a></li>
+								<li><a href = "#"><?php echo $servicos[$contadorServicos]['Servico']['nome_servico']; ?></a></li>
 								<?php
 									$contadorServicos++;
 						}
@@ -84,6 +84,7 @@
 					<div class="clear"></div> 
 				</ul>
 			</div>
+			</form>
 			<div class="slider">
 		 		<div class="slider-wrapper theme-default">
 		            <div id="slider" class="nivoSlider">
