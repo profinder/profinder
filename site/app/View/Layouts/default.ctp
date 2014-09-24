@@ -54,7 +54,14 @@
 		    		<span class="glyphicon glyphicon-cog"></span>
 			        Opções<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-			        	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			        	<li>
+			        	<span class='glyphicon glyphicon-user'></span>
+			        	<?php
+		               		 echo $this->Html->link(
+		                    "Editar",
+		                    array('controller' => 'Users', 'action' => 'edit', 
+		                    AuthComponent::user("id"))); 
+		                   ?></li>
 			            <li class="divider"></li>
 			            <li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 					</ul>

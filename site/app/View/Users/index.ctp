@@ -46,7 +46,7 @@
 
 	
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" data-backdrop="static" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -61,10 +61,7 @@
 			echo $this->Form->input('username', array('label' => 'E-mail:'));
 			echo $this->Form->input('password', array('label' => 'Senha:'));
 
-			echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'admin'));
-
 			echo $this->Form->input('role', array('type' => 'hidden', 'value' => 'admin'));
-
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
@@ -84,7 +81,7 @@
 
 
 <!-- Modal View-->
-<div class="modal fade" id="myModalView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" data-backdrop="static" id="myModalView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

@@ -101,6 +101,14 @@
 			$anuncios->constructClasses();
 			return $anuncios->anunciosServico($servico_id);	
 		}
+		
+		public function email($username) 
+		{
+			App::import('Controller', 'Clientes');
+			$cliente = new ClientesController;
+			$cliente->constructClasses();
+			return $cliente->email($username);	
+		}
 				
 		public function beforeFilter() 
 		{
