@@ -60,7 +60,7 @@
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
-      <hr>
+      
 		<div class="footer">
 			<div class="wrap">
 				<div class="footer-text">

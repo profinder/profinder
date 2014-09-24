@@ -92,7 +92,7 @@
 	    	if (!$user) {
 	    		throw new NotFoundException(__('Administrador inválido 2'));
 	    	}
-	    	$this->layout = 'clean';
+	    	$this->layout = 'default';
 	    	if ($this->request->is(array('post', 'put'))) {
 	    		$this->User->id = $id;
 	    		if ($this->User->save($this->request->data)) {

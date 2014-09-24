@@ -69,7 +69,7 @@
 		</ul>
 		
 		<div class="logo">
-			<h1><a href="/profinder/site"><img src="img/logo1.png" height="70" width="338" style="padding-top:0px"></a></h1>
+			<h1><a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style="padding-top:0px"></a></h1>
 		</div>
 		
 		<div class="banner">

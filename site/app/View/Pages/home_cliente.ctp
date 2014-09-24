@@ -19,7 +19,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="/profinder/site/pages/perfilCliente"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
 			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'perfilCliente')); ?></li>
-			               		<li><a href="#">Notificações</a></li>
+			               		
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
@@ -82,20 +82,11 @@
 			<div class="content-top">
 				<div class="top-box">
 					<h2>Pedidos</h2>
-					<hr>
+					<hr></hr>
 					
 						<p>Aqui você encontra o profissional para o serviço que você precisa! </p>
 			
-							<?php 
-								
-								echo $this->Html->link(
-				        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . "", 
-				        		array('controller' => 'users', 'action' => 'edit', $user['User']['id'], 'role' => 'button'),
-								array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
-								"data-target"=>"#myModal"));
 							
-							
-							?>
 			 	</div>
 			</div>
 		</div>

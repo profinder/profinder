@@ -69,7 +69,7 @@
 									while($contadorServicos<sizeof($servicos))
 									{
 								?>
-								<li><a href="#"><?php echo $servicos[$contadorServicos]['Servico']['nome_servico'] ?></a></li>
+								<li><a href="anuncios/anuncios"><?php echo $servicos[$contadorServicos]['Servico']['nome_servico'] ?></a></li>
 								<?php
 									$contadorServicos++;
 						}

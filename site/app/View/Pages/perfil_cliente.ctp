@@ -90,7 +90,12 @@
 						array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
 						"data-target"=>"#myModal"));
 							
-							
+						
+		               		 echo $this->Html->link(
+		                    "Editar",
+		                    array('controller' => 'Clientes', 'action' => 'edit', 
+		                    AuthComponent::user("id"))); 
+		                   	
 					?>
 					
 			 	</div>
