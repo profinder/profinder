@@ -286,15 +286,19 @@
 					
 						echo $this->Form->button(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
-								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
+								array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
 						);
 						echo " ";
 						echo $this->Html->link(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
 								array('controller' => 'Clientes','action' => 'index'),
-								array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
+								array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
 						);	
-						
+						echo " ";
+						echo $this->Form->button(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil'))." Limpar",
+								array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
+						);	
 						echo $this->Form->end();
 					?>
 

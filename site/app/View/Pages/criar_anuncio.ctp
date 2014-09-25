@@ -10,13 +10,13 @@
 		</div>
 	</div>
 </div>
-
 <div class="main">					
 	<div class="wrap">
 		<div class="content-top">
 			<div class="top-box">
 				<div class="panel panel-default">
 					<div class="panel-heading">
+					
 						<h2 class="panel-title">Novo Anúncio</h2>
 					</div>
 					
@@ -91,7 +91,7 @@
 												
 											<div class="panel-body">
 												<center>
-												<table border="1" width="100" height = "130">
+												<table border="1" width="400" height = "130">
 													<tr>
 														<td>
 															<div class="input-group">
@@ -158,16 +158,19 @@
 					
 						echo $this->Form->button(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
-								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
+								array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
 						);
 						echo " ";
 						echo $this->Html->link(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
 								array('controller' => 'Users','action' => 'index'),
-								array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
+								array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
 						);	
-						echo $this->Form->button('Limpar', array('type'=>'reset', 'class' => 'btn btn-success', 'escape' => false));
-										
+						echo " ";
+						echo $this->Form->button(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil'))." Limpar",
+								array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
+						);			
 						echo $this->Form->end();
 					?>
 
