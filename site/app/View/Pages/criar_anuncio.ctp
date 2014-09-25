@@ -97,7 +97,7 @@
 															<div class="input-group">
 																<span class="input-group-addon">Descrição </span>
 																	<?php
-																		echo $this->Form->input('descricao_anuncio', array('class' => 'form-control', 'label' => ''));
+																		echo $this->Form->input('descricao_anuncio', array('class' => 'form-control', 'type' => 'textarea', 'label' => ''));
 																	?>
 															</div>
 														</td>	
