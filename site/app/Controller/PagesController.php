@@ -84,6 +84,15 @@
 			return $servicos->idServico($nome_servico);	
 		}
 		
+		public function anuncios()
+		{
+			$servico = $_GET["serv"];	
+			App::import('Controller', 'Anuncios');
+			$anuncios = new AnunciosController;
+			$anuncios->constructClasses();
+			return $anuncios->anuncios($servico);	
+		}
+		
 		public function anunciosProfissional($profissional_id) 
 		{
 			App::import('Controller', 'Anuncios');
@@ -122,6 +131,11 @@
 			$cliente = new ClientesController;
 			$cliente->constructClasses();
 			return $cliente->email($username);	
+		}
+		
+		public function solicitarPedido()
+		{
+			
 		}
 				
 		public function beforeFilter() 

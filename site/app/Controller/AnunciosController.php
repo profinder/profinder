@@ -92,12 +92,11 @@
 			return $this->Anuncio->find('all', array( 'conditions'=>$conditions));
 		}
 		
-		/*public function anuncios()
+		public function anuncios($id_servico)
 		{
-			$servico = $_POST["id_servico"];	
-			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.servico_id='".$servico."';");
+			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.servico_id='".$id_servico."';");
 			return $sql;
-		}*/
+		}
 		
 		public function anunciosProfissional($profissional_id)
 		{

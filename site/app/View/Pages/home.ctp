@@ -70,9 +70,17 @@
 									$contadorServicos=0;
 									while($contadorServicos<sizeof($servicos))
 									{
-								?>
-								<li><a href = "#"><?php echo $servicos[$contadorServicos]['Servico']['nome_servico']; ?></a></li>
-								<?php
+										$id_servico = $servicos[$contadorServicos]['Servico']['id'];
+										$nome_servico = $servicos[$contadorServicos]['Servico']['nome_servico']; 
+								/*<li><a href = "/profinder/site/anuncios/anuncios?serv=".<?php echo $id_servico;?>><?php echo $servicos[$contadorServicos]['Servico']['nome_servico']; ?></a></li>
+								*/
+								echo "<li><a href = '/profinder/site/pages/anuncios?serv=".$id_servico;
+								echo "'>$nome_servico</a></li>";
+								
+								/*echo "<a href = '/Loja/clienteForm.php?usr=".$row['id_cliente'];
+								echo "'>Editar</a> ";
+				
+								<?php*/
 									$contadorServicos++;
 						}
 					?>

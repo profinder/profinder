@@ -90,11 +90,11 @@
 			return $this->Servico->find('all', array( 'conditions'=>$conditions));
 		}	
 		
-		/*public function idServico($nome_servico)
+		public function idServico($nome_servico)
 		{
 			$sql=$this->Servico->query("SELECT tb_servico.* FROM tb_servico WHERE tb_servico.nome_servico = '".$nome_servico."';");
 			return $sql;
-		}*/	
+		}
 		
 		public function nomeServico() 
 		{
