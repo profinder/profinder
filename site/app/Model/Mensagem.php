@@ -9,18 +9,16 @@
 				"Condições" => "",
 				"Ordem" => "",
 				"Dependente" => true,
-				"ForeignKey" => "conversa_id"
-			));
+				"ForeignKey" => "conversa_id"));
 		
-		public $belongsTo = array ("Conversa" =>
-								array("className" => "Conversa",
-								"foreignKey" => "conversa_id"));
+		public $belongsTo = array(
+			"Conversa" => array(
+				"className" => "Conversa",
+				"foreignKey" => "conversa_id"));
 		
 		/*public $validate = array(
 				'numero_endereco' => array(
 						'rule' => 'notEmpty')
 		);*/
-		
-		
 	}
 ?>

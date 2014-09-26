@@ -1,6 +1,6 @@
 <?php
-
 	App::uses('CakeEmail', 'Network/Email');
+
 	class ClientesController extends AppController 
 	{
 		public $helpers = array (
