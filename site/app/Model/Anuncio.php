@@ -26,13 +26,12 @@
 		
 		public function beforeSave($options = array())
 		{
-			
 			if(!empty($this->data['Anuncio']['legenda_foto']['name'])) {
 				
 				$this->data['Anuncio']['legenda_foto'] = $this->upload($this->data['Anuncio']['legenda_foto']);
 				
 			} else {
-				$var_dump($this->data['Anuncio']['legenda_foto']);
+				//$var_dump($this->data['Anuncio']['legenda_foto']);
 				unset($this->data['Anuncio']['legenda_foto']);
 			}
 		}

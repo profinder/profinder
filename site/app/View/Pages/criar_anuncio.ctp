@@ -25,7 +25,7 @@
 					<div class="panel-body">
 						<?php
 						echo $this->Form->create ( 'Anuncio', array (
-								'action' => 'add'),array('type' => 'file'));
+								'action' => 'add', 'type'=>'file'));
 						?>
 						<table height="200">
 							<tr>
