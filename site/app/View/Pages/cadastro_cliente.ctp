@@ -52,7 +52,7 @@
 																<span class="input-group-addon">Email &nbsp &nbsp &nbsp &nbsp</span>
 																	<?php
 																	
-																		echo $this->Form->input('username', array('class' => 'form-control', 'label' => '', 'placeholder' => 'email@email.com'));
+																		echo $this->Form->input('username', array('class' => 'form-control', 'label' => '', 'placeholder' => 'email@email.com', 'type' => 'email'));
 																	?>
 															</div>
 														</td>
@@ -62,7 +62,7 @@
 															<div class="input-group">
 																<span class="input-group-addon">Senha &nbsp &nbsp &nbsp &nbsp </span>
 																<?php
-																	echo $this->Form->input('password', array('class' => 'form-control', 'label' => ''));
+																	echo $this->Form->input('password', array('class' => 'form-control', 'label' => '', 'type' => 'password'));
 																	echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'cliente'));?>
 															</div>
 														</td>
@@ -126,7 +126,7 @@
 															<div class="input-group">
 																<span class="input-group-addon">DDD</span>
 																	<?php
-																		echo $this->Form->input('Telefone.1.ddd_telefone', array('class' => 'form-control', 'label' => ''));
+																		echo $this->Form->input('Telefone.1.ddd_telefone', array('class' => 'form-control', 'label' => '', 'style'));
 																	?>
 															</div>
 														</td>	
