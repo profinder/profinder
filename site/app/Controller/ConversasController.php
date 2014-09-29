@@ -22,34 +22,23 @@
 			$this->set('conversa', $conversa);
 		}
 	
-		public function add() {
+		public function add()
+		{
 			$this->layout = 'clean';
-		if (! empty ( $this->request->data )) {
-			// We can save the User data:
-			// it should be in $this->request->data['User']
-			
-			$conversa = $this->Conversa->saveAssociated($this->request->data );
-			
-			// If the user was saved, Now we add this information to the data
-			// and save the Profile.
-			
-			if (! empty ( $conversa )) {
-				// The ID of the newly created user has been set
-				// as $this->User->id.
-				$this->request->data ['Pedido'] ['pedido_id'] = $this->Pedido->id;
-				
-				// Because our User hasOne Profile, we can access
-				// the Profile model through the User model:
-				$this->Conversa->Pedido->Mensagem->save($this->request->data);
-				
-				//$this->request->data ['Telefone'] ['pessoa_id'] = $this->Cliente->id;
-				//$this->Cliente->Telefone->save ( $this->request->data );
+			if ($this->request->is('post'))
+			{
+				$this->Conversa->create();
+				if ($this->Conversa->saveAssociated($this->request->data))
+				{
+					$this->Session->setFlash(__('Conversa salvo com sucesso.'), "flash_notification");
+					return $this->redirect(array('action' => 'index'));
+				}
+				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
 		}
 		// $enderecos = $this->Endereco->Cliente->find('list');
 		// $this->set(compact('clientes'));
-	}
-	
+		
 		public function edit($id = null)
 		{
 			if (!$id) {
