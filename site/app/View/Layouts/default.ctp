@@ -118,7 +118,7 @@
 		</div>
 	</div>
 	<div id="footer">
-		<p>&copy; Company 2014</p>
+		<center><p>&copy; ProFinder 2014</p></center>
 	</div>
 </body>
 </html>

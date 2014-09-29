@@ -3,10 +3,9 @@
 
 	class ClientesController extends AppController 
 	{
-		public $helpers = array (
-				'Html',
-				'Form' 
-		);
+		public $helpers = array(
+			'Html',
+			'Form');
 		
 		public function index() {
 			$this->set ( 'clientes', $this->Cliente->find ( 'all' ) );
@@ -92,14 +91,14 @@
 		
 		public function email($username=null)
 		{
-			var_dump($username);
 			$Email = new CakeEmail('gmail');
-			$Email->to('mariih97@gmail.com');
+			$Email->to($username);
 			$Email->subject('Automagically generated email');
 			$Email->replyTo('profindertcc@gmail.com');
 			$Email->message('teste');
 			$Email->from('profindertcc@gmail.com');
-			$Email->send();
+			$Email->send(); 
+			var_dump($username);
 			//return $this->redirect(array('action' => 'index'));
 		}
 	}
