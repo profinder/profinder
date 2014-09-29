@@ -26,14 +26,13 @@
 	public function add()
 			{
 				$this->layout = 'clean';
-				
 				if ($this->request->is('post'))
 				{
 					$this->Anuncio->create();
 					var_dump($this->request->data);
-					
 					if ($this->Anuncio->saveAssociated($this->request->data))
 					{
+						
 						$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
 						return $this->redirect( array (
 							'controller' => 'pages',
@@ -133,7 +132,7 @@
 		public function upload($imagem = array(), $dir = 'img')
 		{
 			$dir = WWW_ROOT.$dir.DS;
-			$var_dump($imagem);
+			
 			if(($imagem['error']!=0) and ($imagem['size']==0)) {
 				throw new NotImplementedException('Alguma coisa deu errado, o upload retornou erro '.$imagem['error'].' e tamanho '.$imagem['size']);
 			}

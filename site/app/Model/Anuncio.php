@@ -24,7 +24,7 @@
 				'className' => 'Endereco',
 				'foreignKey' => 'endereco_id'));
 		
-		public function beforeSave($options = array())
+		/*public function beforeSave($options = array())
 		{
 			if(!empty($this->data['Anuncio']['legenda_foto']['name'])) {
 				
@@ -34,6 +34,6 @@
 				//$var_dump($this->data['Anuncio']['legenda_foto']);
 				unset($this->data['Anuncio']['legenda_foto']);
 			}
-		}
+		}*/
 	}
 ?>

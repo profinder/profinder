@@ -25,7 +25,7 @@
 					<div class="panel-body">
 						<?php
 						echo $this->Form->create ( 'Anuncio', array (
-								'action' => 'add', 'type'=>'file'));
+								'action' => 'add', 'type' => 'file'));
 						?>
 						<table height="200">
 							<tr>
@@ -108,7 +108,7 @@
 																			'label' => '',
 																			'style' => 'width:450px; height:133px; resize:none;' 
 																	) );
-echo $this->Form->file('Foto.legenda_foto');
+echo $this->Form->input('Foto.legenda_foto', array('type' => 'file'));
 echo $this->Form->input('Foto.caminho_foto');
 																	?>
 															</div>
