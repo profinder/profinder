@@ -36,7 +36,7 @@
 						$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
 						return $this->redirect( array (
 							'controller' => 'pages',
-							'action' => 'perfil_profissional' 
+							'action' => 'home_profissional' 
 					) );
 					}
 					$this->Session->setFlash(__('Erro ao salvar dados!'));
