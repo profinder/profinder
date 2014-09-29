@@ -30,33 +30,28 @@
 						<table height="200">
 							<tr>
 								<td>
-									<div class="top-box">
-										<div class="panel panel-default">
-											<div class="panel-heading">Dados do Anúncio</div>
+									<center>
+										<table border="1" width="1100" height="400">
+											<tr>
+												<td>
+													<div class="input-group">
+														<span class="input-group-addon">Título </span>
+															<?php
+																echo $this->Form->input ( 'titulo_anuncio', array (
+																	'class' => 'form-control',
+																	'label' => '' 
+																) );
+																echo "<br />";
+															?>
+													</div>
+												</td>
+											</tr>
 
-											<div class="panel-body">
-												<center>
-													<table border="1" width="550" height="130">
-														<tr>
-															<td>
-																<div class="input-group">
-																	<span class="input-group-addon">Título </span>
-																	<?php
-																	echo $this->Form->input ( 'titulo_anuncio', array (
-																			'class' => 'form-control',
-																			'label' => '' 
-																	) );
-																	?>
-															</div>
-															</td>
-														</tr>
-
-														<tr>
-															<td>
-																<div class="input-group">
-																	<span class="input-group-addon">Serviço </span>
-																<?php
-																
+											<tr>
+												<td>
+													<div class="input-group">
+														<span class="input-group-addon">Serviço </span>
+															<?php
 																App::import ( 'Controller', 'Anuncios' );
 																
 																$anuncios = new AnunciosController ();
@@ -75,39 +70,24 @@
 																echo $this->Form->select ( 'servico_id', $options, array (
 																		'class' => 'form-control' 
 																) );
+																
+																echo "<br />"
 																?>
-															</div>
-															</td>
-														</tr>
-													</table>
-												</center>
-											</div>
-										</div>
-									</div>
-
-								</td>
-
-								<td>&nbsp &nbsp &nbsp &nbsp</td>
-
-								<td>
-									<div class="top-box">
-										<div class="panel panel-default">
-											<div class="panel-heading">Descrição</div>
-
-											<div class="panel-body">
-												<center>
-													<table border="1" width="100" height="130">
-														<tr>
-															<td>
-																<div class="input-group">
-																	<span class="input-group-addon">Descrição </span>
-																	<?php
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="input-group">
+															<span class="input-group-addon">Descrição </span>
+																<?php
 																	echo $this->Form->input ( 'descricao_anuncio', array (
-																			'class' => 'form-control',
-																			'type' => 'textarea',
-																			'label' => '',
-																			'style' => 'width:450px; height:133px; resize:none;' 
+																		'class' => 'form-control',
+																		'type' => 'textarea',
+																		'label' => '',
+																		'style' => 'width:450px; height:133px; resize:none;' 
 																	) );
+
 echo $this->Form->input('Foto.legenda_foto', array('type' => 'file'));
 echo $this->Form->input('Foto.caminho_foto');
 																	?>
@@ -143,96 +123,131 @@ echo $this->Form->input('Foto.caminho_foto');
 										),
 										'onchange' => "show(this.value)" 
 								));
-																	echo $this->Form->input ( 'profissional_id', array (
-																			'type' => 'hidden',
-																			'value' => AuthComponent::user ( "id" ) 
-																	) );
 																	
-																	?>
-								</div>
+																?>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<?php 
+															echo "<br />";
+															echo $this->Form->file('Foto.legenda_foto');
+															echo "<br />";
+															echo $this->Form->input('Foto.caminho_foto');
+															echo "<br /><br />"
+														?>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="input-group">
+															<span class="input-group-addon">Modo Atendimento</span>
+																
+																<?php
+																	echo $this->Form->input ( 'modo_atendimento', array (
+																		'label' => '',
+																		'class' => 'form-control',
+																		'options' => array (
+																				'online' => 'On-line',
+																				'domiciliar' => 'Domiciliar',
+																				'escritorio' => 'Escritório' 
+																		),
+																		'onchange' => "show(this.value)" 
+																	));
+																	echo $this->Form->input ( 'profissional_id', array (
+																		'type' => 'hidden',
+																		'value' => AuthComponent::user ( "id" ) 
+																	) );
+																									
+																?>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<select id="estado" name="estado" style="display: none;"></select><br />
+														<select id="cidade" name="cidade" style="display: none;"></select><br />
+														<center>
+															<?php
+																echo $this->Form->input ( 'Endereco.cep', array (
+																	'id' => 'cep',
+																	'type' => 'hidden',
+																	'onblur' => 'consultacepAnuncio(this.value)',
+																	'label' => 'CEP: ' 
+																) );
+																echo "<br />";
+																echo $this->Form->input ( 'Endereco.logradouro', array (
+																	'id' => 'logradouro',
+																	'label' => 'Rua ',
+																	'type' => 'hidden' 
+																) );
+																echo "<br />";
+																echo $this->Form->input ( 'Endereco.localidade', array (
+																	'id' => 'localidade',
+																	'label' => 'Cidade ',
+																	'type' => 'hidden' 
+																) );
+																echo "<br />";
+																echo $this->Form->input ( 'Endereco.bairro', array (
+																		'id' => 'bairro',
+																		'label' => 'Bairro ',
+																		'type' => 'hidden' 
+																) );
+																echo "<br />";
+																echo $this->Form->input ( 'Endereco.estado', array (
+																		'id' => 'uf',
+																		'label' => 'Estado ',
+																		'type' => 'hidden' 
+																) );
+																echo "<br />";
+																echo $this->Form->input ( 'Endereco.numero_endereco', array (
+																		'label' => 'Número ',
+																		'type' => 'hidden',
+																		'value' => '1' 
+																) );
+																echo "<br />";
+																	
+															?>
+																					
+														</center>
+													</td>
+												</tr>
+											</table>
+										</center>
+										
+									</td>
 
-									<select id="estado" name="estado" style="display: none;"></select><br />
-									<select id="cidade" name="cidade" style="display: none;"></select><br />
-									<center>
-									<?php
-									
-									echo $this->Form->input ( 'Endereco.cep', array (
-											'id' => 'cep',
-											'type' => 'hidden',
-											'onblur' => 'consultacepAnuncio(this.value)',
-											'label' => 'CEP: ' 
-									) );
-									echo "<br />";
-									echo $this->Form->input ( 'Endereco.logradouro', array (
-											'id' => 'logradouro',
-											'label' => 'Rua ',
-											'type' => 'hidden' 
-									) );
-									echo "<br />";
-									echo $this->Form->input ( 'Endereco.localidade', array (
-											'id' => 'localidade',
-											'label' => 'Cidade ',
-											'type' => 'hidden' 
-									) );
-									echo "<br />";
-									echo $this->Form->input ( 'Endereco.bairro', array (
-											'id' => 'bairro',
-											'label' => 'Bairro ',
-											'type' => 'hidden' 
-									) );
-									echo "<br />";
-									echo $this->Form->input ( 'Endereco.estado', array (
-											'id' => 'uf',
-											'label' => 'Estado ',
-											'type' => 'hidden' 
-									) );
-									echo "<br />";
-									echo $this->Form->input ( 'Endereco.numero_endereco', array (
-											'label' => 'Número ',
-											'type' => 'hidden',
-											'value' => '1' 
-									) );
-									echo "<br />";
-									
-									?>
-													
-									</center>
-								</div>
-							</div>
-						</div>
-						
-						
-						
-						
-					<?php
-					
-					echo $this->Form->button ( $this->Html->tag ( 'span', '', array (
-							'class' => 'glyphicon glyphicon-floppy-saved' 
-					) ) . " Salvar", array (
-							'type' => 'submit',
-							'class' => 'btn btn-success',
-							'escape' => false 
-					) );
-					echo " ";
-					echo $this->Html->link ( $this->Html->tag ( 'span', '', array (
-							'class' => 'glyphicon glyphicon-remove' 
-					) ) . " Cancelar", array (
-							'controller' => 'Users',
-							'action' => 'index' 
-					), array (
-							'role' => 'button',
-							'class' => 'btn btn-danger',
-							'escape' => false 
-					) );
-					echo $this->Form->button ( 'Limpar', array (
-							'type' => 'reset',
-							'class' => 'btn btn-success',
-							'escape' => false 
-					) );
-					
-					echo $this->Form->end ();
-					?>
-
+									<td>&nbsp &nbsp &nbsp &nbsp</td>
+						</table>
+						<?php
+							echo $this->Form->button ( $this->Html->tag ( 'span', '', array (
+									'class' => 'glyphicon glyphicon-floppy-saved' 
+							) ) . " Salvar", array (
+									'type' => 'submit',
+									'class' => 'btn btn-default',
+									'escape' => false 
+							) );
+							echo " ";
+							echo $this->Html->link ( $this->Html->tag ( 'span', '', array (
+									'class' => 'glyphicon glyphicon-remove' 
+							) ) . " Cancelar", array (
+									'controller' => 'Users',
+									'action' => 'index' 
+							), array (
+									'role' => 'button',
+									'class' => 'btn btn-default',
+									'escape' => false 
+							) );
+							echo " ";
+							echo $this->Form->button ( 'Limpar', array (
+									'type' => 'reset',
+									'class' => 'btn btn-default',
+									'escape' => false 
+							) );
+							
+							echo $this->Form->end ();
+						?>
 					</div>
 				</div>
 			</div>

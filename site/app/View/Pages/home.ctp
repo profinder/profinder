@@ -185,11 +185,9 @@
       	
         <?php
 
-        	echo $this->Form->Create('User', array('action' => 'send_email'));
-
-        //	echo $this->Form->Create('Cliente', array('action' => 'email'));
+        	//echo $this->Form->Create('User', array('action' => 'send_email'));
+        	echo $this->Form->Create('Cliente', array('action' => 'email'));
 			echo $this->Form->input('username', array('label' => 'E-mail:'));
-			
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",

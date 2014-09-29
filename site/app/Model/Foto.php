@@ -7,7 +7,4 @@ class Foto extends AppModel
 			'Anuncio' => array(
 					'className' => 'Anuncio',
 					'foreignKey' => 'anuncio_id'));
-	
-	
-	
 }

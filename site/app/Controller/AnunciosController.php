@@ -23,7 +23,7 @@
 			$this->set('anuncio', $anuncio);
 		}
 	
-	public function add()
+		public function add()
 			{
 				$this->layout = 'clean';
 				if ($this->request->is('post'))
