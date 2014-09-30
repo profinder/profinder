@@ -101,6 +101,46 @@
 			return $anunciosProfissional->anunciosProfissional($profissional_id);	
 		}
 		
+		public function pedidosCliente($cliente_id) 
+		{
+			App::import('Controller', 'Pedidos');
+			$pedidosCliente = new PedidosController;
+			$pedidosCliente->constructClasses();
+			return $pedidosCliente->pedidosClienteAndamento($cliente_id);	
+		}
+		
+		public function pedidosClienteFinalizados($cliente_id) 
+		{
+			App::import('Controller', 'Pedidos');
+			$pedidosClienteFinalizados = new PedidosController;
+			$pedidosClienteFinalizados->constructClasses();
+			return $pedidosClienteFinalizados->pedidosClienteFinalizados($cliente_id);	
+		}
+		
+		public function mensagensPedido($pedido_id) 
+		{
+			App::import('Controller', 'Pedidos');
+			$mensagensPedido = new PedidosController;
+			$mensagensPedido->constructClasses();
+			return $mensagensPedido->mensagensPedido($pedido_id);	
+		}
+		
+		public function pedidoAnuncio($pedido_id) 
+		{
+			App::import('Controller', 'Pedidos');
+			$pedidoAnuncio = new PedidosController;
+			$pedidoAnuncio->constructClasses();
+			return $pedidoAnuncio->pedidoAnuncio($pedido_id);	
+		}
+		
+		public function finalizarPedido($pedido_id) 
+		{
+			App::import('Controller', 'Pedidos');
+			$finalizarPedido = new PedidosController;
+			$finalizarPedido->constructClasses();
+			return $finalizarPedido->finalizarPedido($pedido_id);	
+		}
+		
 		public function enderecoAnuncio($anuncio_id) 
 		{
 			App::import('Controller', 'Anuncios');

@@ -6,7 +6,7 @@
 	<title>
 		ProFinder
 	</title>
-		<link rel="shortcut icon" type="image/x-icon" href="profinder.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="/profinder/site/profinder.ico">
 	
 	<?php
 
@@ -20,7 +20,6 @@
 
 		echo $this->Html->css('bootstrap.min.css');
 		echo $this->Html->css('bootstrap-theme.min.css');
-		echo $this->Html->css('getninjas.css');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -42,9 +41,9 @@
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 
 	<!--slider-->
-	<link href="css/slider.css" rel="stylesheet" type="text/css" media="all"/>
-	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
-	<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+	<link href="/profinder/site/css/slider.css" rel="stylesheet" type="text/css" media="all"/>
+	<script type="text/javascript" src="/profinder/site/js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="/profinder/site/js/jquery.nivo.slider.js"></script>
 
 	<script type="text/javascript">
 	    $(window).load(function() 

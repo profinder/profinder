@@ -12,22 +12,20 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			                	<span class="glyphicon glyphicon-cog"></span>
-			                		Opções 
-			                		<b class="caret"></b>
-			                	</a>
+		                		Opções
+		                		<b class="caret"></b>
+		                	</a>
 							<ul class="dropdown-menu">
-								<li><a href="/profinder/site/pages/perfilCliente"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'perfilCliente')); ?></li>
+			               		<li><a href="/profinder/site/pages/perfilProfissional">Perfil</a></li>
 			               		<li><a href="/profinder/site/pages/pedidosCliente">Meus pedidos</a></li>
+			               		<li><a href="#">Notificações</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
+
 		               		</ul>
 						</li>
 					</ul>
-					
-					
         				
 				</div>
 		 		
@@ -81,47 +79,54 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-					<h2>Pedidos</h2>
-					<hr></hr>
 					
-						<p>Aqui você encontra o profissional para o serviço que você precisa! </p>
-			
+					<h2>Mensagens</a></h2>
+					<?php 
+						$id_pedido=$_POST["id_pedido"];
+						var_dump($id_pedido);
+						
+						$pages = new PagesController;
+						$pages->constructClasses();
+						$mensagensPedido = $pages->mensagensPedido($id_pedido);
+						
+						var_dump($mensagensPedido);
+						$contador=0;
+						
+						while ($contador!=sizeof($mensagensPedido))
+						{
+							$texto = $mensagensPedido[$contador]['tb_mensagem']['texto_mensagem'];
 							
+					?>
+					<div class="top-box">
+						<div class="panel panel-default">
+							
+							<div class="panel-body">
+								<table border="2" width="40" height = "60">
+									<tr>
+										<td>
+											
+												
+													<div class="panel panel-default">
+								        				<?php echo $texto; ?>
+								        			</div>
+								        		
+										</td>
+									</tr>
+								
+								</table>
+							</div>
+						</div>
+					</div>
+					
+					<?php 		
+							
+							$contador++;
+						}
+					?>
+													
+					
 			 	</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Dados do UsuÃ¡rio</h4>
-      </div>
-      <div class="modal-body">
-      	
-        <?php
-			echo $this->Form->create('User', array('action' => 'add'));
-			echo $this->Form->input('nome_pessoa', array('label' => 'Nome:'));
-			echo $this->Form->input('username', array('label' => 'E-mail:'));
-			echo $this->Form->input('password', array('label' => 'Senha:'));
-			
-			echo $this->Form->button(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
-			echo " ";
-			echo $this->Html->link(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller' => 'Users','action' => 'index'),
-					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-			
-			echo $this->Form->end();
-		?>
-      </div>
-    </div>
-  </div>
-</div>
-	
-	

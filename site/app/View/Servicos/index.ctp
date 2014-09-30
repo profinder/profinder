@@ -36,9 +36,9 @@
         	?>
         	<?php
         		echo $this->Form->postLink(
-	        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-	        		array('controller' => 'servicos','action' => 'delete', $servico['Servico']['id']),
-	        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
+        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
+        			array('controller' => 'pedidos','action' => 'finalizarPedido', $id),
+        			array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
         	?>
         </td>
     </tr>

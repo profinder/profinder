@@ -89,5 +89,41 @@
 				return $this->redirect(array('action' => 'index'));
 			}
 		}
+		
+		public function pedidosClienteFinalizados($cliente_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.cliente_id='".$cliente_id."';");
+			return $sql;
+		}
+		
+		public function pedidosClienteAndamento($cliente_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.prof_fim = 0 AND tb_pedido.cliente_id='".$cliente_id."';");
+			return $sql;
+		}
+		
+		public function pedidoAnuncio($pedido_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_anuncio.* FROM tb_anuncio INNER JOIN tb_pedido ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.id='".$pedido_id."';");
+			return $sql;
+		}
+		
+		public function finalizarPedido($pedido_id)
+		{
+			if ($this->request->is('get')) {
+				throw new MethodNotAllowedException();
+			}
+			$sql=$this->Pedido->query("UPDATE tb_pedido SET tb_pedido.cliente_fim = 1 WHERE tb_pedido.id = '".$pedido_id."';");
+			
+			var_dump($sql);
+			return $sql;
+		}
+		
+		public function mensagensPedido($pedido_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_conversa ON tb_mensagem.conversa_id = tb_conversa.id WHERE tb_conversa.pedido_id ='".$pedido_id."';");
+			var_dump($sql);
+			return $sql;
+		}
 	}
 ?>
