@@ -29,15 +29,12 @@
 				if ($this->request->is('post'))
 				{
 					$this->Mensagem->create();
-					var_dump($this->request->data);
 					
-					if ($this->Mensagem->saveAssociated($this->request->data))
+					if ($this->Mensagem->save($this->request->data))
 					{
 						$this->Session->setFlash(__('Mensagem salvo com sucesso!'), "flash_notification");
-						return $this->redirect( array (
-							'controller' => 'pages',
-							'action' => 'perfil_profissional' 
-					) );
+						return $this->redirect(array('action' => 'index'));
+					
 					}
 					$this->Session->setFlash(__('Erro ao salvar dados!'));
 				}

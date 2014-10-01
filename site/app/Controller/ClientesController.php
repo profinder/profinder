@@ -32,7 +32,6 @@
 					var_dump($this->request->data);
 					if ($this->Cliente->saveAssociated($this->request->data))
 					{
-						
 						$this->Session->setFlash(__('Cliente salvo com sucesso!'), "flash_notification");
 						return $this->redirect( array (
 							'controller' => 'pages',

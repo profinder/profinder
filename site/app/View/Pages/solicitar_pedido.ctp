@@ -90,12 +90,12 @@
 				 	while ($contador<sizeof($anuncios[0]))
 				 	{
 				 		echo $anuncios[0][$contador];
-				 		echo $this->Form->create('Conversa', array('action' => 'add'));
-				 		echo $this->Form->input('Conversa.atributo', array('type' => 'hidden', 'default' => 'kkkk'));
-						echo $this->Form->input('Mensagem.texto_mensagem', array('label' => 'Mensagem:', 'default' => 'oi'));
-						echo $this->Form->input('Pedido.cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
-						echo $this->Form->input('Pedido.status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
-						echo $this->Form->input('Pedido.anuncio_id', array('type' => 'hidden', 'value' => $anuncios[0][$contador]));
+				 		echo $this->Form->create('Pedido', array('action' => 'add'));
+				 		echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:', 'default' => 'oi'));
+						echo $this->Form->input('cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
+						echo $this->Form->input('status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
+						echo $this->Form->input('anuncio_id', array('type' => 'hidden', 'value' => $anuncios[0][$contador]));
+						echo $this->Form->input('Mensagem.0.pedido_id', array('type' => 'hidden', 'default' => '2'));
 						
 						echo $this->Form->button(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",

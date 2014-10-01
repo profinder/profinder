@@ -3,7 +3,7 @@
 	{
 		public $useTable = "tb_conversa";
 		
-		public $belongsTo = array(
+		/*public $belongsTo = array(
 			"Pedido" => array(
 				"className" => "Pedido",
 				"foreignKey" => "pedido_id"));
@@ -13,7 +13,7 @@
 	        	'className' => 'Mensagem',
 	         	'foreignKey' => 'conversa_id'));
 		
-		
+		*/
 		/*public $validate = array(
 				'numero_endereco' => array(
 						'rule' => 'notEmpty')
