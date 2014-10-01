@@ -130,7 +130,7 @@
 								        		
 								        		echo $this->Form->postLink(
 									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-									        		array('controller' => 'pages','action' => 'finalizarPedido', $id),
+									        		array('controller' => 'Pedidos','action' => 'finalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        	?>
 								        	<form action="/profinder/site/pages/mensagens_pedido" id="idPedido" method="post" accept-charset="utf-8">

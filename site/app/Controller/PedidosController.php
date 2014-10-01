@@ -29,9 +29,6 @@
 				$this->Pedido->create();
 				if ($this->Pedido->saveAssociated($this->request->data))
 				{
-					$savedata = Array('Pedido' => $this->request->data['Pedido']);
-					$this->Pedido->save($savedata);
-					
 					$this->Session->setFlash(__('Pedido salvo com sucesso.'), "flash_notification");
 					return $this->redirect(array('action' => 'index'));
 				}
@@ -98,9 +95,10 @@
 		
 		public function finalizarPedido($pedido_id)
 		{
-			if ($this->request->is('get')) {
+			/*if ($this->request->is('get')) {
 				throw new MethodNotAllowedException();
-			}
+			}*/
+			var_dump($pedido_id);
 			$sql=$this->Pedido->query("UPDATE tb_pedido SET tb_pedido.cliente_fim = 1 WHERE tb_pedido.id = '".$pedido_id."';");
 			
 			var_dump($sql);
@@ -109,7 +107,7 @@
 		
 		public function mensagensPedido($pedido_id)
 		{
-			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_conversa ON tb_mensagem.conversa_id = tb_conversa.id WHERE tb_conversa.pedido_id ='".$pedido_id."';");
+			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_pedido ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_pedido.id ='".$pedido_id."';");
 		//	var_dump($sql);
 			return $sql;
 		}

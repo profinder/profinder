@@ -76,5 +76,10 @@
 				return $this->redirect(array('action' => 'index'));
 			}
 		}
+		
+		public function bairros($cidade){
+			$sql=$this->Bairro->query("SELECT tb_bairro.id, tb_bairro.nome_bairro FROM tb_bairro inner join tb_logradouro on tb_bairro.id=tb_logradouro.id_bairro inner join tb_cidade on tb_cidade.id=tb_logradouro.id_cidade where tb_cidade.nome_cidade='".$cidade."';");
+			return $sql;
+		}
 	}
 ?>

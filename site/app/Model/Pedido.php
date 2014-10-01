@@ -9,13 +9,13 @@
 				'Condições' => '',
 				'Ordem' => '',
 				'Dependente' => true,
-				'ForeignKey' => 'anuncio_id'),
+				'foreignKey' => 'anuncio_id'),
 		);
 		
 		public $hasMany = array(
 			'Mensagem' => array(
 				'className' => 'Mensagem',
-				'ForeignKey' => 'pedido_id')
+				'foreignKey' => 'pedido_id')
 		);
 		
 		public $belongsTo = array(

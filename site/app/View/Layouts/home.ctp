@@ -53,13 +53,10 @@
 	</script>
 </head>
 <body>
-		<div id="content">
-			
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
-		</div>
-      
+		 
 		<div class="footer">
 			<div class="wrap">
 				<div class="footer-text">

@@ -138,6 +138,7 @@
 			App::import('Controller', 'Pedidos');
 			$finalizarPedido = new PedidosController;
 			$finalizarPedido->constructClasses();
+			var_dump($pedido_id);
 			return $finalizarPedido->finalizarPedido($pedido_id);	
 		}
 		
@@ -181,6 +182,22 @@
 		public function beforeFilter() 
 		{
 			$this->Auth->allow('homeCliente', 'homeProfissional', 'display');
+		}
+		
+		public function bairros($cidade) 
+		{
+			App::import('Controller', 'Bairros');
+			$bairros = new BairrosController;
+			$bairros->constructClasses();
+			return $bairros->bairros($cidade);	
+		}
+		
+		public function estados() 
+		{
+			App::import('Controller', 'Cidades');
+			$cidades = new CidadesController;
+			$cidades->constructClasses();
+			return $cidades->estados();	
 		}
 	}
 ?>
