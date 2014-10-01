@@ -83,18 +83,19 @@
 					<h2>Mensagens</a></h2>
 					<?php 
 						$id_pedido=$_POST["id_pedido"];
-						var_dump($id_pedido);
+						//var_dump($id_pedido);
 						
 						$pages = new PagesController;
 						$pages->constructClasses();
 						$mensagensPedido = $pages->mensagensPedido($id_pedido);
 						
-						var_dump($mensagensPedido);
+						//var_dump($mensagensPedido);
 						$contador=0;
 						
 						while ($contador!=sizeof($mensagensPedido))
 						{
 							$texto = $mensagensPedido[$contador]['tb_mensagem']['texto_mensagem'];
+							$hora_envio = $mensagensPedido[$contador]['tb_mensagem']['hora_envio'];
 							
 					?>
 					<div class="top-box">
@@ -104,27 +105,53 @@
 								<table border="2" width="40" height = "60">
 									<tr>
 										<td>
-											
-												
-													<div class="panel panel-default">
-								        				<?php echo $texto; ?>
-								        			</div>
-								        		
+											<div class="panel panel-default">
+								        		<?php echo $texto; ?>
+								        	</div>
 										</td>
+										
 									</tr>
-								
-								</table>
+								<?php 		
+										
+										$contador++;
+									}
+								?>
+													
+							</table>
+							
 							</div>
 						</div>
-					</div>
 					
-					<?php 		
+						
+						<?php 
+							echo $this->Form->create('Mensagem', array('action' => 'add'));
+							echo $this->Form->input('texto_mensagem', array (
+																		'class' => 'form-control',
+																		'type' => 'textarea',
+																		'label' => '',
+																		'style' => 'width:1200px; height:133px; resize:none;', 
+																		'placeHolder' => "Digite aqui sua resposta..."
+																	) );
+							echo $this->Form->input('atributo', array('type' => 'hidden', 'default' => 'oi')); 										
+							echo $this->Form->button ( $this->Html->tag ( 'span', '', array (
+									'class' => 'glyphicon glyphicon-arrow-up' 
+							) ) . " Enviar", array (
+									'type' => 'submit',
+									'class' => 'btn btn-default',
+									'escape' => false 
+							) );
+							echo " ";
 							
-							$contador++;
-						}
-					?>
-													
-					
+							echo $this->Form->button ( $this->Html->tag ( 'span', '', array (
+									'class' => 'glyphicon glyphicon-pencil' 
+							) ) . " Limpar", array (
+									'type' => 'reset',
+									'class' => 'btn btn-default',
+									'escape' => false 
+							) );
+														
+						?>
+					</div>	
 			 	</div>
 			</div>
 		</div>

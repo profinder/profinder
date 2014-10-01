@@ -88,8 +88,8 @@
 																		'style' => 'width:450px; height:133px; resize:none;' 
 																	) );
 
-echo $this->Form->input('Foto.legenda_foto', array('type' => 'file'));
-echo $this->Form->input('Foto.caminho_foto');
+																	echo $this->Form->input('Foto.legenda_foto', array('type' => 'file'));
+																	echo $this->Form->input('Foto.caminho_foto');
 																	?>
 															</div>
 															</td>

@@ -42,6 +42,9 @@
 																<span class="input-group-addon">Nome &nbsp &nbsp &nbsp &nbsp &nbsp</span>
 																	<?php
 																		echo $this->Form->input('nome_pessoa', array('class' => 'form-control', 'label' => ''));
+																		$data = date('H:i:s');
+																		echo $this->Form->input('hora_cadastro', array('type' => 'hidden', 'value' => $data));
+																		
 																	?>
 															</div>
 														</td>

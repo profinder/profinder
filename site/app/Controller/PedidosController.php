@@ -122,7 +122,7 @@
 		public function mensagensPedido($pedido_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_conversa ON tb_mensagem.conversa_id = tb_conversa.id WHERE tb_conversa.pedido_id ='".$pedido_id."';");
-			var_dump($sql);
+		//	var_dump($sql);
 			return $sql;
 		}
 	}
