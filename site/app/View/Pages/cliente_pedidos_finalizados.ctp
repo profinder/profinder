@@ -17,12 +17,11 @@
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/perfilProfissional"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/anunciosProfissional">Meus anúncios</a></li>
-			               		<li><a href="/profinder/site/pages/pedidos_solicitados_profissional">Solicitações de serviço</a></li>
+			               		<li><a href="/profinder/site/pages/clientePerfil">Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
 
 		               		</ul>
 						</li>
@@ -81,27 +80,24 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Solicitações de serviço</h2>
+					<h2>Meus pedidos finalizados <a href="/profinder/site/pages/cliente_pedidos">andamento</a></h2>
 					<?php 
 						$pages = new PagesController;
 						$pages->constructClasses();
-						$pedidosSolicitadosProfissional = $pages->pedidosSolicitadosProfissional(AuthComponent::user('id'));
+						$pedidosClienteFinalizados = $pages->clientePedidosFinalizados(AuthComponent::user('id'));
 						
 						$contador=0;
 						$contador2=0;
-						while ($contador!=sizeof($pedidosSolicitadosProfissional))
+						while ($contador!=sizeof($pedidosClienteFinalizados))
 						{
-							$status = $pedidosSolicitadosProfissional[$contador]['tb_pedido']['status_pedido'];
-							$id = $pedidosSolicitadosProfissional[$contador]['tb_pedido']['id'];
+							$status = $pedidosClienteFinalizados[$contador]['tb_pedido']['status_pedido'];
+							$id = $pedidosClienteFinalizados[$contador]['tb_pedido']['id'];
 							
-							$pedidoAnuncio = $pages->pedidoAnuncio($id);
+							$pedidoAnuncio = $pages->clientePedidoAnuncio($id);
 							
 							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
 							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
-							
-							$dadosClientePedido = $pages->dadosClientePedido($id);
-							$nome_cliente = $dadosClientePedido[$contador2]['tb_pessoa']['nome_pessoa'];
 					?>
 					<div class="top-box">
 						<div class="panel panel-default">
@@ -129,28 +125,15 @@
 								        			</div>
 								        		</div>
 										</td>
-										
-										<td>
-											<li>Cliente:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $nome_cliente; ?>
-								        			</div>
-								        		</div>
-										</td>
 										<td>
 											<?php
 								        		
 								        		echo $this->Form->postLink(
 									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-									        		array('controller' => 'pedidos','action' => 'finalizarPedido', $id),
+									        		array('controller' => 'pages','action' => 'finalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        	?>
-								        	<form action="/profinder/site/pages/mensagens_pedido" id="idPedido" method="post" accept-charset="utf-8">
-				
-									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
-									        	<button type="submit" class="btn btn-success">Conversa</button>
-								        	</form>
+								        	
 										</td>
 										
 									</tr>
@@ -164,7 +147,6 @@
 							$contador++;
 						}
 					?>
-						
 													
 					
 			 	</div>

@@ -16,8 +16,8 @@
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/perfilProfissional">Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/pedidosCliente">Meus pedidos</a></li>
+			               		<li><a href="/profinder/site/pages/clientePerfil">Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li><a href="#">Notificações</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>

@@ -12,16 +12,17 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                		<span class="glyphicon glyphicon-cog"></span>
 		                		Opções
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/perfilProfissional">Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/pedidosCliente">Meus pedidos</a></li>
-			               		<li><a href="#">Notificações</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalPerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalAnuncios">Meus anúncios</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
+								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 
 		               		</ul>
 						</li>
@@ -80,24 +81,27 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Meus pedidos em andamento <a href="/profinder/site/pages/pedidos_cliente_finalizados">finalizados</a></h2>
+					<h2>Solicitações de serviço</h2>
 					<?php 
 						$pages = new PagesController;
 						$pages->constructClasses();
-						$pedidosCliente = $pages->pedidosCliente(AuthComponent::user('id'));
+						$profissionalPedidosSolicitados = $pages->profissionalPedidosSolicitados(AuthComponent::user('id'));
 						
 						$contador=0;
 						$contador2=0;
-						while ($contador!=sizeof($pedidosCliente))
+						while ($contador!=sizeof($profissionalPedidosSolicitados))
 						{
-							$status = $pedidosCliente[$contador]['tb_pedido']['status_pedido'];
-							$id = $pedidosCliente[$contador]['tb_pedido']['id'];
+							$status = $profissionalPedidosSolicitados[$contador]['tb_pedido']['status_pedido'];
+							$id = $profissionalPedidosSolicitados[$contador]['tb_pedido']['id'];
 							
 							$pedidoAnuncio = $pages->pedidoAnuncio($id);
 							
 							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
 							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
+							
+							$dadosClientePedido = $pages->dadosClientePedido($id);
+							$nome_cliente = $dadosClientePedido[$contador2]['tb_pessoa']['nome_pessoa'];
 					?>
 					<div class="top-box">
 						<div class="panel panel-default">
@@ -122,6 +126,15 @@
 												<div class="top-box">
 													<div class="panel panel-default">
 								        				<?php echo $modo_atendimento; ?>
+								        			</div>
+								        		</div>
+										</td>
+										
+										<td>
+											<li>Cliente:</li> 
+												<div class="top-box">
+													<div class="panel panel-default">
+								        				<?php echo $nome_cliente; ?>
 								        			</div>
 								        		</div>
 										</td>

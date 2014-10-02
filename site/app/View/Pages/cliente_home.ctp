@@ -13,13 +13,13 @@
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			                	<span class="glyphicon glyphicon-cog"></span>
-			                		Opções LOGADO: <?php echo AuthComponent::user("id"); ?>
+			                		Opções 
 			                		<b class="caret"></b>
 			                	</a>
 							<ul class="dropdown-menu">
-								<li><a href="/profinder/site/pages/perfilCliente"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'perfilCliente')); ?></li>
-			               		
+								<li><a href="/profinder/site/pages/clientePerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'clientePerfil')); ?></li>
+			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
@@ -81,36 +81,11 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-				
-				 <?php
+					<h2>Pedidos</h2>
+					<hr></hr>
 					
-					$anuncios[]=$_POST["anuncio"];
-				 	var_dump($anuncios);
-				 	$contador=0;
-				 	while ($contador<sizeof($anuncios[0]))
-				 	{
-				 		echo $anuncios[0][$contador];
-				 		echo $this->Form->create('Pedido', array('action' => 'add'));
-				 		echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:', 'default' => 'oi'));
-						echo $this->Form->input('cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
-						echo $this->Form->input('status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
-						echo $this->Form->input('anuncio_id', array('type' => 'hidden', 'value' => $anuncios[0][$contador]));
-						echo $this->Form->input('Mensagem.0.pedido_id', array('type' => 'hidden', 'default' => '2'));
-						
-						echo $this->Form->button(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
-						echo " ";
-						echo $this->Html->link(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-								array('controller' => 'Pedidos','action' => 'index'),
-								array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-						
-						echo $this->Form->end();
-				 		$contador++;
-				 	}
-				 	
-				?>
+						<p>Aqui você encontra o profissional para o serviço que você precisa! </p>
+			
 							
 			 	</div>
 			</div>
@@ -148,4 +123,5 @@
     </div>
   </div>
 </div>
+	
 	

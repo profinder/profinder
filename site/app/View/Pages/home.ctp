@@ -118,9 +118,9 @@
 						<p>Aqui você encontra o profissional para o serviço que você precisa! </p>
 			 	</div>
 			 	<div class="top-box">
-			 		<p><a href = "/profinder/site/pages/cadastro_cliente">Cadastro de Cliente</a>
+			 		<p><a href = "/profinder/site/pages/cliente_cadastro">Cadastro de Cliente</a>
 			 		<hr>
-			 		<p><a href = "/profinder/site/pages/cadastro_profissional">Cadastro de Profissional</a>
+			 		<p><a href = "/profinder/site/pages/profissional_cadastro">Cadastro de Profissional</a>
 		    	</p>
 			 	</div>
 			 	

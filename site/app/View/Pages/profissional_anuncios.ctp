@@ -17,9 +17,9 @@
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/perfilProfissional"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/anunciosProfissional">Meus anúncios</a></li>
-			               		<li><a href="/profinder/site/pages/pedidos_solicitados_profissional">Solicitações de serviço</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalPerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalAnuncios">Meus anúncios</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
@@ -86,15 +86,15 @@
 					<?php 
 						$pages = new PagesController;
 						$pages->constructClasses();
-						$anunciosProfissional = $pages->anunciosProfissional(AuthComponent::user('id'));
+						$profissionalAnuncios = $pages->profissionalAnuncios(AuthComponent::user('id'));
 						
 						$contador=0;
-						while ($contador!=sizeof($anunciosProfissional))
+						while ($contador!=sizeof($profissionalAnuncios))
 						{
-							$titulo = $anunciosProfissional[$contador]['tb_anuncio']['titulo_anuncio'];
-							$id = $anunciosProfissional[$contador]['tb_anuncio']['id'];
-							$descricao = $anunciosProfissional[$contador]['tb_anuncio']['descricao_anuncio'];
-							$modo_atendimento = $anunciosProfissional[$contador]['tb_anuncio']['modo_atendimento'];
+							$titulo = $profissionalAnuncios[$contador]['tb_anuncio']['titulo_anuncio'];
+							$id = $profissionalAnuncios[$contador]['tb_anuncio']['id'];
+							$descricao = $profissionalAnuncios[$contador]['tb_anuncio']['descricao_anuncio'];
+							$modo_atendimento = $profissionalAnuncios[$contador]['tb_anuncio']['modo_atendimento'];
 							
 							//echo $anuncio_titulo;
 							//echo "<br/>";

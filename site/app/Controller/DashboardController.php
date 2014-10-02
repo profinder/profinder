@@ -16,11 +16,11 @@
 			//var_dump("dash");
 			if($this->Auth->user("role")=="cliente")
 			{
-				return $this->redirect(array('controller' => 'pages', 'action' => 'homeCliente'));
+				return $this->redirect(array('controller' => 'pages', 'action' => 'clienteHome'));
 			}
 			if($this->Auth->user("role")=="profissional")
 			{
-				return $this->redirect(array('controller' => 'pages', 'action' => 'homeProfissional'));
+				return $this->redirect(array('controller' => 'pages', 'action' => 'profissionalHome'));
 			}
 			if ( $userId == null || $userId == "0" )
 			{

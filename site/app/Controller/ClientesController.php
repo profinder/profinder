@@ -35,7 +35,7 @@
 						$this->Session->setFlash(__('Cliente salvo com sucesso!'), "flash_notification");
 						return $this->redirect( array (
 							'controller' => 'pages',
-							'action' => 'perfil_cliente' 
+							'action' => 'cliente_perfil' 
 					) );
 					}
 					$this->Session->setFlash(__('Erro ao salvar dados!'));

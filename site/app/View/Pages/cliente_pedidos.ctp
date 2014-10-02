@@ -12,17 +12,16 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                		<span class="glyphicon glyphicon-cog"></span>
 		                		Opções
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/perfilProfissional">Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/pedidosCliente">Meus pedidos</a></li>
-			               		<li><a href="#">Notificações</a></li>
+			               		<li><a href="/profinder/site/pages/clientePerfil">Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
-
 		               		</ul>
 						</li>
 					</ul>
@@ -80,20 +79,20 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Meus pedidos finalizados <a href="/profinder/site/pages/pedidos_cliente">andamento</a></h2>
+					<h2>Meus pedidos em andamento <a href="/profinder/site/pages/cliente_pedidos_finalizados">finalizados</a></h2>
 					<?php 
 						$pages = new PagesController;
 						$pages->constructClasses();
-						$pedidosClienteFinalizados = $pages->pedidosClienteFinalizados(AuthComponent::user('id'));
+						$pedidosCliente = $pages->clientePedidos(AuthComponent::user('id'));
 						
 						$contador=0;
 						$contador2=0;
-						while ($contador!=sizeof($pedidosClienteFinalizados))
+						while ($contador!=sizeof($pedidosCliente))
 						{
-							$status = $pedidosClienteFinalizados[$contador]['tb_pedido']['status_pedido'];
-							$id = $pedidosClienteFinalizados[$contador]['tb_pedido']['id'];
+							$status = $pedidosCliente[$contador]['tb_pedido']['status_pedido'];
+							$id = $pedidosCliente[$contador]['tb_pedido']['id'];
 							
-							$pedidoAnuncio = $pages->pedidoAnuncio($id);
+							$pedidoAnuncio = $pages->clientePedidoAnuncio($id);
 							
 							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
 							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
@@ -130,10 +129,14 @@
 								        		
 								        		echo $this->Form->postLink(
 									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-									        		array('controller' => 'pages','action' => 'finalizarPedido', $id),
+									        		array('controller' => 'pedidos','action' => 'clienteFinalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        	?>
-								        	
+								        	<form action="/profinder/site/pages/mensagens_pedido" id="idPedido" method="post" accept-charset="utf-8">
+				
+									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
+									        	<button type="submit" class="btn btn-success">Conversa</button>
+								        	</form>
 										</td>
 										
 									</tr>
@@ -147,6 +150,7 @@
 							$contador++;
 						}
 					?>
+						
 													
 					
 			 	</div>

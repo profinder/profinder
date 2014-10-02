@@ -1,5 +1,4 @@
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
 	
 <div class="header">	
 	<div class="wrap"> 
@@ -13,17 +12,17 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                		<span class="glyphicon glyphicon-cog"></span>
-		                		Opções LOGADO: <?php echo AuthComponent::user("id"); ?>
+		                	<span class="glyphicon glyphicon-cog"></span>
+		                		Opções
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/clientePerfil">Perfil</a></li>
+								<li><a href="/profinder/site/pages/clientePerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'clientePerfil')); ?></li>
 			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
-
+								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 		               		</ul>
 						</li>
 					</ul>
@@ -79,93 +78,57 @@
 	<div class="main">
 		<div class="wrap">
 			<div class="content-top">
-				<div class="top-box">	
-				
-				<h2>Meus anúncios</h2>
-					
-					<?php 
-						$pages = new PagesController;
-						$pages->constructClasses();
-						$anuncios= $pages->anuncios();
-						
-						$contador=0;
-						while ($contador!=sizeof($anuncios))
-						{
-							$titulo = $anuncios[$contador]['tb_anuncio']['titulo_anuncio'];
-							$id = $anuncios[$contador]['tb_anuncio']['id'];
-							$descricao = $anuncios[$contador]['tb_anuncio']['descricao_anuncio'];
-							$modo_atendimento = $anuncios[$contador]['tb_anuncio']['modo_atendimento'];
+				<div class="top-box">
+					<h2>Perfil</h2>
+					<?php  
+						$user['User']['id']=AuthComponent::user('id');
+						echo "Nome: ".AuthComponent::user('nome_pessoa')."</br>";
+						echo "E-mail: ".AuthComponent::user('username')."</br>";
+						echo $this->Html->link(
+	        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
+	        			array('controller' => 'Clientes', 'action' => 'edit', AuthComponent::user('id'), 'role' => 'button'),
+						array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
+						"data-target"=>"#myModal"));
 							
-							//echo $anuncio_titulo;
-							//echo "<br/>";
 						
+		               		
+		               		 echo $this->Html->link(
+		                    "Perfil",
+		                    array('controller' => 'Pages', 'action' => 'clienteEditar', 
+		                    AuthComponent::user("id"))); 
+		                   
+		                   	
 					?>
-					
-					
-					
-					<form action="/profinder/site/pages/cliente_solicitar_pedido" id="idAnuncio" method="post" accept-charset="utf-8">
-						<div class="top-box">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $titulo; ?></h2>
-							</div>
-								<div class="panel-body">
-									<table border="2" width="40" height = "60">
-										<tr>
-											<td>
-												<input type="checkbox" name="anuncio[]" value=<?php echo $id ?> />
-											</td>
-											<td>
-												<li>Modo de Atendimento:</li> 
-													<div class="top-box">
-														<div class="panel panel-default">
-									        				<?php echo $modo_atendimento; ?>
-									        			</div>
-									        		</div>
-											</td>
-											</tr>
-									</table>
-								</div>
-							</div>
-						</div>
-						<?php 		
-							$contador++;
-						}
-						?>	
-	            		<button type="submit" class="btn btn-success">Solicitar Pedido</button>
-					</form>		
-						
+					<li><a href="/profinder/site/Pages/edit/2">Perfil</a></li>
 			 	</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade" data-backdrop="static" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Mensagem</h4>
+        <h4 class="modal-title" id="myModalLabel">Dados do Usuário</h4>
       </div>
       <div class="modal-body">
       	
         <?php
-			echo $this->Form->create('Pedido', array('action' => 'add'));
-			echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:'));
-			echo $this->Form->input('Pedido.cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
-			echo $this->Form->input('Pedido.status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
+        
+			echo $this->Form->create('Cliente', array('action' => 'add'));
+			echo $this->Form->input('nome_pessoa', array('label' => 'Nome:'));
+			echo $this->Form->input('username', array('label' => 'E-mail:'));
+			echo $this->Form->input('password', array('label' => 'Senha:'));
 			
 			echo $this->Form->button(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-					array('controller' => 'Pages','action' => 'solicitar_pedido'),
 					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
 			echo " ";
 			echo $this->Html->link(
 					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller' => 'Pedidos','action' => 'index'),
+					array('controller' => 'Users','action' => 'index'),
 					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
 			
 			echo $this->Form->end();
@@ -174,4 +137,5 @@
     </div>
   </div>
 </div>
-
+	
+	
