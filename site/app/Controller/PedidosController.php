@@ -75,9 +75,15 @@
 			}
 		}
 		
+		public function clientePedidosDisponiveisAvaliar($cliente_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.status_pedido = 'avaliar' AND tb_pedido.cliente_id ='".$cliente_id."';");
+			return $sql;
+		}
+		
 		public function pedidosClienteFinalizados($cliente_id)
 		{
-			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.cliente_id='".$cliente_id."';");
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.status_pedido = 'finalizado' AND tb_pedido.cliente_id='".$cliente_id."';");
 			return $sql;
 		}
 		

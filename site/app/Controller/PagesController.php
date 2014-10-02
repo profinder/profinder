@@ -101,6 +101,14 @@
 			return $pedidosClienteFinalizados->pedidosClienteFinalizados($cliente_id);	
 		}
 		
+		public function clientePedidosAvaliar($cliente_id)
+		{
+			App::import('Controller', 'Pedidos');
+			$clientePedidosAvaliar = new PedidosController;
+			$clientePedidosAvaliar->constructClasses();
+			return $clientePedidosAvaliar->clientePedidosDisponiveisAvaliar($cliente_id);
+		}
+		
 		public function clienteAnunciosServico($servico_id) 
 		{
 			App::import('Controller', 'Anuncios');
