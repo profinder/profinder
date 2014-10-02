@@ -12,14 +12,15 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                	<span class="glyphicon glyphicon-cog"></span>
-		                		Opções
+		                		<span class="glyphicon glyphicon-cog"></span>
+		                		Opções LOGADO: <?php echo AuthComponent::user("id"); ?>
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
 			               		<li><a href="/profinder/site/pages/profissionalPerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
 			               		<li><a href="/profinder/site/pages/profissionalAnuncios">Meus anúncios</a></li>
 			               		<li><a href="/profinder/site/pages/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalSolicitarFinalizarPedido">Solicitações de finalizar pedido</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
@@ -80,30 +81,33 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-			
-					<h2>Meus anúncios</h2>
 					
+					<h2>Solicitações de finalizar pedido</h2>
 					<?php 
-						$pages = new PagesController;
-						$pages->constructClasses();
-						$profissionalAnuncios = $pages->profissionalAnuncios(AuthComponent::user('id'));
+						$pedidos = new PedidosController;
+						$pedidos->constructClasses();
+						$profissionalSolicitarFinalizarPedido = $pedidos->profissionalSolicitarFinalizarPedido(AuthComponent::user('id'));
 						
 						$contador=0;
-						while ($contador!=sizeof($profissionalAnuncios))
+						$contador2=0;
+						while ($contador!=sizeof($profissionalSolicitarFinalizarPedido))
 						{
-							$titulo = $profissionalAnuncios[$contador]['tb_anuncio']['titulo_anuncio'];
-							$id = $profissionalAnuncios[$contador]['tb_anuncio']['id'];
-							$descricao = $profissionalAnuncios[$contador]['tb_anuncio']['descricao_anuncio'];
-							$modo_atendimento = $profissionalAnuncios[$contador]['tb_anuncio']['modo_atendimento'];
+							$status = $profissionalSolicitarFinalizarPedido[$contador]['tb_pedido']['status_pedido'];
+							$id = $profissionalSolicitarFinalizarPedido[$contador]['tb_pedido']['id'];
 							
-							//echo $anuncio_titulo;
-							//echo "<br/>";
+							$pedidoAnuncio = $pedidos->anuncioPedido($id);
 							
+							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
+							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
+							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
+							
+							$dadosClientePedido = $pedidos->clienteDadosPedido($id);
+							$nome_cliente = $dadosClientePedido[$contador2]['tb_pessoa']['nome_pessoa'];
 					?>
 					<div class="top-box">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $titulo; ?></h2>
+								<h2 class="panel-title"><?php echo $id; ?></h2>
 							</div>
 							<div class="panel-body">
 								<table border="2" width="40" height = "60">
@@ -112,7 +116,7 @@
 											<li>Descrição:</li> 
 												<div class="top-box">
 													<div class="panel panel-default">
-								        				<?php echo $descricao; ?>
+								        				<?php echo $status; ?>
 								        			</div>
 								        		</div>
 										</td>
@@ -126,20 +130,30 @@
 								        			</div>
 								        		</div>
 										</td>
+										
 										<td>
-											<?php echo $this->Html->link(
-								        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . "",
-								        			array('controller' => 'anuncios', 'action' => 'edit', $id, 'role' => 'button'),
-													array('class' => 'btn btn-default', 'escape' => false, "data-toggle"=>"modal",
-													"data-target"=>"#myModal"));
-								        	?>
-								        	<?php
-								        		echo $this->Form->postLink(
-								        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-								        			array('controller' => 'pages', 'action' => 'removerAnuncio', $id),
-								        			array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
-								        	?>
+											<li>Cliente:</li> 
+												<div class="top-box">
+													<div class="panel panel-default">
+								        				<?php echo $nome_cliente; ?>
+								        			</div>
+								        		</div>
 										</td>
+										<td>
+											<?php
+								        		
+								        		echo $this->Form->postLink(
+									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Confirmar",
+									        		array('controller' => 'pedidos','action' => 'finalizarPedido', $id),
+									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
+								        	?>
+								        	<form action="/profinder/site/pages/mensagens_pedido" id="idPedido" method="post" accept-charset="utf-8">
+				
+									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
+									        	<button type="submit" class="btn btn-success">Conversa</button>
+								        	</form>
+										</td>
+										
 									</tr>
 								</table>
 							</div>
@@ -147,9 +161,11 @@
 					</div>
 					
 					<?php 		
+							
 							$contador++;
 						}
 					?>
+						
 													
 					
 			 	</div>
@@ -157,57 +173,3 @@
 		</div>
 	</div>
 </div>
-
-<div class="modal fade" id="myModalAnuncio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Dados do Bairro</h4>
-      </div>
-      <div class="modal-body">
-      	
-        <?php
-			echo $this->Form->create('Anuncio', array('action' => 'add'));
-			echo $this->Form->input('titulo_anuncio', array('label' => 'Titulo:'));
-			$anuncios = new AnunciosController;
-						$anuncios->constructClasses();
-						$servicos=$anuncios->nomeServico();
-						$contador=0;
-						$options= array();
-						
-						while($contador<sizeof($servicos))
-						{
-							array_push($options, array($servicos[$contador]['Servico']['id'] => $servicos[$contador]['Servico']['nome_servico']));
-							$contador++;
-						}
-						echo "Serviço: ";
-						echo $this->Form->select('id_servico', $options);
-					
-						echo $this->Form->input('modo_atendimento', array('label' => 'Modo de atendimento: ', 'options' => array(
-							'online' => 'On-line',
-							'domiciliar' => 'Domiciliar',
-							'escritorio' => 'Escritório',))
-						);
-						
-						echo $this->Form->input('profissional_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
-						
-			
-			echo $this->Form->button(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
-			
-			echo " ";
-			echo $this->Html->link(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller' => 'Bairros','action' => 'index'),
-					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-			
-			echo $this->Form->end();
-		?>
-      </div>
-    </div>
-  </div>
-</div>
-	
-	

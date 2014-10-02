@@ -17,11 +17,13 @@
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/clientePerfil">Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalPerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalAnuncios">Meus anúncios</a></li>
+			               		<li><a href="/profinder/site/pages/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
+								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+
 		               		</ul>
 						</li>
 					</ul>
@@ -79,24 +81,27 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Meus pedidos em andamento <a href="/profinder/site/pages/cliente_pedidos_finalizados">finalizados</a></h2>
+					<h2>Solicitações de serviço</h2>
 					<?php 
-						$pages = new PagesController;
-						$pages->constructClasses();
-						$pedidosCliente = $pages->clientePedidos(AuthComponent::user('id'));
+						$pedidos = new PedidosController;
+						$pedidos->constructClasses();
+						$profissionalPedidosSolicitados = $pedidos->profissionalPedidosSolicitados(AuthComponent::user('id'));
 						
 						$contador=0;
 						$contador2=0;
-						while ($contador!=sizeof($pedidosCliente))
+						while ($contador!=sizeof($profissionalPedidosSolicitados))
 						{
-							$status = $pedidosCliente[$contador]['tb_pedido']['status_pedido'];
-							$id = $pedidosCliente[$contador]['tb_pedido']['id'];
+							$status = $profissionalPedidosSolicitados[$contador]['tb_pedido']['status_pedido'];
+							$id = $profissionalPedidosSolicitados[$contador]['tb_pedido']['id'];
 							
-							$pedidoAnuncio = $pages->clientePedidoAnuncio($id);
+							$pedidoAnuncio = $pedidos->anuncioPedido($id);
 							
 							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
 							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
+							
+							$dadosClientePedido = $pedidos->clienteDadosPedido($id);
+							$nome_cliente = $dadosClientePedido[$contador2]['tb_pessoa']['nome_pessoa'];
 					?>
 					<div class="top-box">
 						<div class="panel panel-default">
@@ -124,12 +129,21 @@
 								        			</div>
 								        		</div>
 										</td>
+										
+										<td>
+											<li>Cliente:</li> 
+												<div class="top-box">
+													<div class="panel panel-default">
+								        				<?php echo $nome_cliente; ?>
+								        			</div>
+								        		</div>
+										</td>
 										<td>
 											<?php
 								        		
 								        		echo $this->Form->postLink(
 									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-									        		array('controller' => 'pedidos','action' => 'clienteFinalizarPedido', $id),
+									        		array('controller' => 'pedidos','action' => 'finalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        	?>
 								        	<form action="/profinder/site/pages/mensagens_pedido" id="idPedido" method="post" accept-charset="utf-8">

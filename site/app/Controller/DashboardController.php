@@ -16,7 +16,8 @@
 			//var_dump("dash");
 			if($this->Auth->user("role")=="cliente")
 			{
-				return $this->redirect(array('controller' => 'pages', 'action' => 'clienteHome'));
+				//$this->layout = 'home';
+				return $this->redirect(array('controller' => 'pages', 'action' => 'clienteHome'));	
 			}
 			if($this->Auth->user("role")=="profissional")
 			{

@@ -84,9 +84,9 @@
 				<h2>Meus anúncios</h2>
 					
 					<?php 
-						$pages = new PagesController;
-						$pages->constructClasses();
-						$anuncios= $pages->anuncios();
+						$anuncios = new AnunciosController;
+						$anuncios->constructClasses();
+						$anuncios= $anuncios->anuncios();
 						
 						$contador=0;
 						while ($contador!=sizeof($anuncios))
@@ -100,10 +100,8 @@
 							//echo "<br/>";
 						
 					?>
-					
-					
-					
-					<form action="/profinder/site/pages/cliente_solicitar_pedido" id="idAnuncio" method="post" accept-charset="utf-8">
+										
+					<form action="/profinder/site/pedidos/cadastro" id="idAnuncio" method="post" accept-charset="utf-8">
 						<div class="top-box">
 						<div class="panel panel-default">
 							<div class="panel-heading">

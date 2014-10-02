@@ -13,17 +13,15 @@
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		                		<span class="glyphicon glyphicon-cog"></span>
-		                		Opções LOGADO: <?php echo AuthComponent::user("id"); ?>
+		                		Opções
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/profissionalPerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalAnuncios">Meus anúncios</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalSolicitarFinalizarPedido">Solicitações de finalizar pedido</a></li>
+			               		<li><a href="/profinder/site/pages/clientePerfil">Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
 
 		               		</ul>
 						</li>
@@ -82,27 +80,24 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Solicitações de finalizar pedido</h2>
+					<h2>Meus pedidos finalizados <a href="/profinder/site/pedidos/clientePedidos">andamento</a></h2>
 					<?php 
-						$pages = new PagesController;
-						$pages->constructClasses();
-						$profissionalSolicitarFinalizarPedido = $pages->profissionalSolicitarFinalizarPedido(AuthComponent::user('id'));
+						$pedidos = new PedidosController;
+						$pedidos->constructClasses();
+						$pedidosClienteFinalizados = $pedidos->clientePedidosFinalizados(AuthComponent::user('id'));
 						
 						$contador=0;
 						$contador2=0;
-						while ($contador!=sizeof($profissionalSolicitarFinalizarPedido))
+						while ($contador!=sizeof($pedidosClienteFinalizados))
 						{
-							$status = $profissionalSolicitarFinalizarPedido[$contador]['tb_pedido']['status_pedido'];
-							$id = $profissionalSolicitarFinalizarPedido[$contador]['tb_pedido']['id'];
+							$status = $pedidosClienteFinalizados[$contador]['tb_pedido']['status_pedido'];
+							$id = $pedidosClienteFinalizados[$contador]['tb_pedido']['id'];
 							
-							$pedidoAnuncio = $pages->clientePedidoAnuncio($id);
+							$pedidoAnuncio = $pedidos->anuncioPedido($id);
 							
 							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
 							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
-							
-							$dadosClientePedido = $pages->clienteDadosPedido($id);
-							$nome_cliente = $dadosClientePedido[$contador2]['tb_pessoa']['nome_pessoa'];
 					?>
 					<div class="top-box">
 						<div class="panel panel-default">
@@ -130,28 +125,15 @@
 								        			</div>
 								        		</div>
 										</td>
-										
-										<td>
-											<li>Cliente:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $nome_cliente; ?>
-								        			</div>
-								        		</div>
-										</td>
 										<td>
 											<?php
 								        		
 								        		echo $this->Form->postLink(
-									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Confirmar",
-									        		array('controller' => 'pedidos','action' => 'finalizarPedido', $id),
+									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
+									        		array('controller' => 'pages','action' => 'finalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        	?>
-								        	<form action="/profinder/site/pages/mensagens_pedido" id="idPedido" method="post" accept-charset="utf-8">
-				
-									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
-									        	<button type="submit" class="btn btn-success">Conversa</button>
-								        	</form>
+								        	
 										</td>
 										
 									</tr>
@@ -165,7 +147,6 @@
 							$contador++;
 						}
 					?>
-						
 													
 					
 			 	</div>

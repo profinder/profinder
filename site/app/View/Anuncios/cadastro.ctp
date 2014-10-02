@@ -22,7 +22,7 @@
 					
 					<div class="panel-body">
 						<?php
-							echo $this->Form->create('Anuncio', array('action' => 'add'));	
+							echo $this->Form->create('Anuncio', array('action' => 'cadastro'));	
 						?>
 						<table height = "200">
 							<tr>

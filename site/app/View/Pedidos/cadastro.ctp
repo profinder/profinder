@@ -12,21 +12,22 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                	<span class="glyphicon glyphicon-cog"></span>
-		                		Opções
-		                		<b class="caret"></b>
-		                	</a>
+			                	<span class="glyphicon glyphicon-cog"></span>
+			                		Opções LOGADO: <?php echo AuthComponent::user("id"); ?>
+			                		<b class="caret"></b>
+			                	</a>
 							<ul class="dropdown-menu">
-							
-			               		<li><a href="/profinder/site/pages/profissionalPerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/anuncios/profissionalAnuncios">Meus anúncios</a></li>
-			               		<li><a href="#">Notificações</a></li>
+								<li><a href="/profinder/site/pages/perfilCliente"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'perfilCliente')); ?></li>
+			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
-		               			<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 		               		</ul>
 						</li>
 					</ul>
+					
+					
         				
 				</div>
 		 		
@@ -80,24 +81,45 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-					<h2>Perfil</h2>
-					<?php  
-						$user['User']['id']=AuthComponent::user('id');
-						echo "Nome: ".AuthComponent::user('nome_pessoa')."</br>";
-						echo "E-mail: ".AuthComponent::user('username')."</br>";
-						echo $this->Html->link(
-							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . "Editar", 
-							array('controller' => 'users', 'action' => 'edit', $user['User']['id'], 'role' => 'button'),
-							array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
-							"data-target"=>"#EditModal"));
-					?>
+				
+				<?php
 					
+				 	//$mensagemphp = "<script>document.write(mensagemjs)</script>";
+					//var_dump($mensagemphp); 	
+					$anuncios[]=$_POST["anuncio"];
+				 	var_dump($anuncios);
+				 	$contador=0;
+				 	while ($contador<sizeof($anuncios[0]))
+				 	{
+				 		echo $anuncios[0][$contador];
+				 		echo $this->Form->create('Pedido', array('action' => 'cadastro'));
+				 		echo $this->Form->input('cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
+						echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:', 'default' => 'oi'));
+						echo $this->Form->input('status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
+						echo $this->Form->input('anuncio_id', array('type' => 'hidden', 'value' => $anuncios[0][$contador]));
+						
+						echo $this->Form->button(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
+								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
+						echo " ";
+						echo $this->Html->link(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
+								array('controller' => 'Pedidos','action' => 'index'),
+								array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
+						
+						echo $this->Form->end();
+				 		$contador++;
+				 	}
+				 		
+				?>
+							
 			 	</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -107,7 +129,7 @@
       <div class="modal-body">
       	
         <?php
-			echo $this->Form->create('User', array('action' => 'edit'));
+			echo $this->Form->create('User', array('action' => 'add'));
 			echo $this->Form->input('nome_pessoa', array('label' => 'Nome:'));
 			echo $this->Form->input('username', array('label' => 'E-mail:'));
 			echo $this->Form->input('password', array('label' => 'Senha:'));
@@ -128,7 +150,13 @@
   </div>
 </div>
 
-	
-	
-	
+<script>
+
+	function receberMensagem(mensagem)
+	{
+		alert(mensagem)
+		var mensagemjs = mensagem;
+	}
+
+</script>
 	

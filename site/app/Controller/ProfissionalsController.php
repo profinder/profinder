@@ -21,38 +21,43 @@
 			$this->set('profissional', $profissional);
 		}
 	
-		public function add()
+		public function cadastro()
 		{
-			$this->layout = 'clean';
+			$this->layout = 'home';
 			if ($this->request->is('post'))
 			{
 				$this->Profissional->create();
 				if ($this->Profissional->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Profissional salvo com sucesso.'), "flash_notification");
-					return $this->redirect($this->referer());
+					return $this->redirect( array (
+							'controller' => 'profissionals',
+							'action' => 'perfil' 
+					) );
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
 		}
 	
-		public function edit($id_profissional = null)
+		public function editar($id = null) 
 		{
-			if (!$id_profissional) {
+			$this->layout = 'home';
+			
+			if (!$id) {
 				throw new NotFoundException(__('Profissional inválido'));
 			}
 		  
-			$profissional = $this->Profissional->findById($id_profissional);
+			$profissional = $this->Profissional->findById($id);
 			if (!$profissional) {
 				throw new NotFoundException(__('Profissional não encontrado'));
 			}
-			$this->layout = 'clean';
 			if ($this->request->is(array('post', 'put'))) {
-				$this->Profissional->id = $id_profissional;
+				$this->Profissional->id = $id;
 				if ($this->Profissional->save($this->request->data)) {
+
 					$this->Session->setFlash(__('Profissional salvo com sucesso'),
 		    					"flash_notification");
-					return $this->redirect(array('action' => 'index'));
+					return $this->redirect(array('action' => 'perfil'));
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados.'));
 			}
@@ -74,6 +79,17 @@
 				);
 				return $this->redirect(array('action' => 'index'));
 			}
+		}
+		
+		public function perfil()
+		{
+			$this->layout = 'home';
+		}
+		
+		public function dadosProfissional($id)
+		{
+			$sql=$this->Profissional->query("SELECT tb_pessoa.* FROM tb_pessoa WHERE tb_pessoa.id ='".$id."';");
+			return $sql;
 		}
 	}
 ?>

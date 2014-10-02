@@ -17,10 +17,10 @@
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/profissionalPerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalAnuncios">Meus anúncios</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalSolicitarFinalizarPedido">Solicitações de finalizar pedido</a></li>
+			               		<li><a href="/profinder/site/profissionals/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><a href="/profinder/site/anuncios/profissionalAnuncios">Meus anúncios</a></li>
+			               		<li><a href="/profinder/site/pedidos/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
+			               		<li><a href="/profinder/site/pedidos/profissionalSolicitarFinalizarPedido">Solicitações de finalizar pedido</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
@@ -85,7 +85,7 @@
 					<hr>
 						<p>Aqui você cria anúncios para seus serviços! </p>
 					
-					<a href="/profinder/site/pages/profissionalCriarAnuncio"> Criar Anúncio </a>	
+					<a href="/profinder/site/anuncios/cadastro"> Criar Anúncio </a>	
 			 	</div>
 			</div>
 		</div>

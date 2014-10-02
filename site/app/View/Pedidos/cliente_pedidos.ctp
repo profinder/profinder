@@ -17,13 +17,11 @@
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/profissionalPerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalAnuncios">Meus anúncios</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
+			               		<li><a href="/profinder/site/pages/clientePerfil">Perfil</a></li>
+			               		<li><a href="/profinder/site/pedidos/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
-
+								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
 		               		</ul>
 						</li>
 					</ul>
@@ -81,27 +79,24 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Solicitações de serviço</h2>
+					<h2>Meus pedidos em andamento <a href="/profinder/site/pedidos/clientePedidosFinalizados">finalizados</a></h2>
 					<?php 
-						$pages = new PagesController;
-						$pages->constructClasses();
-						$profissionalPedidosSolicitados = $pages->profissionalPedidosSolicitados(AuthComponent::user('id'));
+						$pedidos = new PedidosController;
+						$pedidos->constructClasses();
+						$clientePedidos = $pedidos->clientePedidos(AuthComponent::user('id'));
 						
 						$contador=0;
 						$contador2=0;
-						while ($contador!=sizeof($profissionalPedidosSolicitados))
+						while ($contador!=sizeof($clientePedidos))
 						{
-							$status = $profissionalPedidosSolicitados[$contador]['tb_pedido']['status_pedido'];
-							$id = $profissionalPedidosSolicitados[$contador]['tb_pedido']['id'];
+							$status = $clientePedidos[$contador]['tb_pedido']['status_pedido'];
+							$id = $clientePedidos[$contador]['tb_pedido']['id'];
 							
-							$pedidoAnuncio = $pages->clientePedidoAnuncio($id);
+							$anuncioPedido = $pedidos->anuncioPedido($id);
 							
-							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
-							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
-							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
-							
-							$dadosClientePedido = $pages->clienteDadosPedido($id);
-							$nome_cliente = $dadosClientePedido[$contador2]['tb_pessoa']['nome_pessoa'];
+							$titulo_anuncio = $anuncioPedido[$contador2]['tb_anuncio']['titulo_anuncio'];
+							$descricao = $anuncioPedido[$contador2]['tb_anuncio']['descricao_anuncio'];
+							$modo_atendimento = $anuncioPedido[$contador2]['tb_anuncio']['modo_atendimento'];
 					?>
 					<div class="top-box">
 						<div class="panel panel-default">
@@ -129,24 +124,15 @@
 								        			</div>
 								        		</div>
 										</td>
-										
-										<td>
-											<li>Cliente:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $nome_cliente; ?>
-								        			</div>
-								        		</div>
-										</td>
 										<td>
 											<?php
 								        		
 								        		echo $this->Form->postLink(
 									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-									        		array('controller' => 'pedidos','action' => 'finalizarPedido', $id),
+									        		array('controller' => 'pedidos','action' => 'clienteFinalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        	?>
-								        	<form action="/profinder/site/pages/mensagens_pedido" id="idPedido" method="post" accept-charset="utf-8">
+								        	<form action="/profinder/site/pedidos/mensagensPedido" id="idPedido" method="post" accept-charset="utf-8">
 				
 									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
 									        	<button type="submit" class="btn btn-success">Conversa</button>

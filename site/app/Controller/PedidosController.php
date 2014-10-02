@@ -21,20 +21,22 @@
 			}
 			$this->set('pedido', $pedido);
 		}
-		public function add()
+		
+		public function cadastro()
 		{
-			$this->layout = 'clean';
+			$this->layout = 'home';
 			if ($this->request->is('post'))
 			{
 				$this->Pedido->create();
 				if ($this->Pedido->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Pedido salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array('action' => 'index'));
+					return $this->redirect(array('action' => 'clientePedidos'));
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
 		}
+		
 		public function edit($id = null)
 		{
 			if (!$id) {
@@ -75,58 +77,70 @@
 			}
 		}
 		
-		public function clientePedidosDisponiveisAvaliar($cliente_id)
+		public function clientePedidosAvaliar($cliente_id)
 		{
-			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.status_pedido = 'avaliar' AND tb_pedido.cliente_id ='".$cliente_id."';");
+			$this->layout = 'home';
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id ='".$cliente_id."';");
 			return $sql;
 		}
 		
-		public function pedidosClienteFinalizados($cliente_id)
+		public function clientePedidosFinalizados($cliente_id)
 		{
+			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.status_pedido = 'finalizado' AND tb_pedido.cliente_id='".$cliente_id."';");
 			return $sql;
 		}
 		
-		public function solicitarFinalizarPedidoProfissional($profissional_id)
+		public function profissionalSolicitarFinalizarPedido($profissional_id)
 		{
+			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 0 AND tb_anuncio.profissional_id = '".$profissional_id."';");
 			return $sql;
 		}
 		
-		public function pedidosSolicitadosProfissional($profissional_id)
+		public function profissionalPedidosSolicitados($profissional_id)
 		{
-			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_pedido.anuncio_id = tb_anuncio.id WHERE tb_anuncio.profissional_id ='".$profissional_id."';");
+			$this->layout = 'home';
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_pedido.anuncio_id = tb_anuncio.id WHERE tb_pedido.cliente_fim = 0 AND tb_anuncio.profissional_id ='".$profissional_id."';");
 			return $sql;
 		}
 		
-		public function pedidosClienteAndamento($cliente_id)
+		public function clientePedidos($cliente_id)
 		{
-			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.prof_fim = 0 AND tb_pedido.cliente_id='".$cliente_id."';");
+			$this->layout = 'home';
+			$sql = $this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.prof_fim = 0 AND tb_pedido.cliente_id='".$cliente_id."';");
+		//	var_dump($sql);
 			return $sql;
 		}
 		
-		public function pedidoAnuncio($pedido_id)
+		public function anuncioPedido($pedido_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_anuncio.* FROM tb_anuncio INNER JOIN tb_pedido ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.id='".$pedido_id."';");
 			return $sql;
 		}
 		
-		public function dadosClientePedido($pedido_id)
+		public function clienteDadosPedido($pedido_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_pedido ON tb_pedido.cliente_id = tb_pessoa.id WHERE tb_pedido.id ='".$pedido_id."';");
 			return $sql;
 		}
 		
-		public function finalizarPedido($pedido_id)
+		public function dadosPedido($pedido_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_pedido ON tb_pedido.cliente_id = tb_pessoa.id WHERE tb_pedido.id ='".$pedido_id."';");
+			return $sql;
+		}
+		
+		public function clienteFinalizarPedido()
 		{
 			/*if ($this->request->is('get')) {
 				throw new MethodNotAllowedException();
 			}*/
-			var_dump($pedido_id);
-			$sql=$this->Pedido->query("UPDATE tb_pedido SET tb_pedido.cliente_fim = 1 WHERE tb_pedido.id = '".$pedido_id."';");
+			var_dump(oi);
+			//$sql=$this->Pedido->query("UPDATE tb_pedido SET tb_pedido.cliente_fim = 1 WHERE tb_pedido.id = '".$pedido_id."';");
 			
-			var_dump($sql);
-			return $sql;
+			//var_dump($sql);
+			//return $sql;
 		}
 		
 		public function mensagensPedido($pedido_id)

@@ -85,9 +85,9 @@
 						$id_pedido=$_POST["id_pedido"];
 						//var_dump($id_pedido);
 						
-						$pages = new PagesController;
-						$pages->constructClasses();
-						$mensagensPedido = $pages->mensagensPedido($id_pedido);
+						$pedidos = new PedidosController;
+						$pedidos->constructClasses();
+						$mensagensPedido = $pedidos->mensagensPedido($id_pedido);
 						
 						//var_dump($mensagensPedido);
 						$contador=0;

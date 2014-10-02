@@ -1,4 +1,4 @@
-<link href="/profinder/site/css/style2.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	
 <div class="header">	
 	<div class="wrap"> 
@@ -12,13 +12,13 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                		Opções
+		                		<span class="glyphicon glyphicon-cog"></span>
+		                		OpÃ§Ãµes
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/perfilProfissional">Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/anunciosProfissional">Meus anúncios</a></li>
-			               		<li><a href="#">Notificações</a></li>
+			               		<li><a href="/profinder/site/pages/clientePerfil">Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
@@ -79,61 +79,69 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-			
-					<h2>Meus anúncios</h2>
-					<?php
-					App::import('Controller', 'Pages');
-					$anuncios = new PagesController;
-					$pages->constructClasses();
-					$anuncios=$pages->anuncios(AuthComponent::user('id'));
 					
-					?>
-					<table>
-					<tr>
-						<th>Código</th>
-						<th>Título do anúncio</th>
-						<th>Modo de atendimento</th>
-						<th>Tipo de serviço</th>
-						<th>Ações</th>
+					<h2>Pedidos para avaliar</a></h2>
+					<?php 
+						$pedidos = new PedidosController;
+						$pedidos->constructClasses();
+						$clientePedidoAvaliar = $pedidos->clientePedidosAvaliar(AuthComponent::user('id'));
 						
-					</tr>
-				   
-					<?php foreach ($anuncios as $anuncio): ?>
-					<tr><td>
-					<?php echo $anuncio['Anuncio']['titulo_anuncio']; ?></td>
-						<td>
-							<?php
-								echo $anuncio['Anuncio']['modo_atendimento'];
-							?>
-						</td>
-						<td>
-							<?php
-								echo $anuncio['Anuncio']['id_servico'];
-							?>
-						</td>
-						<td>
-							<?php
-								echo $this->Html->link(
-									$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
-									array('controller' => 'anuncios', 'action' => 'edit', $anuncio['Anuncio']['id'], 'role' => 'button'),
-									array('class' => 'btn btn-warning', 'escape' => false, "data-toggle"=>"modal",
-									"data-target"=>"#myModal"));
-							?>
-							<?php
-								echo $this->Form->postLink(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Remover",
-								array('controller' => 'anuncios','action' => 'delete', $anuncio['Anuncio']['id']),
-								array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-							?>
-						</td>
-					</tr>
-					<?php endforeach; ?>
-					<?php unset($cliente); ?>
-					</table>
+						$contador=0;
+						$contador2=0;
+						while ($contador!=sizeof($clientePedidoAvaliar))
+						{
+							$status = $clientePedidoAvaliar[$contador]['tb_pedido']['status_pedido'];
+							$id = $clientePedidoAvaliar[$contador]['tb_pedido']['id'];
+							
+							$pedidoAnuncio = $pedidos->anuncioPedido($id);
+							
+							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
+							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
+							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
+					?>
+					<div class="top-box">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h2 class="panel-title"><?php echo $id; ?></h2>
+							</div>
+							<div class="panel-body">
+								<table border="2" width="40" height = "60">
+									<tr>
+										<td>
+											<li>DescriÃ§Ã£o:</li> 
+												<div class="top-box">
+													<div class="panel panel-default">
+								        				<?php echo $status; ?>
+								        			</div>
+								        		</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<li>Modo de Atendimento:</li> 
+												<div class="top-box">
+													<div class="panel panel-default">
+								        				<?php echo $modo_atendimento; ?>
+								        			</div>
+								        		</div>
+										</td>
+										
+										
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					
+					<?php 		
+							
+							$contador++;
+						}
+					?>
+													
+					
 			 	</div>
 			</div>
 		</div>
 	</div>
 </div>
-	
-	

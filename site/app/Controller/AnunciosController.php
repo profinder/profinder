@@ -23,27 +23,26 @@
 			$this->set('anuncio', $anuncio);
 		}
 	
-		public function add()
+		public function cadastro()
+		{
+			$this->layout = 'home';
+			if ($this->request->is('post'))
 			{
-				$this->layout = 'clean';
-				if ($this->request->is('post'))
+				$this->Anuncio->create();
+				var_dump($this->request->data);
+				if ($this->Anuncio->saveAssociated($this->request->data, array("deep" => true)))
 				{
-					$this->Anuncio->create();
-					var_dump($this->request->data);
-					if ($this->Anuncio->saveAssociated($this->request->data, array("deep" => true)))
-					{
-						
-						$this->Session->write("cidade", "akjsdhfjkas");
-						$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
-						return $this->redirect(array('controller'=> 'pages', 'action' => 'mostrar_bairro'));
-					}
-					$this->Session->setFlash(__('Erro ao salvar dados!'));
+					$this->Session->write("cidade", "akjsdhfjkas");
+					$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
+					return $this->redirect(array('controller'=> 'pages', 'action' => 'mostrar_bairro'));
 				}
+				$this->Session->setFlash(__('Erro ao salvar dados!'));
+			}
 				//$enderecos = $this->Endereco->Cliente->find('list');
 	         	//$this->set(compact('clientes'));
-			}
+		}
 	
-		public function edit($id = null)
+		public function editar($id = null)
 		{
 			if (!$id) {
 				throw new NotFoundException(__('Bairro inválido'));
@@ -69,7 +68,7 @@
 			}
 		}
 	
-		public function delete($id) 
+		public function remover($id) 
 		{
 			if ($this->request->is('get')) {
 				throw new MethodNotAllowedException();
@@ -97,14 +96,17 @@
 			return $this->Anuncio->find('all', array( 'conditions'=>$conditions));
 		}
 		
-		public function anuncios($id_servico)
+		public function anuncios()
 		{
+			$this->layout = 'home';
+			$id_servico = $_GET["serv"];
 			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.servico_id='".$id_servico."';");
 			return $sql;
 		}
 		
-		public function anunciosProfissional($profissional_id)
+		public function profissionalAnuncios($profissional_id)
 		{
+			$this->layout = 'home';
 			$sql=$this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.profissional_id='".$profissional_id."';");
 			return $sql;
 		}
@@ -112,12 +114,6 @@
 		public function enderecoAnuncio($anuncio_id)
 		{
 			$sql=$this->Anuncio->query("SELECT tb_endereco.* FROM tb_endereco INNER JOIN tb_anuncio WHERE tb_anuncio.endereco_id = tb_endereco.id AND tb_anuncio.id ='".$anuncio_id."';");
-			return $sql;
-		}
-		
-		public function remover($anuncio_id)
-		{
-			$sql= $this->Anuncio->query("DELETE FROM tb_anuncio WHERE tb_anuncio.id = '".$anuncio_id."';");
 			return $sql;
 		}
 		

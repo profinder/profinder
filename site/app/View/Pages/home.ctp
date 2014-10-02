@@ -74,7 +74,7 @@
 										$nome_servico = $servicos[$contadorServicos]['Servico']['nome_servico']; 
 								/*<li><a href = "/profinder/site/anuncios/anuncios?serv=".<?php echo $id_servico;?>><?php echo $servicos[$contadorServicos]['Servico']['nome_servico']; ?></a></li>
 								*/
-								echo "<li><a href = '/profinder/site/pages/anuncios?serv=".$id_servico;
+								echo "<li><a href = '/profinder/site/anuncios/anuncios?serv=".$id_servico;
 								echo "'>$nome_servico</a></li>";
 								
 								/*echo "<a href = '/Loja/clienteForm.php?usr=".$row['id_cliente'];
@@ -118,9 +118,9 @@
 						<p>Aqui você encontra o profissional para o serviço que você precisa! </p>
 			 	</div>
 			 	<div class="top-box">
-			 		<p><a href = "/profinder/site/pages/cliente_cadastro">Cadastro de Cliente</a>
+			 		<p><a href = "/profinder/site/clientes/cadastro">Cadastro de Cliente</a>
 			 		<hr>
-			 		<p><a href = "/profinder/site/pages/profissional_cadastro">Cadastro de Profissional</a>
+			 		<p><a href = "/profinder/site/profissionals/cadastro">Cadastro de Profissional</a>
 		    	</p>
 			 	</div>
 			 	

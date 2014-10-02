@@ -43,36 +43,36 @@
 			return parent::isAuthorized($user);
 		}
 		
-		public function clientePerfil()
+		/*public function clientePerfil()
 		{
-		}
+		}*/
 		
-		public function clienteEditar($id = null)
-		{
+		//public function clienteEditar($id = null)
+		//{
 			/*App::import('Controller', 'Clientes');
 			$clientes = new ClientesController;
 			$clientes->constructClasses();
 			return $clientes->edit($id);*/
 			//return $this->redirect('editar_cliente');
-		}
-		
+		//}
+		/*
 		public function clientePedidoAnuncio($pedido_id) 
 		{
 			App::import('Controller', 'Pedidos');
 			$pedidoAnuncio = new PedidosController;
 			$pedidoAnuncio->constructClasses();
 			return $pedidoAnuncio->pedidoAnuncio($pedido_id);	
-		}
+		}*/
 		
-		public function clienteFinalizarPedido($pedido_id) 
+		/*public function clienteFinalizarPedido($pedido_id) 
 		{
 			App::import('Controller', 'Pedidos');
 			$finalizarPedido = new PedidosController;
 			$finalizarPedido->constructClasses();
 			var_dump($pedido_id);
 			return $finalizarPedido->finalizarPedido($pedido_id);	
-		}
-		
+		}*/
+		/*
 		public function clienteDadosPedido($pedido_id) 
 		{
 			App::import('Controller', 'Pedidos');
@@ -80,34 +80,34 @@
 			$dadosClientePedido->constructClasses();
 			return $dadosClientePedido->dadosClientePedido($pedido_id);	
 		}
-
-		public function clienteSolicitarPedido()
+*/
+		/*public function clienteSolicitarPedido()
 		{
-		}
+		}*/
 		
-		public function clientePedidos($cliente_id) 
+		/*public function clientePedidos($cliente_id) 
 		{
 			App::import('Controller', 'Pedidos');
 			$pedidosClienteFinalizados = new PedidosController;
 			$pedidosClienteFinalizados->constructClasses();
 			return $pedidosClienteFinalizados->pedidosClienteAndamento($cliente_id);	
-		}
+		}*/
 		
-		public function clientePedidosFinalizados($cliente_id) 
+		/*public function clientePedidosFinalizados($cliente_id) 
 		{
 			App::import('Controller', 'Pedidos');
 			$pedidosClienteFinalizados = new PedidosController;
 			$pedidosClienteFinalizados->constructClasses();
 			return $pedidosClienteFinalizados->pedidosClienteFinalizados($cliente_id);	
 		}
-		
-		public function clientePedidosAvaliar($cliente_id)
+		*/
+		/*public function clientePedidosAvaliar($cliente_id)
 		{
 			App::import('Controller', 'Pedidos');
 			$clientePedidosAvaliar = new PedidosController;
 			$clientePedidosAvaliar->constructClasses();
 			return $clientePedidosAvaliar->clientePedidosDisponiveisAvaliar($cliente_id);
-		}
+		}*/
 		
 		public function clienteAnunciosServico($servico_id) 
 		{
@@ -117,19 +117,15 @@
 			return $anuncios->anunciosServico($servico_id);	
 		}
 		
-		public function profissionalHome()
-		{
-		}
-		
-		public function profissionalAnuncios($profissional_id) 
+		/*public function profissionalAnuncios($profissional_id) 
 		{
 			App::import('Controller', 'Anuncios');
 			$anunciosProfissional = new AnunciosController;
 			$anunciosProfissional->constructClasses();
-			return $anunciosProfissional->anunciosProfissional($profissional_id);	
-		}
+			return $anunciosProfissional->profissionalAnuncios($profissional_id);	
+		}*/
 		
-		public function profissionalPedidosSolicitados($profissional_id) 
+		/*public function profissionalPedidosSolicitados($profissional_id) 
 		{
 			App::import('Controller', 'Pedidos');
 			$pedidosSolicitadosProfissional = new PedidosController;
@@ -143,7 +139,7 @@
 			$solicitarFinalizarPedidoProfissional = new PedidosController;
 			$solicitarFinalizarPedidoProfissional->constructClasses();
 			return $solicitarFinalizarPedidoProfissional->solicitarFinalizarPedidoProfissional($profissional_id);	
-		}
+		}*/
 		
 		public function nomeCategorias() 
 		{
@@ -169,22 +165,22 @@
 			return $servicos->idServico($nome_servico);	
 		}
 		
-		public function anuncios()
+		/*public function anuncios()
 		{
 			$servico = $_GET["serv"];	
 			App::import('Controller', 'Anuncios');
 			$anuncios = new AnunciosController;
 			$anuncios->constructClasses();
 			return $anuncios->anuncios($servico);	
-		}
+		}*/
 		
-		public function mensagensPedido($pedido_id) 
+		/*public function mensagensPedido($pedido_id) 
 		{
 			App::import('Controller', 'Pedidos');
 			$mensagensPedido = new PedidosController;
 			$mensagensPedido->constructClasses();
 			return $mensagensPedido->mensagensPedido($pedido_id);	
-		}
+		}*/
 		
 		/*public function enderecoAnuncio($anuncio_id) 
 		{

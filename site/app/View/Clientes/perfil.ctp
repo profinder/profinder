@@ -12,17 +12,17 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                		<span class="glyphicon glyphicon-cog"></span>
-		                		Opções
+		                	<span class="glyphicon glyphicon-cog"></span>
+		                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/clientePerfil">Perfil</a></li>
+								<li><a href="/profinder/site/pages/clientePerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'clientePerfil')); ?></li>
 			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
-
+								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 		               		</ul>
 						</li>
 					</ul>
@@ -79,67 +79,23 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-					
-					<h2>Pedidos para avaliar</a></h2>
-					<?php 
-						$pages = new PagesController;
-						$pages->constructClasses();
-						$clientePedidoAvaliar = $pages->clientePedidosAvaliar(AuthComponent::user('id'));
+					<h2>Perfil</h2>
+					<?php  
+						$id=AuthComponent::user('id');
+						App::import('Controller', 'Clientes');
+						$cliente = new ClientesController;
+						$cliente->constructClasses();
+						$sql=$cliente->dadosCliente($id);
 						
-						$contador=0;
-						$contador2=0;
-						while ($contador!=sizeof($clientePedidoAvaliar))
-						{
-							$status = $clientePedidoAvaliar[$contador]['tb_pedido']['status_pedido'];
-							$id = $clientePedidoAvaliar[$contador]['tb_pedido']['id'];
-							
-							$pedidoAnuncio = $pages->clientePedidoAnuncio($id);
-							
-							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
-							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
-							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
+						var_dump($sql[0]['tb_pessoa']);
+						
+						echo "Nome: ".$sql[0]['tb_pessoa']['nome_pessoa']."</br>";
+						echo "E-mail: ".$sql[0]['tb_pessoa']['username']."</br>";
+						echo $this->Html->link(
+	        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
+	        			array('controller' => 'clientes', 'action' => 'editar', AuthComponent::user('id'), 'role' => 'button'),
+						array('class' => 'btn btn-default', 'escape' => false));		
 					?>
-					<div class="top-box">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $id; ?></h2>
-							</div>
-							<div class="panel-body">
-								<table border="2" width="40" height = "60">
-									<tr>
-										<td>
-											<li>Descrição:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $status; ?>
-								        			</div>
-								        		</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li>Modo de Atendimento:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $modo_atendimento; ?>
-								        			</div>
-								        		</div>
-										</td>
-										
-										
-									</tr>
-								</table>
-							</div>
-						</div>
-					</div>
-					
-					<?php 		
-							
-							$contador++;
-						}
-					?>
-													
-					
 			 	</div>
 			</div>
 		</div>
