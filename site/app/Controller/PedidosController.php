@@ -147,7 +147,6 @@
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_pedido ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_pedido.id ='".$pedido_id."';");
-		//	var_dump($sql);
 			return $sql;
 		}
 	}

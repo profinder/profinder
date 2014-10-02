@@ -12,18 +12,18 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                		<span class="glyphicon glyphicon-cog"></span>
-		                		Opções
+		                	<span class="glyphicon glyphicon-cog"></span>
+		                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
 		                		<b class="caret"></b>
 		                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/pages/profissionalPerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalAnuncios">Meus anúncios</a></li>
-			               		<li><a href="/profinder/site/pages/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
+			               		<li><a href="/profinder/site/profissionals/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><a href="/profinder/site/anuncios/profissionalAnuncios">Meus anúncios</a></li>
+			               		<li><a href="/profinder/site/pedidos/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
+			               		<li><a href="/profinder/site/pedidos/profissionalSolicitarFinalizarPedido">Solicitações de finalizar pedido</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
-
 		               		</ul>
 						</li>
 					</ul>
