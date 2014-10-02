@@ -77,35 +77,35 @@
 			}
 		}
 		
-		public function clientePedidosAvaliar($cliente_id)
+		public function clientePedidosAvaliar($cliente_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id ='".$cliente_id."';");
 			return $sql;
 		}
 		
-		public function clientePedidosFinalizados($cliente_id)
+		public function clientePedidosFinalizados($cliente_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.status_pedido = 'finalizado' AND tb_pedido.cliente_id='".$cliente_id."';");
 			return $sql;
 		}
 		
-		public function profissionalSolicitarFinalizarPedido($profissional_id)
+		public function profissionalSolicitarFinalizarPedido($profissional_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 0 AND tb_anuncio.profissional_id = '".$profissional_id."';");
 			return $sql;
 		}
 		
-		public function profissionalPedidosSolicitados($profissional_id)
+		public function profissionalPedidosSolicitados($profissional_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_pedido.anuncio_id = tb_anuncio.id WHERE tb_pedido.cliente_fim = 0 AND tb_anuncio.profissional_id ='".$profissional_id."';");
 			return $sql;
 		}
 		
-		public function clientePedidos($cliente_id)
+		public function clientePedidos($cliente_id = null)
 		{
 			$this->layout = 'home';
 			$sql = $this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.prof_fim = 0 AND tb_pedido.cliente_id='".$cliente_id."';");
@@ -143,8 +143,9 @@
 			//return $sql;
 		}
 		
-		public function mensagensPedido($pedido_id)
+		public function mensagensPedido($pedido_id = null)
 		{
+			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_pedido ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_pedido.id ='".$pedido_id."';");
 		//	var_dump($sql);
 			return $sql;
