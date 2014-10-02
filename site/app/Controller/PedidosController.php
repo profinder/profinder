@@ -81,6 +81,12 @@
 			return $sql;
 		}
 		
+		public function solicitarFinalizarPedidoProfissional($profissional_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 0 AND tb_anuncio.profissional_id = '".$profissional_id."';");
+			return $sql;
+		}
+		
 		public function pedidosSolicitadosProfissional($profissional_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_pedido.anuncio_id = tb_anuncio.id WHERE tb_anuncio.profissional_id ='".$profissional_id."';");

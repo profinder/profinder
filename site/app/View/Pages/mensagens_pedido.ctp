@@ -124,15 +124,14 @@
 					
 						
 						<?php 
-							echo $this->Form->create('Mensagem', array('action' => 'add'));
-							echo $this->Form->input('texto_mensagem', array (
+							echo $this->Form->create('Pedido', array('action' => 'add'));
+							echo $this->Form->input('Mensagem.0.texto_mensagem', array (
 																		'class' => 'form-control',
 																		'type' => 'textarea',
 																		'label' => '',
 																		'style' => 'width:1200px; height:133px; resize:none;', 
 																		'placeHolder' => "Digite aqui sua resposta..."
 																	) );
-							echo $this->Form->input('atributo', array('type' => 'hidden', 'default' => 'oi')); 										
 							echo $this->Form->button ( $this->Html->tag ( 'span', '', array (
 									'class' => 'glyphicon glyphicon-arrow-up' 
 							) ) . " Enviar", array (

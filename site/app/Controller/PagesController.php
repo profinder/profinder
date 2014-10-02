@@ -129,6 +129,14 @@
 			return $pedidosSolicitadosProfissional->pedidosSolicitadosProfissional($profissional_id);	
 		}
 		
+		public function profissionalSolicitarFinalizarPedido($profissional_id) 
+		{
+			App::import('Controller', 'Pedidos');
+			$solicitarFinalizarPedidoProfissional = new PedidosController;
+			$solicitarFinalizarPedidoProfissional->constructClasses();
+			return $solicitarFinalizarPedidoProfissional->solicitarFinalizarPedidoProfissional($profissional_id);	
+		}
+		
 		public function nomeCategorias() 
 		{
 			App::import('Controller', 'Categorias');
