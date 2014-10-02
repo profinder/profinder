@@ -73,7 +73,7 @@
 			return $finalizarPedido->finalizarPedido($pedido_id);	
 		}
 		
-		public function clientePedido($pedido_id) 
+		public function clienteDadosPedido($pedido_id) 
 		{
 			App::import('Controller', 'Pedidos');
 			$dadosClientePedido = new PedidosController;

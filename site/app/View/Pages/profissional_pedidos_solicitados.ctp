@@ -94,13 +94,13 @@
 							$status = $profissionalPedidosSolicitados[$contador]['tb_pedido']['status_pedido'];
 							$id = $profissionalPedidosSolicitados[$contador]['tb_pedido']['id'];
 							
-							$pedidoAnuncio = $pages->pedidoAnuncio($id);
+							$pedidoAnuncio = $pages->clientePedidoAnuncio($id);
 							
 							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
 							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
 							
-							$dadosClientePedido = $pages->dadosClientePedido($id);
+							$dadosClientePedido = $pages->clienteDadosPedido($id);
 							$nome_cliente = $dadosClientePedido[$contador2]['tb_pessoa']['nome_pessoa'];
 					?>
 					<div class="top-box">
