@@ -44,36 +44,10 @@
 	         	//$this->set(compact('clientes'));
 			}
 			
-		public function edit($id = null) {
+		public function edit() {
 			
+			$this->layout = 'home';
 			var_dump('oi');
-			if (! $id) {
-				throw new NotFoundException ( __ ( 'Cliente inválido!' ) );
-			}
-			
-			$cliente = $this->Cliente->findById ( $id );
-			if (! $cliente) {
-				throw new NotFoundException ( __ ( 'Cliente não encontrado' ) );
-			}
-			$this->layout = 'clean';
-			if ($this->request->is ( array (
-					'post',
-					'put' 
-			) )) {
-				
-				$this->Cliente->id = $id;
-				if ($this->Cliente->save ( $this->request->data )) {
-					$this->Session->setFlash ( __ ( 'Cliente salvo com sucesso!' ), "flash_notification" );
-					/*return $this->redirect ( array (
-							'controller' => 'cliente',
-							'action' => 'index' 
-					) );*/
-				}
-				$this->Session->setFlash ( __ ( 'Erro ao salvar dados!' ) );
-			}
-			/*
-			 * if (!$this->request->data) { $this->request->data = $cliente; }
-			 */
 		}
 		public function delete($id_cliente) {
 			if ($this->request->is ( 'get' )) {

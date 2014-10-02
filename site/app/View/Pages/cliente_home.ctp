@@ -17,7 +17,7 @@
 			                		<b class="caret"></b>
 			                	</a>
 							<ul class="dropdown-menu">
-								<li><a href="/profinder/site/pages/clientePerfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+								<li><a href="/profinder/site/clientes/edit"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
 			               		<li><?php echo $this->Html->link('Perfil', array('controller'=>'pages', 'action'=>'clientePerfil')); ?></li>
 			               		<li><a href="/profinder/site/pages/clientePedidos">Meus pedidos</a></li>
 			               		<li class="divider"></li>

@@ -82,8 +82,11 @@
 			<div class="content-top">
 				<div class="top-box">
 				
+				<input type = "text" name = "mensagemCampo" id = "mensagemCampo" onblur = "receberMensagem(this.value)" />
 				 <?php
 					
+				 	$mensagemphp = "<script>document.write(mensagemjs)</script>";
+					var_dump($mensagemphp); 	
 					$anuncios[]=$_POST["anuncio"];
 				 	var_dump($anuncios);
 				 	$contador=0;
@@ -91,11 +94,9 @@
 				 	{
 				 		echo $anuncios[0][$contador];
 				 		echo $this->Form->create('Pedido', array('action' => 'add'));
-				 		echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:', 'default' => 'oi'));
-						echo $this->Form->input('cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
+				 		echo $this->Form->input('cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
 						echo $this->Form->input('status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
 						echo $this->Form->input('anuncio_id', array('type' => 'hidden', 'value' => $anuncios[0][$contador]));
-						echo $this->Form->input('Mensagem.0.pedido_id', array('type' => 'hidden', 'default' => '2'));
 						
 						echo $this->Form->button(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
@@ -109,7 +110,8 @@
 						echo $this->Form->end();
 				 		$contador++;
 				 	}
-				 	
+				 	echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:', 'default' => 'oi'));
+						
 				?>
 							
 			 	</div>
@@ -148,4 +150,14 @@
     </div>
   </div>
 </div>
+
+<script>
+
+	function receberMensagem(mensagem)
+	{
+		alert(mensagem)
+		var mensagemjs = mensagem;
+	}
+
+</script>
 	

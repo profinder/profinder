@@ -30,7 +30,7 @@
 		}
 		
 		public function beforeFilter() {
-			$this->Auth->allow('display', 'add', 'anuncios');
+			$this->Auth->allow('display', 'add', 'anuncios', 'cliente_home', 'profissional_home', 'edit');
 		}
 	}
 ?>
