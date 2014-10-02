@@ -101,12 +101,20 @@
 			return $anunciosProfissional->anunciosProfissional($profissional_id);	
 		}
 		
-		public function pedidosCliente($cliente_id) 
+		public function dadosClientePedido($pedido_id) 
 		{
 			App::import('Controller', 'Pedidos');
-			$pedidosCliente = new PedidosController;
-			$pedidosCliente->constructClasses();
-			return $pedidosCliente->pedidosClienteAndamento($cliente_id);	
+			$dadosClientePedido = new PedidosController;
+			$dadosClientePedido->constructClasses();
+			return $dadosClientePedido->dadosClientePedido($pedido_id);	
+		}
+				
+		public function pedidosSolicitadosProfissional($profissional_id) 
+		{
+			App::import('Controller', 'Pedidos');
+			$pedidosSolicitadosProfissional = new PedidosController;
+			$pedidosSolicitadosProfissional->constructClasses();
+			return $pedidosSolicitadosProfissional->pedidosSolicitadosProfissional($profissional_id);	
 		}
 		
 		public function pedidosClienteFinalizados($cliente_id) 
@@ -176,7 +184,6 @@
 		
 		public function solicitarPedido()
 		{
-			
 		}
 				
 		public function beforeFilter() 

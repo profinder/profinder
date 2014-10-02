@@ -19,7 +19,7 @@
 							<ul class="dropdown-menu">
 			               		<li><a href="/profinder/site/pages/perfilProfissional"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
 			               		<li><a href="/profinder/site/pages/anunciosProfissional">Meus anúncios</a></li>
-			               		<li><a href="#">Notificações</a></li>
+			               		<li><a href="/profinder/site/pages/pedidos_solicitados_profissional">Solicitações de serviço</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>

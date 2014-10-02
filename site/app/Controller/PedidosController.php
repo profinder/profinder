@@ -81,6 +81,12 @@
 			return $sql;
 		}
 		
+		public function pedidosSolicitadosProfissional($profissional_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_pedido.anuncio_id = tb_anuncio.id WHERE tb_anuncio.profissional_id ='".$profissional_id."';");
+			return $sql;
+		}
+		
 		public function pedidosClienteAndamento($cliente_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.prof_fim = 0 AND tb_pedido.cliente_id='".$cliente_id."';");
@@ -90,6 +96,12 @@
 		public function pedidoAnuncio($pedido_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_anuncio.* FROM tb_anuncio INNER JOIN tb_pedido ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.id='".$pedido_id."';");
+			return $sql;
+		}
+		
+		public function dadosClientePedido($pedido_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_pedido ON tb_pedido.cliente_id = tb_pessoa.id WHERE tb_pedido.id ='".$pedido_id."';");
 			return $sql;
 		}
 		

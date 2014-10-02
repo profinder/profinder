@@ -30,14 +30,12 @@
 				{
 					$this->Anuncio->create();
 					var_dump($this->request->data);
-					if ($this->Anuncio->saveAssociated($this->request->data))
+					if ($this->Anuncio->saveAssociated($this->request->data, array("deep" => true)))
 					{
 						
+						$this->Session->write("cidade", "akjsdhfjkas");
 						$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
-						return $this->redirect( array (
-							'controller' => 'pages',
-							'action' => 'home_profissional' 
-					) );
+						return $this->redirect(array('controller'=> 'pages', 'action' => 'mostrar_bairro'));
 					}
 					$this->Session->setFlash(__('Erro ao salvar dados!'));
 				}

@@ -83,6 +83,8 @@
 					<h2>Selecione os bairros que você está disponível a atender: </h2>
 					<hr>
 					<?php
+						$cidade = $this->Session->read("cidade");
+						var_dump($cidade);
 						$cidades=$this->query("SELECT tb_bairro.id, tb_bairro.nome_bairro FROM tb_bairro inner join tb_logradouro on tb_bairro.id=tb_logradouro.id_cidade inner join tb_localidade on tb_localidade.id=tb_logradouro.id_cidade where tb_localidade.nome_localidade='curitiba';");
 						echo $cidades;
 						echo $this->Form->create('Anuncio', array('action' => 'add'));

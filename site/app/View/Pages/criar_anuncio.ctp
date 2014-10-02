@@ -86,8 +86,8 @@
 															</tr>
 													<tr>
 														<td>
-														<?php echo $this->Form->input('Foto.legenda_foto', array('type' => 'file'));
-																		echo $this->Form->input('Foto.caminho_foto');
+														<?php echo $this->Form->input('Anuncio.Foto.legenda_foto', array('type' => 'file'));
+																		echo $this->Form->input('Anuncio.Foto.caminho_foto');
 														?>
 														</td>
 													</tr>
