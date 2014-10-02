@@ -143,7 +143,14 @@
 			//return $sql;
 		}
 		
-		public function mensagensPedido($pedido_id = null)
+		public function clienteMensagensPedido($pedido_id = null)
+		{
+			$this->layout = 'home';
+			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_pedido ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_pedido.id ='".$pedido_id."';");
+			return $sql;
+		}
+		
+		public function profissionalMensagensPedido($pedido_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_pedido ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_pedido.id ='".$pedido_id."';");

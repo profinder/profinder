@@ -87,7 +87,7 @@
 						
 						$pedidos = new PedidosController;
 						$pedidos->constructClasses();
-						$mensagensPedido = $pedidos->mensagensPedido($id_pedido);
+						$mensagensPedido = $pedidos->profissionalMensagensPedido($id_pedido);
 						
 						//var_dump($mensagensPedido);
 						$contador=0;
@@ -132,6 +132,7 @@
 																		'style' => 'width:1200px; height:133px; resize:none;', 
 																		'placeHolder' => "Digite aqui sua resposta..."
 																	) );
+							echo $this->Form->input('Mensagem.0.quem_enviou', array('type' => 'hidden', 'value' => 'profissional'));
 							echo $this->Form->button ( $this->Html->tag ( 'span', '', array (
 									'class' => 'glyphicon glyphicon-arrow-up' 
 							) ) . " Enviar", array (

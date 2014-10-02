@@ -104,7 +104,7 @@
 			return $sql;
 		}
 		
-		public function profissionalAnuncios($profissional_id)
+		public function profissionalAnuncios($profissional_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.profissional_id='".$profissional_id."';");

@@ -80,80 +80,78 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Meus pedidos em andamento <a href="/profinder/site/pedidos/clientePedidosFinalizados">finalizados</a></h2>
+					<h2>Mensagens</a></h2>
 					<?php 
+						$id_pedido=$_POST["id_pedido"];
+						//var_dump($id_pedido);
+						
 						$pedidos = new PedidosController;
 						$pedidos->constructClasses();
-						$clientePedidos = $pedidos->clientePedidos(AuthComponent::user('id'));
+						$mensagensPedido = $pedidos->clienteMensagensPedido($id_pedido);
 						
+						//var_dump($mensagensPedido);
 						$contador=0;
-						$contador2=0;
-						while ($contador!=sizeof($clientePedidos))
+						
+						while ($contador!=sizeof($mensagensPedido))
 						{
-							$status = $clientePedidos[$contador]['tb_pedido']['status_pedido'];
-							$id = $clientePedidos[$contador]['tb_pedido']['id'];
+							$texto = $mensagensPedido[$contador]['tb_mensagem']['texto_mensagem'];
+							$hora_envio = $mensagensPedido[$contador]['tb_mensagem']['hora_envio'];
 							
-							$anuncioPedido = $pedidos->anuncioPedido($id);
-							
-							$titulo_anuncio = $anuncioPedido[$contador2]['tb_anuncio']['titulo_anuncio'];
-							$descricao = $anuncioPedido[$contador2]['tb_anuncio']['descricao_anuncio'];
-							$modo_atendimento = $anuncioPedido[$contador2]['tb_anuncio']['modo_atendimento'];
 					?>
 					<div class="top-box">
 						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $id; ?></h2>
-							</div>
+							
 							<div class="panel-body">
 								<table border="2" width="40" height = "60">
 									<tr>
 										<td>
-											<li>Descrição:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $status; ?>
-								        			</div>
-								        		</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li>Modo de Atendimento:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $modo_atendimento; ?>
-								        			</div>
-								        		</div>
-										</td>
-										<td>
-											<?php
-								        		
-								        		echo $this->Form->postLink(
-									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-									        		array('controller' => 'pedidos','action' => 'clienteFinalizarPedido', $id),
-									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
-								        	?>
-								        	<form action="/profinder/site/pedidos/clienteMensagensPedido" id="idPedido" method="post" accept-charset="utf-8">
-				
-									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
-									        	<button type="submit" class="btn btn-success">Conversa</button>
-								        	</form>
+											<div class="panel panel-default">
+								        		<?php echo $texto; ?>
+								        	</div>
 										</td>
 										
 									</tr>
-								</table>
+								<?php 		
+										
+										$contador++;
+									}
+								?>
+													
+							</table>
+							
 							</div>
 						</div>
-					</div>
 					
-					<?php 		
-							
-							$contador++;
-						}
-					?>
 						
-													
-					
+						<?php 
+							echo $this->Form->create('Pedido', array('action' => 'add'));
+							echo $this->Form->input('Mensagem.0.texto_mensagem', array (
+																		'class' => 'form-control',
+																		'type' => 'textarea',
+																		'label' => '',
+																		'style' => 'width:1200px; height:133px; resize:none;', 
+																		'placeHolder' => "Digite aqui sua resposta..."
+																	) );
+							echo $this->Form->input('Mensagem.0.quem_enviou', array('type' => 'hidden', 'value' => 'cliente'));										
+							echo $this->Form->button ( $this->Html->tag ( 'span', '', array (
+									'class' => 'glyphicon glyphicon-arrow-up' 
+							) ) . " Enviar", array (
+									'type' => 'submit',
+									'class' => 'btn btn-default',
+									'escape' => false 
+							) );
+							echo " ";
+							
+							echo $this->Form->button ( $this->Html->tag ( 'span', '', array (
+									'class' => 'glyphicon glyphicon-pencil' 
+							) ) . " Limpar", array (
+									'type' => 'reset',
+									'class' => 'btn btn-default',
+									'escape' => false 
+							) );
+														
+						?>
+					</div>	
 			 	</div>
 			</div>
 		</div>
