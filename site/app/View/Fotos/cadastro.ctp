@@ -179,7 +179,7 @@
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil'))." Limpar",
 								array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
 						);			
-						echo $this->Form->end();		
+						echo $this->Form->end();
 					?>
 
 					</div>
