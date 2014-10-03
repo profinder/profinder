@@ -24,14 +24,16 @@
 		
 		public function cadastro()
 		{
+			
 			$this->layout = 'home';
 			if ($this->request->is('post'))
 			{
 				$this->Pedido->create();
+				
 				if ($this->Pedido->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Pedido salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array('action' => 'clientePedidos'));
+					return $this->redirect(array('action' => 'perfil'));
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
@@ -144,13 +146,6 @@
 		}
 		
 		public function clienteMensagensPedido($pedido_id = null)
-		{
-			$this->layout = 'home';
-			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_pedido ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_pedido.id ='".$pedido_id."';");
-			return $sql;
-		}
-		
-		public function profissionalMensagensPedido($pedido_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_pedido ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_pedido.id ='".$pedido_id."';");
