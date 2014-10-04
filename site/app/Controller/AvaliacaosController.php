@@ -76,7 +76,7 @@
 			}
 		}
 		
-		public function salvarAvaliacao($voto) 
+		public function cadastro($voto) 
 		{
 			$sql=$this->Avaliacao->query('replace INTO tb_avaliacao(pedido_id, nota_avaliacao) VALUES (13,'.$voto.');');
 		

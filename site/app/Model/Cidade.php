@@ -4,8 +4,7 @@
 		public $useTable = "tb_cidade";
 		
 		public $validate = array(
-				'nome_cidade' => array(
-						'rule' => 'notEmpty')
-		);
+			'nome_cidade' => array(
+				'rule' => 'notEmpty'));
 	}
 ?>

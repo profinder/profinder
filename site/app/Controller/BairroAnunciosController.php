@@ -1,11 +1,11 @@
 <?php
-	class AnuncioBairrosController extends AppController
+	class BairroAnunciosController extends AppController
 	{
 		public $helpers = array('Html', 'Form');
 	
 		public function index()
 		{
-			$this->set('anunciobairros', $this->AnuncioBairro->find('all'));
+			$this->set('anunciobairros', $this->BairroAnuncio->find('all'));
 		}
 	
 		public function add()
@@ -13,11 +13,11 @@
 			$this->layout = 'clean';
 			if ($this->request->is('post'))
 			{
-				$this->AnuncioBairro->create();
-				if ($this->AnuncioBairro->save($this->request->data))
+				$this->BairroAnuncio->create();
+				if ($this->BairroAnuncio->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Anuncio salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array('action' => 'index'));
+					//return $this->redirect(array('action' => 'index'));
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
@@ -61,12 +61,6 @@
 				);
 				return $this->redirect(array('action' => 'index'));
 			}
-		}
-		
-		public function salvar($idAnuncio, $idBairro)
-		{
-			$sql= $this->AnuncioBairro->query("insert into tb_bairro_anuncio (id_anuncio, id_bairro) values ('".$idAnuncio."', '".$idBairro."');");
-			return $sql;
 		}
 	}
 ?>

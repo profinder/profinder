@@ -3,10 +3,8 @@
 	{
 		public $useTable = "tb_bairro";
 		
-		public $validate = array
-		(
-				'nome_bairro' => array(
-						'rule' => 'notEmpty')
-		);
+		public $validate = array(
+			'nome_bairro' => array(
+				'rule' => 'notEmpty'));
 	}
 ?>

@@ -1,5 +1,47 @@
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	
+<script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
+
+<style type="text/css">
+	* { margin: 0; padding: 0; list-style: none; }
+	.stars {
+		width: 100px;
+		height: 20px;
+		margin: 5px auto 0 auto;
+	}
+	#produtos .stars li {
+		background: url('/profinder/site/img/star_groups.jpg') no-repeat;
+		display: block;
+		height: 20px;
+		width: 20px;
+		cursor: pointer;
+		float: left;
+	}
+	#produtos .stars li.active {
+		background-position: left -45px;
+	}
+	#produtos {
+		width: 450px;
+		margin: 20px auto 0 auto;
+	}
+	#produtos li {
+		float: left;
+		width: 150px;
+		height: 200px;
+		color: #1B57A3;
+		text-align: center;
+	}
+	#produtos p {
+		text-decoration: underline;
+		font: 12px Arial, Verdana, sans-serif;
+	}
+	#sql {
+		font: bold 20px Arial;
+		color: #f00;
+		text-align: center;
+		clear: both;
+	}
+</style>
+
 <div class="header">	
 	<div class="wrap"> 
 		<div class="header-top">
@@ -80,76 +122,72 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Pedidos para avaliar</a></h2>
+					<h2>Avalie este serviço: </h2>
 					<?php 
-						$pedidos = new PedidosController;
-						$pedidos->constructClasses();
-						$clientePedidoAvaliar = $pedidos->clientePedidosAvaliar(AuthComponent::user('id'));
+						//$id_pedido=$_POST["id_pedido"];
 						
-						$contador=0;
-						$contador2=0;
-						while ($contador!=sizeof($clientePedidoAvaliar))
-						{
-							$status = $clientePedidoAvaliar[$contador]['tb_pedido']['status_pedido'];
-							$id = $clientePedidoAvaliar[$contador]['tb_pedido']['id'];
-							
-							$pedidoAnuncio = $pedidos->anuncioPedido($id);
-							
-							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
-							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
-							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
+						App::import('Controller', 'Avaliacaos');
+						$avalicao = new AvaliacaosController;
+						$avalicao->constructClasses();
+						$sqlavaliacao = $avalicao->buscarAvaliacao('3');
+						var_dump($sqlavaliacao[0]['tb_avaliacao']['nota_avaliacao']);
+						$sql = $sqlavaliacao[0]['tb_avaliacao']['nota_avaliacao'];
 					?>
-					<div class="top-box">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $id; ?></h2>
-							</div>
-							<div class="panel-body">
-								<table border="2" width="40" height = "60">
-									<tr>
-										<td>
-											<li>Descrição:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $status; ?>
-								        			</div>
-								        		</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li>Modo de Atendimento:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $modo_atendimento; ?>
-								        			</div>
-								        		</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<form action = "/profinder/site/avaliacaos/avaliarPedido" id = "idPedido" method = "post" accept-charset = "utf-8">
-				
-									        	<input type = "hidden" name = "id_pedido" value = <?php echo $id ?> />
-									        	<button type = "submit" class = "btn btn-success">Avaliar</button>
-								        	
-								        	</form>
-										</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-					</div>
 					
-					<?php 		
-							
-							$contador++;
-						}
-					?>
-													
+					<ul id="produtos">
+						<li>
+							<ol class="stars"><li></li><li></li><li></li><li></li><li></li></ol>
+						</li>
+					</ul>
+				 
+					<div id="sql"></div>
+						
 					
+					</div>	
 			 	</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.stars li').click(function(){
+		var $this = $( this );
+		var ol = $this.parent('ol');
+		var rating = $this.index()+1;
+		var id_produto = ol.parent('li').find("input[name='id_produto[]']").val();
+ 
+ 
+		if( $this.hasClass('active') && !$this.next('li').hasClass('active') ){
+			$( ol ).find('li').removeClass('active');
+			rating = 0;
+		}
+		else{
+			$( ol ).find('li').removeClass('active');
+			for( var i=0; i<rating; i++ ){
+				$( ol ).find('li').eq( i ).addClass('active');
+			};
+		}
+ 
+		$.ajax({
+			type: "POST",
+			url: "retorno_votacao.php",
+			data: "id_produto="+id_produto+"&voto="+rating,
+			success: function( data ){
+				$('#sql').html( data );
+			}
+		});
+	});
+});
+
+function mostraravaliaco(nota){
+	alert(nota)
+	$( ol ).find('li').removeClass('active');
+			for( var i=0; i<nota; i++ ){
+				$( ol ).find('li').eq( i ).addClass('active');
+			};
+}
+</script>

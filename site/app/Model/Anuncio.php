@@ -12,9 +12,9 @@
 						'rule' => 'notEmpty')
 		);*/
 		public $hasMany = array(
-				'Foto' => array(
-						'className' => 'Foto',
-						'foreignKey' => 'anuncio_id'));
+			'Foto' => array(
+				'className' => 'Foto',
+				'foreignKey' => 'anuncio_id'));
 		
 		public $belongsTo = array(
 			'Endereco' => array(

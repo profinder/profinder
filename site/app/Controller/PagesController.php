@@ -222,6 +222,14 @@
 			return $cidades->estados();	
 		}
 		
+		public function salvarAnuncioBairro($idAnuncio, $idBairro) 
+		{
+			App::import('Controller', 'AnuncioBairros');
+			$anuncioBairros = new AnuncioBairrosController;
+			$anuncioBairros->constructClasses();
+			return $anuncioBairros->salvar($idAnuncio, $idBairro);	
+		}
+				
 		public function beforeFilter() 
 		{
 			$this->Auth->allow('clienteHome', 'profissionalHome', 'display');

@@ -144,7 +144,7 @@
 								        		
 								        		echo $this->Form->postLink(
 									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Confirmar",
-									        		array('controller' => 'pedidos','action' => 'finalizarPedido', $id),
+									        		array('controller' => 'pedidos', 'action' => 'profissionalFinalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        	?>
 								        	<form action="/profinder/site/pedidos/profissionalMensagensPedido" id="idPedido" method="post" accept-charset="utf-8">

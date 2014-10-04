@@ -22,16 +22,6 @@
 			$this->set('cidade', $cidade);
 		}
 	
-		public function estados(){
-			$sql= $this->Cidade->query("select DISTINCT tb_cidade.estado_cidade from tb_cidade;");
-			return $sql;
-		}
-		
-		public function cidades($estado){
-			$sql= $this->Cidade->query("select tb_cidade.nome_cidade from tb_cidade where tb_cidade.estado_cidade='".$estado."' ORDER BY tb_cidade.nome_cidade;");
-			return $sql;
-		}
-		
 		public function add()
 		{
 			$this->layout = 'clean';
@@ -86,5 +76,17 @@
 				return $this->redirect(array('action' => 'index'));
 			}
 		}
+		
+		public function estados()
+		{
+			$sql= $this->Cidade->query("select DISTINCT tb_cidade.estado_cidade from tb_cidade;");
+			return $sql;
+		}
+		
+		public function cidades($estado){
+			$sql= $this->Cidade->query("select tb_cidade.nome_cidade from tb_cidade where tb_cidade.estado_cidade='".$estado."' ORDER BY tb_cidade.nome_cidade;");
+			return $sql;
+		}
+		
 	}
 ?>
