@@ -76,27 +76,30 @@
 			}
 		}
 		
-		public function cadastro($voto) 
+		public function cadastro($voto, $id_pedido) 
 		{
-			$sql=$this->Avaliacao->query('replace INTO tb_avaliacao(pedido_id, nota_avaliacao) VALUES (13,'.$voto.');');
+			$sql=$this->Avaliacao->query('replace INTO tb_avaliacao(pedido_id, nota_avaliacao) VALUES ('.$id_pedido.','.$voto.');');
 		
 			return $sql;
 		}
 		
-		public function salvarAvaliacao($voto) 
+		public function salvarAvaliacao($voto, $id_pedido) 
 		{
-			$sql=$this->Avaliacao->query('replace INTO tb_avaliacao(pedido_id, nota_avaliacao) VALUES (12,'.$voto.');');
+			//var_dump("oi");
+			$sql=$this->Avaliacao->query('replace INTO tb_avaliacao(pedido_id, nota_avaliacao) VALUES ('.$id_pedido.','.$voto.');');
 		
 			return $sql;
 		}
 		
-		public function buscarAvaliacao($id_anuncio) 
+		public function buscarAvaliacao($id_pedido) 
 		{
-			$sql=$this->Avaliacao->query('select sum(tb_avaliacao.nota_avaliacao) from tb_avaliacao where tb_avaliacao.pedido_id='.$id_anuncio.';');
-		
+			$sql=$this->Avaliacao->query('select sum(tb_avaliacao.nota_avaliacao) from tb_avaliacao where tb_avaliacao.pedido_id='.$id_pedido.';');
 			return $sql;
 		}
 		
-		
+		public function avaliarPedido() 
+		{
+			$this->layout='home';
+		}
 	}
 ?>

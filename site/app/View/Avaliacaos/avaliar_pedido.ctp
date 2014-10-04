@@ -123,54 +123,29 @@
 				
 				<h2>Avalie este serviço</h2>
 				
-				
 				<ul id="produtos">
 					<li>
 						<ol class="stars"><li></li><li></li><li></li><li></li><li></li></ol>
 					</li>
 				</ul>
 			 
+			 	<?php
+					$id_pedido=$_POST["id_pedido"];
+			 		App::import('Controller', 'Avaliacaos');
+					$avalicao = new AvaliacaosController;
+					$avalicao->constructClasses();
+					//$sqlavaliacao=$avalicao->buscarAvaliacao($id_pedido);
+					//var_dump($sqlavaliacao[0]['tb_avaliacao']['nota_avaliacao']);
+					$sql = $sqlavaliacao[0]['tb_avaliacao']['nota_avaliacao'];
+					$sql = $sqlavaliacao[0]['tb_avaliacao']['pedido_id'];
+				?>
+			 
 				<div id="sql"></div>
-					
 						
 			 	</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" data-backdrop="static" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Mensagem</h4>
-      </div>
-      <div class="modal-body">
-      	
-        <?php
-			echo $this->Form->create('Pedido', array('action' => 'add'));
-			echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:'));
-			echo $this->Form->input('Pedido.cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
-			echo $this->Form->input('Pedido.status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
-			
-			echo $this->Form->button(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-					array('controller' => 'Pages','action' => 'solicitar_pedido'),
-					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
-			echo " ";
-			echo $this->Html->link(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller' => 'Pedidos','action' => 'index'),
-					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-			
-			echo $this->Form->end();
-		?>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
