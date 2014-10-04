@@ -24,7 +24,6 @@
 		
 		public function cadastro()
 		{
-			
 			$this->layout = 'home';
 			if ($this->request->is('post'))
 			{
@@ -133,16 +132,28 @@
 			return $sql;
 		}
 		
-		public function clienteFinalizarPedido()
-		{
-			/*if ($this->request->is('get')) {
+		public function clienteFinalizarPedido($pedido_id)
+		{		
+			if ($this->request->is('get')) {
 				throw new MethodNotAllowedException();
-			}*/
-			var_dump(oi);
-			//$sql=$this->Pedido->query("UPDATE tb_pedido SET tb_pedido.cliente_fim = 1 WHERE tb_pedido.id = '".$pedido_id."';");
+			}
+		  
+			$sql = $this->Pedido->query("UPDATE tb_pedido SET tb_pedido.cliente_fim = 1 WHERE tb_pedido.id = '".$pedido_id."';");
+			$this->Session->setFlash(__('Pedido finalizado com sucesso.'), "flash_notification");
 			
-			//var_dump($sql);
-			//return $sql;
+			return $this->redirect(array('action' => 'clientePedidos'));
+		}
+		
+		public function profissionalFinalizarPedido($pedido_id)
+		{		
+			if ($this->request->is('get')) {
+				throw new MethodNotAllowedException();
+			}
+		  
+			$sql = $this->Pedido->query("UPDATE tb_pedido SET tb_pedido.prof_fim = 1 WHERE tb_pedido.id = '".$pedido_id."';");
+			$this->Session->setFlash(__('Pedido finalizado com sucesso.'), "flash_notification");
+			
+			return $this->redirect(array('action' => 'profissionalSolicitarFinalizarPedido'));
 		}
 		
 		public function clienteMensagensPedido($pedido_id = null)

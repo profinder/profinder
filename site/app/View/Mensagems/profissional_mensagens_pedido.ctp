@@ -99,12 +99,16 @@
 							$hora_envio = $mensagensPedido[$contador]['tb_mensagem']['hora_envio'];
 							$quem_enviou = $mensagensPedido[$contador]['tb_mensagem']['quem_enviou'];
 							
-							$profissional_enviou = $mensagem->profissionalEnviou($id);
-							$nome_profissional = $profissional_enviou[$contador]['tb_pessoa']['nome_pessoa'];
-							
-							$cliente_enviou = $mensagem->clienteEnviou($id);
-							$nome_cliente = $cliente_enviou[$contador]['tb_pessoa']['nome_pessoa'];	
-					
+							if($quem_enviou == "profissional")
+							{
+								$profissional_enviou = $mensagem->profissionalEnviou($id);
+								$nome_profissional = $profissional_enviou[$contador2]['tb_pessoa']['nome_pessoa'];	
+							}
+							else 
+							{
+								$cliente_enviou = $mensagem->clienteEnviou($id);
+								$nome_cliente = $cliente_enviou[$contador2]['tb_pessoa']['nome_pessoa'];	
+							}
 								
 					?>
 					<div class="top-box">
@@ -132,7 +136,7 @@
 										
 									</tr>
 								<?php 		
-										
+										$contador2++;
 										$contador++;
 									}
 								?>
