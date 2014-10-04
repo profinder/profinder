@@ -24,6 +24,7 @@
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+
 		               		</ul>
 						</li>
 					</ul>
@@ -81,18 +82,18 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Solicitações de serviço</h2>
+					<h2>Solicitações de finalizar pedido</h2>
 					<?php 
 						$pedidos = new PedidosController;
 						$pedidos->constructClasses();
-						$profissionalPedidosSolicitados = $pedidos->profissionalPedidosSolicitados(AuthComponent::user('id'));
+						$profissionalSolicitarFinalizarPedido = $pedidos->profissionalSolicitacaoFinalizarPedido(AuthComponent::user('id'));
 						
 						$contador=0;
 						$contador2=0;
-						while ($contador!=sizeof($profissionalPedidosSolicitados))
+						while ($contador!=sizeof($profissionalSolicitarFinalizarPedido))
 						{
-							$status = $profissionalPedidosSolicitados[$contador]['tb_pedido']['status_pedido'];
-							$id = $profissionalPedidosSolicitados[$contador]['tb_pedido']['id'];
+							$status = $profissionalSolicitarFinalizarPedido[$contador]['tb_pedido']['status_pedido'];
+							$id = $profissionalSolicitarFinalizarPedido[$contador]['tb_pedido']['id'];
 							
 							$pedidoAnuncio = $pedidos->anuncioPedido($id);
 							
@@ -142,11 +143,11 @@
 											<?php
 								        		
 								        		echo $this->Form->postLink(
-									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-									        		array('controller' => 'pedidos','action' => 'profissionalFinalizarPedido', $id),
+									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Confirmar",
+									        		array('controller' => 'pedidos', 'action' => 'profissionalFinalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        	?>
-								        	<form action="/profinder/site/mensagems/profissionalMensagensPedido" id="idPedido" method="post" accept-charset="utf-8">
+								        	<form action="/profinder/site/pedidos/profissionalMensagensPedido" id="idPedido" method="post" accept-charset="utf-8">
 				
 									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
 									        	<button type="submit" class="btn btn-success">Conversa</button>

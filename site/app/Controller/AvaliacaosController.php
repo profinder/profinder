@@ -83,6 +83,13 @@
 			return $sql;
 		}
 		
+		public function salvarAvaliacao($voto) 
+		{
+			$sql=$this->Avaliacao->query('replace INTO tb_avaliacao(pedido_id, nota_avaliacao) VALUES (12,'.$voto.');');
+		
+			return $sql;
+		}
+		
 		public function buscarAvaliacao($id_anuncio) 
 		{
 			$sql=$this->Avaliacao->query('select sum(tb_avaliacao.nota_avaliacao) from tb_avaliacao where tb_avaliacao.pedido_id='.$id_anuncio.';');

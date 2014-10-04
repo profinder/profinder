@@ -20,11 +20,10 @@
 			               		<li><a href="/profinder/site/profissionals/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
 			               		<li><a href="/profinder/site/anuncios/profissionalAnuncios">Meus anúncios</a></li>
 			               		<li><a href="/profinder/site/pedidos/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
-			               		<li><a href="/profinder/site/pedidos/profissionalSolicitarFinalizarPedido">Solicitações de finalizar pedido</a></li>
+			               		<li><a href="/profinder/site/pedidos/profissionalSolicitacaoFinalizarPedido">Solicitações de finalizar pedido</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
-
 		               		</ul>
 						</li>
 					</ul>

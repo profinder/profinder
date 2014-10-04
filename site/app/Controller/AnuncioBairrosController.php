@@ -65,7 +65,7 @@
 		
 		public function salvar($idAnuncio, $idBairro)
 		{
-			$sql= $this->AnuncioBairro->query("insert into tb_bairro_anuncio (id_anuncio, id_bairro) values ('".$idAnuncio."', '".$idBairro."');");
+			$sql= $this->AnuncioBairro->query("insert into tb_bairro_anuncio (anuncio_id, bairro_id) values ('".$idAnuncio."', '".$idBairro."');");
 			return $sql;
 		}
 	}

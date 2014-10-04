@@ -32,13 +32,13 @@
 				if ($this->Pedido->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Pedido salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array('action' => 'perfil'));
+					return $this->redirect(array('action' => 'index'));
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
 		}
 		
-		public function edit($id = null)
+		public function editar($id = null)
 		{
 			if (!$id) {
 				throw new NotFoundException(__('Pedido inválido'));
@@ -64,7 +64,7 @@
 			}
 		}
 	
-		public function delete($id) 
+		public function remover($id) 
 		{
 			if ($this->request->is('get')) {
 				throw new MethodNotAllowedException();
@@ -78,39 +78,45 @@
 			}
 		}
 		
+		public function clientePedidos($cliente_id = null)
+		{
+			$this->layout = 'home';
+			$sql = $this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id='".$cliente_id."';");
+			return $sql;
+		}
+		
 		public function clientePedidosAvaliar($cliente_id = null)
 		{
 			$this->layout = 'home';
-			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id ='".$cliente_id."';");
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.profissional_fim = 1 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id ='".$cliente_id."';");
 			return $sql;
 		}
 		
 		public function clientePedidosFinalizados($cliente_id = null)
 		{
 			$this->layout = 'home';
-			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 1 AND tb_pedido.status_pedido = 'finalizado' AND tb_pedido.cliente_id='".$cliente_id."';");
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'finalizado' AND tb_pedido.cliente_id='".$cliente_id."';");
 			return $sql;
 		}
 		
-		public function profissionalSolicitarFinalizarPedido($profissional_id = null)
+		public function profissionalSolicitacaoFinalizarPedido($profissional_id = null)
 		{
 			$this->layout = 'home';
-			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.prof_fim = 0 AND tb_anuncio.profissional_id = '".$profissional_id."';");
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'andamento' AND tb_anuncio.profissional_id = '".$profissional_id."';");
+			return $sql;
+		}
+		
+		public function clienteSolicitacaoFinalizarPedido($cliente_id = null)
+		{
+			$this->layout = 'home';
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.profissional_fim = 1 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id = '".$cliente_id."';");
 			return $sql;
 		}
 		
 		public function profissionalPedidosSolicitados($profissional_id = null)
 		{
 			$this->layout = 'home';
-			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_pedido.anuncio_id = tb_anuncio.id WHERE tb_pedido.cliente_fim = 0 AND tb_anuncio.profissional_id ='".$profissional_id."';");
-			return $sql;
-		}
-		
-		public function clientePedidos($cliente_id = null)
-		{
-			$this->layout = 'home';
-			$sql = $this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.prof_fim = 0 AND tb_pedido.cliente_id='".$cliente_id."';");
-		//	var_dump($sql);
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_pedido.anuncio_id = tb_anuncio.id WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'andamento' AND tb_anuncio.profissional_id ='".$profissional_id."';");
 			return $sql;
 		}
 		
@@ -150,10 +156,10 @@
 				throw new MethodNotAllowedException();
 			}
 		  
-			$sql = $this->Pedido->query("UPDATE tb_pedido SET tb_pedido.prof_fim = 1 WHERE tb_pedido.id = '".$pedido_id."';");
+			$sql = $this->Pedido->query("UPDATE tb_pedido SET tb_pedido.profissional_fim = 1 WHERE tb_pedido.id = '".$pedido_id."';");
 			$this->Session->setFlash(__('Pedido finalizado com sucesso.'), "flash_notification");
 			
-			return $this->redirect(array('action' => 'profissionalSolicitarFinalizarPedido'));
+			return $this->redirect(array('action' => 'profissionalSolicitacaoFinalizarPedido'));
 		}
 		
 		public function clienteMensagensPedido($pedido_id = null)

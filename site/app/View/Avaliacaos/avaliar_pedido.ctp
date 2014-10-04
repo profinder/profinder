@@ -41,7 +41,6 @@
 		clear: both;
 	}
 </style>
-
 <div class="header">	
 	<div class="wrap"> 
 		<div class="header-top">
@@ -54,17 +53,17 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			                	<span class="glyphicon glyphicon-cog"></span>
-			                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
-			                		<b class="caret"></b>
-			                	</a>
+		                		Opções LOGADO: <?php echo AuthComponent::user("id"); ?>
+		                		<b class="caret"></b>
+		                	</a>
 							<ul class="dropdown-menu">
-								<li><a href="/profinder/site/clientes/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pedidos/clientePedidos">Meus pedidos</a></li>
-								<li><a href="/profinder/site/pedidos/clientePedidosAvaliar">Meus pedidos disponíveis para avaliar</a></li>
+			               		<li><a href="/profinder/site/pages/perfilProfissional">Perfil</a></li>
+			               		<li><a href="/profinder/site/pages/anunciosProfissional">Meus anúncios</a></li>
+			               		<li><a href="#">Notificações</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+								<li><a href="/profinder/site/users/delete">Remover Conta</a></li>
+			               		<li><a href="/profinder/site/users/logout">Sair</a></li>
+
 		               		</ul>
 						</li>
 					</ul>
@@ -120,36 +119,59 @@
 	<div class="main">
 		<div class="wrap">
 			<div class="content-top">
-				<div class="top-box">
+				<div class="top-box">	
+				
+				<h2>Avalie este serviço</h2>
+				
+				
+				<ul id="produtos">
+					<li>
+						<ol class="stars"><li></li><li></li><li></li><li></li><li></li></ol>
+					</li>
+				</ul>
+			 
+				<div id="sql"></div>
 					
-					<h2>Avalie este serviço: </h2>
-					<?php 
-						//$id_pedido=$_POST["id_pedido"];
 						
-						App::import('Controller', 'Avaliacaos');
-						$avalicao = new AvaliacaosController;
-						$avalicao->constructClasses();
-						$sqlavaliacao = $avalicao->buscarAvaliacao('3');
-						var_dump($sqlavaliacao[0]['tb_avaliacao']['nota_avaliacao']);
-						$sql = $sqlavaliacao[0]['tb_avaliacao']['nota_avaliacao'];
-					?>
-					
-					<ul id="produtos">
-						<li>
-							<ol class="stars"><li></li><li></li><li></li><li></li><li></li></ol>
-						</li>
-					</ul>
-				 
-					<div id="sql"></div>
-						
-					
-					</div>	
 			 	</div>
 			</div>
 		</div>
 	</div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Mensagem</h4>
+      </div>
+      <div class="modal-body">
+      	
+        <?php
+			echo $this->Form->create('Pedido', array('action' => 'add'));
+			echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:'));
+			echo $this->Form->input('Pedido.cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
+			echo $this->Form->input('Pedido.status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
+			
+			echo $this->Form->button(
+					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
+					array('controller' => 'Pages','action' => 'solicitar_pedido'),
+					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
+			echo " ";
+			echo $this->Html->link(
+					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
+					array('controller' => 'Pedidos','action' => 'index'),
+					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
+			
+			echo $this->Form->end();
+		?>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script type="text/javascript">
@@ -174,7 +196,7 @@ $(document).ready(function(){
  
 		$.ajax({
 			type: "POST",
-			url: "retorno_votacao.php",
+			url: "/profinder/site/pages/retorno_votacao.php",
 			data: "id_produto="+id_produto+"&voto="+rating,
 			success: function( data ){
 				$('#sql').html( data );
@@ -191,3 +213,4 @@ function mostraravaliaco(nota){
 			};
 }
 </script>
+

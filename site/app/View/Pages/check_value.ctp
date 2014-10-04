@@ -4,8 +4,8 @@
 	$idAnuncio = $this->Session->read('idAnuncio');
 	$pages = new PagesController;
 	$pages->constructClasses();
-	$bairros=$pages->bairros($cidade);
-	$contador=0;
+	$bairros = $pages->bairros($cidade);
+	$contador = 0;
 	var_dump($bairros);
 	while ($contador!=sizeof($bairros)){
 		$bairro_id=$bairros[$contador]['tb_bairro']['id'];

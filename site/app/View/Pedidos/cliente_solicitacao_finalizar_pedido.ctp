@@ -12,15 +12,15 @@
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                	<span class="glyphicon glyphicon-cog"></span>
-		                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
-		                		<b class="caret"></b>
-		                	</a>
+			                	<span class="glyphicon glyphicon-cog"></span>
+			                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
+			                		<b class="caret"></b>
+			                	</a>
 							<ul class="dropdown-menu">
-			               		<li><a href="/profinder/site/profissionals/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/anuncios/profissionalAnuncios">Meus anúncios</a></li>
-			               		<li><a href="/profinder/site/pedidos/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
-			               		<li><a href="/profinder/site/pedidos/profissionalSolicitarFinalizarPedido">Solicitações de finalizar pedido</a></li>
+								<li><a href="/profinder/site/clientes/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+			               		<li><a href="/profinder/site/pedidos/clientePedidos">Meus pedidos</a></li>
+								<li><a href="/profinder/site/pedidos/clientePedidosAvaliar">Meus pedidos disponíveis para avaliar</a></li>
+			               		<li><a href="/profinder/site/pedidos/clienteSolicitacaoFinalizarPedido">Solicitações de finalizar pedido</a></li>
 			               		<li class="divider"></li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
@@ -86,14 +86,14 @@
 					<?php 
 						$pedidos = new PedidosController;
 						$pedidos->constructClasses();
-						$profissionalSolicitarFinalizarPedido = $pedidos->profissionalSolicitarFinalizarPedido(AuthComponent::user('id'));
+						$clienteSolicitarFinalizarPedido = $pedidos->clienteSolicitacaoFinalizarPedido(AuthComponent::user('id'));
 						
 						$contador=0;
 						$contador2=0;
-						while ($contador!=sizeof($profissionalSolicitarFinalizarPedido))
+						while ($contador!=sizeof($clienteSolicitarFinalizarPedido))
 						{
-							$status = $profissionalSolicitarFinalizarPedido[$contador]['tb_pedido']['status_pedido'];
-							$id = $profissionalSolicitarFinalizarPedido[$contador]['tb_pedido']['id'];
+							$status = $clienteSolicitarFinalizarPedido[$contador]['tb_pedido']['status_pedido'];
+							$id = $clienteSolicitarFinalizarPedido[$contador]['tb_pedido']['id'];
 							
 							$pedidoAnuncio = $pedidos->anuncioPedido($id);
 							
@@ -144,10 +144,10 @@
 								        		
 								        		echo $this->Form->postLink(
 									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Confirmar",
-									        		array('controller' => 'pedidos', 'action' => 'profissionalFinalizarPedido', $id),
+									        		array('controller' => 'pedidos', 'action' => 'clienteFinalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        	?>
-								        	<form action="/profinder/site/pedidos/profissionalMensagensPedido" id="idPedido" method="post" accept-charset="utf-8">
+								        	<form action="/profinder/site/pedidos/clienteMensagensPedido" id="idPedido" method="post" accept-charset="utf-8">
 				
 									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
 									        	<button type="submit" class="btn btn-success">Conversa</button>
