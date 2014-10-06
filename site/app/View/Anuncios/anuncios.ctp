@@ -81,64 +81,78 @@
 			<div class="content-top">
 				<div class="top-box">	
 				
-				<h2>Meus anúncios</h2>
+				<h2>Anúncios</h2>
 					
 					<?php 
 						$anuncios = new AnunciosController;
 						$anuncios->constructClasses();
 						$anuncios= $anuncios->anuncios();
 						
-						$contador=0;
-						while ($contador!=sizeof($anuncios))
+						if($anuncios == null)
 						{
-							$titulo = $anuncios[$contador]['tb_anuncio']['titulo_anuncio'];
-							$id = $anuncios[$contador]['tb_anuncio']['id'];
-							$descricao = $anuncios[$contador]['tb_anuncio']['descricao_anuncio'];
-							$modo_atendimento = $anuncios[$contador]['tb_anuncio']['modo_atendimento'];
+							echo "Nenhum anúncio cadastrado!";
+							echo "</br>";
+							echo "</br>";
+						}
+						else 
+						{
+							$contador=0;
+							while ($contador!=sizeof($anuncios))
+							{
+								$titulo = $anuncios[$contador]['tb_anuncio']['titulo_anuncio'];
+								$id = $anuncios[$contador]['tb_anuncio']['id'];
+								$descricao = $anuncios[$contador]['tb_anuncio']['descricao_anuncio'];
+								$modo_atendimento = $anuncios[$contador]['tb_anuncio']['modo_atendimento'];
+									
+								//echo $anuncio_titulo;
+								//echo "<br/>";
+											
 							
-							//echo $anuncio_titulo;
-							//echo "<br/>";
-						
-					?>
-										
-					<form action="/profinder/site/pedidos/cadastro" id="idAnuncio" method="post" accept-charset="utf-8">
-						<div class="top-box">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $titulo; ?></h2>
-							</div>
-								<div class="panel-body">
-									<table border="2" width="40" height = "60">
-										<tr>
-											<td>
-												<input type="checkbox" name="anuncio[]" value=<?php echo $id ?> />
-											</td>
-											<td>
-												<li>Modo de Atendimento:</li> 
+								?>
+																	
+												<form action="/profinder/site/pedidos/cadastro" id="idAnuncio" method="post" accept-charset="utf-8">
 													<div class="top-box">
-														<div class="panel panel-default">
-									        				<?php echo $modo_atendimento; ?>
-									        			</div>
-									        		</div>
-											</td>
-											</tr>
-									</table>
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<h2 class="panel-title"><?php echo $titulo; ?></h2>
+														</div>
+															<div class="panel-body">
+																<table border="2" width="40" height = "60">
+																	<tr>
+																		<td>
+																			<input type="checkbox" name="anuncio[]" value=<?php echo $id ?> />
+																		</td>
+																		<td>
+																			<li>Modo de Atendimento:</li> 
+																				<div class="top-box">
+																					<div class="panel panel-default">
+																        				<?php echo $modo_atendimento; ?>
+																        			</div>
+																        		</div>
+																		</td>
+																		</tr>
+																</table>
+															</div>
+														</div>
+													</div>
+													<?php 		
+														$contador++;
+													}
+													?>	
+								            		<button type="submit" class="btn btn-success">Solicitar Pedido</button>
+												</form>		
+													
+										 	</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-						<?php 		
-							$contador++;
+														
 						}
-						?>	
-	            		<button type="submit" class="btn btn-success">Solicitar Pedido</button>
-					</form>		
 						
-			 	</div>
-			</div>
-		</div>
-	</div>
-</div>
-
+						<?php }  ?>
+						
+						
 
 <!-- Modal -->
 <div class="modal fade" data-backdrop="static" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -172,4 +186,3 @@
     </div>
   </div>
 </div>
-
