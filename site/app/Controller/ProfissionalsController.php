@@ -27,6 +27,14 @@
 			if ($this->request->is('post'))
 			{
 				$this->Profissional->create();
+				if ($this->request->data['Telefone'][1]['ddd_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][1]);
+				}	
+				if ($this->request->data['Telefone'][2]['ddd_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][2]);
+				}	
 				if ($this->Profissional->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Profissional salvo com sucesso.'), "flash_notification");
@@ -38,6 +46,7 @@
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
 		}
+	
 	
 		public function editar($id = null) 
 		{

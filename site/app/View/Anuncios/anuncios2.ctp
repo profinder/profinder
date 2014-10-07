@@ -88,7 +88,6 @@
 						$anuncios= $anunciosController->anuncios();
 						
 						$contador=0;
-						$contador2=0;
 						while ($contador!=sizeof($anuncios))
 						{
 							$titulo = $anuncios[$contador]['tb_anuncio']['titulo_anuncio'];
@@ -96,75 +95,54 @@
 							$descricao = $anuncios[$contador]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $anuncios[$contador]['tb_anuncio']['modo_atendimento'];
 							
-							
-							$profissional = $anunciosController->dadosProfissionalAnuncio($id);
-							$nome_profissional = $profissional[$contador2]['tb_pessoa']['nome_pessoa'];
-												
+						//echo $anuncio_titulo;
+							//echo "<br/>";
+						
 					?>
 										
 					<form action="/profinder/site/pedidos/cadastro" id="idAnuncio" method="post" accept-charset="utf-8">
-						
 						<div class="top-box">
-							<div class="panel panel-warning">
+						
+						<div class="panel panel-warning">
 								<div class="panel-body">
-									<h4> <input type="checkbox" name="anuncio[]" value=<?php echo $id ?> /> <?php echo $titulo; ?> </h4>
-									<hr>
-									<br/>
-									
-									<div class="panel panel-default" style="height: 250px; width: 270px; float: left;">
-										<?php 
-											$foto = $anunciosController->caminhoFoto($id);
-											if($foto==null||$foto==0){
-												echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='240' width='240' style= 'padding-top:0px'> </a>";
-											}
-											else
-											{
-												echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='".$foto[0]['tb_foto']['caminho_foto']."' height='240' width='240' style= 'padding-top:0px'> </a>";
-											}
-										?>
-									</div>
-									<div align = "left" style="height: 250px; width: 600px; float: left; margin-left: 10px;">
-									 	<?php 
-									 		echo "Descrição: <br /> <br /> <center>";
-									 		echo $descricao;
-									 		echo "</center><br /><br />";
-									 		echo "Modo de atendimento: ";
-									 		
-									 		if($modo_atendimento == "escritorio")
-									 		{
-									 			echo "Escritório.";
-									 			echo "<font color = '#aaacae'> Endereço ao lado (Google Maps) </font>";
-									 			
-									 		}
-											else if($modo_atendimento == "domiciliar")
-									 		{
-									 			echo "Domiciliar.";
-									 		}
-											else if($modo_atendimento == "online")
-									 		{
-									 			echo "On-line.";
-									 		}
-									 		echo "<br /> <br />";
-									 		echo "Nome do profissional: ";
-									 		echo $nome_profissional;
-									 		
-									 	?>
-									</div>
-									<?php 
-										if( $modo_atendimento == "escritorio")
-										{
-									?>
-									<div class="panel panel-default" align = "left" style="height: 250px; width: 270px; float: left; margin-left: 10px;">
-										<?php 
-											echo "<img src='/profinder/site/img/googlemaps.png' height='250' width='270' style= 'padding-top:0px'>";
-										}
-										?>
-									</div>
-									
+									<table border="2" width="1200" height = "60">
+										<tr>
+											<td colspan = "4">
+												<center><h4> <input type="checkbox" name="anuncio[]" value=<?php echo $id ?> /> <?php echo $titulo; ?> </h4></center>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="top-box">
+														<div class="panel panel-default">
+															<?php 
+																$foto = $anunciosController->caminhoFoto($id);
+																if($foto==null||$foto==0){
+																	echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='160' width='160' style= 'padding-top:0px'> </a>";
+																
+																}
+																else
+																{
+																	echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='".$foto[0]['tb_foto']['caminho_foto']."' height='160' width='160' style= 'padding-top:0px'> </a>";
+																}
+															?>
+															
+															
+									        			</div>
+														<?php //echo $modo_atendimento; ?>
+									        		</div>
+											</td>
+											<td>
+												<h4>Profissional:</h4> 
+									        	<?php echo $nome_profissional; ?>
+									        	<br />
+											</td>
+											
+										</tr>
+									</table>
 								</div>
 							</div>
-						
-							</div>
+						</div>
 						<?php 		
 							$contador++;
 						}
@@ -177,3 +155,38 @@
 		</div>
 	</div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Mensagem</h4>
+      </div>
+      <div class="modal-body">
+      	
+        <?php
+			echo $this->Form->create('Pedido', array('action' => 'add'));
+			echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:'));
+			echo $this->Form->input('Pedido.cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
+			echo $this->Form->input('Pedido.status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
+			
+			echo $this->Form->button(
+					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
+					array('controller' => 'Pages','action' => 'solicitar_pedido'),
+					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
+			echo " ";
+			echo $this->Html->link(
+					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
+					array('controller' => 'Pedidos','action' => 'index'),
+					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
+			
+			echo $this->Form->end();
+		?>
+      </div>
+    </div>
+  </div>
+</div>
+

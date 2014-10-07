@@ -122,7 +122,7 @@
 														</td>
 													</tr>
 													
-													<?php /*<tr>
+													 <tr>
 														<td>
 															<div class="input-group">
 																<span class="input-group-addon">DDD</span>
@@ -189,8 +189,7 @@
 																	?>
 															</div>
 														</td>
-													</tr>
-													*/ ?>													
+													</tr>													
 												</table>	
 												</center>		
 											</div>

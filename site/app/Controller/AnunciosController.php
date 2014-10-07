@@ -228,5 +228,16 @@
 			$arquivo->copy($dir.$imagem['name']);
 			$arquivo->close();
 		}
+		
+		public function visualizar()
+		{
+			$this->layout='home';
+		}
+		
+		public function caminhoFoto($id)
+		{
+			$sql= $this->Anuncio->query("SELECT tb_foto.caminho_foto FROM tb_anuncio INNER JOIN tb_foto ON tb_anuncio.id = tb_foto.anuncio_id WHERE tb_anuncio.id='".$id."';");
+			return $sql;
+		}
 	}
 ?>

@@ -43,10 +43,12 @@
 	   			</div>
    			</div>	
 		</div>
-    <form id = "formulario" action = "anuncios/anuncios" method = "post">
+		
+	<form id = "formulario" action = "anuncios/anuncios" method = "post">
 	<div class="banner">
     	<div class="wrap">
 			<div class="cssmenu">
+				
 				<?php
 					App::import('Controller', 'Pages');
 					$pages = new PagesController;
@@ -93,21 +95,29 @@
 				</ul>
 			</div>
 			</form>
+			
+			
 			<div class="slider">
+			
 		 		<div class="slider-wrapper theme-default">
-		            <div id="slider" class="nivoSlider">
+		 		    <div id="slider" class="nivoSlider">
 		                
 		                <img src="img/pedreiro.jpg" alt="" />
 		                <img src="img/empregada-domestica.jpg" alt="" />
 		                <img src="img/dj.jpg" alt="" />
 		                <img src="img/jardineira.jpg" alt="" />
-		      			
+		                
 		                </div>
+		                
 		                <br />
+		     
 		             </div>
-			</div>
+		   </div>
 		</div>
+		
 	</div>
+	<div style="position:absolute; border: 5px solid white; background-color:#FFF; height: 100px; width: 600px; float: left; top:110px; left:6px; margin-left: 70px;">
+		</div>
   	<!------End Slider ------------>
 	<div class="main">
 		<div class="wrap">

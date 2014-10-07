@@ -34,7 +34,7 @@
 			return $this->redirect($this->Auth->logout());
 		}
 		
-		public function index() 
+	public function index() 
 		{
 	         $this->set('usuarios', $this->User->find('all'));
 	    }
@@ -60,9 +60,19 @@
 	    	if ($this->request->is('post'))
 	    	{
 	    		$this->User->create();
+	    		
+	    		var_dump($this->request->data);
+				if ($this->request->data['Telefone'][1]['ddd_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][1]);
+				}	
+				if ($this->request->data['Telefone'][2]['ddd_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][2]);
+				}	
 	    		$passHash = new SimplePasswordHasher();
 	    		$this->request->data["password"] = $passHash->hash($this->request->data["password"]);
-	    		if ($this->User->saveAssociated($this->request->data))
+	    		if ($this->User->saveAssocietad($this->request->data))
 	    		{
 	    			$savedata = Array('User' => $this->request->data['User']);
 					$this->User->save($savedata);
@@ -114,7 +124,7 @@
 	    	if ($this->User->delete($id))
 	    	{
 	    		$this->Session->setFlash(__('Administrador excluído com sucesso.'), "flash_notification");
-	    		return $this->redirect(array('action' => 'logout'));
+	    		return $this->redirect(array('action' => 'index'));
 	    	}
 	    }
 	    
