@@ -1,4 +1,4 @@
-<center><h4>Gerenciamento de Servicos</h4></center>
+<center><h4>Gerenciamento de Serviços</h4></center>
 <br/>
 
 <button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Novo</button>
@@ -17,8 +17,7 @@
     <?php echo $servico['Servico']['id']; ?></td>
         <td>
             <?php
-            	echo $this->Html->link($servico['Servico']['nome_servico'],
-				array('controller' => 'servicos', 'action' => 'view', $servico['Servico']['id']));
+            	echo $servico['Servico']['nome_servico'];
 			?>
         </td>
 		<td>
@@ -37,7 +36,7 @@
         	<?php
         		echo $this->Form->postLink(
         			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-        			array('controller' => 'pedidos','action' => 'finalizarPedido', $id),
+        			array('controller' => 'servicos','action' => 'delete', $servico['Servico']['id']),
         			array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
         	?>
         </td>

@@ -39,6 +39,7 @@
    		</div>	
 	</div>
     
+	<form id = "formulario" action = "anuncios/anuncios" method = "post">
 	<div class="banner">
     	<div class="wrap">
 			<div class="cssmenu">
@@ -47,37 +48,47 @@
 					$pages = new PagesController;
 					$pages->constructClasses();
 					$categorias=$pages->nomeCategorias();
+					//$pages->email('uuu');
 					$contador=0;
 				?>
 				<ul>
+				
 					<?php
 						while($contador<sizeof($categorias))
 						{
 					?>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $categorias[$contador]['Categoria']['nome_categoria'] ?><b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<?php
-											$servicos=$pages->nomeServicos($categorias[$contador]['Categoria']['id']);
-											$contadorServicos=0;
-											while($contadorServicos<sizeof($servicos))
-											{
-										?>
-												<li><a href="#"><?php echo $servicos[$contadorServicos]['Servico']['nome_servico'] ?></a></li>
-												
-												<?php
-													$contadorServicos++;
-											}
-												?>
-									</ul>
-							<?php
-								$contador++;
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $categorias[$contador]['Categoria']['nome_categoria'] ?><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<?php
+									$servicos=$pages->nomeServicos($categorias[$contador]['Categoria']['id']);
+									$contadorServicos=0;
+									while($contadorServicos<sizeof($servicos))
+									{
+										$id_servico = $servicos[$contadorServicos]['Servico']['id'];
+										$nome_servico = $servicos[$contadorServicos]['Servico']['nome_servico']; 
+								/*<li><a href = "/profinder/site/anuncios/anuncios?serv=".<?php echo $id_servico;?>><?php echo $servicos[$contadorServicos]['Servico']['nome_servico']; ?></a></li>
+								*/
+								echo "<li><a href = '/profinder/site/anuncios/anuncios?serv=".$id_servico;
+								echo "'>$nome_servico</a></li>";
+								
+								/*echo "<a href = '/Loja/clienteForm.php?usr=".$row['id_cliente'];
+								echo "'>Editar</a> ";
+				
+								<?php*/
+									$contadorServicos++;
 						}
+					?>
+							</ul>
+							<?php
+						$contador++;
+					}
 							?>
-											
 					<div class="clear"></div> 
 				</ul>
 			</div>
+			</form>
 		</div>
 	</div>
 	<div class="main">

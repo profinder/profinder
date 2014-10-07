@@ -16,9 +16,7 @@
     <?php echo $categoria['Categoria']['id']; ?></td>
         <td>
             <?php
-            	echo $this->Html->link($categoria['Categoria']['nome_categoria'],
-				array('controller' => 'categorias', 'action' => 'view', $categoria['Categoria']['id']),
-				array('escape' => false, "data-toggle"=>"modal", "data-target"=>"#myModalView"));
+            	echo $categoria['Categoria']['nome_categoria'];
 			?>
         </td>
         <td>
@@ -68,35 +66,6 @@
 					
 					echo $this->Form->end();
 				?>
-      		</div>
-    	</div>
-  	</div>
-</div>
-
-<!-- Modal View-->
-<div class="modal fade" data-backdrop="static" id="myModalView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
- 	<div class="modal-dialog">
-    	<div class="modal-content">
-      		<div class="modal-header">
-        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        			<h4 class="modal-title" id="myModalLabel">Dados da Categoria</h4>
-      		</div>
-      		<div class="modal-body">
-      	
-		        <?php 
-		        
-					echo $this->Form->create('Categoria', array('action' => 'view'));
-					echo $this->Form->input('nome_categoria', array('label' => 'Nome:'));
-					
-					echo $this->Html->link(
-							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Sair",
-							array('controller' => 'Categorias','action' => 'index'),
-							array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
-					);
-					
-					echo $this->Form->end();
-				 ?>
-		
       		</div>
     	</div>
   	</div>

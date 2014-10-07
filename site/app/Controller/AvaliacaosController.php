@@ -91,6 +91,11 @@
 			return $sql;
 		}
 		
+		public function salvarPedido($id_pedido) 
+		{
+			$this->Session->write('pedido_id', $id_pedido);
+		}
+		
 		public function buscarAvaliacao($id_pedido) 
 		{
 			$sql=$this->Avaliacao->query('select sum(tb_avaliacao.nota_avaliacao) from tb_avaliacao where tb_avaliacao.pedido_id='.$id_pedido.';');

@@ -103,12 +103,12 @@
 		                <img src="img/jardineira.jpg" alt="" />
 		      			
 		                </div>
+		                <br />
 		             </div>
 			</div>
 		</div>
-   </div>
-  
-		<!------End Slider ------------>
+	</div>
+  	<!------End Slider ------------>
 	<div class="main">
 		<div class="wrap">
 			<div class="content-top">

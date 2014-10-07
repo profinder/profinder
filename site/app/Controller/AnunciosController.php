@@ -146,6 +146,14 @@
 			return $sql;
 		}
 		
+		public function dadosProfissionalAnuncio($anuncio_id) 
+		{
+			App::import('Controller', 'Profissionals');
+			$profissional = new ProfissionalsController;
+			$profissional->constructClasses();
+			return $profissional->dadosProfissionalAnuncio($anuncio_id);	
+		}
+		
 		public function upload($imagem = array(), $dir = 'img')
 		{
 			$dir = WWW_ROOT.$dir.DS;

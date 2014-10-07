@@ -18,7 +18,7 @@
 			                	</a>
 							<ul class="dropdown-menu">
 								<li><a href="/profinder/site/clientes/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pedidos/clientePedidos">Meus pedidos</a></li>
+			               		<li><a href="/profinder/site/pedidos/clientePedidos"> Meus pedidos</a></li>
 								<li><a href="/profinder/site/pedidos/clientePedidosAvaliar">Meus pedidos disponíveis para avaliar</a></li>
 			               		<li><a href="/profinder/site/pedidos/clienteSolicitacaoFinalizarPedido">Solicitações de finalizar pedido</a></li>
 			               		<li class="divider"></li>

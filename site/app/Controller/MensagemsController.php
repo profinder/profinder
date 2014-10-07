@@ -31,8 +31,7 @@
 				if ($this->Mensagem->save($this->request->data))
 				{
 					$this->Session->setFlash(__('Mensagem salvo com sucesso!'), "flash_notification");
-					return $this->redirect(array('action' => 'index'));
-					
+					return $this->redirect($this->referer());
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}

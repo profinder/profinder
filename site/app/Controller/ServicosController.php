@@ -100,5 +100,11 @@
 		{
 			return $this->Servico->find('all');
 		}
+		
+		public function getCategorias()
+		{
+			$sql=$this->Servico->query("SELECT tb_categoria.* FROM tb_categoria ORDER BY tb_categoria.nome_categoria;");
+			return $sql;
+		}
 	}
 ?>

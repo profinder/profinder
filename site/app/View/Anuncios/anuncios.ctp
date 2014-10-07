@@ -81,7 +81,6 @@
 			<div class="content-top">
 				<div class="top-box">	
 				
-				<h2>Meus anúncios</h2>
 					
 					<?php 
 						$anuncios = new AnunciosController;
@@ -96,32 +95,37 @@
 							$descricao = $anuncios[$contador]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $anuncios[$contador]['tb_anuncio']['modo_atendimento'];
 							
-							//echo $anuncio_titulo;
+						//echo $anuncio_titulo;
 							//echo "<br/>";
 						
 					?>
 										
 					<form action="/profinder/site/pedidos/cadastro" id="idAnuncio" method="post" accept-charset="utf-8">
 						<div class="top-box">
-						<div class="panel panel-default">
+						
+						<div class="panel panel-warning">
 							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $titulo; ?></h2>
+								<font color = "#8F6442" size = 4> <input type="checkbox" name="anuncio[]" value=<?php echo $id ?> /> <?php echo $titulo; ?> </font>
 							</div>
 								<div class="panel-body">
-									<table border="2" width="40" height = "60">
+									<table border="2" width="200" height = "60">
 										<tr>
 											<td>
-												<input type="checkbox" name="anuncio[]" value=<?php echo $id ?> />
+											&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
 											</td>
 											<td>
-												<li>Modo de Atendimento:</li> 
-													<div class="top-box">
-														<div class="panel panel-default">
-									        				<?php echo $modo_atendimento; ?>
-									        			</div>
-									        		</div>
+												<h4>Modo de Atendimento:</h4> 
+									        	<?php echo $modo_atendimento; ?>
+									        			
 											</td>
-											</tr>
+											<td>
+												<font color = "#fff">oooo</font> 
+											</td>
+											<td>
+												<h4>Profissional:</h4> 
+									        	<?php echo $nome_profissional; ?>
+											</td>
+										</tr>
 									</table>
 								</div>
 							</div>
@@ -130,7 +134,7 @@
 							$contador++;
 						}
 						?>	
-	            		<button type="submit" class="btn btn-success">Solicitar Pedido</button>
+	            		<button type="submit" class="btn btn-default">Solicitar Pedido</button>
 					</form>		
 						
 			 	</div>

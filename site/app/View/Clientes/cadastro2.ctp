@@ -2,7 +2,8 @@
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
 <div class="header">
-background-image: url("/img/logo.png")
+
+	
 	<div class="wrap">
 		<div class="header-top">
 			<div class="logo">

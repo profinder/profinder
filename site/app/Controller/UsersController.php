@@ -19,16 +19,13 @@
 		
 		public function login() 
 		{
-		//	var_dump($this->request);
-			//$user = $this->Auth->login($this->request->data['User']);
-			//$role = $user['role'];
-			
+			$this->layout = 'home';
+		
 			if ($this->request->is('post')) {
 				if ($this->Auth->login()) {
 					return $this->redirect($this->Auth->redirect());
-					
 				}
-				$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
+				//$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
 			}
 		}
 		
@@ -65,7 +62,7 @@
 	    		$this->User->create();
 	    		$passHash = new SimplePasswordHasher();
 	    		$this->request->data["password"] = $passHash->hash($this->request->data["password"]);
-	    		if ($this->User->save($this->request->data))
+	    		if ($this->User->saveAssociated($this->request->data))
 	    		{
 	    			$savedata = Array('User' => $this->request->data['User']);
 					$this->User->save($savedata);
@@ -117,7 +114,7 @@
 	    	if ($this->User->delete($id))
 	    	{
 	    		$this->Session->setFlash(__('Administrador excluído com sucesso.'), "flash_notification");
-	    		return $this->redirect(array('action' => 'index'));
+	    		return $this->redirect(array('action' => 'logout'));
 	    	}
 	    }
 	    

@@ -91,5 +91,11 @@
 			$sql=$this->Profissional->query("SELECT tb_pessoa.* FROM tb_pessoa WHERE tb_pessoa.id ='".$id."';");
 			return $sql;
 		}
+		
+		public function dadosProfissionalAnuncio($anuncio_id)
+		{
+			$sql=$this->Profissional->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_profissional ON tb_pessoa.id = tb_profissional.id INNER JOIN tb_anuncio ON tb_anuncio.profissional_id = tb_profissional.id WHERE tb_anuncio.id ='".$anuncio_id."';");
+			return $sql;
+		}
 	}
 ?>

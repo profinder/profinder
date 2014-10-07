@@ -19,9 +19,7 @@
     <?php echo $cidade['Cidade']['id']; ?></td>
         <td>
             <?php
-            	echo $this->Html->link($cidade['Cidade']['nome_cidade'],
-				array('controller' => 'cidades', 'action' => 'view', $cidade['Cidade']['id']),
-				array('escape' => false, "data-toggle"=>"modal", "data-target"=>"#myModalView"));
+            	echo $cidade['Cidade']['nome_cidade'];
 			?>
         </td>
 		<td><?php echo $cidade['Cidade']['cep_cidade']; ?></td>
@@ -104,35 +102,6 @@
 					echo $this->Form->end();
 				?>
       		</div>
-    	</div>
-	</div>
-</div>
-
-<!-- Modal View-->
-<div class="modal fade" data-backdrop="static" id="myModalView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-    	<div class="modal-content">
-      		<div class="modal-header">
-        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        			<h4 class="modal-title" id="myModalLabel">Dados da Cidade</h4>
-      		</div>
-      		<div class="modal-body">
-      	
-		        <?php
-					echo $this->Form->create('Cidade', array('action' => 'view'));
-					echo $this->Form->input('nome_cidade', array('label' => 'Nome:'));
-					echo $this->Form->input('cep_cidade', array('label' => 'CEP:'));
-					echo $this->Form->input('estado_cidade', array('label' => 'Estado:'));
-					
-					echo $this->Html->link(
-							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Sair",
-							array('controller' => 'Cidades','action' => 'index'),
-							array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-					
-					echo $this->Form->end();
-				 ?>
-				
-     		</div>
     	</div>
 	</div>
 </div>
