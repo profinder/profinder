@@ -132,9 +132,15 @@
 			return $sql;
 		}
 		
-		public function dadosPedido($pedido_id)
+		public function dadosCliente($pedido_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_pedido ON tb_pedido.cliente_id = tb_pessoa.id WHERE tb_pedido.id ='".$pedido_id."';");
+			return $sql;
+		}
+		
+		public function dadosProfissional($pedido_id)
+		{
+			$sql=$this->Pedido->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_profissional ON tb_profissional.id = tb_pessoa.id INNER JOIN tb_anuncio ON tb_anuncio.profissional_id = tb_profissional.id INNER JOIN tb_pedido ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.id ='".$pedido_id."';");
 			return $sql;
 		}
 		
@@ -160,13 +166,6 @@
 			$this->Session->setFlash(__('Pedido finalizado com sucesso.'), "flash_notification");
 			
 			return $this->redirect(array('action' => 'profissionalSolicitacaoFinalizarPedido'));
-		}
-		
-		public function clienteMensagensPedido($pedido_id = null)
-		{
-			$this->layout = 'home';
-			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_pedido ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_pedido.id ='".$pedido_id."';");
-			return $sql;
 		}
 		
 		public function criarSessao($anuncios = null)

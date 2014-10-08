@@ -135,10 +135,10 @@
 								        			array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
 								        		
 								        	?>
-								        	<form action="/profinder/site/pedidos/clienteMensagensPedido" id="idPedido" method="post" accept-charset="utf-8">
+								        	<form action="/profinder/site/mensagems/clienteMensagensPedido" id = "idPedido" method = "post" accept-charset = "utf-8">
 				
-									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
-									        	<button type="submit" class="btn btn-success">Conversa</button>
+									        	<input type = "hidden" name = "id_pedido" value = <?php echo $id ?> />
+									        	<button type = "submit" class = "btn btn-success"> Conversa </button>
 								        	</form>
 										</td>
 										
