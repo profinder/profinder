@@ -234,19 +234,16 @@
 			echo "<center>";
 			echo $this->Form->button(
 				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
-				array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
+				array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
 			);
 			echo " ";
 			echo $this->Html->link(
-				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-arrow-left')) . " Voltar",
+				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-arrow-left')) . " Cancelar",
 				array('controller' => 'pages', 'action' => 'index'),
-				array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
+				array('role' => 'button', 'class' => 'btn btn-warning', 'escape' => false)
 			);	
 			echo " ";
-			echo $this->Form->button(
-				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil'))." Limpar",
-				array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
-			);	
+			
 			echo "</center>";
 			echo $this->Form->end();
 		?>

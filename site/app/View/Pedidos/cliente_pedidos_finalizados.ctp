@@ -82,7 +82,8 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Meus pedidos finalizados <a href="/profinder/site/pedidos/clientePedidos">andamento</a></h2>
+					<h2><a href="/profinder/site/pedidos/clientePedidos">ANDAMENTO </a>FINALIZADOS</h2>
+					<br />
 					<?php 
 						$pedidos = new PedidosController;
 						$pedidos->constructClasses();
@@ -102,10 +103,7 @@
 							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
 					?>
 					<div class="top-box">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $id; ?></h2>
-							</div>
+						<div class="panel panel-warning">
 							<div class="panel-body">
 								<table border="2" width="40" height = "60">
 									<tr>
@@ -126,16 +124,6 @@
 								        				<?php echo $modo_atendimento; ?>
 								        			</div>
 								        		</div>
-										</td>
-										<td>
-											<?php
-								        		
-								        		echo $this->Form->postLink(
-									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-									        		array('controller' => 'pages','action' => 'finalizarPedido', $id),
-									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
-								        	?>
-								        	
 										</td>
 										
 									</tr>
