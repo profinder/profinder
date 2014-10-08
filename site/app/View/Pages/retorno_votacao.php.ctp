@@ -8,7 +8,8 @@ if( $_SERVER['REQUEST_METHOD']=='POST' ){
 	$avalicao = new AvaliacaosController;
 	$avalicao->constructClasses();
 	$id_pedido = $this->Session->read('pedido_id');
-	$sqlavaliaco=$avalicao->salvarAvaliacao($voto, $id_pedido);
+	$avalicao->salvarVoto($voto);
+	
 	
 }
  

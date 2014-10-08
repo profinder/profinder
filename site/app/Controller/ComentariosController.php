@@ -24,14 +24,21 @@
 	
 		public function cadastro()
 		{
+			App::import('Controller', 'Avaliacaos');
+			$avalicao = new AvaliacaosController;
+			$avalicao->constructClasses();
+			$id_pedido = $this->Session->read('pedido_id');
+			$voto = $this->Session->read('voto');
+			$sqlavaliaco=$avalicao->salvarAvaliacao($voto, $id_pedido);
 			$this->layout = 'clean';
 			if ($this->request->is('post'))
 			{
 				$this->Comentario->create();
 				if ($this->Comentario->saveAssociated($this->request->data))
 				{
+					
 					$this->Session->setFlash(__('Comentario salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array('action' => 'index'));
+					return $this->redirect(array('controller'=>'Pages','action' => 'cliente_home'));
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
