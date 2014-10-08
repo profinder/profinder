@@ -300,7 +300,7 @@
 					</div>
 					
 					<center><h4>Comentários</h4></center>
-						<div class = "panel panel-default" style="height: 1000px; width: 1200px; float: left;">
+						<div class = "panel panel-default" style="height: 500px; width: 1200px; float: left;">
 							<table class="table">
 				    			<tr>
 				        			<th width = "50px"><center>Nome</center></th>

@@ -86,7 +86,7 @@
 		public function salvarAvaliacao($voto, $id_pedido) 
 		{
 			//var_dump("oi");
-			$sql=$this->Avaliacao->query('replace INTO tb_avaliacao(pedido_id, nota_avaliacao) VALUES ('.$id_pedido.','.$voto.');');
+			$sql=$this->Avaliacao->query('insert INTO tb_avaliacao(pedido_id, nota_avaliacao) VALUES ('.$id_pedido.','.$voto.');');
 			
 			return $sql;
 		}
@@ -103,6 +103,11 @@
 		public function salvarPedido($id_pedido) 
 		{
 			$this->Session->write('pedido_id', $id_pedido);
+		}
+		
+		public function salvarVoto($voto)
+		{
+			$this->Session->write('voto', $voto);
 		}
 		
 		public function buscarAvaliacao($id_anuncio) 
