@@ -168,7 +168,7 @@
 									'class' => 'glyphicon glyphicon-arrow-up' 
 							) ) . " Enviar", array (
 									'type' => 'submit',
-									'class' => 'btn btn-default',
+									'class' => 'btn btn-success',
 									'escape' => false 
 							) );
 							echo " ";

@@ -23,15 +23,18 @@
 	
 		public function cadastro()
 		{
+			var_dump("1");
 			$this->layout = 'home';
 			if ($this->request->is('post'))
 			{
+				
 				$this->Foto->create();
+				var_dump($this->request->data);
 				if ($this->Foto->save($this->request->data))
 				{
 					$this->Session->setFlash(__('Foto salva com sucesso!'), "flash_notification");
 					return $this->redirect(array('controller' => 'profissionals', 'action' => 'index'));
-					$this->upload_file();
+					$this->upload_foto();
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}			
