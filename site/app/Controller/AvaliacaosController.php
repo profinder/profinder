@@ -87,24 +87,33 @@
 		{
 			//var_dump("oi");
 			$sql=$this->Avaliacao->query('replace INTO tb_avaliacao(pedido_id, nota_avaliacao) VALUES ('.$id_pedido.','.$voto.');');
-		
+			
 			return $sql;
 		}
+		
+		public function idAvaliacao() 
+		{
+			//var_dump("oi");
+			$sql=$this->Avaliacao->query('select tb_avaliacao.id from tb_avaliacao order by id desc limit 1;');
+			
+			return $sql;
+		}
+		
 		
 		public function salvarPedido($id_pedido) 
 		{
 			$this->Session->write('pedido_id', $id_pedido);
 		}
 		
-		public function buscarAvaliacao($id_pedido) 
+		public function buscarAvaliacao($id_anuncio) 
 		{
-			$sql=$this->Avaliacao->query('select sum(tb_avaliacao.nota_avaliacao) from tb_avaliacao where tb_avaliacao.pedido_id='.$id_pedido.';');
+			$sql=$this->Avaliacao->query('select sum(tb_avaliacao.nota_avaliacao) from tb_avaliacao inner join tb_pedido on tb_avaliacao.pedido_id=tb_pedido.id where tb_pedido.anuncio_id='.$id_anuncio.';');
 			return $sql;
 		}
 		
 		public function quantidadeAvaliacao($id_anuncio) 
 		{
-			$sql = $this->Avaliacao->query('select count(tb_avaliacao.nota_avaliacao) from tb_avaliacao inner join tb_pedido on tb_avaliacao.pedido_id=tb_pedido.id where tb_pedido.anuncio_id='.$id_anuncio.';');
+			$sql=$this->Avaliacao->query('select count(tb_avaliacao.nota_avaliacao) from tb_avaliacao inner join tb_pedido on tb_avaliacao.pedido_id=tb_pedido.id where tb_pedido.anuncio_id='.$id_anuncio.';');
 			return $sql;
 		}
 		

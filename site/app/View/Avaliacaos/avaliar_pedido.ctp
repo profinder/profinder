@@ -138,7 +138,24 @@
 				?>
 			 
 				<div id="sql"></div>
-						
+				<?php
+					$idAvaliacao=$avalicao->idAvaliacao();
+					echo $this->Form->create('Comentario', array('action' => 'cadastro'));
+					echo $this->Form->input('texto_comentario', array('label' => 'Comentario:'));
+					echo $this->Form->input('avaliacao_id', array('type' => 'hidden', 'value' => $idAvaliacao[0]['tb_avaliacao']['id']+1));
+					
+					echo $this->Form->button(
+							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
+							array('controller' => 'Pages','action' => 'solicitar_pedido'),
+							array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
+					echo " ";
+					echo $this->Html->link(
+							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
+							array('controller' => 'Pedidos','action' => 'index'),
+							array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
+					
+					echo $this->Form->end();
+				?>		
 			 	</div>
 			</div>
 		</div>

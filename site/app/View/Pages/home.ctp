@@ -197,7 +197,7 @@
 			<input type='text' name='username'>
 				
 			<button type="submit" class="btn btn-default">Solicitar Senha</button>
-		
+			</form>
       </div>
     </div>
   </div>
