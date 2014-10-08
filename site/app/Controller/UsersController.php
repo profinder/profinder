@@ -72,7 +72,7 @@
 				}	
 	    		$passHash = new SimplePasswordHasher();
 	    		$this->request->data["password"] = $passHash->hash($this->request->data["password"]);
-	    		if ($this->User->saveAssocietad($this->request->data))
+	    		if ($this->User->saveAssociated($this->request->data))
 	    		{
 	    			$savedata = Array('User' => $this->request->data['User']);
 					$this->User->save($savedata);

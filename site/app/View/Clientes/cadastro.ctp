@@ -17,6 +17,7 @@
 		<div class="content-top">
 			<div class="top-box">
 				<?php
+					echo $this->Html->script('jquery.maskedinput-1.3');
 					echo $this->Form->create('Cliente', array('action' => 'cadastro'));	
 				?>
 				
@@ -231,6 +232,7 @@
 				</div>
 			</div>
 		<?php 
+			
 			echo "<center>";
 			echo $this->Form->button(
 				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
@@ -246,6 +248,7 @@
 			
 			echo "</center>";
 			echo $this->Form->end();
+			
 		?>
 
 	</div>
@@ -282,3 +285,4 @@
 		document.getElementById("duplicaCampo").innerHTML += "<input type='text' name='campo[]' />";
 	}
 </script>
+
