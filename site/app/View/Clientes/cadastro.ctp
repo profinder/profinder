@@ -161,10 +161,10 @@
 						?>
 					</div>					
 				</div>
-				<div class = "panel panel-default" style="height: 500px; width: 1194px; float: left;">
+				<div class = "panel panel-default" style="height: 330px; width: 1194px; float: left;">
 				 	<h4> Endereço </h4>
 				 	<br />
-				 	<div align = "left" style="float: left; margin-left: 10px">
+				 	<div align = "left" style="float: left; margin-left: 350px">
 						CEP: <br /><br />
 						
 						Logradouro: <br /><br />
@@ -180,104 +180,56 @@
 						Complemento: <br /><br />
 					</div>
 					<div style="float: left; margin-left: 30px">
-					
+						<?php 
+							echo $this->Form->input('Endereco.cep', array(
+								'id' => 'cep', 
+								'onblur' => 'consultacep(this.value)', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							)); 
+							echo "<br />";
+
+							echo $this->Form->input('Endereco.logradouro', array(
+								'id' => 'logradouro', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "<br />";
+							
+							echo $this->Form->input('Endereco.localidade', array(
+								'id' => 'localidade', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "<br />";
+							
+							echo $this->Form->input('Endereco.bairro', array(
+								'id' => 'bairro', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "<br />";
+							echo $this->Form->input('Endereco.estado', array(
+								'id' => 'uf', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "</br>";
+							echo $this->Form->input('Endereco.numero_endereco', array(
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "<br />";
+							
+							echo $this->Form->input('Endereco.complemento', array(
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+						?>
+											
 					</div>
-					
-				 </div>
-				 
-				<table width = "1200" height = "600">
-					<tr>
-						<td>
-							<div class="panel panel-default">
-								<table width = "550" height = "400">
-									<tr>
-										<td>
-											<h4>Endereço</h4>
-											<br />
-										</td>
-									</tr>
-									
-									<tr>
-										<td>
-											<?php 
-												echo $this->Form->input('Endereco.cep', array(
-													'id' => 'cep', 
-													'onblur' => 'consultacep(this.value)', 
-													'label' => 'CEP &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp',
-													'style' => 'width:300px; height:25px; resize:none;'
-												)); 
-											?>	
-										</td>											
-									</tr>
-									<tr>
-										<td>
-											<?php 
-												echo $this->Form->input('Endereco.logradouro', array(
-													'id' => 'logradouro', 
-													'label' => 'Logradouro &nbsp &nbsp &nbsp',
-													'style' => 'width:300px; height:25px; resize:none;'
-												));
-											?>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<?php 
-												echo $this->Form->input('Endereco.localidade', array(
-													'id' => 'localidade', 
-													'label' => 'Cidade &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ',
-													'style' => 'width:300px; height:25px; resize:none;'
-												));
-											?>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<?php 
-												echo $this->Form->input('Endereco.bairro', array(
-													'id' => 'bairro', 
-													'label' => 'Bairro &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ',
-													'style' => 'width:300px; height:25px; resize:none;'
-												));
-											?>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<?php 
-												echo $this->Form->input('Endereco.estado', array(
-													'id' => 'uf', 
-													'label' => 'Estado &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp',
-													'style' => 'width:300px; height:25px; resize:none;'
-												));
-											?>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<?php 
-												echo $this->Form->input('Endereco.numero_endereco', array(
-													'label' => 'Número &nbsp &nbsp &nbsp &nbsp &nbsp',
-													'style' => 'width:300px; height:25px; resize:none;'
-												));
-											?>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<?php 
-												echo $this->Form->input('Endereco.complemento', array(
-													'label' => '&nbsp Complemento &nbsp &nbsp',
-													'style' => 'width:300px; height:25px; resize:none;'
-												));
-											?>
-										</td>
-									</tr>
-								</table>
-							</div>
-						</tr>
-					</table>
-					</div>
+				</div>
+			</div>
 		<?php 
 			echo "<center>";
 			echo $this->Form->button(
@@ -286,8 +238,8 @@
 			);
 			echo " ";
 			echo $this->Html->link(
-				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-				array('controller' => 'Clientes','action' => 'index'),
+				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-arrow-left')) . " Voltar",
+				array('controller' => 'pages', 'action' => 'index'),
 				array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
 			);	
 			echo " ";
