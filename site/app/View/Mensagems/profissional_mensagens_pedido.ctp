@@ -106,42 +106,38 @@
 						{
 							$id = $mensagensPedido[$contador]['tb_mensagem']['id'];
 							$texto = $mensagensPedido[$contador]['tb_mensagem']['texto_mensagem'];
-							$hora_envio = $mensagensPedido[$contador]['tb_mensagem']['hora_envio'];
 							$quem_enviou = $mensagensPedido[$contador]['tb_mensagem']['quem_enviou'];
 							
-							if($quem_enviou == "profissional")
-							{
-								$profissional_enviou = $mensagem->profissionalEnviou($id);
-								$nome_profissional = $profissional_enviou[$contador2]['tb_pessoa']['nome_pessoa'];	
-							}
-							else 
-							{
-								$cliente_enviou = $mensagem->clienteEnviou($id);
-								$nome_cliente = $cliente_enviou[$contador2]['tb_pessoa']['nome_pessoa'];	
-							}
-								
 					?>
 					<div class="top-box">
 						<div class="panel panel-default">
 							
 							<div class="panel-body">
-								<table border="2" width="40" height = "60">
+								<table border="2" width="800" height = "60">
 									<tr>
 										<td>
-											<div class="panel panel-default">
-								        		<?php 
-								        			if( $quem_enviou == "cliente" )
-								        			{
-								        				echo $nome_cliente + "diz: ";
-								        			}	
-								        			else if( $quem_enviou == "profissional" )
-								        			{
-								        				echo $nome_profissional + "diz: ";
-								        			}
-								        			
-								        			echo $texto; 
-								        		?>
-								        	</div>
+											
+													<?php 
+													//var_dump($mensagensPedido[$contador]['tb_mensagem']['quem_enviou']);
+							
+														if( $quem_enviou == "profissional" )
+														{?>
+															<div align = "right" class = "panel panel-success" style = "width: 202x; margin-left: 40px;">
+								        						<div class="panel-heading">
+								        							<?php echo $texto; ?>
+								        						</div>
+								        					</div>
+														<?php }
+														else 
+														{?>
+															<div align = "left" class="panel panel-default" style = "width: 202x;">
+								        						<div class="panel-heading">
+								        							<?php echo $texto; ?>
+								        						</div>
+								        					</div>
+														<?php }?>
+
+												
 										</td>
 										
 									</tr>

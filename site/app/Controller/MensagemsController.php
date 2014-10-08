@@ -92,7 +92,6 @@
 		
 		public function clienteEnviou($mensagem_id = null)
 		{
-			
 			$sql=$this->Mensagem->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_cliente ON tb_cliente.id = tb_pessoa.id INNER JOIN tb_pedido ON tb_pedido.cliente_id = tb_cliente.id INNER JOIN tb_mensagem ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_mensagem.quem_enviou = 'cliente' AND tb_mensagem.id ='".$mensagem_id."';");
 			return $sql;
 		}
