@@ -14,7 +14,7 @@
   		<div class="wrap"> 
 			<div class="header-top">
 		 		<div class="logo">
-			 		<a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="80" width="387" style= "padding-top:0px"> </a>
+			 		<a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style= "padding-top:0px"> </a>
 		 		</div>
 	    		<div id="text-6" class="visible-all-devices header-text ">	
 	     			<div class="navbar-collapse collapse">
@@ -116,8 +116,8 @@
 		</div>
 		
 	</div>
-	<div style="position:absolute; border: 5px solid white; background-color:#FFF; height: 100px; width: 600px; float: left; top:110px; left:6px; margin-left: 70px;">
-		</div>
+	<?php /*<div style="position:absolute; border: 5px solid white; background-color:#FFF; height: 100px; width: 600px; float: left; top:110px; left:6px; margin-left: 70px;">
+		</div> */ ?>
   	<!------End Slider ------------>
 	<div class="main">
 		<div class="wrap">

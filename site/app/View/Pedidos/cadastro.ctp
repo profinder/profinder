@@ -84,34 +84,31 @@
 				
 				<?php
 					
-				 	//$mensagemphp = "<script>document.write(mensagemjs)</script>";
-					//var_dump($mensagemphp); 	
 					$anuncios[]=$_POST["anuncio"];
-				 	var_dump($anuncios);
-				 	$contador=0;
-				 	while ($contador<sizeof($anuncios[0]))
-				 	{
-				 		echo $anuncios[0][$contador];
-				 		echo $this->Form->create('Pedido', array('action' => 'cadastro'));
-				 		echo $this->Form->input('cliente_id', array('type' => 'hidden', 'value' => AuthComponent::user("id")));
-						echo $this->Form->input('Mensagem.0.texto_mensagem', array('label' => 'Mensagem:', 'default' => 'oi'));
-						echo $this->Form->input('status_pedido', array('type' => 'hidden', 'value' => 'andamento'));
-						echo $this->Form->input('anuncio_id', array('type' => 'hidden', 'value' => $anuncios[0][$contador]));
+				 	//var_dump($anuncios);
+					App::import('Controller', 'Pedidos');
+					$pedidos = new PedidosController;
+					$pedidos->constructClasses();
+					$pedidos->criarSessao($anuncios);
+					?>
+					<form action="/profinder/site/pedidos/salvar_mensagem" id="idMensagem" method="post" accept-charset="utf-8">
+						<div class="top-box">
 						
-						echo $this->Form->button(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
-						echo " ";
-						echo $this->Html->link(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-								array('controller' => 'Pedidos','action' => 'index'),
-								array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-						
-						echo $this->Form->end();
-				 		$contador++;
-				 	}
-				 		
-				?>
+							<h4> Envie uma mensagem para esses profissionais </h4>
+							<hr><br /><br /><br /><br />
+							<div align = "left" style = "margin-left: 100px">
+								<li>Descreva melhor o serviço que deseja</li>
+							</div>
+							<br /><br />
+								<div class="panel-body">
+									<textarea name='mensagem' style = 'width:1000px; height:133px; resize:none;' placeholder='Digite aqui uma mensagem para os profissionais'></textarea>
+									
+								</div>
+							
+						</div>
+	            		<button type="submit" class="btn btn-default">Enviar Mensagem</button>
+					</form>		
+				 	
 							
 			 	</div>
 			</div>

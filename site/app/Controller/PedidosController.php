@@ -168,5 +168,37 @@
 			$sql=$this->Pedido->query("SELECT tb_mensagem.* FROM tb_mensagem INNER JOIN tb_pedido ON tb_mensagem.pedido_id = tb_pedido.id WHERE tb_pedido.id ='".$pedido_id."';");
 			return $sql;
 		}
+		
+		public function criarSessao($anuncios = null)
+		{
+			$this->Session->write('anuncios', $anuncios);
+		}
+		
+		public function salvar_mensagem()
+		{
+			$this->layout = 'clean';
+		}
+		
+		public function salvarPedido($cliente_id = null, $anuncio_id=null)
+		{
+			$this->layout = 'home';
+			$sql=$this->Pedido->query("insert into tb_pedido (cliente_id, anuncio_id) values(".$cliente_id.", ".$anuncio_id.");");
+			return $sql;
+		}
+		
+		public function idPedido($cliente_id = null, $anuncio_id=null)
+		{
+			$this->layout = 'home';
+			$sql=$this->Pedido->query("select tb_pedido.id from tb_pedido where tb_pedido.cliente_id=".$cliente_id." and tb_pedido.anuncio_id=".$anuncio_id.";");
+			return $sql;
+		}
+		
+		public function salvarMensagem($pedido_id = null, $mensagem=null)
+		{
+			$this->layout = 'home';
+			$sql=$this->Pedido->query("insert into tb_mensagem (texto_mensagem, pedido_id) values('".$mensagem."', ".$pedido_id.");");
+			return $sql;
+		}
+		
 	}
 ?>

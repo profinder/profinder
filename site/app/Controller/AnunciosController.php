@@ -234,10 +234,24 @@
 			$this->layout='home';
 		}
 		
-		public function caminhoFoto($id)
+		public function caminho_foto($id)
 		{
-			$sql= $this->Anuncio->query("SELECT tb_foto.caminho_foto FROM tb_anuncio INNER JOIN tb_foto ON tb_anuncio.id = tb_foto.anuncio_id WHERE tb_anuncio.id='".$id."';");
+			$sql= $this->Anuncio->query("SELECT tb_foto.* FROM tb_anuncio INNER JOIN tb_foto ON tb_anuncio.id = tb_foto.anuncio_id WHERE tb_anuncio.id='".$id."';");
 			return $sql;
+		}
+		
+		public function dadosAnuncios($id_anuncio=null)
+		{
+			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.id='".$id_anuncio."';");
+			return $sql;
+		}
+		
+		public function servicoAnuncios($id_servico)
+		{
+			$sql = $this->Anuncio->query("SELECT tb_servico.nome_servico FROM tb_servico WHERE tb_servico.id='".$id_servico."';");
+			
+			return $sql;
+			
 		}
 	}
 ?>
