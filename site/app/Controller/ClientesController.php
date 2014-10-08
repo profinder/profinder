@@ -85,34 +85,38 @@
 		}
 		
 		public function enviar_email(){
-			$this->layout='clean';
+			$this->layout='home';
 		}
 		
 		public function verificar_email($username=null)
 		{
+			$this->layout='home';
 			$sql=$this->Cliente->query("select exists (select tb_pessoa.username from tb_pessoa where tb_pessoa.username='".$username."');");
 			return $sql;
 		}
 		public function email($username=null)
 		{
+			$this->layout='home';
 			$verificar=$this->verificar_email($username);
 			
 			$verificar_email=$verificar[0][0]["exists (select tb_pessoa.username from tb_pessoa where tb_pessoa.username='".$username."')"];
 			
 			if($verificar_email==1)
 			{
+				$novaSenha = $this->geraSenha();
+				$this->alterarSenha($novaSenha, $username);
 				$Email = new CakeEmail('gmail');
 				$Email->to($username);
 				$Email->subject('Automagically generated email');
 				$Email->replyTo('profindertcc@gmail.com');
 				//$Email->message('teste');
 				$Email->from('profindertcc@gmail.com');
-				$Email->send("Teste");
+				$Email->send("Sua nova senha é ".$novaSenha);
 				return $this->redirect(array('action' => 'cadastro'));
 			}
 			else
 			{
-				$this->Session->setFlash ( __ ( 'Esse email não existe!', "flash_notification" ) );
+				$this->Session->setFlash ( __ ( 'Esse e-mail não está cadastrado na base de dados!', "flash_notification" ) );
 				return $this->redirect(array('action' => 'cadastro'));
 				
 			}
@@ -130,6 +134,42 @@
 		{
 			$sql=$this->Cliente->query("SELECT tb_pessoa.* FROM tb_pessoa WHERE tb_pessoa.id ='".$id."';");
 			return $sql;
+		}
+		
+		public function alterarSenha($senha, $email)
+		{
+			$passHash = new SimplePasswordHasher();
+			$senha = $passHash->hash($senha);
+			$sql=$this->Cliente->query("UPDATE tb_pessoa SET tb_pessoa.password='".$senha."' WHERE tb_pessoa.username ='".$email."';");
+		}
+		
+		public function geraSenha($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos = false)
+		{
+			// Caracteres de cada tipo
+			$lmin = 'abcdefghijklmnopqrstuvwxyz';
+			$lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			$num = '1234567890';
+		
+			// Variáveis internas
+			$retorno = '';
+			$caracteres = '';
+		
+			// Agrupamos todos os caracteres que poderão ser utilizados
+			$caracteres .= $lmin;
+			if ($maiusculas) $caracteres .= $lmai;
+			if ($numeros) $caracteres .= $num;
+		
+			// Calculamos o total de caracteres possíveis
+			$len = strlen($caracteres);
+		
+			for ($n = 1; $n <= $tamanho; $n++) {
+				// Criamos um número aleatório de 1 até $len para pegar um dos caracteres
+				$rand = mt_rand(1, $len);
+				// Concatenamos um dos caracteres na variável $retorno
+				$retorno .= $caracteres[$rand-1];
+			}
+			
+			return $retorno;
 		}
 	}
 ?>

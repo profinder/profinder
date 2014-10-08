@@ -24,7 +24,6 @@
 		public function cadastro()
 		{
 			$this->layout = 'home';
-			
 			if ($this->request->is('post'))
 			{
 				$this->Foto->create();
@@ -32,11 +31,14 @@
 				{
 					$this->Session->setFlash(__('Foto salva com sucesso!'), "flash_notification");
 					return $this->redirect(array('controller' => 'profissionals', 'action' => 'index'));
+					$this->upload_file();
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
-			}
+			}			
+
+			
 		}
-	
+			
 		public function edit($id = null)
 		{
 			if (!$id) {
@@ -76,7 +78,21 @@
 				return $this->redirect(array('action' => 'index'));
 			}
 		}
-		
+		function upload_foto() {
+			$file = $this->data['Foto']['file'];
+			if ($file['error'] === UPLOAD_ERR_OK) {
+				$id = String::uuid();
+				if (move_uploaded_file($file['tmp_name'], APP.'uploads'.DS.$id)) {
+					$this->data['Foto']['id'] = $id;
+					$this->data['Foto']['user_id'] = $this->Auth->user('id');
+					$this->data['Foto']['filename'] = $file['name'];
+					$this->data['Foto']['filesize'] = $file['size'];
+					$this->data['Foto']['filemime'] = $file['type'];
+					return true;
+				}
+			}
+			return false;
+		}
 		public function upload($imagem = array(), $dir = 'img')
 		{
 			$dir = WWW_ROOT.$dir.DS;
