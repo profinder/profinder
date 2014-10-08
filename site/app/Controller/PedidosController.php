@@ -95,7 +95,7 @@
 		public function clientePedidosFinalizados($cliente_id = null)
 		{
 			$this->layout = 'home';
-			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'finalizado' AND tb_pedido.cliente_id='".$cliente_id."';");
+			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.profissional_fim = 1 AND tb_pedido.status_pedido = 'finalizado' AND tb_pedido.cliente_id='".$cliente_id."';");
 			return $sql;
 		}
 		
@@ -200,5 +200,16 @@
 			return $sql;
 		}
 		
+		public function pedidoFinalizado($pedido_id)
+		{
+			$sql=$this->Pedido->query("UPDATE tb_pedido SET tb_pedido.status_pedido = 'finalizado' WHERE tb_pedido.id = ".$pedido_id.";");
+			return $sql;
+		}
+		
+		public function aumentarQntAvaliacao($pedido_id)
+		{
+			$sql=$this->Pedido->query("UPDATE tb_pedido SET tb_pedido.qnt_avaliacao = tb_pedido.qnt_avaliacao +1 WHERE tb_pedido.id =".$pedido_id.";");
+			return $sql;
+		}
 	}
 ?>

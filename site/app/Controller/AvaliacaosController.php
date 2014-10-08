@@ -121,5 +121,7 @@
 		{
 			$this->layout='home';
 		}
+		
+	
 	}
 ?>

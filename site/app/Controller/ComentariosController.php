@@ -31,7 +31,7 @@
 				if ($this->Comentario->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Comentario salvo com sucesso.'), "flash_notification");
-					return $this->redirect(array('action' => 'index'));
+					return $this->redirect(array('controller' => 'Pedidos', 'action' => 'clientePedidosAvaliar'));
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
@@ -77,6 +77,24 @@
 				);
 				return $this->redirect(array('action' => 'index'));
 			}
+		}
+		
+		public function comentariosAvaliacao($anuncio_id)
+		{
+			$sql=$this->Comentario->query("SELECT tb_comentario.* FROM tb_comentario INNER JOIN tb_avaliacao ON tb_comentario.avaliacao_id = tb_avaliacao.id INNER JOIN tb_pedido ON tb_avaliacao.pedido_id = tb_pedido.id INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_anuncio.id =".$anuncio_id.";");
+			return $sql;
+		}
+		
+		public function clienteComentario($comentario_id)
+		{
+			$sql=$this->Comentario->query("SELECT tb_pessoa.* FROM tb_comentario INNER JOIN tb_avaliacao ON tb_comentario.avaliacao_id = tb_avaliacao.id INNER JOIN tb_pedido ON tb_avaliacao.pedido_id = tb_pedido.id INNER JOIN tb_cliente ON tb_cliente.id = tb_pedido.cliente_id INNER JOIN tb_pessoa ON tb_pessoa.id = tb_cliente.id WHERE tb_comentario.id =".$comentario_id.";");
+			return $sql;
+		}
+		
+		public function buscarAvaliacaoComentario($id_comentario) 
+		{
+			$sql=$this->Comentario->query('SELECT tb_avaliacao.nota_avaliacao FROM tb_avaliacao INNER JOIN tb_comentario ON tb_comentario.avaliacao_id = tb_avaliacao.id WHERE tb_comentario.id = '.$id_comentario.';');
+			return $sql;
 		}
 	}
 ?>

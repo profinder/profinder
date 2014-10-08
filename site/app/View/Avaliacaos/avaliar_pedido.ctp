@@ -130,25 +130,31 @@
 				</ul>
 			 
 			 	<?php
-					$id_pedido=$_POST["id_pedido"];
+					$id_pedido = $_POST["id_pedido"];
 			 		App::import('Controller', 'Avaliacaos');
 					$avalicao = new AvaliacaosController;
 					$avalicao->constructClasses();
 					$avalicao->salvarPedido($id_pedido);
+					
+					App::import('Controller', 'Pedidos');
+					$pedidoController = new PedidosController;
+					$pedidoController->constructClasses();
+					
 				?>
 			 
 				<div id="sql"></div>
 				<?php
-					$idAvaliacao=$avalicao->idAvaliacao();
+					$idAvaliacao = $avalicao->idAvaliacao();
 					echo $this->Form->create('Comentario', array('action' => 'cadastro'));
 					echo $this->Form->input('texto_comentario', array('label' => 'Comentario:'));
 					echo $this->Form->input('avaliacao_id', array('type' => 'hidden', 'value' => $idAvaliacao[0]['tb_avaliacao']['id']+1));
 					
 					echo $this->Form->button(
 							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-							array('controller' => 'Pages','action' => 'solicitar_pedido'),
+							array('controller' => 'Comentarios','action' => 'cadastro'),
 							array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
 					echo " ";
+					$pedidoController->pedidoFinalizado($id_pedido);
 					echo $this->Html->link(
 							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
 							array('controller' => 'Pedidos','action' => 'index'),

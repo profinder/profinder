@@ -96,7 +96,12 @@
 						$comentarioController = new ComentariosController;
 						$comentarioController->constructClasses();
 						$comentarios = $comentarioController->comentariosAvaliacao($id);	
-						var_dump($comentarios);
+						
+						/*App::import('Controller', 'Pedidos');
+						$pedidoController = new PedidosController;
+						$pedidoController->constructClasses();
+						$aumentarQntAvaliacao = $pedidoController->aumentarQntAvaliacao($pedido_id);
+						*/
 					?>	
 					<h4> Dados do Anúncio </h4><br />
 					
@@ -106,7 +111,9 @@
 							<?php 
 								if($foto==null||$foto==0)
 								{
+									echo "<div class = 'panel panel-default'>";
 									echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='300' width='300' style= 'padding-top:0px'> </a>";
+									echo "</div>";
 								}
 								else
 								{
@@ -138,6 +145,52 @@
 								$nome_servico = $anuncioController->servicoAnuncios($dados[0]['tb_anuncio']['servico_id']);
 								echo '</center><br /><br />Serviço do anúncio: '.$nome_servico[0]['tb_servico']['nome_servico'];
 								echo '<br /><br />Modo de atendimento: '.$dados[0]['tb_anuncio']['modo_atendimento'];
+								echo '<br /><br /><br /><center>';
+								if ($sql<=5 && $sql>4.5)
+								{
+									echo "<img src=/profinder/site/img/star_5.png>";
+								}
+								else if ($sql>4)
+								{
+									echo "<img src=/profinder/site/img/star_4.5.png>";
+								}
+								else if ($sql>3.5)
+								{
+									echo "<img src=/profinder/site/img/star_4.png>";
+								}
+								else if ($sql>3)
+								{
+									echo "<img src=/profinder/site/img/star_3.5.png>";
+								}
+								else if ($sql>2.5)
+								{
+									echo "<img src=/profinder/site/img/star_3.png>";
+								}
+								else if ($sql>2)
+								{
+									echo "<img src=/profinder/site/img/star_2.5.png>";
+								}
+								else if ($sql>1.5)
+								{
+									echo "<img src=/profinder/site/img/star_2.png>";
+								}
+								else if ($sql>1)
+								{
+									echo "<img src=/profinder/site/img/star_1.5.png>";
+								}
+								else if ($sql>0.5)
+								{
+									echo "<img src=/profinder/site/img/star_1.png>";
+								}
+								else if ($sql!=0)
+								{
+									echo "<img src=/profinder/site/img/star_0.5.png>";
+								}
+								else 
+								{
+									echo "<img src=/profinder/site/img/star_0.png>";
+								}
+								echo '</center>'
 							?>
 						</div>
 						<div align = "left" style="height: 300px; width: 300px; float: left; margin-left: 20px;">
@@ -188,14 +241,7 @@
 							$nome_servico = $anuncioController->servicoAnuncios($dados[0]['tb_anuncio']['servico_id']);
 							echo '</center><br /><br />Serviço do anúncio: '.$nome_servico[0]['tb_servico']['nome_servico'];
 							echo '<br /><br />Modo de atendimento: '.$dados[0]['tb_anuncio']['modo_atendimento'];
-						?>
-					</div>
-					
-					<?php 
-					}?>
-					
-					<div align = "left" style="margin: 2px; clear: both; height: 50px; width: 800px; margin-left: 100px;">
-						<?php 
+							echo '<br /><br /><center>';
 							if ($sql<=5 && $sql>4.5)
 							{
 								echo "<img src=/profinder/site/img/star_5.png>";
@@ -240,19 +286,90 @@
 							{
 								echo "<img src=/profinder/site/img/star_0.png>";
 							}
+							echo '</center>'
 						?>
 					</div>
-				
-					<center><h4>Comentários</h4></center>
-				
-					<div class = "panel panel-default" align = "left" style="width: 1200px; float: left;">
-						<div align = "left" style="width: 120px; float: left; margin-left: 10px;">
-							Nome disse: 
-						</div>
-						<div align = "left" style="width: 1000px; float: left; margin-left: 10px;">
-							oi
-						</div>
+					
+					<?php 
+					}?>
+					
+					<div align = "left" style="margin: 2px; clear: both; height: 50px; width: 800px; margin-left: 100px;">
+						<?php 
+							
+						?>
 					</div>
+					
+					<center><h4>Comentários</h4></center>
+						<div class = "panel panel-default" style="height: 1000px; width: 1200px; float: left;">
+							<table class="table">
+				    			<tr>
+				        			<th width = "50px"><center>Nome</center></th>
+							        <th width = "50px"><center>Avaliação</center></th>
+							        <th width = "400px"><center>Comentário</center></th>
+				        		</tr>
+				    			
+				 
+							<?php
+								$contador = 0;
+								while($contador<sizeof($comentarios))
+								{
+									$id_comentario = $comentarios[$contador]['tb_comentario']['id'];
+									$texto = $comentarios[$contador]['tb_comentario']['texto_comentario'];
+									$clienteComentario = $comentarioController->clienteComentario($id_comentario);
+									$nome_cliente = $clienteComentario[0]['tb_pessoa']['nome_pessoa'];
+									$avaliacao = $comentarioController->buscarAvaliacaoComentario($id_comentario);
+									$sql = $avaliacao[0]['tb_avaliacao']['nota_avaliacao'];
+							?>
+							<tr>
+									<td>
+									 <?php echo $nome_cliente ?>
+									</td>
+									<td>
+									<?php 
+										if ($sql<=5 && $sql>4)
+										{
+											echo "<img src=/profinder/site/img/star_5.png>";
+										}
+										else if ($sql>3)
+										{
+											echo "<img src=/profinder/site/img/star_4.png>";
+										}
+										else if ($sql>2)
+										{
+											echo "<img src=/profinder/site/img/star_3.png>";
+										}
+										else if ($sql>1)
+										{
+											echo "<img src=/profinder/site/img/star_2.png>";
+										}
+										else if ($sql>0)
+										{
+											echo "<img src=/profinder/site/img/star_1.png>";
+										}
+										else 
+										{
+											echo "<img src=/profinder/site/img/star_0.png>";
+										}
+										?>
+									</td>
+									<td>
+										<?php echo $texto; ?>
+									</td>
+									</tr>
+								<?php 
+									$contador++;
+								}?>
+								
+								</table>
+					</div>
+					<?php 
+					
+						echo $this->Html->link(
+							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-arrow-left')) . " Voltar",
+							array('controller' => 'pages', 'action' => 'index'),
+							array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
+						);	
+					?>
 				</div>
 			</div>
 		</div>
