@@ -27,6 +27,14 @@
 			if ($this->request->is('post'))
 			{
 				$this->Profissional->create();
+				if ($this->request->data['Telefone'][1]['ddd_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][1]);
+				}	
+				if ($this->request->data['Telefone'][2]['ddd_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][2]);
+				}	
 				if ($this->Profissional->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Profissional salvo com sucesso.'), "flash_notification");
@@ -38,6 +46,7 @@
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
 		}
+	
 	
 		public function editar($id = null) 
 		{
@@ -89,6 +98,12 @@
 		public function dadosProfissional($id)
 		{
 			$sql=$this->Profissional->query("SELECT tb_pessoa.* FROM tb_pessoa WHERE tb_pessoa.id ='".$id."';");
+			return $sql;
+		}
+		
+		public function dadosProfissionalAnuncio($anuncio_id)
+		{
+			$sql=$this->Profissional->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_profissional ON tb_pessoa.id = tb_profissional.id INNER JOIN tb_anuncio ON tb_anuncio.profissional_id = tb_profissional.id WHERE tb_anuncio.id ='".$anuncio_id."';");
 			return $sql;
 		}
 	}

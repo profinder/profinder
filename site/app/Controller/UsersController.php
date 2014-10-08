@@ -19,16 +19,13 @@
 		
 		public function login() 
 		{
-		//	var_dump($this->request);
-			//$user = $this->Auth->login($this->request->data['User']);
-			//$role = $user['role'];
-			
+			$this->layout = 'home';
+		
 			if ($this->request->is('post')) {
 				if ($this->Auth->login()) {
 					return $this->redirect($this->Auth->redirect());
-					
 				}
-				$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
+				//$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
 			}
 		}
 		
@@ -37,7 +34,7 @@
 			return $this->redirect($this->Auth->logout());
 		}
 		
-		public function index() 
+	public function index() 
 		{
 	         $this->set('usuarios', $this->User->find('all'));
 	    }
@@ -63,9 +60,19 @@
 	    	if ($this->request->is('post'))
 	    	{
 	    		$this->User->create();
+	    		
+	    		var_dump($this->request->data);
+				if ($this->request->data['Telefone'][1]['ddd_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][1]);
+				}	
+				if ($this->request->data['Telefone'][2]['ddd_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][2]);
+				}	
 	    		$passHash = new SimplePasswordHasher();
 	    		$this->request->data["password"] = $passHash->hash($this->request->data["password"]);
-	    		if ($this->User->save($this->request->data))
+	    		if ($this->User->saveAssocietad($this->request->data))
 	    		{
 	    			$savedata = Array('User' => $this->request->data['User']);
 					$this->User->save($savedata);

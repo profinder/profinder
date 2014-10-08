@@ -81,18 +81,27 @@
 			<div class="content-top">
 				<div class="top-box">	
 				
+
 				<h2>Anúncios</h2>
+
 					
 					<?php 
-						$anuncios = new AnunciosController;
-						$anuncios->constructClasses();
-						$anuncios= $anuncios->anuncios();
+						$anunciosController = new AnunciosController;
+						$anunciosController->constructClasses();
+						$anuncios= $anunciosController->anuncios();
 						
+
 						if($anuncios == null)
+						{
+						$contador=0;
+						$contador2=0;
+						while ($contador!=sizeof($anuncios))
+
 						{
 							echo "Nenhum anúncio cadastrado!";
 							echo "</br>";
 							echo "</br>";
+						}
 						}
 						else 
 						{
@@ -108,6 +117,7 @@
 								//echo "<br/>";
 											
 							
+
 								?>
 																	
 												<form action="/profinder/site/pedidos/cadastro" id="idAnuncio" method="post" accept-charset="utf-8">
@@ -185,4 +195,85 @@
       </div>
     </div>
   </div>
+							<?php 
+							$profissional = $anunciosController->dadosProfissionalAnuncio($id);
+							$nome_profissional = $profissional[$contador2]['tb_pessoa']['nome_pessoa'];
+												
+					?>
+										
+					<form action="/profinder/site/pedidos/cadastro" id="idAnuncio" method="post" accept-charset="utf-8">
+						
+						<div class="top-box">
+							<div class="panel panel-warning">
+								<div class="panel-body">
+									<h4> <input type="checkbox" name="anuncio[]" value=<?php echo $id ?> /> <?php echo $titulo; ?> </h4>
+									<hr>
+									<br/>
+									
+									<div class="panel panel-default" style="height: 250px; width: 270px; float: left;">
+										<?php 
+											$foto = $anunciosController->caminhoFoto($id);
+											if($foto==null||$foto==0){
+												echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='240' width='240' style= 'padding-top:0px'> </a>";
+											}
+											else
+											{
+												echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='".$foto[0]['tb_foto']['caminho_foto']."' height='240' width='240' style= 'padding-top:0px'> </a>";
+											}
+										?>
+									</div>
+									<div align = "left" style="height: 250px; width: 600px; float: left; margin-left: 10px;">
+									 	<?php 
+									 		echo "Descrição: <br /> <br /> <center>";
+									 		echo $descricao;
+									 		echo "</center><br /><br />";
+									 		echo "Modo de atendimento: ";
+									 		
+									 		if($modo_atendimento == "escritorio")
+									 		{
+									 			echo "Escritório.";
+									 			echo "<font color = '#aaacae'> Endereço ao lado (Google Maps) </font>";
+									 			
+									 		}
+											else if($modo_atendimento == "domiciliar")
+									 		{
+									 			echo "Domiciliar.";
+									 		}
+											else if($modo_atendimento == "online")
+									 		{
+									 			echo "On-line.";
+									 		}
+									 		echo "<br /> <br />";
+									 		echo "Nome do profissional: ";
+									 		echo $nome_profissional;
+									 		
+									 	?>
+									</div>
+									<?php 
+										if( $modo_atendimento == "escritorio")
+										{
+									?>
+									<div class="panel panel-default" align = "left" style="height: 250px; width: 270px; float: left; margin-left: 10px;">
+										<?php 
+											echo "<img src='/profinder/site/img/googlemaps.png' height='250' width='270' style= 'padding-top:0px'>";
+										}
+										?>
+									</div>
+									
+								</div>
+							</div>
+						
+							</div>
+						<?php 		
+							$contador++;
+						
+
+						?>	
+	            		<button type="submit" class="btn btn-default">Solicitar Pedido</button>
+					</form>		
+						
+			 	</div>
+			</div>
+		</div>
+	</div>
 </div>

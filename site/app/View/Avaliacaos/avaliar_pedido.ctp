@@ -134,10 +134,7 @@
 			 		App::import('Controller', 'Avaliacaos');
 					$avalicao = new AvaliacaosController;
 					$avalicao->constructClasses();
-					//$sqlavaliacao=$avalicao->buscarAvaliacao($id_pedido);
-					//var_dump($sqlavaliacao[0]['tb_avaliacao']['nota_avaliacao']);
-					$sql = $sqlavaliacao[0]['tb_avaliacao']['nota_avaliacao'];
-					$sql = $sqlavaliacao[0]['tb_avaliacao']['pedido_id'];
+					$avalicao->salvarPedido($id_pedido);
 				?>
 			 
 				<div id="sql"></div>

@@ -5,7 +5,7 @@
 <br/><br/>
 <table>
     <tr>
-        <th>Código</th>
+        <th><h3>Código</h3></th>
         <th>Nome</th>
         <th>Estado</th>
         <th>Ações</th>
@@ -17,9 +17,7 @@
     <?php echo $bairro['Bairro']['id']; ?></td>
         <td>
         	<?php
-            	echo $this->Html->link($bairro['Bairro']['nome_bairro'],
-				array('controller' => 'bairros', 'action' => 'view', $bairro['Bairro']['id']),
-				array('escape' => false, "data-toggle"=>"modal", "data-target"=>"#myModalView"));
+            	echo $bairro['Bairro']['nome_bairro'];
 			?>
         </td>
         <td><?php echo $bairro['Bairro']['estado_bairro']; ?></td>
@@ -104,33 +102,4 @@
      		</div>
     	</div>
  	</div>
-</div>
-
-<!-- Modal View-->
-<div class="modal fade" data-backdrop="static" id="myModalView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-    	<div class="modal-content">
-      		<div class="modal-header">
-        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        			<h4 class="modal-title" id="myModalLabel">Dados do Bairro</h4>
-      		</div>
-      		<div class="modal-body">
-      	
-		        <?php 
-		        
-					echo $this->Form->create('Bairro', array('action' => 'view'));
-					echo $this->Form->input('nome_bairro', array('label' => 'Nome:'));
-					echo $this->Form->input('estado_bairro', array('label' => 'Estado:'));
-					
-					echo $this->Html->link(
-							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Sair",
-							array('controller' => 'Bairros','action' => 'index'),
-							array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-					
-					echo $this->Form->end();
-				 ?>
-		
-      		</div>
-    	</div>
-  	</div>
 </div>

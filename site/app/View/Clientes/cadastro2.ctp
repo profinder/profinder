@@ -2,6 +2,8 @@
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
 <div class="header">
+
+	
 	<div class="wrap">
 		<div class="header-top">
 			<div class="logo">
@@ -17,12 +19,12 @@
 			<div class="top-box">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h2 class="panel-title">Novo Profissional</h2>
+						<h2 class="panel-title">Novo Cliente</h2>
 					</div>
 					
 					<div class="panel-body">
 						<?php
-							echo $this->Form->create('Profissional', array('action' => 'cadastro'));	
+							echo $this->Form->create('Cliente', array('action' => 'cadastro'));	
 						?>
 						<table height = "200">
 							<tr>
@@ -42,6 +44,7 @@
 																<span class="input-group-addon">Nome &nbsp &nbsp &nbsp &nbsp &nbsp</span>
 																	<?php
 																		echo $this->Form->input('nome_pessoa', array('class' => 'form-control', 'label' => ''));
+																		
 																	?>
 															</div>
 														</td>
@@ -52,7 +55,7 @@
 																<span class="input-group-addon">Email &nbsp &nbsp &nbsp &nbsp</span>
 																	<?php
 																	
-																		echo $this->Form->input('username', array('class' => 'form-control', 'label' => '', 'placeholder' => 'email@email.com'));
+																		echo $this->Form->input('username', array('class' => 'form-control', 'label' => '', 'placeholder' => 'email@email.com', 'type' => 'email'));
 																	?>
 															</div>
 														</td>
@@ -62,8 +65,8 @@
 															<div class="input-group">
 																<span class="input-group-addon">Senha &nbsp &nbsp &nbsp &nbsp </span>
 																<?php
-																	echo $this->Form->input('password', array('class' => 'form-control', 'label' => ''));
-																	echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'profissional'));?>
+																	echo $this->Form->input('password', array('class' => 'form-control', 'label' => '', 'type' => 'password'));
+																	echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'cliente'));?>
 															</div>
 														</td>
 													</tr>
@@ -121,13 +124,12 @@
 															</div>
 														</td>
 													</tr>
-													
-													 <tr>
+													<tr>
 														<td>
 															<div class="input-group">
 																<span class="input-group-addon">DDD</span>
 																	<?php
-																		echo $this->Form->input('Telefone.1.ddd_telefone', array('class' => 'form-control', 'label' => ''));
+																		echo $this->Form->input('Telefone.1.ddd_telefone', array('class' => 'form-control', 'label' => '', 'style'));
 																	?>
 															</div>
 														</td>	
@@ -189,7 +191,8 @@
 																	?>
 															</div>
 														</td>
-													</tr>													
+													</tr>
+													
 												</table>	
 												</center>		
 											</div>
@@ -198,21 +201,107 @@
 								</td>
 							</tr>
 						</table>
-						
+						<div class="top-box">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									Dados Endereço
+								</div>
+								
+								<div class="panel-body">
+									<center>
+									<table border="1" width="800" height = "350">
+										<tr>
+											<td>
+												<div class="input-group">
+													<span class="input-group-addon">CEP</span>
+														<?php echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'class' => 'form-control', 'onblur' => 'consultacep(this.value)', 'label' => '')); ?>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="input-group">
+													<span class="input-group-addon">Logradouro </span>
+														<?php
+															echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'class' => 'form-control', 'label' => ''));
+														?>
+												</div>								
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="input-group">
+													<span class="input-group-addon">Localidade</span>
+													<?php
+														echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'class' => 'form-control', 'label' => ''));
+													?>
+												</div>								
+											</td>	
+										</tr>
+										<tr>
+											<td>
+												<div class="input-group">
+													<span class="input-group-addon">Bairro</span>
+														<?php
+															echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'class' => 'form-control', 'label' => ''));
+														?>
+												</div>								
+											</td>	
+										</tr>
+										<tr>
+											<td>
+												<div class="input-group">
+													<span class="input-group-addon">Estado</span>
+														<?php
+															echo $this->Form->input('Endereco.estado', array('id' => 'uf', 'class' => 'form-control', 'label' => ''));
+														?>
+												</div>								
+											</td>							
+										</tr>
+										<tr>
+											<td>
+												<div class="input-group">
+													<span class="input-group-addon">Número</span>
+														<?php
+															echo $this->Form->input('Endereco.numero_endereco', array('class' => 'form-control', 'label' => ''));
+														?>
+												</div>								
+											</td>		
+										</tr>
+										
+										<tr>
+											<td>
+												<div class="input-group">
+													<span class="input-group-addon">Complemento</span>
+														<?php
+															echo $this->Form->input('Endereco.complemento', array('class' => 'form-control', 'label' => ''));
+														?>
+												</div>								
+											</td>	
+										</tr>
+									</table>			
+									</center>
+								</div>
+							</div>
+						</div>
 						
 					<?php 
 					
 						echo $this->Form->button(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
-								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
+								array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
 						);
 						echo " ";
 						echo $this->Html->link(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-								array('controller' => 'pages','action' => 'index'),
-								array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
+								array('controller' => 'Clientes','action' => 'index'),
+								array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
 						);	
-						
+						echo " ";
+						echo $this->Form->button(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil'))." Limpar",
+								array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
+						);	
 						echo $this->Form->end();
 					?>
 
@@ -222,3 +311,34 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function consultacep(cep)
+	{
+		cep = cep.replace(/\D/g,"")
+	    url="http://cep.correiocontrol.com.br/"+cep+".js"
+	    s=document.createElement('script')
+	    s.setAttribute('charset','utf-8')
+	    s.src=url
+	    document.querySelector('head').appendChild(s)
+	}
+	 
+	function correiocontrolcep(valor)
+	{
+		if (valor.erro) 
+		{
+	    	alert('Cep não encontrado');       
+	        return;
+		};
+
+	    document.getElementById('logradouro').value=valor.logradouro
+	    document.getElementById('bairro').value=valor.bairro
+	    document.getElementById('localidade').value=valor.localidade
+	    document.getElementById('uf').value=valor.uf
+	}
+		
+	function addCampo() 
+	{
+		document.getElementById("duplicaCampo").innerHTML += "<input type='text' name='campo[]' />";
+	}
+</script>

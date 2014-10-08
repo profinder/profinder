@@ -7,15 +7,22 @@
 	echo $this->Form->input('role', array('type' => 'hidden', 'value' => 'admin'));
 	
 	echo $this->Form->input('id', array('type' => 'hidden'));
+	
+	echo "<center>";
+	
 	echo $this->Form->button(
 			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-			array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
+			array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
 	);
-	echo " ";
+	echo "  ";
 	echo $this->Html->link(
 			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
 			array('controller' => 'Users', 'action' => 'index'),
-			array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
+			array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
 	);
+	echo "<br/><br/>";
+	
+	
+	echo "</center>";
 	echo $this->Form->end();
 ?>

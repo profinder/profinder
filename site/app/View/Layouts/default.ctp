@@ -55,13 +55,22 @@
 			        Opções<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 			        	<li>
-			        	<span class='glyphicon glyphicon-user'></span>
-			        	<?php
-		               		 echo $this->Html->link(
-		                    "Perfil",
-		                    array('controller' => 'Users', 'action' => 'edit', 
-		                    AuthComponent::user("id"))); 
-		                   ?></li>
+				        	<?php
+			               		 echo $this->Html->link(
+			                    "Perfil",
+			                    array('controller' => 'Users', 'action' => 'edit', 
+			                    AuthComponent::user("id"))); 
+			                 ?>
+		                 </li>
+		                 <li>
+			        	
+			        		<?php
+		               		 	echo $this->Form->postLink(
+					        		$this->Html->tag('span', '', array()) . "Remover Conta",
+					        		array('controller' => 'users','action' => 'delete', AuthComponent::user("id")),
+					        		array('confirm' => 'Tem certeza?', 'escape' => false));
+		                	 ?>
+		                </li>
 			            <li class="divider"></li>
 			            <li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 					</ul>

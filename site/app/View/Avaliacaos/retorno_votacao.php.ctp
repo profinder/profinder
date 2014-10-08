@@ -7,9 +7,9 @@ if( $_SERVER['REQUEST_METHOD']=='POST' ){
 	App::import('Controller', 'Avaliacaos');
 	$avalicao = new AvaliacaosController;
 	$avalicao->constructClasses();
-	$sqlavaliaco=$avalicao->salvarAvaliacao($voto);
-	$sql = "INSERT INTO tb_avaliação (`id_anuncio`, `nota_avaliacao`) VALUES ( '1', {$voto} )";
-	echo $sql;
+	$id_pedido = $this->Session->read('pedido_id');
+	$sqlavaliaco=$avalicao->salvarAvaliacao($voto, $id_pedido);
+	
 }
  
  

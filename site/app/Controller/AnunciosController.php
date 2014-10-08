@@ -145,6 +145,14 @@
 			return $sql;
 		}
 		
+		public function dadosProfissionalAnuncio($anuncio_id) 
+		{
+			App::import('Controller', 'Profissionals');
+			$profissional = new ProfissionalsController;
+			$profissional->constructClasses();
+			return $profissional->dadosProfissionalAnuncio($anuncio_id);	
+		}
+		
 		public function upload($imagem = array(), $dir = 'img')
 		{
 			$dir = WWW_ROOT.$dir.DS;
@@ -218,6 +226,17 @@
 			$arquivo = new File($imagem['tmp_name']);
 			$arquivo->copy($dir.$imagem['name']);
 			$arquivo->close();
+		}
+		
+		public function visualizar()
+		{
+			$this->layout='home';
+		}
+		
+		public function caminhoFoto($id)
+		{
+			$sql= $this->Anuncio->query("SELECT tb_foto.caminho_foto FROM tb_anuncio INNER JOIN tb_foto ON tb_anuncio.id = tb_foto.anuncio_id WHERE tb_anuncio.id='".$id."';");
+			return $sql;
 		}
 	}
 ?>
