@@ -20,8 +20,9 @@
 					echo $this->Form->create('Cliente', array('action' => 'cadastro'));	
 				?>
 				
-				<div class = "panel panel-default" style="height: 400px; width: 590px; float: left;">
+				<div class = "panel panel-default" style="height: 250px; width: 590px; float: left;">
 					<h4> Dados Pessoais </h4>
+					<br />
 					<div style="float: left; margin-left: 10px">
 						Nome <br /><br />
 						
@@ -54,13 +55,15 @@
 						<?php 
 							echo $this->Form->input('password', array (
 								'label' => '',
-								'style' => 'width:100px; height:20px; resize:none;'
+								'style' => 'width:300px; height:20px; resize:none;'
 							));
+							echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'cliente'));
 						?>	
 					</div>
 				</div>
-				<div class = "panel panel-default" style="height: 400px; width: 590px; float: left; margin-left: 15px;">
+				<div class = "panel panel-default" style="height: 250px; width: 590px; float: left; margin-left: 15px;">
 					<h4> Telefones </h4>
+					<br />
 					<div style="float: left; margin-left: 10px">
 						1: <br /><br />
 						
@@ -74,7 +77,7 @@
 						<?php 
 							echo $this->Form->input('Telefone.0.ddd_telefone', array (
 								'type' => 'text',
-								'label' => '&nbsp DDD &nbsp',
+								'label' => 'DDD &nbsp',
 								'style' => 'width:30px; height:20px; resize:none;' 
 							));
 						?>
@@ -82,7 +85,7 @@
 						<?php 
 							echo $this->Form->input('Telefone.1.ddd_telefone', array (
 								'type' => 'text',
-								'label' => '&nbsp DDD &nbsp',
+								'label' => 'DDD &nbsp',
 								'style' => 'width:30px; height:20px; resize:none;' 
 							));
 						?>
@@ -90,7 +93,7 @@
 						<?php 
 							echo $this->Form->input('Telefone.2.ddd_telefone', array (
 								'type' => 'text',
-								'label' => '&nbsp DDD &nbsp',
+								'label' => 'DDD &nbsp',
 								'style' => 'width:30px; height:20px; resize:none;' 
 							));
 						?>
@@ -99,52 +102,182 @@
 						<?php 
 							echo $this->Form->input('Telefone.0.numero_telefone', array (
 								'type' => 'text',
-								'label' => 'Número &nbsp &nbsp',
-								'style' => 'width:70px; height:20px; resize:none;' 
+								'label' => 'Número &nbsp',
+								'style' => 'width:100px; height:20px; resize:none;' 
 							));
 						?>
 						<br />
 						<?php 
 							echo $this->Form->input('Telefone.1.numero_telefone', array (
 								'type' => 'text',
-								'label' => '&nbsp DDD &nbsp',
-								'style' => 'width:30px; height:20px; resize:none;' 
+								'label' => 'Número &nbsp',
+								'style' => 'width:100px; height:20px; resize:none;' 
 							));
 						?>
 						<br />
 						<?php 
 							echo $this->Form->input('Telefone.2.numero_telefone', array (
 								'type' => 'text',
-								'label' => '&nbsp DDD &nbsp',
-								'style' => 'width:30px; height:20px; resize:none;' 
+								'label' => 'Número &nbsp',
+								'style' => 'width:100px; height:20px; resize:none;' 
 							));
 						?>
 					</div>
-										
+					<div style="float: left; margin-left: 70px">
+						<?php 
+							echo $this->Form->input('Telefone.0.tipo_telefone', array(
+								'label' => 'Tipo &nbsp', 
+								'style' => 'width:130px; height:20px; resize:none;',
+								'options' => array(
+									'' => '',
+									'residencial' => 'Residencial',
+									'celular' => 'Celular',
+									'escritorio' => 'Escritório'))
+							);
+						?>
+						<br />
+						<?php 
+							echo $this->Form->input('Telefone.1.tipo_telefone', array(
+								'label' => 'Tipo &nbsp', 
+								'style' => 'width:130px; height:20px; resize:none;',
+								'options' => array(
+									'' => '',
+									'residencial' => 'Residencial',
+									'celular' => 'Celular',
+									'escritorio' => 'Escritório'))
+							);
+						?>
+						<br />
+						<?php 
+							echo $this->Form->input('Telefone.2.tipo_telefone', array(
+								'label' => 'Tipo &nbsp', 
+								'style' => 'width:130px; height:20px; resize:none;',
+								'options' => array(
+									'' => '',
+									'residencial' => 'Residencial',
+									'celular' => 'Celular',
+									'escritorio' => 'Escritório'))
+							);
+						?>
+					</div>					
 				</div>
-				<div class = "panel panel-default" style="height: 100px; width: 1194px; float: left;">
+				<div class = "panel panel-default" style="height: 500px; width: 1194px; float: left;">
 				 	<h4> Endereço </h4>
-				</div>
-				<div style="border: 1px solid RED; margin: 2px; clear: both;">
-				 5 Apenas clear: both;
-				</div>
-				<div style="border: 1px solid RED; margin: 2px; width: 100px; float: left;">
-				 6<br/>
-				 BBB<br/>
-				 bb<br/>
-				 <strong>b</strong><br/>
-				 bb<br/>
-				 BBB
-				</div>
-				<div style="border: 1px solid RED; margin: 2px; height: 100px; width: 100px; float: left;">
-				 7
-				</div>
-				<div style="border: 1px solid RED; margin: 2px; width: 340px; clear:both;">
-				 8 <br/>Se for usar float  em algumas DIVs, é bom usar clear:both;
-				</div>
-				</div>
-			</div>
-		</div>	
+				 	<br />
+				 	<div align = "left" style="float: left; margin-left: 10px">
+						CEP: <br /><br />
+						
+						Logradouro: <br /><br />
+						
+						Cidade: <br /><br />
+						
+						Bairro: <br /><br />
+						
+						Estado: <br /><br />
+						
+						Número: <br /><br />
+						
+						Complemento: <br /><br />
+					</div>
+					<div style="float: left; margin-left: 30px">
+					
+					</div>
+					
+				 </div>
+				 
+				<table width = "1200" height = "600">
+					<tr>
+						<td>
+							<div class="panel panel-default">
+								<table width = "550" height = "400">
+									<tr>
+										<td>
+											<h4>Endereço</h4>
+											<br />
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.cep', array(
+													'id' => 'cep', 
+													'onblur' => 'consultacep(this.value)', 
+													'label' => 'CEP &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												)); 
+											?>	
+										</td>											
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.logradouro', array(
+													'id' => 'logradouro', 
+													'label' => 'Logradouro &nbsp &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.localidade', array(
+													'id' => 'localidade', 
+													'label' => 'Cidade &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.bairro', array(
+													'id' => 'bairro', 
+													'label' => 'Bairro &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.estado', array(
+													'id' => 'uf', 
+													'label' => 'Estado &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.numero_endereco', array(
+													'label' => 'Número &nbsp &nbsp &nbsp &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.complemento', array(
+													'label' => '&nbsp Complemento &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</tr>
+					</table>
+					</div>
 		<?php 
 			echo "<center>";
 			echo $this->Form->button(
