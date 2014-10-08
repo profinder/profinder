@@ -84,16 +84,40 @@
 			}
 		}
 		
+		public function enviar_email(){
+			$this->layout='clean';
+		}
+		
+		public function verificar_email($username=null)
+		{
+			$sql=$this->Cliente->query("select exists (select tb_pessoa.username from tb_pessoa where tb_pessoa.username='".$username."');");
+			return $sql;
+		}
 		public function email($username=null)
 		{
-			$Email = new CakeEmail('gmail');
-			$Email->to($username);
-			$Email->subject('Automagically generated email');
-			$Email->replyTo('profindertcc@gmail.com');
-			$Email->message('teste');
-			$Email->from('profindertcc@gmail.com');
-			$Email->send(); 
-			var_dump($username);
+			$verificar=$this->verificar_email($username);
+			
+			$verificar_email=$verificar[0][0]["exists (select tb_pessoa.username from tb_pessoa where tb_pessoa.username='".$username."')"];
+			
+			if($verificar_email==1)
+			{
+				$Email = new CakeEmail('gmail');
+				$Email->to($username);
+				$Email->subject('Automagically generated email');
+				$Email->replyTo('profindertcc@gmail.com');
+				//$Email->message('teste');
+				$Email->from('profindertcc@gmail.com');
+				$Email->send("Teste");
+				return $this->redirect(array('action' => 'cadastro'));
+			}
+			else
+			{
+				$this->Session->setFlash ( __ ( 'Esse email não existe!', "flash_notification" ) );
+				return $this->redirect(array('action' => 'cadastro'));
+				
+			}
+			
+			
 			//return $this->redirect(array('action' => 'index'));
 		}
 		

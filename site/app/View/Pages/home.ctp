@@ -183,23 +183,13 @@
       </div>
       <div class="modal-body">
       	
-        <?php
+        
 
-        	//echo $this->Form->Create('User', array('action' => 'send_email'));
-        	echo $this->Form->Create('Cliente', array('action' => 'email'));
-			echo $this->Form->input('username', array('label' => 'E-mail:'));
-			
-			echo $this->Form->button(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-					array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
-			echo " ";
-			echo $this->Html->link(
-					$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-					array('controller' => 'Users','action' => 'index'),
-					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-			
-			echo $this->Form->end();
-		?>
+        	<form id = "formEmail" action = "/profinder/site/clientes/enviar_email" method = "post">
+			<input type='text' name='username'>
+				
+			<button type="submit" class="btn btn-default">Solicitar Senha</button>
+		
       </div>
     </div>
   </div>
