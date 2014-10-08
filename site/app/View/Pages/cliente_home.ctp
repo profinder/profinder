@@ -11,7 +11,6 @@
         				
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-		                <li class="dropdown">
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			                	<span class="glyphicon glyphicon-cog"></span>
 			                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
