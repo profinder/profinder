@@ -9,7 +9,6 @@
 <body>
 
 	<!------ Slider ------------>
-	
 	<div class="header">	
   		<div class="wrap"> 
 			<div class="header-top">
@@ -114,7 +113,6 @@
 		             </div>
 		   </div>
 		</div>
-		
 	</div>
 	<?php /*<div style="position:absolute; border: 5px solid white; background-color:#FFF; height: 100px; width: 600px; float: left; top:110px; left:6px; margin-left: 70px;">
 		</div> */ ?>

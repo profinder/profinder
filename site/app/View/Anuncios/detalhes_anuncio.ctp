@@ -75,7 +75,7 @@
 				<div class="top-box">
 				
 					<?php
-						$id=$_GET['id'];
+						$id = $_GET['id'];
 						$anunciosController = new AnunciosController;
 						$anunciosController->constructClasses();
 						$foto = $anunciosController->caminho_foto($id);
@@ -93,8 +93,9 @@
 						$dados = $anuncioController->dadosAnuncios($id);	
 						
 						App::import('Controller', 'Comentarios');
-						
-						$comentarios = $avalicaoController->comentariosAvaliacao($id);	
+						$comentarioController = new ComentariosController;
+						$comentarioController->constructClasses();
+						$comentarios = $comentarioController->comentariosAvaliacao($id);	
 						var_dump($comentarios);
 					?>	
 					<h4> Dados do Anúncio </h4><br />
@@ -115,15 +116,11 @@
 										if ($contador==0)
 										{
 											echo "<img src='".$foto[0]['tb_foto']['caminho_foto']."' height='300' width='300'  style= 'padding-top:0px'></br> ";
+											
 										}
 										else
 										{
-											
-            	echo $this->Html->link($foto[$contador]['tb_foto']['id'],
-				array('controller' => 'bairros', 'action' => 'view', $foto[$contador]['tb_foto']['id']),
-				array('escape' => false, "data-toggle"=>"modal", "data-target"=>"#myModal"));
-
-											echo "<img src='".$foto[$contador]['tb_foto']['caminho_foto']."' height='300' width='300' style= 'padding-top:0px' data-target='#myModal'> ";										
+											echo "<img src='".$foto[$contador]['tb_foto']['caminho_foto']."' height='300' width='300' style= 'padding-top:0px'> ";										
 										}
 										if ($contador==sizeof($foto)-1)
 										{
@@ -279,14 +276,14 @@
 					
 					$foto = $anunciosController->caminho_foto($id);
 											
-											if($foto==null||$foto==0)
-											{
-												echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='200' width='200' style= 'padding-top:0px'> </a>";
-											}
-											else
-											{
-												echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='".$foto[0]['tb_foto']['caminho_foto']."' height='200' width='200' style= 'padding-top:0px'> </a>";
-											}
+					if($foto==null||$foto==0)
+					{
+						echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='200' width='200' style= 'padding-top:0px'> </a>";
+					}
+					else
+					{
+						echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='".$foto[0]['tb_foto']['caminho_foto']."' height='200' width='200' style= 'padding-top:0px'> </a>";
+					}
 					
 					echo $this->Html->link(
 							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Sair",

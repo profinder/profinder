@@ -104,21 +104,13 @@
 		
 		public function quantidadeAvaliacao($id_anuncio) 
 		{
-			$sql=$this->Avaliacao->query('select count(tb_avaliacao.nota_avaliacao) from tb_avaliacao inner join tb_pedido on tb_avaliacao.pedido_id=tb_pedido.id where tb_pedido.anuncio_id='.$id_anuncio.';');
+			$sql = $this->Avaliacao->query('select count(tb_avaliacao.nota_avaliacao) from tb_avaliacao inner join tb_pedido on tb_avaliacao.pedido_id=tb_pedido.id where tb_pedido.anuncio_id='.$id_anuncio.';');
 			return $sql;
 		}
 		
 		public function avaliarPedido() 
 		{
 			$this->layout='home';
-		}
-		
-		public function comentariosAvaliacao($anuncio_id)
-		{
-			var_dump($anuncio_id);
-			$sql=$this->Avaliacao->query("SELECT tb_comentario.* FROM tb_comentario INNER JOIN tb_avaliacao ON tb_comentario.avaliacao_id = tb_avaliacao.id INNER JOIN tb_pedido ON tb_avaliacao.pedido_id = tb_pedido.id INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_anuncio.id ='.$anuncio_id.';");
-			var_dump($sql);
-			return $sql;
 		}
 	}
 ?>

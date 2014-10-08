@@ -79,10 +79,10 @@
 	
 		public function comentariosAvaliacao($anuncio_id)
 		{
-			//var_dump($anuncio_id);
-			//$sql=$this->Comentario->query("SELECT tb_comentario.* FROM tb_comentario INNER JOIN tb_avaliacao ON tb_comentario.avaliacao_id = tb_avaliacao.id INNER JOIN tb_pedido ON tb_avaliacao.pedido_id = tb_pedido.id INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_anuncio.id ='.$anuncio_id.';");
-			//var_dump($sql);
-			//return $sql;
+			var_dump($anuncio_id);
+			$sql=$this->Comentario->query("SELECT tb_comentario.* FROM tb_comentario INNER JOIN tb_avaliacao ON tb_comentario.avaliacao_id = tb_avaliacao.id INNER JOIN tb_pedido ON tb_avaliacao.pedido_id = tb_pedido.id INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_anuncio.id ='.$anuncio_id.';");
+			var_dump($sql);
+			return $sql;
 		}
 	}
 ?>

@@ -106,11 +106,11 @@
 											
 											if($foto==null||$foto==0)
 											{
-												echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='200' width='200' style= 'padding-top:0px'> </a>";
+												echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='200' width='200' style= 'padding-top:0px'> </a>";
 											}
 											else
 											{
-												echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='".$foto[0]['tb_foto']['caminho_foto']."' height='200' width='200' style= 'padding-top:0px'> </a>";
+												echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=".$id."'><img src='".$foto[0]['tb_foto']['caminho_foto']."' height='200' width='200' style= 'padding-top:0px'> </a>";
 											}
 										?>
 									</div>

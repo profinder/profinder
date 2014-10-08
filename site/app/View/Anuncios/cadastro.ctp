@@ -84,13 +84,7 @@
 															</div>
 															</td>
 															</tr>
-													<tr>
-														<td>
-														<?php echo $this->Form->input('Anuncio.Foto.legenda_foto', array('type' => 'file'));
-																		echo $this->Form->input('Anuncio.Foto.caminho_foto');
-														?>
-														</td>
-													</tr>
+													
 												</table>	
 											</center>		
 											</div>
@@ -165,7 +159,7 @@
 					<?php 
 					
 						echo $this->Form->button(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Próximo",
 								array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
 						);
 						echo " ";
@@ -180,6 +174,7 @@
 								array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
 						);			
 						echo $this->Form->end();
+						
 					?>
 
 					</div>

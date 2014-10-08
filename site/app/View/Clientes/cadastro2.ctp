@@ -2,14 +2,13 @@
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
 <div class="header">
-
-	
 	<div class="wrap">
 		<div class="header-top">
 			<div class="logo">
-				<a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style="padding-top: 0px"> </a>
+				<center><a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style="padding-top: 0px"> </a></center>
 			</div>
 		</div>
+		<center><hr></center>
 	</div>
 </div>
 
@@ -17,300 +16,303 @@
 	<div class="wrap">
 		<div class="content-top">
 			<div class="top-box">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h2 class="panel-title">Novo Cliente</h2>
-					</div>
-					
-					<div class="panel-body">
-						<?php
-							echo $this->Form->create('Cliente', array('action' => 'cadastro'));	
-						?>
-						<table height = "200">
-							<tr>
-								<td>
-									<div class="top-box">
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												Dados Pessoais
-											</div>
-											
-											<div class="panel-body">
-											<center>
-												<table border="1" width="550" height = "300">
-													<tr>
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">Nome &nbsp &nbsp &nbsp &nbsp &nbsp</span>
-																	<?php
-																		echo $this->Form->input('nome_pessoa', array('class' => 'form-control', 'label' => ''));
-																		
-																	?>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">Email &nbsp &nbsp &nbsp &nbsp</span>
-																	<?php
-																	
-																		echo $this->Form->input('username', array('class' => 'form-control', 'label' => '', 'placeholder' => 'email@email.com', 'type' => 'email'));
-																	?>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">Senha &nbsp &nbsp &nbsp &nbsp </span>
-																<?php
-																	echo $this->Form->input('password', array('class' => 'form-control', 'label' => '', 'type' => 'password'));
-																	echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'cliente'));?>
-															</div>
-														</td>
-													</tr>
-												</table>	
-											</center>		
-											</div>
-										</div>
-									</div>
-							
-								</td>
-							
-								<td> &nbsp &nbsp &nbsp &nbsp</td>
-								
-								<td>
-									<div class="top-box">
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												Dados do Telefone
-											</div>
-												
-											<div class="panel-body">
-												<center>
-												<table border="1" width="550" height = "300">
-													<tr>
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">DDD</span>
-																	<?php
-																		echo $this->Form->input('Telefone.0.ddd_telefone', array('class' => 'form-control', 'label' => ''));
-																	?>
-															</div>
-														</td>	
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">Número</span>
-																	<?php
-																		echo $this->Form->input('Telefone.0.numero_telefone', array('class' => 'form-control', 'label' => ''));
-																	?>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td> 
-															<div class="input-group">
-																<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
-																
-																	<?php 
-																		echo $this->Form->input('Telefone.0.tipo_telefone', array('class' => 'form-control', 'label' => '', 'options' => array(
-																			'' => '',
-																			'residencial' => 'Residencial',
-																			'celular' => 'Celular',
-																			'escritorio' => 'Escritório',))
-																		);
-																	?>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">DDD</span>
-																	<?php
-																		echo $this->Form->input('Telefone.1.ddd_telefone', array('class' => 'form-control', 'label' => '', 'style'));
-																	?>
-															</div>
-														</td>	
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">Número</span>
-																	<?php
-																		echo $this->Form->input('Telefone.1.numero_telefone', array('class' => 'form-control', 'label' => ''));
-																	?>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td> 
-															<div class="input-group">
-																<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
-																
-																	<?php 
-																		echo $this->Form->input('Telefone.1.tipo_telefone', array('class' => 'form-control', 'label' => '', 'options' => array(
-																			'' => '',
-																			'residencial' => 'Residencial',
-																			'celular' => 'Celular',
-																			'escritorio' => 'Escritório',))
-																		);
-																	?>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">DDD</span>
-																	<?php
-																		echo $this->Form->input('Telefone.2.ddd_telefone', array('class' => 'form-control', 'label' => ''));
-																	?>
-															</div>
-														</td>	
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">Número</span>
-																	<?php
-																		echo $this->Form->input('Telefone.2.numero_telefone', array('class' => 'form-control', 'label' => ''));
-																	?>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td> 
-															<div class="input-group">
-																<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
-																
-																	<?php 
-																		echo $this->Form->input('Telefone.2.tipo_telefone', array('class' => 'form-control', 'label' => '', 'options' => array(
-																			'' => '',
-																			'residencial' => 'Residencial',
-																			'celular' => 'Celular',
-																			'escritorio' => 'Escritório',))
-																		);
-																	?>
-															</div>
-														</td>
-													</tr>
-													
-												</table>	
-												</center>		
-											</div>
-										</div>
-									</div>
-								</td>
-							</tr>
-						</table>
-						<div class="top-box">
+				<?php
+					echo $this->Form->create('Cliente', array('action' => 'cadastro'));	
+				?>
+				
+				<table width = "1200" height = "600">
+					<tr>
+						<td>
 							<div class="panel panel-default">
-								<div class="panel-heading">
-									Dados Endereço
-								</div>
-								
-								<div class="panel-body">
-									<center>
-									<table border="1" width="800" height = "350">
+							
+								<table width = "550" height = "400">
+									<tr>
+										<td>
+											<h4>Dados Pessoais</h4>
+											<br />
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('nome_pessoa', array (
+													'type' => 'text',
+													'label' => '&nbsp Nome &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;' 
+												));
+											?>	
+										</td>											
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('username', array (
+													'type' => 'text',
+													'label' => '&nbsp Email &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;',
+													'placeholder' => 'email@email.com', 
+													'type' => 'email'
+												));
+											?>	
+										</td>											
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('password', array (
+													'type' => 'text',
+													'label' => '&nbsp Senha &nbsp ',
+													'style' => 'width:300px; height:25px; resize:none;' 
+												));
+												echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'cliente'));
+											?>	
+											
+										</td>											
+									</tr>
+									
+									
+								</table>
+							</div>
+						</td>
+						<td>
+						&nbsp
+						</td>
+						<td>
+							<div class="panel panel-default">
+								<table width = "550" height = "400">
+									<tr>
+										<td>
+											<h4>Endereço</h4>
+											<br />
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.cep', array(
+													'id' => 'cep', 
+													'onblur' => 'consultacep(this.value)', 
+													'label' => 'CEP &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												)); 
+											?>	
+										</td>											
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.logradouro', array(
+													'id' => 'logradouro', 
+													'label' => 'Logradouro &nbsp &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.localidade', array(
+													'id' => 'localidade', 
+													'label' => 'Cidade &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.bairro', array(
+													'id' => 'bairro', 
+													'label' => 'Bairro &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.estado', array(
+													'id' => 'uf', 
+													'label' => 'Estado &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.numero_endereco', array(
+													'label' => 'Número &nbsp &nbsp &nbsp &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<?php 
+												echo $this->Form->input('Endereco.complemento', array(
+													'label' => '&nbsp Complemento &nbsp &nbsp',
+													'style' => 'width:300px; height:25px; resize:none;'
+												));
+											?>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td>
+								<div class="panel panel-default">
+									<table width = "400" height = "400">
 										<tr>
 											<td>
-												<div class="input-group">
-													<span class="input-group-addon">CEP</span>
-														<?php echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'class' => 'form-control', 'onblur' => 'consultacep(this.value)', 'label' => '')); ?>
-												</div>
+												<h4>Telefone</h4>
+												<br />
 											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="input-group">
-													<span class="input-group-addon">Logradouro </span>
-														<?php
-															echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'class' => 'form-control', 'label' => ''));
-														?>
-												</div>								
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="input-group">
-													<span class="input-group-addon">Localidade</span>
-													<?php
-														echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'class' => 'form-control', 'label' => ''));
-													?>
-												</div>								
-											</td>	
-										</tr>
-										<tr>
-											<td>
-												<div class="input-group">
-													<span class="input-group-addon">Bairro</span>
-														<?php
-															echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'class' => 'form-control', 'label' => ''));
-														?>
-												</div>								
-											</td>	
-										</tr>
-										<tr>
-											<td>
-												<div class="input-group">
-													<span class="input-group-addon">Estado</span>
-														<?php
-															echo $this->Form->input('Endereco.estado', array('id' => 'uf', 'class' => 'form-control', 'label' => ''));
-														?>
-												</div>								
-											</td>							
-										</tr>
-										<tr>
-											<td>
-												<div class="input-group">
-													<span class="input-group-addon">Número</span>
-														<?php
-															echo $this->Form->input('Endereco.numero_endereco', array('class' => 'form-control', 'label' => ''));
-														?>
-												</div>								
-											</td>		
 										</tr>
 										
 										<tr>
 											<td>
-												<div class="input-group">
-													<span class="input-group-addon">Complemento</span>
-														<?php
-															echo $this->Form->input('Endereco.complemento', array('class' => 'form-control', 'label' => ''));
-														?>
-												</div>								
-											</td>	
-										</tr>
-									</table>			
-									</center>
+											<?php 
+												echo $this->Form->input('Telefone.0.ddd_telefone', array (
+													'type' => 'text',
+													'label' => '&nbsp DDD &nbsp',
+													'style' => 'width:30px; height:25px; resize:none;' 
+												));
+											?>
+										</td>
+										<td>
+											<?php 
+												echo $this->Form->input('Telefone.0.numero_telefone', array (
+													'type' => 'text',
+													'label' => 'Número &nbsp &nbsp',
+													'style' => 'width:70px; height:25px; resize:none;' 
+												));
+											?>
+										</td>
+										<td>
+											<?php 
+												echo $this->Form->input('Telefone.0.tipo_telefone', array(
+													'label' => 'Tipo', 
+													'style' => 'width:100px; height:25px; resize:none;',
+													'options' => array(
+														'' => '',
+														'residencial' => 'Residencial',
+														'celular' => 'Celular',
+														'escritorio' => 'Escritório',))
+												);
+											?>
+										</td>									
+									</tr>
+										
+										<tr>
+											<td>
+											<?php 
+												echo $this->Form->input('Telefone.0.ddd_telefone', array (
+													'type' => 'text',
+													'label' => '&nbsp DDD &nbsp',
+													'style' => 'width:30px; height:25px; resize:none;' 
+												));
+											?>
+										</td>
+										<td>
+											<?php 
+												echo $this->Form->input('Telefone.0.numero_telefone', array (
+													'type' => 'text',
+													'label' => 'Número &nbsp &nbsp',
+													'style' => 'width:70px; height:25px; resize:none;' 
+												));
+											?>
+										</td>
+										<td>
+											<?php 
+												echo $this->Form->input('Telefone.0.tipo_telefone', array(
+													'label' => 'Tipo', 
+													'style' => 'width:100px; height:25px; resize:none;',
+													'options' => array(
+														'' => '',
+														'residencial' => 'Residencial',
+														'celular' => 'Celular',
+														'escritorio' => 'Escritório',))
+												);
+											?>
+										</td>									
+									</tr>
+										
+										<tr>
+											<td>
+											<?php 
+												echo $this->Form->input('Telefone.0.ddd_telefone', array (
+													'type' => 'text',
+													'label' => '&nbsp DDD &nbsp',
+													'style' => 'width:30px; height:25px; resize:none;' 
+												));
+											?>
+										</td>
+										<td>
+											<?php 
+												echo $this->Form->input('Telefone.0.numero_telefone', array (
+													'type' => 'text',
+													'label' => 'Número &nbsp &nbsp',
+													'style' => 'width:70px; height:25px; resize:none;' 
+												));
+											?>
+										</td>
+										<td>
+											<?php 
+												echo $this->Form->input('Telefone.0.tipo_telefone', array(
+													'label' => 'Tipo', 
+													'style' => 'width:100px; height:25px; resize:none;',
+													'options' => array(
+														'' => '',
+														'residencial' => 'Residencial',
+														'celular' => 'Celular',
+														'escritorio' => 'Escritório',))
+												);
+											?>
+										</td>									
+									</tr>
+										
+									</table>
 								</div>
-							</div>
-						</div>
-						
-					<?php 
-					
-						echo $this->Form->button(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
-								array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
-						);
-						echo " ";
-						echo $this->Html->link(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-								array('controller' => 'Clientes','action' => 'index'),
-								array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
-						);	
-						echo " ";
-						echo $this->Form->button(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil'))." Limpar",
-								array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
-						);	
-						echo $this->Form->end();
-					?>
-
-					</div>
+						</tr>
+				</table>
 				</div>
 			</div>
-		</div>
+		</div>	
+		<?php 
+			echo "<center>";
+			echo $this->Form->button(
+				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
+				array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
+			);
+			echo " ";
+			echo $this->Html->link(
+				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
+				array('controller' => 'Clientes','action' => 'index'),
+				array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
+			);	
+			echo " ";
+			echo $this->Form->button(
+				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil'))." Limpar",
+				array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
+			);	
+			echo "</center>";
+			echo $this->Form->end();
+		?>
+
 	</div>
 </div>
+
 
 <script>
 	function consultacep(cep)
