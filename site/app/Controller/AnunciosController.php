@@ -34,6 +34,8 @@
 					if ($this->Anuncio->saveAssociated($this->request->data, array("deep" => true)))
 					{
 						$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
+						$idAnuncio = $this->Anuncio->id;
+						$this->Session->write('codigoAnuncio', $idAnuncio);
 						return $this->redirect(array('controller'=> 'fotos', 'action' => 'cadastro'));					}
 					$this->Session->setFlash(__('Erro ao salvar dados!'));
 				}
@@ -42,6 +44,8 @@
 					if ($this->Anuncio->save($this->request->data, array("deep" => true)))
 					{
 						$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
+						$idAnuncio = $this->Anuncio->id;
+						$this->Session->write('idAnuncio', $idAnuncio);
 						return $this->redirect(array('controller'=> 'fotos', 'action' => 'cadastro'));
 					}
 					$this->Session->setFlash(__('Erro ao salvar dados!'));
@@ -60,7 +64,6 @@
 					}
 					$this->Session->setFlash(__('Erro ao salvar dados!'));
 				}
-				
 			}
 		}
 	

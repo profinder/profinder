@@ -17,6 +17,11 @@
 		 		</div>
 	    		<div id="text-6" class="visible-all-devices header-text ">	
 	     			<div class="navbar-collapse collapse">
+        				
+        				<?php
+        					if( AuthComponent::user('id') == null )
+        					{
+        				?>
         				<form action="/profinder/site/users/login" id="UserLoginForm" method="post" accept-charset="utf-8"
         					class="navbar-form navbar-right" role="form">
         					<input type="hidden" name="_method" value="POST"/>
@@ -30,11 +35,29 @@
             							id="UserPassword" required="required" class="form-control"/>
             					</div>
             					<button type="submit" class="btn btn-success">Entrar</button>
+            					
+            					<button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Esqueci minha senha</button>
           						
           				</form>
+          				<?php 
+          					}
+          					else
+          					{
+          						if( AuthComponent::user('role') == "cliente" )
+          						{
+          							echo "cliente";
+          						}
+          						else if( AuthComponent::user('role') == "profissional" )
+          						{
+          							echo "prof";
+          						}
+          						else 
+          						{
+          							echo "admin";
+          						}
+          					}
+          				?>
 			
-	    				<button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Esqueci minha senha</button>
-	    				
 	    				<br/>
 	    				
 	    				</div>

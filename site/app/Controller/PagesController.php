@@ -106,7 +106,7 @@
 			$anuncioBairros->constructClasses();
 			return $anuncioBairros->salvar($idAnuncio, $idBairro);	
 		}
-				
+		
 		public function beforeFilter() 
 		{
 			$this->Auth->allow('clienteHome', 'profissionalHome', 'display');
