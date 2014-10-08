@@ -79,7 +79,9 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-					<?php
+					
+					<h2>Mensagens</h2>
+					<?php 
 						$mensagem = new MensagemsController;
 						$mensagem->constructClasses();
 						if($_POST["id_pedido"]!=null)
@@ -91,65 +93,77 @@
 						{
 							$id_pedido=$this->Session->read('sessaoPedido');
 						}
-									
+						
+						//var_dump($id_pedido);
+						
+						
 						$mensagensPedido = $mensagem->profissionalMensagensPedido($id_pedido);
-						App::import('Controller', 'Pedidos');
-						$pedidoController = new PedidosController;
-						$pedidoController->constructClasses();
-						$cliente = $pedidoController->dadosPedido($id_pedido);
-						//var_dump($cliente);
-						$nome_cliente = $cliente[0]['tb_pessoa']['nome_pessoa'];
+						
+						//var_dump($mensagensPedido);
+						$contador=0;
+						$contador2=0;
+						while ($contador!=sizeof($mensagensPedido))
+						{
+							$id = $mensagensPedido[$contador]['tb_mensagem']['id'];
+							$texto = $mensagensPedido[$contador]['tb_mensagem']['texto_mensagem'];
+							$quem_enviou = $mensagensPedido[$contador]['tb_mensagem']['quem_enviou'];
+							
 					?>
-					<h2>Mensagens com <?php echo $nome_cliente;?></h2>
 					<div class="top-box">
 						<div class="panel panel-default">
-							<div class="panel-body" style = "height: 400px; overflow: auto;">
-								<?php 
-									$contador=0;
-									$contador2=0;
-									while ($contador!=sizeof($mensagensPedido))
-									{
-										$id = $mensagensPedido[$contador]['tb_mensagem']['id'];
-										$texto = $mensagensPedido[$contador]['tb_mensagem']['texto_mensagem'];
-										$quem_enviou = $mensagensPedido[$contador]['tb_mensagem']['quem_enviou'];
+							
+							<div class="panel-body">
+								<table border="2" width="800" height = "60">
+									<tr>
+										<td>
+											
+													<?php 
+													//var_dump($mensagensPedido[$contador]['tb_mensagem']['quem_enviou']);
+							
+														if( $quem_enviou == "profissional" )
+														{?>
+															<div align = "right" class = "panel panel-success" style = "width: 202x; margin-left: 40px;">
+								        						<div class="panel-heading">
+								        							<?php echo $texto; ?>
+								        						</div>
+								        					</div>
+														<?php }
+														else 
+														{?>
+															<div align = "left" class="panel panel-default" style = "width: 202x;">
+								        						<div class="panel-heading">
+								        							<?php echo $texto; ?>
+								        						</div>
+								        					</div>
+														<?php }?>
+
+												
+										</td>
 										
-										
-										
-										if( $quem_enviou == "profissional" )
-										{		
-								?>
-											<div class = "panel panel-success" style = "width: 700px; clear:both; margin-left: 450px;">
-											 	<div class="panel-heading"><?php echo $texto; ?></div>
-											</div>
-											<?php 
-										}
-										else 
-										{
-											?>
-											<div class = "panel panel-default" style = "width: 700px; clear:both;">
-												<div class="panel-heading"><?php echo $texto; ?></div>
-											</div>
-											<?php 
-										}
+									</tr>
+								<?php 		
 										$contador2++;
 										$contador++;
 									}
 								?>
-								
+													
+							</table>
+							
 							</div>
 						</div>
+					
+						
 						<?php 
 							echo $this->Form->create('Mensagem', array('action' => 'add'));
 							echo $this->Form->input('Mensagem.texto_mensagem', array (
 																		'class' => 'form-control',
 																		'type' => 'textarea',
 																		'label' => '',
-																		'style' => 'width:1200px; height:100px; resize:none;', 
+																		'style' => 'width:1200px; height:133px; resize:none;', 
 																		'placeHolder' => "Digite aqui sua resposta..."
 																	) );
 							echo $this->Form->input('pedido_id', array('type' => 'hidden', 'value' => $id_pedido)); 
 							echo $this->Form->input('Mensagem.quem_enviou', array('type' => 'hidden', 'value' => 'profissional'));
-							echo "<br />";
 							echo $this->Form->button ( $this->Html->tag ( 'span', '', array (
 									'class' => 'glyphicon glyphicon-arrow-up' 
 							) ) . " Enviar", array (
@@ -168,10 +182,9 @@
 							) );
 														
 						?>
-							</div>	
-				</div>
+					</div>	
+			 	</div>
 			</div>
-					
-		</div>	
+		</div>
 	</div>
 </div>
