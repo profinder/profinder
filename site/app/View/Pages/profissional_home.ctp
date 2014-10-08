@@ -22,7 +22,14 @@
 			               		<li><a href="/profinder/site/pedidos/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
 			               		<li><a href="/profinder/site/pedidos/profissionalSolicitacaoFinalizarPedido">Solicitações de finalizar pedido</a></li>
 			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
+								<li>
+									<?php
+			               		 		echo $this->Form->postLink(
+							        		$this->Html->tag('span', '', array()) . "<span class='glyphicon glyphicon-remove'></span> Remover Conta",
+							        		array('controller' => 'users','action' => 'delete', AuthComponent::user("id")),
+							        		array('confirm' => 'Tem certeza?', 'escape' => false));
+			                	 	?>
+								</li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 		               		</ul>
 						</li>

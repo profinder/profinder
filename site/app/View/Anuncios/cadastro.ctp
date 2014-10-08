@@ -131,7 +131,7 @@
 										?>
 									</select>
 									<select id="cidadesSelect" name="cidadesSelect" style="display:none;">
-										<option>Selecione o estado</option>
+										<option>Selecione a cidade</option>
 									</select>
 									<center>
 									<?php

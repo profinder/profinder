@@ -127,6 +127,11 @@
 			$this->layout='home';
 		}
 		
+		public function quantidadeVotos($id_anuncio) 
+		{
+			$sql=$this->Avaliacao->query('select count(tb_avaliacao.nota_avaliacao) from tb_avaliacao inner join tb_pedido on tb_avaliacao.pedido_id=tb_pedido.id where tb_pedido.anuncio_id='.$id_anuncio.';');
+			return $sql;
+		}
 	
 	}
 ?>

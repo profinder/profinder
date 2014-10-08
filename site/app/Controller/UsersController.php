@@ -123,8 +123,8 @@
 	    
 	    	if ($this->User->delete($id))
 	    	{
-	    		$this->Session->setFlash(__('Administrador excluído com sucesso.'), "flash_notification");
-	    		return $this->redirect(array('action' => 'index'));
+	    		$this->Session->setFlash(__('Usuário excluído com sucesso.'), "flash_notification");
+	    		return $this->logout();
 	    	}
 	    }
 	    

@@ -30,6 +30,11 @@
 			$id_pedido = $this->Session->read('pedido_id');
 			$voto = $this->Session->read('voto');
 			$sqlavaliaco=$avalicao->salvarAvaliacao($voto, $id_pedido);
+			$avalicao->salvarAvaliacao($voto, $id_pedido);
+			App::import('Controller', 'Pedidos');
+			$pedidoController = new PedidosController;
+			$pedidoController->constructClasses();
+			$aumentarQntAvaliacao = $pedidoController->aumentarQntAvaliacao($id_pedido);
 			$this->layout = 'clean';
 			if ($this->request->is('post'))
 			{

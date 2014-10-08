@@ -86,7 +86,8 @@
 						$sqlavaliacao = $avalicaoController->buscarAvaliacao($id);
 						$quantidadeAvaliacoes = $avalicaoController->quantidadeAvaliacao($id);
 						$sql = ($sqlavaliacao[0][0]['sum(tb_avaliacao.nota_avaliacao)'])/$quantidadeAvaliacoes[0][0]['count(tb_avaliacao.nota_avaliacao)'];
-												
+						$quantidadeVotos=$avalicaoController->quantidadeVotos($id);	
+						$qtdVotos=$quantidadeVotos[0][0]['count(tb_avaliacao.nota_avaliacao)'];		
 						App::import('Controller', 'Anuncios');
 						$anuncioController = new AnunciosController;
 						$anuncioController->constructClasses();
@@ -190,8 +191,9 @@
 								{
 									echo "<img src=/profinder/site/img/star_0.png>";
 								}
+								echo "<br/><font color = '#aaacae'>Quantidade de votos: ".$quantidadeVotos[0][0]['count(tb_avaliacao.nota_avaliacao)'].", porcentagem: ".round($sql, 2)."%</font>";
 								echo '</center>'
-							?>
+								?>
 						</div>
 						<div align = "left" style="height: 300px; width: 300px; float: left; margin-left: 20px;">
 							<?php 

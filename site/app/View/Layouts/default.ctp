@@ -54,10 +54,10 @@
 		    		<span class="glyphicon glyphicon-cog"></span>
 			        Opções<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-			        	<li>
+			        	<li> 
 				        	<?php
 			               		 echo $this->Html->link(
-			                    "Perfil",
+			                    "<span class='glyphicon glyphicon-user'></span> Perfil",
 			                    array('controller' => 'Users', 'action' => 'edit', 
 			                    AuthComponent::user("id"))); 
 			                 ?>
@@ -66,7 +66,7 @@
 			        	
 			        		<?php
 		               		 	echo $this->Form->postLink(
-					        		$this->Html->tag('span', '', array()) . "Remover Conta",
+					        		$this->Html->tag('span', '', array()) . "<span class='glyphicon glyphicon-remove'></span> Remover Conta",
 					        		array('controller' => 'users','action' => 'delete', AuthComponent::user("id")),
 					        		array('confirm' => 'Tem certeza?', 'escape' => false));
 		                	 ?>

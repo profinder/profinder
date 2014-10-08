@@ -1,110 +1,286 @@
+<link rel="stylesheet" href="css/bootstrap.css"/>
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	
-<div class="header">	
-	<div class="wrap"> 
+
+<div class="header">
+	<div class="wrap">
 		<div class="header-top">
-	 		<div class="logo">
-		 		<a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style= "padding-top:0px"> </a>
-	 		</div>
-    		<div id="text-6" class="visible-all-devices header-text ">	
-				<div class="navbar-collapse collapse">
-        				
-        			<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			                	<span class="glyphicon glyphicon-cog"></span>
-			                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
-			                		<b class="caret"></b>
-			                	</a>
-							<ul class="dropdown-menu">
-								<li><a href="/profinder/site/clientes/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pedidos/clientePedidos">Meus pedidos</a></li>
-								<li><a href="/profinder/site/pedidos/clientePedidosAvaliar">Meus pedidos disponíveis para avaliar</a></li>
-			               		<li class="divider"></li>
-								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
-			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
-		               		</ul>
-						</li>
-					</ul>
-        				
-				</div>
-		 		
-		 		<div class="clear"></div> 
-	   		</div>
-   		</div>	
-	</div>
-    
-	<div class="banner">
-    	<div class="wrap">
-			<div class="cssmenu">
-				<?php
-					App::import('Controller', 'Pages');
-					$pages = new PagesController;
-					$pages->constructClasses();
-					$categorias=$pages->nomeCategorias();
-					$contador=0;
-				?>
-				<ul>
-					<?php
-						while($contador<sizeof($categorias))
-						{
-					?>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $categorias[$contador]['Categoria']['nome_categoria'] ?><b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<?php
-											$servicos=$pages->nomeServicos($categorias[$contador]['Categoria']['id']);
-											$contadorServicos=0;
-											while($contadorServicos<sizeof($servicos))
-											{
-										?>
-												<li><a href="#"><?php echo $servicos[$contadorServicos]['Servico']['nome_servico'] ?></a></li>
-												
-												<?php
-													$contadorServicos++;
-											}
-												?>
-									</ul>
-							<?php
-								$contador++;
-						}
-							?>
-											
-					<div class="clear"></div> 
-				</ul>
+			<div class="logo">
+				<center><a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style="padding-top: 0px"> </a></center>
 			</div>
 		</div>
-	</div>
-	<div class="main">
-		<div class="wrap">
-			<div class="content-top">
-				<div class="top-box">
-					<h2>Perfil</h2>
-					<?php  
-					
-						echo $this->Form->create('Cliente', array('action' => 'add'));
-						echo $this->Form->input('id', array('type' => 'hidden'));
-						echo $this->Form->input('nome_pessoa', array('label' => 'Nome:'));
-						echo $this->Form->input('username', array('label' => 'E-mail:'));
-						echo $this->Form->input('password', array('label' => 'Senha:', 'value' => ""));
-						echo $this->Form->input('role', array('type' => 'hidden', 'value' => 'cliente'));
-						
-						echo $this->Form->button(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
-								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
-						echo " ";
-						echo $this->Html->link(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-								array('controller' => 'clientes','action' => 'perfil'),
-								array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-						
-						echo $this->Form->end();
-					                   
-		                   	
-					?>
-				
-			 	</div>
-			</div>
-		</div>
+		<center><hr></center>
 	</div>
 </div>
+
+<div class="main">					
+	<div class="wrap">
+		<div class="content-top">
+			<div class="top-box">
+				<?php
+					echo $this->Form->create('Cliente', array('action' => 'cadastro'));	
+					echo $this->Form->input('id', array('type' => 'hidden'));
+				?>
+				
+				<div class = "panel panel-default" style="height: 250px; width: 590px; float: left;">
+					<h4> Dados Pessoais </h4>
+					<br />
+					<div style="float: left; margin-left: 10px">
+						Nome <br /><br />
+						
+						E-mail <br /><br />
+						
+						Senha <br /><br />
+						
+						
+					</div>
+					
+					<div style="float: left; margin-left: 30px">
+						<?php 
+							echo $this->Form->input('nome_pessoa', array (
+								'type' => 'text',
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;' 
+							));
+						?>	
+						<br />
+						<?php 
+							echo $this->Form->input('username', array (
+								'type' => 'text',
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;',
+								'placeholder' => 'email@email.com', 
+								'type' => 'email' 
+							));
+						?>	
+						<br />
+						<?php 
+							echo $this->Form->input('password', array (
+								'label' => '',
+								'value' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'cliente'));
+						?>	
+					</div>
+				</div>
+				<div class = "panel panel-default" style="height: 250px; width: 590px; float: left; margin-left: 15px;">
+					<h4> Telefones </h4>
+					<br />
+					<div style="float: left; margin-left: 10px">
+						1: <br /><br />
+						
+						2: <br /><br />
+						
+						3: <br /><br />
+						
+						
+					</div>
+					<div style="float: left; margin-left: 15px">
+						<?php 
+							echo $this->Form->input('Telefone.0.ddd_telefone', array (
+								'type' => 'text',
+								'label' => 'DDD &nbsp',
+								'style' => 'width:30px; height:20px; resize:none;' 
+							));
+						?>
+						<br />
+						<?php 
+							echo $this->Form->input('Telefone.1.ddd_telefone', array (
+								'type' => 'text',
+								'label' => 'DDD &nbsp',
+								'style' => 'width:30px; height:20px; resize:none;' 
+							));
+						?>
+						<br />
+						<?php 
+							echo $this->Form->input('Telefone.2.ddd_telefone', array (
+								'type' => 'text',
+								'label' => 'DDD &nbsp',
+								'style' => 'width:30px; height:20px; resize:none;' 
+							));
+						?>
+					</div>
+					<div style="float: left; margin-left: 45px">
+						<?php 
+							echo $this->Form->input('Telefone.0.numero_telefone', array (
+								'type' => 'text',
+								'label' => 'Número &nbsp',
+								'style' => 'width:100px; height:20px; resize:none;' 
+							));
+						?>
+						<br />
+						<?php 
+							echo $this->Form->input('Telefone.1.numero_telefone', array (
+								'type' => 'text',
+								'label' => 'Número &nbsp',
+								'style' => 'width:100px; height:20px; resize:none;' 
+							));
+						?>
+						<br />
+						<?php 
+							echo $this->Form->input('Telefone.2.numero_telefone', array (
+								'type' => 'text',
+								'label' => 'Número &nbsp',
+								'style' => 'width:100px; height:20px; resize:none;' 
+							));
+						?>
+					</div>
+					<div style="float: left; margin-left: 70px">
+						<?php 
+							echo $this->Form->input('Telefone.0.tipo_telefone', array(
+								'label' => 'Tipo &nbsp', 
+								'style' => 'width:130px; height:20px; resize:none;',
+								'options' => array(
+									'' => '',
+									'residencial' => 'Residencial',
+									'celular' => 'Celular',
+									'escritorio' => 'Escritório'))
+							);
+						?>
+						<br />
+						<?php 
+							echo $this->Form->input('Telefone.1.tipo_telefone', array(
+								'label' => 'Tipo &nbsp', 
+								'style' => 'width:130px; height:20px; resize:none;',
+								'options' => array(
+									'' => '',
+									'residencial' => 'Residencial',
+									'celular' => 'Celular',
+									'escritorio' => 'Escritório'))
+							);
+						?>
+						<br />
+						<?php 
+							echo $this->Form->input('Telefone.2.tipo_telefone', array(
+								'label' => 'Tipo &nbsp', 
+								'style' => 'width:130px; height:20px; resize:none;',
+								'options' => array(
+									'' => '',
+									'residencial' => 'Residencial',
+									'celular' => 'Celular',
+									'escritorio' => 'Escritório'))
+							);
+						?>
+					</div>					
+				</div>
+				<div class = "panel panel-default" style="height: 330px; width: 1194px; float: left;">
+				 	<h4> Endereço </h4>
+				 	<br />
+				 	<div align = "left" style="float: left; margin-left: 350px">
+						CEP: <br /><br />
+						
+						Logradouro: <br /><br />
+						
+						Cidade: <br /><br />
+						
+						Bairro: <br /><br />
+						
+						Estado: <br /><br />
+						
+						Número: <br /><br />
+						
+						Complemento: <br /><br />
+					</div>
+					<div style="float: left; margin-left: 30px">
+						<?php 
+							echo $this->Form->input('Endereco.cep', array(
+								'id' => 'cep', 
+								'onblur' => 'consultacep(this.value)', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							)); 
+							echo "<br />";
+
+							echo $this->Form->input('Endereco.logradouro', array(
+								'id' => 'logradouro', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "<br />";
+							
+							echo $this->Form->input('Endereco.localidade', array(
+								'id' => 'localidade', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "<br />";
+							
+							echo $this->Form->input('Endereco.bairro', array(
+								'id' => 'bairro', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "<br />";
+							echo $this->Form->input('Endereco.estado', array(
+								'id' => 'uf', 
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "</br>";
+							echo $this->Form->input('Endereco.numero_endereco', array(
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+							echo "<br />";
+							
+							echo $this->Form->input('Endereco.complemento', array(
+								'label' => '',
+								'style' => 'width:300px; height:20px; resize:none;'
+							));
+						?>
+											
+					</div>
+				</div>
+			</div>
+		<?php 
+			echo "<center>";
+			echo $this->Form->button(
+				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
+				array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
+			);
+			echo " ";
+			echo $this->Html->link(
+				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-arrow-left')) . " Cancelar",
+				array('controller' => 'pages', 'action' => 'index'),
+				array('role' => 'button', 'class' => 'btn btn-warning', 'escape' => false)
+			);	
+			echo " ";
+			
+			echo "</center>";
+			echo $this->Form->end();
+		?>
+
+	</div>
+</div>
+
+
+<script>
+	function consultacep(cep)
+	{
+		cep = cep.replace(/\D/g,"")
+	    url="http://cep.correiocontrol.com.br/"+cep+".js"
+	    s=document.createElement('script')
+	    s.setAttribute('charset','utf-8')
+	    s.src=url
+	    document.querySelector('head').appendChild(s)
+	}
+	 
+	function correiocontrolcep(valor)
+	{
+		if (valor.erro) 
+		{
+	    	alert('Cep não encontrado');       
+	        return;
+		};
+
+	    document.getElementById('logradouro').value=valor.logradouro
+	    document.getElementById('bairro').value=valor.bairro
+	    document.getElementById('localidade').value=valor.localidade
+	    document.getElementById('uf').value=valor.uf
+	}
+		
+	function addCampo() 
+	{
+		document.getElementById("duplicaCampo").innerHTML += "<input type='text' name='campo[]' />";
+	}
+</script>

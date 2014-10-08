@@ -82,11 +82,21 @@
 					
 					<h2>Mensagens</a></h2>
 					<?php 
-						$id_pedido=$_POST["id_pedido"];
-						//var_dump($id_pedido);
-						
 						$mensagem = new MensagemsController;
 						$mensagem->constructClasses();
+						if($_POST["id_pedido"]!=null)
+						{
+							$id_pedido=$_POST["id_pedido"];
+							$mensagem->sessaoPedido($id_pedido);
+						}
+						else 
+						{
+							$id_pedido=$this->Session->read('sessaoPedido');
+						}
+						
+						//var_dump($id_pedido);
+						
+						
 						$mensagensPedido = $mensagem->profissionalMensagensPedido($id_pedido);
 						
 						//var_dump($mensagensPedido);

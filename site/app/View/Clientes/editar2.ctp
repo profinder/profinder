@@ -11,28 +11,20 @@
         				
         			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			                	<span class="glyphicon glyphicon-cog"></span>
 			                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
 			                		<b class="caret"></b>
 			                	</a>
 							<ul class="dropdown-menu">
 								<li><a href="/profinder/site/clientes/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-			               		<li><a href="/profinder/site/pedidos/clientePedidos"> Meus pedidos</a></li>
+			               		<li><a href="/profinder/site/pedidos/clientePedidos">Meus pedidos</a></li>
 								<li><a href="/profinder/site/pedidos/clientePedidosAvaliar">Meus pedidos disponíveis para avaliar</a></li>
-			               		<li><a href="/profinder/site/pedidos/clienteSolicitacaoFinalizarPedido">Solicitações de finalizar pedido</a></li>
 			               		<li class="divider"></li>
-			               		<li><?php
-			               		echo $this->Form->postLink(
-					        		$this->Html->tag('span', '', array()) . "Remover Conta",
-					        		array('controller' => 'users','action' => 'delete', AuthComponent::user("id")),
-					        		array('confirm' => 'Tem certeza?', 'escape' => false));
-					        	?>
-					        	</li>
 								<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 			               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
-
 		               		</ul>
+						</li>
 					</ul>
         				
 				</div>
@@ -89,21 +81,28 @@
 				<div class="top-box">
 					<h2>Perfil</h2>
 					<?php  
-						$id=AuthComponent::user('id');
-						App::import('Controller', 'Clientes');
-						$cliente = new ClientesController;
-						$cliente->constructClasses();
-						$sql=$cliente->dadosCliente($id);
+					
+						echo $this->Form->create('Cliente', array('action' => 'add'));
+						echo $this->Form->input('id', array('type' => 'hidden'));
+						echo $this->Form->input('nome_pessoa', array('label' => 'Nome:'));
+						echo $this->Form->input('username', array('label' => 'E-mail:'));
+						echo $this->Form->input('password', array('label' => 'Senha:', 'value' => ""));
+						echo $this->Form->input('role', array('type' => 'hidden', 'value' => 'cliente'));
 						
-						var_dump($sql[0]['tb_pessoa']);
-						
-						echo "Nome: ".$sql[0]['tb_pessoa']['nome_pessoa']."</br>";
-						echo "E-mail: ".$sql[0]['tb_pessoa']['username']."</br>";
+						echo $this->Form->button(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
+								array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));
+						echo " ";
 						echo $this->Html->link(
-	        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
-	        			array('controller' => 'clientes', 'action' => 'editar', AuthComponent::user('id'), 'role' => 'button'),
-						array('class' => 'btn btn-default', 'escape' => false));		
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
+								array('controller' => 'clientes','action' => 'perfil'),
+								array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
+						
+						echo $this->Form->end();
+					                   
+		                   	
 					?>
+				
 			 	</div>
 			</div>
 		</div>
