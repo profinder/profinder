@@ -6,7 +6,7 @@
 		public $hasOne = array(
 			'Profissional' => array(
 				'className' => 'Profissional',
-				'ForeignKey' => 'profissional_id'));
+				'foreignKey' => 'profissional_id'));
 		/*public $validate = array(
 				'numero_endereco' => array(
 						'rule' => 'notEmpty')

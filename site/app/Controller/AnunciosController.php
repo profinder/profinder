@@ -129,6 +129,18 @@
 			return $sql;
 		}
 		
+		public function anuncioBairro()
+		{
+			$this->layout='home';
+		}
+		
+		public function anunciosBairro($bairro)
+		{
+			$id_servico = $_GET["serv"];
+			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio inner join tb_bairro_anuncio on tb_anuncio.id=tb_bairro_anuncio.anuncio_id inner join tb_bairro on tb_bairro_anuncio.bairro_id=tb_bairro.id where tb_anuncio.servico_id=".$id_servico." and tb_bairro.nome_bairro='".$bairro."';");
+			return $sql;
+		}
+		
 		public function profissionalAnuncios($profissional_id = null)
 		{
 			$this->layout = 'home';

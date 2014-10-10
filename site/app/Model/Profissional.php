@@ -11,7 +11,7 @@
 		public $hasMany = array(
 			"Anuncio" => array(
 				"className" => "Anuncio",
-				"foreign_key" => "profissional_id")
+				"foreignKey" => "profissional_id")
 		);
 		
 		
