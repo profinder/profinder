@@ -137,6 +137,37 @@
 										</li>
 									</ul>
           						<?php }
+          						else
+          						{?>
+									<ul class="nav navbar-nav navbar-right">
+									 	<li class="dropdown">
+									    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									    		<span class="glyphicon glyphicon-cog"></span>
+										        Opções<b class="caret"></b></a>
+												<ul class="dropdown-menu">
+										        	<li> 
+											        	<?php
+										               		 echo $this->Html->link(
+										                    "<span class='glyphicon glyphicon-user'></span> Perfil",
+										                    array('controller' => 'Users', 'action' => 'edit', 
+										                    AuthComponent::user("id"))); 
+										                 ?>
+									                 </li>
+									                 <li>
+										        	
+										        		<?php
+									               		 	echo $this->Form->postLink(
+												        		$this->Html->tag('span', '', array()) . "<span class='glyphicon glyphicon-remove'></span> Remover Conta",
+												        		array('controller' => 'users','action' => 'delete', AuthComponent::user("id")),
+												        		array('confirm' => 'Tem certeza?', 'escape' => false));
+									                	 ?>
+									                </li>
+										            <li class="divider"></li>
+										            <li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+												</ul>
+										</li>
+									</ul>
+          						<?php }
           					}
           				?>
 			
