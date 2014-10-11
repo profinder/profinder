@@ -47,6 +47,7 @@
 							
 							$anuncioPedido = $pedidos->anuncioPedido($id);
 							
+							$id_anuncio = $anuncioPedido[$contador2]['tb_anuncio']['id'];
 							$titulo_anuncio = $anuncioPedido[$contador2]['tb_anuncio']['titulo_anuncio'];
 							$descricao = $anuncioPedido[$contador2]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $anuncioPedido[$contador2]['tb_anuncio']['modo_atendimento'];
@@ -74,6 +75,9 @@
 									<br /> <br /> 
 									Modo de atendimento: <?php echo $modo_atendimento; ?>
 									<br /> <br /> 
+									<?php 
+										echo "<center>Para mais detalhes, clique <a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id_anuncio . "'>aqui</a></center>";
+									?>
 								</div>
 								<div align="left" style="height: 202px; width: 350px; float: left; margin-left: 10px;">
 									<center> Dados do Profissional: </center>
