@@ -3,14 +3,6 @@
 	{
 		public $useTable = 'tb_anuncio';
 		
-		public $hasOne = array(
-			'Profissional' => array(
-				'className' => 'Profissional',
-				'foreignKey' => 'profissional_id'));
-		/*public $validate = array(
-				'numero_endereco' => array(
-						'rule' => 'notEmpty')
-		);*/
 		public $hasMany = array(
 			'Foto' => array(
 				'className' => 'Foto',
@@ -19,7 +11,11 @@
 		public $belongsTo = array(
 			'Endereco' => array(
 				'className' => 'Endereco',
-				'foreignKey' => 'endereco_id'));
+				'foreignKey' => 'endereco_id',
+			'Profissional' => array(
+				'className' => 'Profissional',
+				'foreignKey' => 'profissional_id')
+		));
 		
 		/*public function beforeSave($options = array())
 		{

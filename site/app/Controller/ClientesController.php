@@ -25,7 +25,7 @@
 		
 		public function cadastro()
 		{
-			$this->layout = 'home';
+			$this->layout = 'home2';
 			if ($this->request->is('post'))
 			{
 				$this->Cliente->create();
@@ -46,7 +46,7 @@
 			
 		public function editar($id = null) 
 		{
-			$this->layout = 'home';
+			$this->layout = 'home2';
 			if (!$id) {
 				throw new NotFoundException(__('Cliente inválido'));
 			}

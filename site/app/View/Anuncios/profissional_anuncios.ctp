@@ -27,7 +27,6 @@
 							
 							//echo $anuncio_titulo;
 							//echo "<br/>";
-							
 					?>
 					<div class="top-box">
 						<div class="panel panel-default">
@@ -56,12 +55,12 @@
 								        		</div>
 										</td>
 										<td>
-											<?php echo $this->Html->link(
-								        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . "",
+											<?php
+												echo $this->Html->link(
+								        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
 								        			array('controller' => 'anuncios', 'action' => 'editar', $id, 'role' => 'button'),
-													array('class' => 'btn btn-default', 'escape' => false, "data-toggle"=>"modal",
-													"data-target"=>"#myModal"));
-								        	?>
+													array('class' => 'btn btn-default', 'escape' => false)); 
+											?>
 								        	<?php
 								        		echo $this->Form->postLink(
 								        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",

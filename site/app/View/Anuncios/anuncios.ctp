@@ -14,7 +14,7 @@
 					<div class="panel panel-warning">
 								<div class="panel-body">
 								<?php
-								App::import('Controller', 'Cidades');
+									App::import('Controller', 'Cidades');
 				
 									$cidades = new CidadesController;
 									$cidades->constructClasses();

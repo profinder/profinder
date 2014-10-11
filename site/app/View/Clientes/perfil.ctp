@@ -22,9 +22,9 @@
 						echo "Nome: ".$sql[0]['tb_pessoa']['nome_pessoa']."</br>";
 						echo "E-mail: ".$sql[0]['tb_pessoa']['username']."</br>";
 						echo $this->Html->link(
-	        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
-	        			array('controller' => 'clientes', 'action' => 'editar', AuthComponent::user('id'), 'role' => 'button'),
-						array('class' => 'btn btn-default', 'escape' => false));		
+		        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
+		        			array('controller' => 'clientes', 'action' => 'editar', AuthComponent::user('id'), 'role' => 'button'),
+							array('class' => 'btn btn-default', 'escape' => false));		
 					?>
 			 	</div>
 			</div>

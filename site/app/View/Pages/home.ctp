@@ -38,8 +38,10 @@
 		   </div>
 		</div>
 	</div>
-	<?php /*<div style="position:absolute; border: 5px solid white; background-color:#FFF; height: 100px; width: 600px; float: left; top:110px; left:6px; margin-left: 70px;">
-		</div> */ ?>
+	<?php /*<div style="position:absolute; border: 5px solid white; background-color:#FFF; height: 600px; width: 100px; float: left; top:110px; left:6px; margin-top:100px; margin-left: 20px;">
+		dasdjsaod
+		<button>bfgbgf </button>
+		</div>*/?>
   	<!------End Slider ------------>
 	<div class="main">
 		<div class="wrap">
