@@ -78,66 +78,67 @@
 			}
 		}
 		
+		/* lista pedidos do cliente */
 		public function clientePedidos($cliente_id = null)
 		{
 			$this->layout = 'home';
 			$sql = $this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id='".$cliente_id."';");
 			return $sql;
 		}
-		
+		/* lista os pedidos disponível para o cliente avaliar */
 		public function clientePedidosAvaliar($cliente_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.profissional_fim = 1 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id ='".$cliente_id."';");
 			return $sql;
 		}
-		
+		/* lista os pedidos finalizados do cliente */
 		public function clientePedidosFinalizados($cliente_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.profissional_fim = 1 AND tb_pedido.status_pedido = 'finalizado' AND tb_pedido.cliente_id='".$cliente_id."';");
 			return $sql;
 		}
-		
+		/* lista os pedidos para o profissional que o cliente solicitou a finalizacao*/
 		public function profissionalSolicitacaoFinalizarPedido($profissional_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'andamento' AND tb_anuncio.profissional_id = '".$profissional_id."';");
 			return $sql;
 		}
-		
+		/* lista os pedidos para o cliente que o profissional solicitou a finalizacao*/
 		public function clienteSolicitacaoFinalizarPedido($cliente_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.profissional_fim = 1 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id = '".$cliente_id."';");
 			return $sql;
 		}
-		
+		/* lista os pedidos que foram solicitados pelo profissisonal*/
 		public function profissionalPedidosSolicitados($profissional_id = null)
 		{
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_pedido.anuncio_id = tb_anuncio.id WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'andamento' AND tb_anuncio.profissional_id ='".$profissional_id."';");
 			return $sql;
 		}
-		
+		/* lista os anuncio do pedido*/
 		public function anuncioPedido($pedido_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_anuncio.* FROM tb_anuncio INNER JOIN tb_pedido ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.id='".$pedido_id."';");
 			return $sql;
 		}
-		
+		/* lista os dados do cliente que realizou o pedido*/
 		public function clienteDadosPedido($pedido_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_pedido ON tb_pedido.cliente_id = tb_pessoa.id WHERE tb_pedido.id ='".$pedido_id."';");
 			return $sql;
 		}
-		
+		/* lista os dados do cliente que realizou o pedido IGUAL AO DE CIMA*/
 		public function dadosCliente($pedido_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_pedido ON tb_pedido.cliente_id = tb_pessoa.id WHERE tb_pedido.id ='".$pedido_id."';");
 			return $sql;
 		}
-		
+		/* lista os dados do profissional de um pedido*/
 		public function dadosProfissional($pedido_id)
 		{
 			$sql=$this->Pedido->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_profissional ON tb_profissional.id = tb_pessoa.id INNER JOIN tb_anuncio ON tb_anuncio.profissional_id = tb_profissional.id INNER JOIN tb_pedido ON tb_anuncio.id = tb_pedido.anuncio_id WHERE tb_pedido.id ='".$pedido_id."';");

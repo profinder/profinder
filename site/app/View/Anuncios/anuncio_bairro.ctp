@@ -18,10 +18,9 @@
 				
 									$cidades = new CidadesController;
 									$cidades->constructClasses();
-									$estados=$cidades->estados();
-									$servico=$_GET["serv"];	
+									$estados=$cidades->estados();	
 								?>
-									<form name="formBairros" action="/profinder/site/anuncios/anuncioBairro?serv=<?php echo $servico; ?>" method="post">
+									<form name="formBairros" action="/profinder/site/anuncios/anuncioBairro" method="post">
 										<select name="estado" id="estado">
 											<option value="">Selecione...</option>
 											<?php 
@@ -51,7 +50,14 @@
 					<?php
 					$anunciosController = new AnunciosController ();
 					$anunciosController->constructClasses ();
-					$anuncios = $anunciosController->anuncios ();
+					if($_POST['bairros']==null)
+					{
+						$anuncios = $anunciosController->anuncios ();
+					}
+					else{
+						$anuncios = $anunciosController->anunciosBairro($_POST['bairros']);
+					}
+					
 					
 					if ($anuncios == null) {
 						echo "Nenhum Anúncio cadastrado!";

@@ -34,7 +34,7 @@
 			App::import('Controller', 'Pedidos');
 			$pedidoController = new PedidosController;
 			$pedidoController->constructClasses();
-			$aumentarQntAvaliacao = $pedidoController->aumentarQntAvaliacao($id_pedido);
+			$pedidoFinalizado = $pedidoController->pedidoFinalizado($id_pedido);
 			$this->layout = 'clean';
 			if ($this->request->is('post'))
 			{

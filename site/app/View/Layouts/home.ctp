@@ -64,8 +64,7 @@
         				
         				<?php
         					if( AuthComponent::user('id') == null )
-        					{
-        				?>
+        					{?>
         				<form action="/profinder/site/users/login" id="UserLoginForm" method="post" accept-charset="utf-8"
         					class="navbar-form navbar-right" role="form">
         					<input type="hidden" name="_method" value="POST"/>
@@ -99,8 +98,6 @@
 											<ul class="dropdown-menu">
 												<li><a href="/profinder/site/clientes/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
 							               		<li><a href="/profinder/site/pedidos/clientePedidos">Meus pedidos</a></li>
-												<li><a href="/profinder/site/pedidos/clientePedidosAvaliar">Meus pedidos disponíveis para avaliar</a></li>
-							               		<li><a href="/profinder/site/pedidos/clienteSolicitacaoFinalizarPedido">Solicitações de finalizar pedido</a></li>
 							               		<li class="divider"></li>
 												<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
 							               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
@@ -123,6 +120,7 @@
 							               		<li><a href="/profinder/site/anuncios/profissionalAnuncios">Meus anúncios</a></li>
 							               		<li><a href="/profinder/site/pedidos/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
 							               		<li><a href="/profinder/site/pedidos/profissionalSolicitacaoFinalizarPedido">Solicitações de finalizar pedido</a></li>
+							               		<li><a href="/profinder/site/sugestaos/cadastro">Enviar sugestão</a></li>
 							               		<li class="divider"></li>
 												<li>
 													<?php
@@ -134,6 +132,37 @@
 												</li>
 							               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 						               		</ul>
+										</li>
+									</ul>
+          						<?php }
+          						else
+          						{?>
+									<ul class="nav navbar-nav navbar-right">
+									 	<li class="dropdown">
+									    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									    		<span class="glyphicon glyphicon-cog"></span>
+										        Opções<b class="caret"></b></a>
+												<ul class="dropdown-menu">
+										        	<li> 
+											        	<?php
+										               		 echo $this->Html->link(
+										                    "<span class='glyphicon glyphicon-user'></span> Perfil",
+										                    array('controller' => 'Users', 'action' => 'edit', 
+										                    AuthComponent::user("id"))); 
+										                 ?>
+									                 </li>
+									                 <li>
+										        	
+										        		<?php
+									               		 	echo $this->Form->postLink(
+												        		$this->Html->tag('span', '', array()) . "<span class='glyphicon glyphicon-remove'></span> Remover Conta",
+												        		array('controller' => 'users','action' => 'delete', AuthComponent::user("id")),
+												        		array('confirm' => 'Tem certeza?', 'escape' => false));
+									                	 ?>
+									                </li>
+										            <li class="divider"></li>
+										            <li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+												</ul>
 										</li>
 									</ul>
           						<?php }

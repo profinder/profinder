@@ -11,9 +11,11 @@
 		public $hasMany = array(
 			"Anuncio" => array(
 				"className" => "Anuncio",
-				"foreign_key" => "profissional_id")
+				"foreignKey" => "profissional_id"),
+			"Sugestao" => array(
+				"className" => "Sugestao",
+				"foreignKey" => "profissional_id")
 		);
-		
-		
+			
 	}
 ?>
