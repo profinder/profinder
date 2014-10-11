@@ -64,25 +64,38 @@
         				
         				<?php
         					if( AuthComponent::user('id') == null )
-        					{?>
-        				<form action="/profinder/site/users/login" id="UserLoginForm" method="post" accept-charset="utf-8"
-        					class="navbar-form navbar-right" role="form">
-        					<input type="hidden" name="_method" value="POST"/>
-            					<div class="form-group">
-              						<input name="data[User][username]" class="form-control" maxlength="50"
-              							type="text" id="UserUsername" required="required" placeholder="E-mail"/>
-            						
-            					</div>
-            					<div class="form-group">
-            						<input name="data[User][password]" placeholder="Senha" type="password"
-            							id="UserPassword" required="required" class="form-control"/>
-            					</div>
-            					<button type="submit" class="btn btn-success">Entrar</button>
-            					
-            					<button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Esqueci minha senha</button>
-          						
-          				</form>
-          				<?php 
+        					{/*
+		        				<form action="/profinder/site/users/login" id="UserLoginForm" method="post" accept-charset="utf-8"
+		        					class="navbar-form navbar-right" role="form">
+		        					<input type="hidden" name="_method" value="POST"/>
+		            					<div class="form-group">
+		              						<input name="data[User][username]" class="form-control" maxlength="50"
+		              							type="text" id="UserUsername" required="required" placeholder="E-mail"/>
+		            						
+		            					</div>
+		            					<div class="form-group">
+		            						<input name="data[User][password]" placeholder="Senha" type="password"
+		            							id="UserPassword" required="required" class="form-control"/>
+		            					</div>
+		            					<button type="submit" class="btn btn-success">Entrar</button>
+		            					
+		            					<button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Esqueci minha senha</button>
+		          						
+		          				</form> */
+        						echo $this->Html->link(
+				        			$this->Html->tag('span', '', array('class' => '')) . "Anuncie seu serviço!",
+				        			array('controller' => 'profissionals', 'action' => 'cadastro'),
+									array('class' => 'btn btn-warning', 'escape' => false));
+								echo "&nbsp &nbsp";
+								echo $this->Html->link(
+				        			$this->Html->tag('span', '', array('class' => '')) . "Contrate profissionais!",
+				        			array('controller' => 'clientes', 'action' => 'cadastro'),
+									array('class' => 'btn btn-info', 'escape' => false));
+								echo "&nbsp &nbsp";	
+          				 		echo $this->Html->link(
+				        			$this->Html->tag('span', '', array('class' => '')) . "Entrar",
+				        			array('controller' => 'users', 'action' => 'login'),
+									array('class' => 'btn btn-success', 'escape' => false));
           					}
           					else
           					{

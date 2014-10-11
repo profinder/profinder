@@ -105,7 +105,7 @@
 							<a href="/profinder/site/Servicos">Serviços</a>
 						</li>
 						<li class="dropdown">
-							<a href="/profinder/site/Sugestaos">Sugestões</a>
+							<a href="/profinder/site/Sugestaos/sugestoes">Sugestões</a>
 						</li>
 					</ul>
 				</div>
