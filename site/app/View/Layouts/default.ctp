@@ -104,6 +104,9 @@
 						<li class="dropdown">
 							<a href="/profinder/site/Servicos">Serviços</a>
 						</li>
+						<li class="dropdown">
+							<a href="/profinder/site/Sugestaos">Sugestões</a>
+						</li>
 					</ul>
 				</div>
 			</div>

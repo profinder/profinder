@@ -120,6 +120,7 @@
 							               		<li><a href="/profinder/site/anuncios/profissionalAnuncios">Meus anúncios</a></li>
 							               		<li><a href="/profinder/site/pedidos/profissionalPedidosSolicitados">Solicitações de serviço</a></li>
 							               		<li><a href="/profinder/site/pedidos/profissionalSolicitacaoFinalizarPedido">Solicitações de finalizar pedido</a></li>
+							               		<li><a href="/profinder/site/sugestaos/cadastro">Enviar sugestão</a></li>
 							               		<li class="divider"></li>
 												<li>
 													<?php
