@@ -107,7 +107,7 @@
 				$this->alterarSenha($novaSenha, $username);
 				$Email = new CakeEmail('gmail');
 				$Email->to($username);
-				$Email->subject('Automagically generated email');
+				$Email->subject('Nova Senha ProFinder');
 				$Email->replyTo('profindertcc@gmail.com');
 				//$Email->message('teste');
 				$Email->from('profindertcc@gmail.com');

@@ -23,22 +23,24 @@
 	
 		public function cadastro()
 		{
-			var_dump("1");
 			$this->layout = 'home';
 			if ($this->request->is('post'))
 			{
 				
 				$this->Foto->create();
+				//var_dump($foto);
 				
-				$foto['Foto']['caminho_foto']='/profinder/site/img/'.$this->request->data['Foto']['legenda_foto']['name'];
+				$foto['Foto']['caminho_foto']='/profinder/site/app/webroot/img/'.$this->request->data['Foto']['legenda_foto']['name'];
 				
 				$foto['Foto']['legenda_foto']=$this->request->data['Foto']['caminho_foto'];
 				$foto['Foto']['anuncio_id']=$this->Session->read('idAnuncio');
+				
 				if ($this->Foto->save($foto))
 				{
+					$this->upload_foto($foto);
 					$this->Session->setFlash(__('Foto salva com sucesso!'), "flash_notification");
 					return $this->redirect(array('controller' => 'profissionals', 'action' => 'index'));
-					$this->upload_foto();
+					
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
@@ -83,16 +85,17 @@
 				return $this->redirect(array('action' => 'index'));
 			}
 		}
-		function upload_foto() {
-			$file = $this->data['Foto']['file'];
-			if ($file['error'] === UPLOAD_ERR_OK) {
+		function upload_foto($foto) {
+			
+			//$file = $this->data['Foto']['file'];
+			if ($foto['error'] === UPLOAD_ERR_OK) {
 				$id = String::uuid();
-				if (move_uploaded_file($file['tmp_name'], APP.'uploads'.DS.$id)) {
+				if (move_uploaded_file($foto['tmp_name'], APP.'uploads'.DS.$id)) {
 					$this->data['Foto']['id'] = $id;
 					$this->data['Foto']['user_id'] = $this->Auth->user('id');
-					$this->data['Foto']['filename'] = $file['name'];
-					$this->data['Foto']['filesize'] = $file['size'];
-					$this->data['Foto']['filemime'] = $file['type'];
+					$this->data['Foto']['filename'] = $foto['name'];
+					$this->data['Foto']['filesize'] = $foto['size'];
+					$this->data['Foto']['filemime'] = $foto['type'];
 					return true;
 				}
 			}
@@ -100,6 +103,7 @@
 		}
 		public function upload($imagem = array(), $dir = 'img')
 		{
+			var_dump("1");
 			$dir = WWW_ROOT.$dir.DS;
 		
 			if(($imagem['error']!=0) and ($imagem['size']==0)) {
