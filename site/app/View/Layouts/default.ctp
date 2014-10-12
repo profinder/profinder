@@ -14,6 +14,7 @@
 		echo $this->Html->css('slider.css');
 		echo $this->Html->css('style.css');
 		echo $this->Html->css('swipebox.css');
+		echo $this->Html->script('jquery.maskedinput-1.3');
 		//echo $this->Html->css('fitness.css');
 
 		echo $this->fetch('meta');
