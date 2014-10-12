@@ -10,7 +10,6 @@
 		<div class="content-top">
 			<div class="top-box">
 				<?php
-					echo $this->Html->script('jquery.maskedinput-1.3');
 					echo $this->Form->create('Cliente', array('action' => 'cadastro'));	
 				?>
 				
