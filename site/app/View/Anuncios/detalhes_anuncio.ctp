@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
 	
 </head>
-<body>
+<body onload="initialize()">
 	<div class="main">
 		<div class="wrap">
 			<div class="content-top">
@@ -29,7 +29,7 @@
 						App::import('Controller', 'Anuncios');
 						$anuncioController = new AnunciosController;
 						$anuncioController->constructClasses();
-						$dados = $anuncioController->dadosAnuncios($id);	
+						$dados = $anuncioController->dadosAnuncios($id);
 						
 						App::import('Controller', 'Comentarios');
 						$comentarioController = new ComentariosController;
@@ -133,11 +133,15 @@
 								echo '</center>'
 								?>
 						</div>
-						<div align = "left" style="height: 300px; width: 300px; float: left; margin-left: 20px;">
-							<?php 
-								echo "<img src='/profinder/site/img/googlemaps.png' height='300' width='300' style= 'padding-top:0px'>";
-							?>
-						</div>
+						<?php
+							$dadosEndereco=$anunciosController->enderecoAnuncio($id);
+							?> 
+						
+						<div id="map_canvas" style="width: 320px; height: 320px;"></div>
+						  <div>
+							<input id="address" type="hidden" value="<?php echo $dadosEndereco[0]['tb_endereco']['logradouro']. ','.$dadosEndereco[0]['tb_endereco']['numero_endereco'].','. $dadosEndereco[0]['tb_endereco']['localidade'].','. $dadosEndereco[0]['tb_endereco']['estado']?>">
+							
+						  </div>
 						<?php 
 						}
 					else if( $dados[0]['tb_anuncio']['modo_atendimento'] == "online" || $dados[0]['tb_anuncio']['modo_atendimento'] == "domiciliar")
@@ -354,3 +358,35 @@
     	</div>
   	</div>
 </div>
+<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?sensor=SET_TO_TRUE_OR_FALSE">
+    </script>
+<script type="text/javascript">  
+  var geocoder;
+  var map;
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var mapOptions = {
+      zoom: 17,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	
+	var address = document.getElementById("address").value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+
+  
+</script>

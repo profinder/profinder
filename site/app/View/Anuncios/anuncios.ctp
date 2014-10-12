@@ -10,42 +10,6 @@
 	<div class="main">
 		<div class="wrap">
 			<div class="content-top">
-				<div class="top-box">
-					<div class="panel panel-warning">
-								<div class="panel-body">
-								<?php
-									App::import('Controller', 'Cidades');
-				
-									$cidades = new CidadesController;
-									$cidades->constructClasses();
-									$estados=$cidades->estados();
-									$servico=$_GET["serv"];	
-								?>
-									<form name="formBairros" action="/profinder/site/anuncios/anuncioBairro?serv=<?php echo $servico; ?>" method="post">
-										<select name="estado" id="estado">
-											<option value="">Selecione...</option>
-											<?php 
-											   $contador=0;
-												while ($contador<sizeof($estados))
-												{
-												  echo "<option value='{$estados[$contador]['tb_cidade']['estado_cidade']}'>{$estados[$contador]['tb_cidade']['estado_cidade']}</option>";
-												  $contador++;
-												}
-											?>
-										</select>
-										<select id="cidadesSelect" name="cidadesSelect">
-											<option>Selecione a cidade</option>
-										</select>
-										<select id="bairros" name="bairros">
-											<option>Selecione o bairro</option>
-										</select>
-										<center>
-									<input type="submit" value="Procurar"/>
-						</form>
-					</div>
-					</div>
-					
-				</div>
 				<div class="top-box">	
 				
 					<?php
@@ -59,7 +23,52 @@
 						echo "</br>";
 						echo "</br>";
 						echo "</br>";
-					} else {
+						echo "</div></div></div>";
+					} else {?>
+					
+					<div class="panel panel-default">
+						<div align = "left" style = "margin-left: 10px;">
+							<br />
+							<li> Caso deseje procurar profissionais de acordo com o bairro que necessita, pesquise aqui. </li>
+						</div>
+						<div class="panel-body">
+							<?php
+								App::import('Controller', 'Cidades');
+				
+								$cidades = new CidadesController;
+								$cidades->constructClasses();
+								$estados=$cidades->estados();
+								$servico=$_GET["serv"];	
+							?>
+							<form name="formBairros" action="/profinder/site/anuncios/anuncioBairro?serv=<?php echo $servico; ?>" method="post">
+								<select name="estado" id="estado">
+									<option value="">Estado</option>
+										<?php 
+										   $contador=0;
+											while ($contador<sizeof($estados))
+											{
+											  echo "<option value='{$estados[$contador]['tb_cidade']['estado_cidade']}'>{$estados[$contador]['tb_cidade']['estado_cidade']}</option>";
+											  $contador++;
+											}
+										?>
+								</select>
+								<select id="cidadesSelect" name="cidadesSelect">
+									<option>Cidade</option>
+								</select>
+								<select id="bairros" name="bairros">
+									<option>Bairro</option>
+								</select>
+								<?php 
+									echo $this->Form->button(
+										$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-search'))."",
+										array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
+									);
+								?>
+							</form>
+						</div>
+					</div>
+					
+					<?php 
 						$contador = 0;
 						$contador2 = 0;
 						
@@ -85,14 +94,14 @@
 									<br />
 
 									<div class="panel panel-default"
-										style="height: 202px; width: 202x; float: left;">
+										style="height: 152px; width: 152x; float: left;">
 										<?php
 							$foto = $anunciosController->caminho_foto ( $id );
 							
 							if ($foto == null || $foto == 0) {
-								echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='/profinder/site/img/sem-foto.jpg' height='200' width='200' style= 'padding-top:0px'> </a>";
+								echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='/profinder/site/img/sem-foto.jpg' height='150' width='150' style= 'padding-top:0px'> </a>";
 							} else {
-								echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='" . $foto [0] ['tb_foto'] ['caminho_foto'] . "' height='200' width='200' style= 'padding-top:0px'> </a>";
+								echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='" . $foto [0] ['tb_foto'] ['caminho_foto'] . "' height='150' width='150' style= 'padding-top:0px'> </a>";
 							}
 							?>
 									</div>
@@ -122,9 +131,9 @@
 								?>
 									
 									<div class="panel panel-default" align="left"
-										style="height: 202px; width: 202px; float: left; margin-left: 10px;">
+										style="height: 152px; width: 152px; float: left; margin-left: 10px;">
 										<?php
-								echo "<img src = '/profinder/site/img/googlemaps.png' height = '200' width = '200' style = 'padding-top:0px'>";
+								echo "<img src = '/profinder/site/img/googlemaps.png' height = '152' width = '152' style = 'padding-top:0px'>";
 							}
 							?>
 									</div>
@@ -182,8 +191,3 @@ $(function(){
 	});
 });
 </script>
-
-								
-
-								
-						

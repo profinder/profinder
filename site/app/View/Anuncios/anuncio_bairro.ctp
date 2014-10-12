@@ -11,18 +11,19 @@
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-					<div class="panel panel-warning">
+					<div class="panel panel-default">
 								<div class="panel-body">
 								<?php
-								App::import('Controller', 'Cidades');
+									App::import('Controller', 'Cidades');
 				
 									$cidades = new CidadesController;
 									$cidades->constructClasses();
 									$estados=$cidades->estados();	
+									$servico=$_GET["serv"]
 								?>
-									<form name="formBairros" action="/profinder/site/anuncios/anuncioBairro" method="post">
+									<form name="formBairros" action="/profinder/site/anuncios/anuncioBairro?serv=<?php echo $servico; ?>" method="post">
 										<select name="estado" id="estado">
-											<option value="">Selecione...</option>
+											<option value="">Estado</option>
 											<?php 
 											   $contador=0;
 												while ($contador<sizeof($estados))
@@ -33,13 +34,17 @@
 											?>
 										</select>
 										<select id="cidadesSelect" name="cidadesSelect">
-											<option>Selecione a cidade</option>
+											<option>Cidade</option>
 										</select>
 										<select id="bairros" name="bairros">
-											<option>Selecione o bairro</option>
+											<option>Bairro</option>
 										</select>
-										<center>
-									<input type="submit" value="Procurar"/>
+									<?php 
+									echo $this->Form->button(
+										$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-search'))."",
+										array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
+									);
+								?>
 						</form>
 					</div>
 					</div>
