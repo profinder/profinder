@@ -196,7 +196,7 @@
 		public function salvarMensagem($pedido_id = null, $mensagem=null)
 		{
 			$this->layout = 'home';
-			$sql=$this->Pedido->query("insert into tb_mensagem (texto_mensagem, pedido_id) values('".$mensagem."', ".$pedido_id.");");
+			$sql=$this->Pedido->query("insert into tb_mensagem (texto_mensagem, pedido_id, quem_enviou) values('".$mensagem."', ".$pedido_id.", 'cliente');");
 			return $sql;
 		}
 		
