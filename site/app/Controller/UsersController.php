@@ -1,15 +1,20 @@
 <?php
 	App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 	App::uses('CakeEmail', 'Network/Email');
+	//CakePlugin::load('Facebook');
+	
 	
 	class UsersController extends AppController
 	{
-		public $helpers = array('Html', 'Form');
+		var $components = array('Auth'); 
+		public $helpers = array('Html', 'Form'/*,'Facebook.Facebook'*/);
 		
 		public function beforeFilter() 
 		{
 			parent::beforeFilter();
 			$this->Auth->allow('logout', 'login');
+			//$this->Auth->loginRedirect = array('action' => 'index');     //3
+			//$this->layout='facebook';
 		}
 		
 		public function isAuthorized($user) 
@@ -29,9 +34,13 @@
 			}
 		}
 		
+		
 		public function logout() 
 		{
+			
+			$this->Session->destroy();
 			return $this->redirect($this->Auth->logout());
+			
 		}
 		
 		public function index() 
@@ -123,8 +132,8 @@
 	    
 	    	if ($this->User->delete($id))
 	    	{
-	    		$this->Session->setFlash(__('Usuário excluído com sucesso.'), "flash_notification");
-	    		return $this->logout();
+	    		$this->Session->setFlash(__('Administrador excluído com sucesso.'), "flash_notification");
+	    		return $this->redirect(array('action' => 'index'));
 	    	}
 	    }
 	    

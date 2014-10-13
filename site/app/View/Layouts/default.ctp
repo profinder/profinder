@@ -116,6 +116,7 @@
 		
 	</div>
 	<div id="content" style="width:95%;margin:auto;">
+	
 		<div class="container-fluid">
 			<div class="row">
 				<div class="row">

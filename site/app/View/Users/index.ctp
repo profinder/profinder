@@ -73,6 +73,7 @@
 					array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
 			
 			echo $this->Form->end();
+			echo $this->Facebook->logout(array('redirect' => array('controller' => 'users', 'action' => 'logout'))); 
 		?>
       </div>
     </div>
