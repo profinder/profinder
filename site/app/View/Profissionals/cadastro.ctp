@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/bootstrap.css"/>
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
-
+<script src = "http://connect.facebook.net/en_US/all.js"></script>
 <div class="main">					
 	<div class="wrap">
 		<div class="content-top">
@@ -111,7 +111,7 @@
 															</div>
 														</td>
 													</tr>
-													
+													<?php /*
 													 <tr>
 														<td>
 															<div class="input-group">
@@ -179,7 +179,8 @@
 																	?>
 															</div>
 														</td>
-													</tr>													
+													</tr>
+													*/ ?>													
 												</table>	
 												</center>		
 											</div>
@@ -188,7 +189,6 @@
 								</td>
 							</tr>
 						</table>
-						
 						
 					<?php 
 					

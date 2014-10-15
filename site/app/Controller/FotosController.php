@@ -44,41 +44,14 @@
 				if ($this->Foto->save($foto))
 				{
 
-					$this->upload_foto($foto);
+					$this->upload($this->request->data['Foto']['legenda_foto']);
 					$this->Session->setFlash(__('Foto salva com sucesso!'), "flash_notification");
 
-					$this->upload_foto($this->request->data);
-					$this->Session->setFlash(__('Foto salvo com sucesso.'), "flash_notification");
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
 		}
-		public function add()
-		{
-			var_dump("1");
-			
-			$this->layout = 'home';
-			if ($this->request->is('post'))
-			{
-				
-				$this->Foto->create();
-				var_dump($this->request->data);
-				
-				if ($this->Foto->save($foto))
-				{
-					var_dump("c");
-					$this->upload_foto();
-					var_dump("d");
-					//$this->Session->setFlash(__('oi'), "flash_notification");
-					
-					
-					return $this->redirect(array('controller' => 'profissionals', 'action' => 'index'));
-					
-				}
-				$this->Session->setFlash(__('Erro ao salvar dados!'));
-			}
-		}
-			
+		
 		public function edit($id = null)
 		{
 			if (!$id) {
@@ -119,20 +92,20 @@
 			}
 		}
 
-		function upload_foto($foto) {
+		public function upload($imagem = array(), $dir = 'img')  
+		{  
+			$dir = WWW_ROOT.$dir.DS;  
+			var_dump($imagem);
+			if(($imagem['error']!=0) and ($imagem['size']==0)) {  
+				throw new NotImplementedException('Alguma coisa deu errado, o upload retornou erro '.$imagem['error'].' e tamanho '.$imagem['size']);  
+			}  
+			 App::uses('File', 'Utility');  
+			$arquivo = new File($imagem['tmp_name']);  
+			$arquivo->copy($dir.$imagem['name']);  
+			$arquivo->close(); 
 			
-			//$file = $this->data['Foto']['file'];
-			if ($foto['error'] === UPLOAD_ERR_OK) {
-				$id = String::uuid();
-				if (move_uploaded_file($foto['tmp_name'], APP.'uploads'.DS.$id)) {
-					$this->data['Foto']['id'] = $id;
-					$this->data['Foto']['user_id'] = $this->Auth->user('id');
-					$this->data['Foto']['filename'] = $foto['name'];
-					$this->data['Foto']['filesize'] = $foto['size'];
-					$this->data['Foto']['filemime'] = $foto['type'];
-				}
-			}
-		}
+			return $imagem['name'];  
+		}  
 
 		public function upload_foto($file=null) {
 			var_dump($file);
@@ -146,23 +119,6 @@
 
 			}
 			return false;
-		}
-		public function upload($imagem = array(), $dir = 'img')
-		{
-			var_dump("1");
-			$dir = WWW_ROOT.$dir.DS;
-		
-			if(($imagem['error']!=0) and ($imagem['size']==0)) {
-				throw new NotImplementedException('Alguma coisa deu errado, o upload retornou erro '.$imagem['error'].' e tamanho '.$imagem['size']);
-			}
-		
-			$this->checa_dir($dir);
-		
-			$imagem = $this->checa_nome($imagem, $dir);
-		
-			$this->move_arquivos($imagem, $dir);
-		
-			return $imagem['name'];
 		}
 		
 		public function checa_dir($dir)
@@ -223,3 +179,4 @@
 			$arquivo->close();
 		}
 	}
+	
