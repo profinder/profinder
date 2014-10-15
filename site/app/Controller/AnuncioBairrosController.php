@@ -68,5 +68,17 @@
 			$sql= $this->AnuncioBairro->query("insert into tb_bairro_anuncio (anuncio_id, bairro_id) values ('".$idAnuncio."', '".$idBairro."');");
 			return $sql;
 		}
+		
+		public function pesquisarBairro($idAnuncio)
+		{
+			$sql= $this->AnuncioBairro->query("select tb_bairro_anuncio.bairro_id from tb_bairro_anuncio where tb_bairro_anuncio.anuncio_id=".$idAnuncio.";");
+			return $sql;
+		}
+		
+		public function deletarBairro($idAnuncio)
+		{
+			$sql= $this->AnuncioBairro->query("delete from tb_bairro_anuncio where tb_bairro_anuncio.anuncio_id=".$idAnuncio.";");
+			return $sql;
+		}
 	}
 ?>

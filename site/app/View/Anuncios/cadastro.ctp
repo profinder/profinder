@@ -55,6 +55,8 @@
 																	$anuncios = new AnunciosController;
 																	$anuncios->constructClasses();
 																	$servicos=$anuncios->nomeServico();
+																	$anuncios->tipoAnuncio("salvar");
+																	
 																	$contador=0;
 																	$options= array();
 																	

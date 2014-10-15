@@ -21,23 +21,42 @@
 			$this->set('profissional', $profissional);
 		}
 	
-		public function cadastro()
+	public function cadastro()
 		{
 			$this->layout = 'home2';
 			if ($this->request->is('post'))
 			{
 				$this->Profissional->create();
+				$contador=3;
 				if ($this->request->data['Telefone'][1]['ddd_telefone']=='')
 				{
 					unset($this->request->data['Telefone'][1]);
-				}	
-				if ($this->request->data['Telefone'][2]['ddd_telefone']=='')
+					$contador=1;
+				}
+				else if ($this->request->data['Telefone'][2]['ddd_telefone']=='')
 				{
 					unset($this->request->data['Telefone'][2]);
+					$contador=2;
 				}	
-				if ($this->Profissional->saveAssociated($this->request->data))
+				if ($this->Profissional->save($this->request->data))
 				{
 					$this->Session->setFlash(__('Profissional salvo com sucesso.'), "flash_notification");
+					$idProfissional = $this->Profissional->id;
+					$contadorWhile=0;
+					$this->deletarTelefone($idProfissional);
+					while($contadorWhile<$contador){
+						$ddd=$this->request->data['Telefone'][$contadorWhile]['ddd_telefone'];
+						$tipo=$this->request->data['Telefone'][$contadorWhile]['tipo_telefone'];
+						$numero=$this->request->data['Telefone'][$contadorWhile]['numero_telefone'];
+						$id=$idProfissional;
+						$editar=$this->buscarTelefone($id);
+						var_dump($editar);
+						$this->salvarTelefone($ddd, $tipo, $numero, $id);
+						
+						
+						$contadorWhile++;
+					}
+					
 					return $this->redirect( array (
 							'controller' => 'profissionals',
 							'action' => 'perfil' 
@@ -55,13 +74,14 @@
 			if (!$id) {
 				throw new NotFoundException(__('Profissional inválido'));
 			}
-		  
+			$this->Session->write('idProfissional', $id);
 			$profissional = $this->Profissional->findById($id);
 			if (!$profissional) {
 				throw new NotFoundException(__('Profissional não encontrado'));
 			}
 			if ($this->request->is(array('post', 'put'))) {
 				$this->Profissional->id = $id;
+				
 				if ($this->Profissional->save($this->request->data)) {
 
 					$this->Session->setFlash(__('Profissional salvo com sucesso'),
@@ -105,6 +125,29 @@
 		{
 			$sql=$this->Profissional->query("SELECT tb_pessoa.* FROM tb_pessoa INNER JOIN tb_profissional ON tb_pessoa.id = tb_profissional.id INNER JOIN tb_anuncio ON tb_anuncio.profissional_id = tb_profissional.id WHERE tb_anuncio.id ='".$anuncio_id."';");
 			return $sql;
+		}
+	
+		public function salvarTelefone($ddd, $tipo, $numero, $id)
+		{
+			$sql=$this->Profissional->query("insert into tb_telefone (ddd_telefone, tipo_telefone, numero_telefone, pessoa_id) values (".$ddd.", '".$tipo."', ".$numero.",".$id.");");
+			return $sql;
+		}
+		
+		public function buscarTelefone($id)
+		{
+			$sql=$this->Profissional->query("select * from tb_telefone where tb_telefone.pessoa_id=".$id.";");
+			return $sql;
+		}
+		
+		public function deletarTelefone($id)
+		{
+			$sql=$this->Profissional->query("delete from tb_telefone where pessoa_id=".$id.";");
+			return $sql;
+		}
+		
+		public function tipoProfissional($tipoProfissional) 
+		{
+			$this->Session->write('tipoProfissional', $tipoProfissional);
 		}
 	}
 ?>
