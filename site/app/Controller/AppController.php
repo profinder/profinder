@@ -30,7 +30,21 @@
 			return false;
 		}
 		
+		public function beforeRender() {
+			
+		}
+		
 		public function beforeFilter() {
+			App::import('Vendor', 'facebook-php-sdk-master/src/facebook');
+			$this->Facebook = new Facebook(array(
+					'appId'     =>  '1496505570602503',
+					'secret'    =>  '8d44047def9b253341cd80eb4deeae8d'
+			
+			));
+			$this->set('fb_login_url', $this->Facebook->getLoginUrl(array('redirect_uri' => Router::url(array('controller' => 'users', 'action' => 'login'), true))));
+			$this->set('user', $this->Auth->user());
+			
+			//$this->Auth->allow('index', 'view');
 
 			$this->Auth->allow('facebook', 'dadosProfissionalSugestao', 'comentariosAvaliacao', 'salvar_mensagem', 'caminho_foto', 'detalhesAnuncio', 'display', 'add', 'anuncios', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'clienteSolicitacaoFinalizarPedido', 'upload_foto', 'edit', 'perfil', 'editar', 'cadastro', 'profissionalAnuncios', 'clienteMensagensPedido', 'profissionalMensagensPedido', 'clienteFinalizarPedido', 'profissionalFinalizarPedido', 'avaliarPedido');
 

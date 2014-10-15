@@ -10,6 +10,9 @@
 	<?php
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.css');
+		echo $this->Html->css('font-awesome.css');
+		echo $this->Html->css('docs.css');
+		echo $this->Html->css('bootstrap-social.css');
 		echo $this->Html->css('bootstrap-theme.css');
 		echo $this->Html->css('slider.css');
 		echo $this->Html->css('style.css');
