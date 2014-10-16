@@ -97,6 +97,7 @@
 		
 		public function index() 
 		{
+			$this->layout = 'default';
 	         $this->set('usuarios', $this->User->find('all'));
 	    }
 	
@@ -191,6 +192,7 @@
 	    
 		public function listarAdministradores()
 		{
+			$this->layout = 'default';
 			$sql=$this->User->query("SELECT tb_pessoa.* FROM tb_pessoa WHERE tb_pessoa.role = 'admin'");
 			return $sql;
 		}

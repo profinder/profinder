@@ -15,7 +15,7 @@
 							echo $this->Html->link(
 			        			$this->Html->tag('span', '', array('class' => '')) . " Andamento",
 			        			array('controller' => 'pedidos', 'action' => 'clientePedidos'),
-								array('class' => 'btn btn-success', 'escape' => false));
+								array('class' => 'btn btn-default', 'escape' => false));
 							echo $this->Html->link(
 			        			$this->Html->tag('span', '', array('class' => '')) . " Finalizado",
 			        			array('controller' => 'pedidos', 'action' => 'clientePedidosFinalizados'),
@@ -23,7 +23,7 @@
 							echo $this->Html->link(
 			        			$this->Html->tag('span', '', array('class' => '')) . " Disponível avaliação",
 			        			array('controller' => 'pedidos', 'action' => 'clientePedidosAvaliar'),
-								array('class' => 'btn btn-info', 'escape' => false));		
+								array('class' => 'btn btn-default', 'escape' => false));		
 							echo $this->Html->link(
 			        			$this->Html->tag('span', '', array('class' => '')) . " Solicitação de finalização",
 			        			array('controller' => 'pedidos', 'action' => 'clienteSolicitacaoFinalizarPedido'),
@@ -58,7 +58,7 @@
 							$email_profissional = $profissional[$contador2]['tb_pessoa']['username'];
 					?>
 					<div class="top-box">
-						<div class="panel panel-danger">
+						<div style = "border: 1px solid RED; margin: 2px;" >
 							<div class="panel-body">
 								<div align = "left" style="height: 200px; width: 350px; float: left; margin-left: 10px;">
 									<center> Dados do Pedido: </center>

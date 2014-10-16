@@ -28,63 +28,66 @@
 							//echo $anuncio_titulo;
 							//echo "<br/>";
 					?>
-					<div class="top-box">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $titulo; ?></h2>
-							</div>
-							<div class="panel-body">
-								<table border="2" width="40" height = "60">
-									<tr>
-										<td>
-											<li>Descrição:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $descricao; ?>
-								        			</div>
-								        		</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li>Modo de Atendimento:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $modo_atendimento; ?>
-								        			</div>
-								        		</div>
-										</td>
-										<td>
-											<?php
-												echo $this->Html->link(
-								        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . " Editar",
-								        			array('controller' => 'anuncios', 'action' => 'editar', $id, 'role' => 'button'),
-													array('class' => 'btn btn-default', 'escape' => false)); 
-											?>
-								        	<?php
-								        		echo $this->Form->postLink(
-								        			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
-								        			array('controller' => 'anuncios', 'action' => 'remover', $id),
-								        			array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
-								        	?>
-										</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-					</div>
+					<div class="panel panel-warning">
+								<div class="panel-body">
+									<h4>
+									<?php echo $titulo; ?> </h4>
+									<hr>
+									<br />
+
+									<div class="panel panel-default"
+										style="height: 152px; width: 152x; float: left;">
+										<?php
+							$foto = $anuncios->caminho_foto ( $id );
+							
+							if ($foto == null || $foto == 0) {
+								echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='/profinder/site/img/sem-foto.jpg' height='150' width='150' style= 'padding-top:0px'> </a>";
+							} else {
+								echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='" . $foto [0] ['tb_foto'] ['caminho_foto'] . "' height='150' width='150' style= 'padding-top:0px'> </a>";
+							}
+							?>
+									</div>
+									<div align="left"
+										style="height: 202x; width: 700px; float: left; margin-left: 10px;">
+									 	<?php
+							echo "Descrição: <br /> <br /> <center>";
+							echo $descricao;
+							echo "</center><br /><br />";
+							echo "Modo de atendimento: ";
+							
+							if ($modo_atendimento == "escritorio") {
+								echo "Escritório.";
+								echo "<font color = '#aaacae'> Endereço ao lado (Google Maps) </font>";
+							} else if ($modo_atendimento == "domiciliar") {
+								echo "Domiciliar.";
+							} else if ($modo_atendimento == "online") {
+								echo "On-line.";
+							}
+							echo "<br /> <br />";
+							?>
+									</div>
+									<?php
+							if ($modo_atendimento == "escritorio") {
+								?>
+									
+									<div class="panel panel-default" align="left"
+										style="height: 152px; width: 152px; float: left; margin-left: 10px;">
+										<?php
+								echo "<img src = '/profinder/site/img/googlemaps.png' height = '152' width = '152' style = 'padding-top:0px'>";
+							}
+							?>
+									</div>
+								</div>
 					
 					<?php 		
 							$contador++;
 						}
 					?>
-													
-					
+						</div>							
+					</div>
 			 	</div>
 			</div>
 		</div>
-	</div>
-</div>
 
 <div class="modal fade" id="myModalAnuncio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

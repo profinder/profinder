@@ -10,7 +10,19 @@
 			<div class="content-top">
 				<div class="top-box">
 					
-					<h2>Solicitações de finalizar pedido</h2>
+					<div class="btn-group btn-group-justified">
+						<?php 
+							echo $this->Html->link(
+			        			$this->Html->tag('span', '', array('class' => '')) . " Serviço",
+			        			array('controller' => 'pedidos', 'action' => 'profissionalPedidosSolicitados'),
+								array('class' => 'btn btn-default', 'escape' => false));
+							echo $this->Html->link(
+			        			$this->Html->tag('span', '', array('class' => '')) . " Finalizar pedido",
+			        			array('controller' => 'pedidos', 'action' => 'profissionalSolicitacaoFinalizarPedido'),
+								array('class' => 'btn btn-danger', 'escape' => false));
+						?>
+					</div>
+					<br />
 					<?php 
 						$pedidos = new PedidosController;
 						$pedidos->constructClasses();
@@ -25,65 +37,57 @@
 							
 							$pedidoAnuncio = $pedidos->anuncioPedido($id);
 							
+							$id_anuncio = $pedidoAnuncio[0]['tb_anuncio']['id'];
 							$titulo_anuncio = $pedidoAnuncio[$contador2]['tb_anuncio']['titulo_anuncio'];
 							$descricao = $pedidoAnuncio[$contador2]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $pedidoAnuncio[$contador2]['tb_anuncio']['modo_atendimento'];
 							
 							$dadosClientePedido = $pedidos->clienteDadosPedido($id);
 							$nome_cliente = $dadosClientePedido[$contador2]['tb_pessoa']['nome_pessoa'];
+							$email = $dadosClientePedido[0]['tb_pessoa']['username'];
 					?>
 					<div class="top-box">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2 class="panel-title"><?php echo $id; ?></h2>
-							</div>
+						<div style = "border: 1px solid RED; margin: 2px;" >
+							
 							<div class="panel-body">
-								<table border="2" width="40" height = "60">
-									<tr>
-										<td>
-											<li>Descrição:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $status; ?>
-								        			</div>
-								        		</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<li>Modo de Atendimento:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $modo_atendimento; ?>
-								        			</div>
-								        		</div>
-										</td>
-										
-										<td>
-											<li>Cliente:</li> 
-												<div class="top-box">
-													<div class="panel panel-default">
-								        				<?php echo $nome_cliente; ?>
-								        			</div>
-								        		</div>
-										</td>
-										<td>
-											<?php
+								<div align = "left" style="height: 200px; width: 350px; float: left; margin-left: 10px;">
+									<center> Dados do Anúncio: </center>
+									<br /> <br />
+									Título: <?php echo $titulo_anuncio; ?>
+									<br /> <br /> 
+									Descrição: <?php echo $descricao; ?>
+									<br /> <br /> 
+									Modo de atendimento: <?php echo $modo_atendimento; ?>
+									<br /> <br /> 
+									<?php 
+										echo "<center>Para mais detalhes, clique <a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id_anuncio . "'>aqui</a></center>";
+									?>
+								</div>
+								
+								<div align="left" style="height: 202px; width: 430px; float: left; margin-left: 200px;">
+									<center> Dados do Cliente: </center>
+									<br /> <br />
+									Nome: <?php echo $nome_cliente; ?>
+									<br /> <br /> 
+									E-mail: <?php echo $email; ?>
+									<br /> <br /> 
+									
+								</div>
+								<div align="right" style="height: 10px; width: 570px; float: left; margin-left: 10px;">
+									
+									<?php
 								        		
 								        		echo $this->Form->postLink(
-									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Confirmar",
+									        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-thumbs-up')) . " Confirmar",
 									        		array('controller' => 'pedidos', 'action' => 'profissionalFinalizarPedido', $id),
 									        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
-								        	?>
-								        	<form action="/profinder/site/pedidos/profissionalMensagensPedido" id="idPedido" method="post" accept-charset="utf-8">
-				
-									        	<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
-									        	<button type="submit" class="btn btn-success">Conversa</button>
-								        	</form>
-										</td>
-										
-									</tr>
-								</table>
+								     ?>
+								    								</div>
+								<div align="left" style="height: 10px; width: 570px; float: left; margin-left: 10px;">
+									<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
+									<button type="submit" class="btn btn-success">Conversa</button>
+								</div>			
+									
 							</div>
 						</div>
 					</div>
