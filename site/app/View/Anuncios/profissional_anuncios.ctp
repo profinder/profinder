@@ -27,6 +27,7 @@
 							
 							//echo $anuncio_titulo;
 							//echo "<br/>";
+							
 					?>
 					<div class="panel panel-warning">
 								<div class="panel-body">
@@ -82,6 +83,11 @@
 					<?php 		
 							$contador++;
 						}
+						echo $this->Html->link(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-plus')) . " Novo Anúncio",
+								array('controller' => 'Anuncios','action' => 'cadastro'),
+								array('role' => 'button', 'class' => 'btn btn-success', 'escape' => false));
+							
 					?>
 						</div>							
 					</div>
