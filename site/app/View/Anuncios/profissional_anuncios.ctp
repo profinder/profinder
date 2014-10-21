@@ -27,6 +27,7 @@
 							
 							//echo $anuncio_titulo;
 							//echo "<br/>";
+							
 					?>
 					<div class="panel panel-warning">
 								<div class="panel-body">
@@ -86,10 +87,31 @@
 												</div>
 												
 									
+<<<<<<< HEAD
 									<?php 		
 											$contador++;
 										}
 									?>
+=======
+									<div class="panel panel-default" align="left"
+										style="height: 152px; width: 152px; float: left; margin-left: 10px;">
+										<?php
+								echo "<img src = '/profinder/site/img/googlemaps.png' height = '152' width = '152' style = 'padding-top:0px'>";
+							}
+							?>
+									</div>
+								</div>
+					
+					<?php 		
+							$contador++;
+						}
+						echo $this->Html->link(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-plus')) . " Novo Anúncio",
+								array('controller' => 'Anuncios','action' => 'cadastro'),
+								array('role' => 'button', 'class' => 'btn btn-success', 'escape' => false));
+							
+					?>
+>>>>>>> origin/master
 						</div>							
 					</div>
 			 	</div>
