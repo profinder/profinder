@@ -31,58 +31,65 @@
 					<div class="panel panel-warning">
 								<div class="panel-body">
 									<h4>
-									<?php echo $titulo; ?> </h4>
+									<?php echo $titulo; ?></a></h4>
 									<hr>
 									<br />
-
+									<?php 
+										echo $this->Html->link(
+				        			$this->Html->tag('span', '', array('class' => '')) . "Contrate profissionais!",
+				        			array('controller' => 'anuncios', 'action' => 'removerAnuncio', $id),
+									array('class' => 'btn btn-info', 'escape' => false));
+									
+									?>
 									<div class="panel panel-default"
 										style="height: 152px; width: 152x; float: left;">
 										<?php
-							$foto = $anuncios->caminho_foto ( $id );
-							
-							if ($foto == null || $foto == 0) {
-								echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='/profinder/site/img/sem-foto.jpg' height='150' width='150' style= 'padding-top:0px'> </a>";
-							} else {
-								echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='" . $foto [0] ['tb_foto'] ['caminho_foto'] . "' height='150' width='150' style= 'padding-top:0px'> </a>";
-							}
-							?>
+											$foto = $anuncios->caminho_foto ( $id );
+											
+											if ($foto == null || $foto == 0) {
+												echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='/profinder/site/img/sem-foto.jpg' height='150' width='150' style= 'padding-top:0px'> </a>";
+											} else {
+												echo "<a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id . "'><img src='" . $foto [0] ['tb_foto'] ['caminho_foto'] . "' height='150' width='150' style= 'padding-top:0px'> </a>";
+											}
+										?>
 									</div>
 									<div align="left"
 										style="height: 202x; width: 700px; float: left; margin-left: 10px;">
 									 	<?php
-							echo "Descrição: <br /> <br /> <center>";
-							echo $descricao;
-							echo "</center><br /><br />";
-							echo "Modo de atendimento: ";
-							
-							if ($modo_atendimento == "escritorio") {
-								echo "Escritório.";
-								echo "<font color = '#aaacae'> Endereço ao lado (Google Maps) </font>";
-							} else if ($modo_atendimento == "domiciliar") {
-								echo "Domiciliar.";
-							} else if ($modo_atendimento == "online") {
-								echo "On-line.";
-							}
-							echo "<br /> <br />";
-							?>
-									</div>
-									<?php
-							if ($modo_atendimento == "escritorio") {
-								?>
+											echo "Descrição: <br /> <br /> <center>";
+											echo $descricao;
+											echo "</center><br /><br />";
+											echo "Modo de atendimento: ";
+											
+											if ($modo_atendimento == "escritorio") {
+												echo "Escritório.";
+												echo "<font color = '#aaacae'> Endereço ao lado (Google Maps) </font>";
+											} else if ($modo_atendimento == "domiciliar") {
+												echo "Domiciliar.";
+											} else if ($modo_atendimento == "online") {
+												echo "On-line.";
+											}
+											echo "<br /> <br />";
+											?>
+													</div>
+													<?php
+											if ($modo_atendimento == "escritorio") {
+												?>
+													
+													<div class="panel panel-default" align="left"
+														style="height: 152px; width: 152px; float: left; margin-left: 10px;">
+														<?php
+												echo "<img src = '/profinder/site/img/googlemaps.png' height = '152' width = '152' style = 'padding-top:0px'>";
+											}
+											?>
+													</div>
+												</div>
+												
 									
-									<div class="panel panel-default" align="left"
-										style="height: 152px; width: 152px; float: left; margin-left: 10px;">
-										<?php
-								echo "<img src = '/profinder/site/img/googlemaps.png' height = '152' width = '152' style = 'padding-top:0px'>";
-							}
-							?>
-									</div>
-								</div>
-					
-					<?php 		
-							$contador++;
-						}
-					?>
+									<?php 		
+											$contador++;
+										}
+									?>
 						</div>							
 					</div>
 			 	</div>

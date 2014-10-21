@@ -176,7 +176,8 @@
 		
 		public function salvar_mensagem()
 		{
-			$this->layout = 'clean';
+			$this->layout = 'home';
+			$this->Session->setFlash(__('Mensagem salva com sucesso.'), "flash_notification");
 		}
 		
 		public function salvarPedido($cliente_id = null, $anuncio_id=null)

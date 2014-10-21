@@ -80,6 +80,7 @@
 							
 							$profissional = $anunciosController->dadosProfissionalAnuncio ( $id );
 							$nome_profissional = $profissional [$contador2] ['tb_pessoa'] ['nome_pessoa'];
+							$id_profissional = $profissional [$contador2] ['tb_pessoa'] ['id'];
 							?>
 										
 					<form action="/profinder/site/pedidos/cadastro" id="idAnuncio"
@@ -108,23 +109,26 @@
 									<div align="left"
 										style="height: 202x; width: 700px; float: left; margin-left: 10px;">
 									 	<?php
-							echo "Descrição: <br /> <br /> <center>";
-							echo $descricao;
-							echo "</center><br /><br />";
-							echo "Modo de atendimento: ";
-							
-							if ($modo_atendimento == "escritorio") {
-								echo "Escritório.";
-								echo "<font color = '#aaacae'> Endereço ao lado (Google Maps) </font>";
-							} else if ($modo_atendimento == "domiciliar") {
-								echo "Domiciliar.";
-							} else if ($modo_atendimento == "online") {
-								echo "On-line.";
-							}
-							echo "<br /> <br />";
-							echo "Nome do profissional: ";
-							echo $nome_profissional;
-							?>
+											echo "Descrição: <br /> <br /> <center>";
+											echo $descricao;
+											echo "</center><br /><br />";
+											echo "Modo de atendimento: ";
+											
+											if ($modo_atendimento == "escritorio") {
+												echo "Escritório.";
+												echo "<font color = '#aaacae'> Endereço ao lado (Google Maps) </font>";
+											} else if ($modo_atendimento == "domiciliar") {
+												echo "Domiciliar.";
+											} else if ($modo_atendimento == "online") {
+												echo "On-line.";
+											}
+											echo "<br /> <br />";
+											echo "Nome do profissional: ";
+											
+											echo "<a href='/profinder/site/profissionals/dadosProfissional?id=" . $id_profissional . "'>";
+											echo $nome_profissional;
+											echo "</a>";
+										?>
 									</div>
 									<?php
 							if ($modo_atendimento == "escritorio") {
@@ -139,7 +143,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
 						<?php 		
 							$contador++;
 						}
@@ -151,6 +154,7 @@
 					</form>			
 			 	</div>
 						
+				</div>
 			</div>
 		</div>
 	</div>
@@ -163,7 +167,6 @@
 	$(function(){
 		$("#estado").change(function(){
 		var estado = $(this).val();
-		alert(estado)
 			$.ajax({
 				type:"POST",
 				url: "/profinder/site/pages/ajax_buscar_cidades.php?estado="+estado,

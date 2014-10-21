@@ -29,11 +29,11 @@
 			return false;
 		}
 		
-		/*public function beforeRender() {
+		public function beforeRender() {
 			
 		}
 		
-		public function beforeFilter() {
+		/*public function beforeFilter() {
 			App::import('Vendor', 'facebook-php-sdk-master/src/facebook');
 			$this->Facebook = new Facebook(array(
 					'appId'     =>  '1496505570602503',
@@ -45,24 +45,33 @@
 			
 			//$this->Auth->allow('index', 'view');
 
-			$this->Auth->allow('facebook', 'dadosProfissionalSugestao', 'comentariosAvaliacao', 'salvar_mensagem', 'caminho_foto', 'detalhesAnuncio', 'display', 'add', 'anuncios', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'clienteSolicitacaoFinalizarPedido', 'upload_foto', 'edit', 'perfil', 'editar', 'cadastro', 'profissionalAnuncios', 'clienteMensagensPedido', 'profissionalMensagensPedido', 'clienteFinalizarPedido', 'profissionalFinalizarPedido', 'avaliarPedido');
-
-			$this->Auth->allow('ajax_buscar_cidades.php', 'anuncioBairro', 'display', 'add', 'anuncios', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'profissional_home', 'profissionalPedidosSolicitados', 'delete', 'profissionalSolicitacaoFinalizarPedido', 'clienteSolicitacaoFinalizarPedido', 'edit', 'perfil', 'editar', 'cadastro', 'profissionalAnuncios', 'clienteMensagensPedido', 'profissionalMensagensPedido', 'clienteFinalizarPedido', 'enviar_email', 'profissionalFinalizarPedido', 'avaliarPedido', 'email');
-
-		}*/
-		
-		public function beforeFilter() {
-
 			$this->Auth->allow(
 				'add', 'ajax_buscar_cidades.php', 'anuncioBairro', 'anuncios', 'avaliarPedido', 
 				'cadastro', 'caminho_foto', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'clienteSolicitacaoFinalizarPedido', 'clienteMensagensPedido', 'clienteFinalizarPedido', 'comentariosAvaliacao', 
 				'dadosProfissionalSugestao', 'detalhesAnuncio', 'display', 'delete',
 				'edit', 'editar', 'enviar_email', 'email',
-				//'facebook',
+				'facebook',
 				'google_map',
 				'upload_foto',
 				'perfil', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'profissionalAnuncios', 'profissionalMensagensPedido', 'profissionalFinalizarPedido',
-				'salvar_mensagem'
+				'salvar_mensagem', 
+				'redirecionar_mensagem', 'remover'
+			); 
+		}
+		*/
+		public function beforeFilter() {
+
+			$this->Auth->allow(
+				'add', 'ajax_buscar_cidades.php', 'anuncioBairro', 'anuncios', 'avaliarPedido', 
+				'cadastro', 'caminho_foto', 'categorias', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'clienteSolicitacaoFinalizarPedido', 'clienteMensagensPedido', 'clienteFinalizarPedido', 'comentariosAvaliacao', 
+				'dadosProfissional', 'dadosProfissionalSugestao', 'detalhesAnuncio', 'display', 'delete',
+				'edit', 'editar', 'enviar_email', 'email',
+				'facebook',
+				'google_map',
+				'upload_foto',
+				'perfil', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'profissionalAnuncios', 'profissionalMensagensPedido', 'profissionalFinalizarPedido',
+				'redirecionar_mensagem', 'remover',
+				'salvar_mensagem', 'servicos'
 			); 
 			//$this->Auth->allow('google_map', 'ajax_buscar_cidades.php', 'anuncioBairro', 'display', 'add', 'anuncios', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'profissional_home', 'profissionalPedidosSolicitados', 'delete', 'profissionalSolicitacaoFinalizarPedido', 'clienteSolicitacaoFinalizarPedido', 'edit', 'perfil', 'editar', 'cadastro', 'profissionalAnuncios', 'clienteMensagensPedido', 'profissionalMensagensPedido', 'clienteFinalizarPedido', 'enviar_email', 'profissionalFinalizarPedido', 'avaliarPedido', 'email');
 		}

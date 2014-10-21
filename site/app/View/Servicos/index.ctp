@@ -8,7 +8,7 @@
         <th>Código</th>
         <th>Nome</th>
 		<th>Código Categoria</th>
-        <th>Ações</th>
+        <th width = "100px"></th>
         
     </tr>
 
@@ -30,14 +30,14 @@
         		echo $this->Html->link(
 	        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil')) . "",
 	        		array('controller' => 'servicos', 'action' => 'edit', $servico['Servico']['id'], 'role' => 'button'),
-					array('class' => 'btn btn-default', 'escape' => false, "data-toggle"=>"modal",
+					array('class' => 'btn btn-success', 'escape' => false, "data-toggle"=>"modal",
 					"data-target"=>"#myModal"));
         	?>
         	<?php
         		echo $this->Form->postLink(
         			$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . "",
         			array('controller' => 'servicos','action' => 'delete', $servico['Servico']['id']),
-        			array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-default', 'escape' => false));
+        			array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
         	?>
         </td>
     </tr>

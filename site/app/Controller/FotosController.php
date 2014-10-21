@@ -40,13 +40,14 @@
 				
 				$foto['Foto']['legenda_foto']=$this->request->data['Foto']['caminho_foto'];
 				$foto['Foto']['anuncio_id']=$this->Session->read('idAnuncio');
+				var_dump($foto['Foto']['anuncio_id']);
 				
 				if ($this->Foto->save($foto))
 				{
 
 					$this->upload($this->request->data['Foto']['legenda_foto']);
 					$this->Session->setFlash(__('Foto salva com sucesso!'), "flash_notification");
-
+		
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}

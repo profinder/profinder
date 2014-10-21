@@ -81,5 +81,12 @@
 		{
 			return $this->Categoria->find('all');
 		}
+		
+		public function categorias()
+		{
+			$this->layout = 'home';
+			$sql=$this->Categoria->query('SELECT tb_categoria.* FROM tb_categoria ORDER BY tb_categoria.nome_categoria;');
+			return $sql;
+		}
 	}
 ?>

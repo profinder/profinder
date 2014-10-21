@@ -22,39 +22,39 @@
 					
 					<div class="panel-body">
 						<?php
-							echo $this->Form->create('Foto', array('action' => 'cadastro', 'type' => 'file'));	
+							echo $this->Form->create('Foto', array('action' => 'cadastro', 'type' => 'file'));
+							App::import('Controller', 'Anuncios');
+							$anuncio = new AnunciosController;
+							$anuncio->constructClasses();
+							$idAnuncio=$this->Session->read('idAnuncio');
+							$fotos=$anuncio->caminho_foto($idAnuncio);
+							
 						?>
-						<table height = "200">
-							<tr>
-								<td>
-									<div class="top-box">
-										<div class="panel panel-default">
-											
-											<div class="panel-body">
-											<center>
-												<table border="1" width="1120" height = "500">
-													
-														<?php echo $this->Form->input('legenda_foto', array('type' => 'file'));
-																echo $this->Form->input('caminho_foto');
-														?>
-														</td>
-													</tr>
-												</table>	
-											</center>		
+						
+						
+								
+									<?php
+									$contador=0;
+									while ( $contador != sizeof ( $fotos ) )
+									{
+										?>
+										<div class="top-box">
+											<div class="panel panel-warning">
+												<div class="panel-body">
+												<?php
+													echo "<img src='" . $fotos [$contador] ['tb_foto'] ['caminho_foto'] . "' height='150' width='150' style= 'padding-top:0px'> </a>";
+													$contador++;
+												?>
+												</div>
 											</div>
 										</div>
-									</div>
-							
-								</td>
-									</tr>
-													
-
-						</table>
-						
-					<?php 
+										<?php
+									}
+								echo $this->Form->input('legenda_foto', array('type' => 'file'));
+										echo $this->Form->input('caminho_foto');
 					
 						echo $this->Form->button(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Enviar",
 								array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
 						);
 						echo " ";
@@ -68,12 +68,15 @@
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil'))." Limpar",
 								array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
 						);			
+						echo "<br /> <br />";
+						echo $this->Html->link(
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Finalizar",
+								array('controller' => 'Anuncios', 'action' => 'profissionalAnuncios'),
+								array('role' => 'button', 'class' => 'btn btn-warning', 'escape' => false)
+						);	
 						echo $this->Form->end();
-						
-						
 					?>
 					
-				
 					</div>
 				</div>
 			</div>

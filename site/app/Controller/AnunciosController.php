@@ -95,7 +95,7 @@
 						{
 							$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
 							$idAnuncio = $this->Anuncio->id;
-							$this->Session->write('codigoAnuncio', $idAnuncio);
+							$this->Session->write('idAnuncio', $idAnuncio);
 							$endereco = $this->Endereco->findById ( $id );
 							return $this->redirect(array('controller'=> 'fotos', 'action' => 'cadastro'));					}
 						$this->Session->setFlash(__('Erro ao salvar dados!'));
@@ -147,6 +147,17 @@
 			}
 		}
 		
+		public function removerAnuncio($id)
+		{
+			if ($this->request->is('get')) {
+				throw new MethodNotAllowedException();
+			}
+		  
+			$sql = $this->Pedido->query("DELETE FROM tb_anuncio WHERE tb_anuncio.id = '".$id."';");
+			$this->Session->setFlash(__('Anuncio excluido com sucesso.'), "flash_notification");
+			
+			return $this->redirect(array('action' => 'profissionalAnuncios'));
+		}
 		
 		public function tipoAnuncio($tipoAnuncio) 
 		{

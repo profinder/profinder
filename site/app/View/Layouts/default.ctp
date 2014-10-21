@@ -61,7 +61,7 @@
 			        	<li> 
 				        	<?php
 			               		 echo $this->Html->link(
-			                    "<span class='glyphicon glyphicon-user'></span> Perfil",
+			                    " Perfil",
 			                    array('controller' => 'Users', 'action' => 'edit', 
 			                    AuthComponent::user("id"))); 
 			                 ?>
@@ -104,6 +104,9 @@
 						</li>
 						<li class="dropdown">
 							<a href="/profinder/site/Cidades">Cidades</a>
+						</li>
+						<li class="dropdown">
+							<a href="/profinder/site/Logradouros">Logradouros</a>
 						</li>
 						<li class="dropdown">
 							<a href="/profinder/site/Servicos">Serviços</a>

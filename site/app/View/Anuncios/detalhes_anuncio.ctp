@@ -36,6 +36,8 @@
 						$anuncioController->constructClasses();
 						$dados = $anuncioController->dadosAnuncios($id);
 						
+						$dadosProfissional = $anuncioController->dadosProfissionalAnuncio($id);
+						
 						App::import('Controller', 'Comentarios');
 						$comentarioController = new ComentariosController;
 						$comentarioController->constructClasses();
@@ -71,8 +73,16 @@
 											}
 											else
 											{
-												echo "<img src='".$foto[$contador]['tb_foto']['caminho_foto']."' height='300' width='300' style= 'padding-top:0px'> ";										
-											}
+												echo "<div class='wrap'>";
+												echo "<div class='slider'>";
+												echo "<div class='slider-wrapper theme-default'>";
+												echo "<div id='slider'' class='nivoSlider'>";
+												echo "<img src='".$foto[$contador]['tb_foto']['caminho_foto']."' height='310' width='310' /> ";
+												echo "</div>";
+												echo "</div>";
+												echo "</div>";
+												echo "</div>";
+											 }
 											if ($contador==sizeof($foto)-1)
 											{
 												echo '</br>';
@@ -158,30 +168,36 @@
 						else if( $dados[0]['tb_anuncio']['modo_atendimento'] == "online" || $dados[0]['tb_anuncio']['modo_atendimento'] == "domiciliar")
 						{?>
 						
-						<div style="height: 300px; width: 300px; float: left;">
+						<div style="height: 302px; width: 302px; float: left;">
 							<?php 
-								if($foto==null||$foto==0){
-									echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='300' width='300' style= 'padding-top:0px'> </a>";
+								if($foto == null ||$foto==0){
+									echo "<img src='/profinder/site/img/sem-foto.jpg' height='300' width='300' style= 'padding-top:0px'>";
 								}
 								else
 								{
 									$contador=0;
+									echo "<div class='wrap'>";
+									echo "<div class='slider'>";
+									echo "<div class='slider-wrapper theme-default'>";
+									echo "<div id='slider'' class='nivoSlider'>";
+												
 									while ($contador<sizeof($foto))
 									{
 										if ($contador==0)
 										{
-											echo "<img src='".$foto[0]['tb_foto']['caminho_foto']."' height='300' width='300'  style= 'padding-top:0px'></br> ";								
+											echo "<img src='".$foto[0]['tb_foto']['caminho_foto']."' height='300' width='300' style= 'padding-top:0px'>";								
 										}
 										else
 										{
 											echo "<img src='".$foto[$contador]['tb_foto']['caminho_foto']."' height='300' width='300' style= 'padding-top:0px'> ";							
 										}
-										if ($contador==sizeof($foto)-1)
-										{
-											echo '</br>';
-										}
+										
 										$contador++;
 									}
+									echo "</div>";
+									echo "</div>";
+									echo "</div>";
+									echo "</div>";
 								}
 							?>
 						</div>
@@ -321,57 +337,27 @@
 							?>
 							</table>
 						</div>
-						<?php 
-							echo $this->Html->link(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-arrow-left')) . " Voltar",
-								array('controller' => 'pages', 'action' => 'index'),
-								array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
-							);	
-						?>
 				</div>
+				
 			</div>
+			<form action="/profinder/site/pedidos/cadastro" id="idAnuncio" method="post" accept-charset="utf-8">
+				<input type="hidden" name="anuncio[]" value=<?php echo $id ?> />		
+				<?php 
+					echo $this->Html->link(
+						$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-arrow-left')) . " Voltar",
+						array('controller' => 'pages', 'action' => 'index'),
+						array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
+					);	
+					
+					if( AuthComponent::user('role') == "cliente" )
+					{?>
+	            		<center><button type = "submit" class="btn btn-default">Solicitar Pedido</button></center>
+	            	<?php }?>
+	    	</form>
 		</div>
 	</div>
 </div>
 
-<!-- Modal View-->
-<div class="modal fade" data-backdrop="static" id="myModalView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-    	<div class="modal-content">
-      		<div class="modal-header">
-        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        			<h4 class="modal-title" id="myModalLabel">Dados do Bairro</h4>
-      		</div>
-      		<div class="modal-body">
-      	
-		        <?php 
-		        
-					echo $this->Form->create('Foto', array('action' => 'view'));
-					echo $this->Form->input('legenda_foto', array('label' => 'Nome:'));
-					
-					$foto = $anunciosController->caminho_foto($id);
-											
-					if($foto==null||$foto==0)
-					{
-						echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='200' width='200' style= 'padding-top:0px'> </a>";
-					}
-					else
-					{
-						echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='".$foto[0]['tb_foto']['caminho_foto']."' height='200' width='200' style= 'padding-top:0px'> </a>";
-					}
-					
-					echo $this->Html->link(
-							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Sair",
-							array('controller' => 'anuncios','action' => 'visualizar'),
-							array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
-					
-					echo $this->Form->end();
-				 ?>
-		
-      		</div>
-    	</div>
-  	</div>
-</div>
 
 <script type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?sensor=SET_TO_TRUE_OR_FALSE">

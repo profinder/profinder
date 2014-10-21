@@ -204,7 +204,6 @@
 					$contador=0;
 				?>
 				<ul>
-				
 					<?php
 						while($contador<sizeof($categorias))
 						{
@@ -237,6 +236,13 @@
 						$contador++;
 					}
 							?>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Outros<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href = '/profinder/site/categorias/categorias'>Todas categorias</a></li>
+												
+						</ul>
+					</li>
 					<div class="clear"></div> 
 				</ul>
 			</div>

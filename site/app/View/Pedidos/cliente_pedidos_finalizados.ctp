@@ -19,7 +19,7 @@
 							echo $this->Html->link(
 			        			$this->Html->tag('span', '', array('class' => '')) . " Finalizado",
 			        			array('controller' => 'pedidos', 'action' => 'clientePedidosFinalizados'),
-								array('class' => 'btn btn-warning', 'escape' => false));
+								array('class' => 'btn btn-danger', 'escape' => false));
 							echo $this->Html->link(
 			        			$this->Html->tag('span', '', array('class' => '')) . " Disponível avaliação",
 			        			array('controller' => 'pedidos', 'action' => 'clientePedidosAvaliar'),
@@ -58,7 +58,7 @@
 							$email_profissional = $profissional[$contador2]['tb_pessoa']['username'];
 					?>
 					<div class="top-box">
-						<div style = "border: 1px solid ORANGE; margin: 2px;" >
+						<div style = "border: 1px solid RED; margin: 2px;" >
 							<div class="panel-body">
 								<div align = "left" style="height: 200px; width: 350px; float: left; margin-left: 10px;">
 									<center> Dados do Pedido: </center>

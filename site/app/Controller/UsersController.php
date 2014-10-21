@@ -86,8 +86,8 @@
             		// User login failed..
         		}
 	   		}
-		}*/
-		
+		}
+		*/		
 		
 		public function logout() 
 		{

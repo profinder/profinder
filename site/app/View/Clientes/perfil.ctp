@@ -17,7 +17,7 @@
 						$cliente->constructClasses();
 						$sql=$cliente->dadosCliente($id);
 						
-						var_dump($sql[0]['tb_pessoa']);
+						//var_dump($sql[0]['tb_pessoa']);
 						
 						echo "Nome: ".$sql[0]['tb_pessoa']['nome_pessoa']."</br>";
 						echo "E-mail: ".$sql[0]['tb_pessoa']['username']."</br>";

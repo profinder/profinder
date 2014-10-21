@@ -165,7 +165,6 @@
 	$(function(){
 		$("#estado").change(function(){
 		var estado = $(this).val();
-		alert(estado)
 			$.ajax({
 				type:"POST",
 				url: "/profinder/site/pages/ajax_buscar_cidades.php?estado="+estado,

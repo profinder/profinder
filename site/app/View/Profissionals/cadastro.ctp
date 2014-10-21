@@ -80,7 +80,7 @@
 													<tr>
 														<td>
 															<div class="input-group">
-																<span class="input-group-addon">DDD</span>
+																<span class="input-group-addon">DDD &nbsp &nbsp &nbsp &nbsp</span>
 																	<?php
 																		echo $this->Form->input('Telefone.0.ddd_telefone', array('class' => 'form-control', 'label' => ''));
 																	?>

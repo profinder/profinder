@@ -107,6 +107,10 @@
 			return $anuncioBairros->salvar($idAnuncio, $idBairro);	
 		}
 		
+		public function tutorial()
+		{
+			$this->layout = 'clean';
+		}
 		public function beforeFilter() 
 		{
 			$this->Auth->allow('clienteHome', 'profissionalHome', 'display');

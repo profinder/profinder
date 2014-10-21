@@ -13,13 +13,8 @@
   		
 	</div>
 		
-	<form id = "formulario" action = "anuncios/anuncios" method = "post">
 	<div class="banner">
     	<div class="wrap">
-			
-			</form>
-			
-			
 			<div class="slider">
 			
 		 		<div class="slider-wrapper theme-default">
@@ -34,7 +29,7 @@
 		                
 		                <br />
 		     
-		             </div>
+		   		</div>
 		   </div>
 		</div>
 	</div>
@@ -51,49 +46,36 @@
 						<hr>
 						<p>Aqui você encontra o profissional para o serviço que você precisa! </p>
 			 	</div>
-			 	<div class="top-box">
-			 		<p><a href = "/profinder/site/clientes/cadastro">Cadastro de Cliente</a>
-			 		<hr>
-			 		<p><a href = "/profinder/site/profissionals/cadastro">Cadastro de Profissional</a>
-		    	</p>
-			 	</div>
 			 	
 			 	<div class="section group">
-		    	<div class="col_1_of_5 span_1_of_5">
-					<div class="grid_img">
-					 		<img src="img/find.png" alt=""/>
+			 	
+			    	<div class="col_1_of_5 span_1_of_5">
+						<div class="grid_img">
+						 		<img src="img/find.png" alt=""/>
 						</div>
-						<h3>1.Pesquise o serviço desejado</h3>
-						<p>Os profissionais estão separados por categorias de serviço</p>
+						<h3>1. Contratação?</h3>
+						<p>Descubra <a href = "/profinder/site/pages/tutorial"> aqui</a></p>
 					</div>
+					
 					<div class="col_1_of_5 span_1_of_5">
 						<div class="grid_img">
-							<img src="img/profinder.png" alt=""/>
+						 		<img src="img/find.png" alt=""/>
 						</div>
-						<h3>1. Conte-nos o que você precisa</h3>
-						<p>Responda algumas perguntas que vão nos ajudar a encontrar os melhores profissionais para você.</p>
+						<h3>2. Anunciar?</h3>
+						<p>Descubra <a href = "/profinder/site/pages/tutorial"> aqui</a></p>
 					</div>
+					
 					<div class="col_1_of_5 span_1_of_5">
 						<div class="grid_img">
-							<img src="img/profinder.png" alt=""/>
+						 		<img src="img/find.png" alt=""/>
 						</div>
-						<h3>2. Encontre até 7 profissionais</h3>
-						<p>Nós pesquisamos até 7 profissionais próximos à sua região e te indicamos em até 24 horas.</p>
+						<h3>3. Quem somos?</h3>
+						<p>Descubra <a href = "#"> aqui</a></p>
 					</div>
-					<div class="col_1_of_5 span_1_of_5">
-						<div class="grid_img">
-							<img src="img/profinder.png" alt=""/>
-						</div>
-						<h3>3. Compare e contrate o melhor</h3>
-						<p>Você compara os orçamentos e avaliações dos profissionais, negocia e contrata o melhor profissional.</p>
-					</div>
-					<div class="col_1_of_5 span_1_of_5">
-						<div class="grid_img">
-							<img src="img/profinder.png" alt=""/>
-						</div>
-						<h3>4. ProFinder</h3>
-						<p>ProFinder</p>
-					</div>
+					
+				</div>
+					
+				
 
 				<div class="clear"></div>
 			</div>

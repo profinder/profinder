@@ -115,8 +115,9 @@
 			$this->layout = 'home';
 		}
 		
-		public function dadosProfissional($id)
+		public function dadosProfissional($id = null)
 		{
+			$this->layout = 'home';
 			$sql=$this->Profissional->query("SELECT tb_pessoa.* FROM tb_pessoa WHERE tb_pessoa.id ='".$id."';");
 			return $sql;
 		}

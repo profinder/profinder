@@ -18,7 +18,7 @@
 					$pedidos = new PedidosController;
 					$pedidos->constructClasses();
 					$pedidos->criarSessao($anuncios);
-					?>
+				?>
 					<form action="/profinder/site/pedidos/salvar_mensagem" id="idMensagem" method="post" accept-charset="utf-8">
 						<div class="top-box">
 						
@@ -34,7 +34,7 @@
 								</div>
 							
 						</div>
-	            		<button type="submit" class="btn btn-default">Enviar Mensagem</button>
+	            		<button type="submit" class="btn btn-info">Enviar Mensagem</button>
 					</form>		
 				 	
 							
