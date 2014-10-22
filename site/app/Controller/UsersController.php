@@ -98,7 +98,10 @@
 		public function index() 
 		{
 			$this->layout = 'default';
-	         $this->set('usuarios', $this->User->find('all'));
+			$this->paginate = array('limit' => 2);
+			$this->set('users', $this->paginate('User'));
+			
+	         
 	    }
 	
 	    public function view($id = null) 

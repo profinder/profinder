@@ -2,10 +2,19 @@
 	class AnunciosController extends AppController
 	{
 		public $helpers = array('Html', 'Form');
+		
+		var $paginate = array(
+				'fields' => array('Anuncio.id'),
+				'limit' => 2,
+				'order' => array(
+						'Anuncio.id' => 'desc'
+				)
+		);
 	
 		public function index()
 		{
-			$this->set('anuncios', $this->Anuncio->find('all'));
+			$data = $this->paginate('Anuncio');
+    		$this->set('data', $data);
 		}
 	
 		public function view($id = null) 

@@ -151,7 +151,13 @@
 						{?>
 	            			<center><button type = "submit" class="btn btn-default">Solicitar Pedido</button></center>
 	            		<?php }?>
-					</form>			
+					</form>
+					
+					<?php 
+					$this->Paginator->numbers();
+					?>
+
+					
 			 	</div>
 						
 				</div>
