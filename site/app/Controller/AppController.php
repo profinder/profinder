@@ -33,14 +33,16 @@
 			
 		}
 		
-		/*public function beforeFilter() {
+		public function beforeFilter() {
 			App::import('Vendor', 'facebook-php-sdk-master/src/facebook');
 			$this->Facebook = new Facebook(array(
 					'appId'     =>  '1496505570602503',
 					'secret'    =>  '8d44047def9b253341cd80eb4deeae8d'
+					
 			
 			));
-			$this->set('fb_login_url', $this->Facebook->getLoginUrl(array('redirect_uri' => Router::url(array('controller' => 'users', 'action' => 'login'), true))));
+			
+			$this->set('fb_login_url', $this->Facebook->getLoginUrl(array('scope'=>'email', 'redirect_uri' => Router::url(array('controller' => 'users', 'action' => 'login'),true))));
 			$this->set('user', $this->Auth->user());
 			
 			//$this->Auth->allow('index', 'view');
@@ -58,7 +60,7 @@
 				'redirecionar_mensagem', 'remover'
 			); 
 		}
-		*/
+		/*
 		public function beforeFilter() {
 
 			$this->Auth->allow(
@@ -74,6 +76,6 @@
 				'salvar_mensagem', 'servicos'
 			); 
 			//$this->Auth->allow('google_map', 'ajax_buscar_cidades.php', 'anuncioBairro', 'display', 'add', 'anuncios', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'profissional_home', 'profissionalPedidosSolicitados', 'delete', 'profissionalSolicitacaoFinalizarPedido', 'clienteSolicitacaoFinalizarPedido', 'edit', 'perfil', 'editar', 'cadastro', 'profissionalAnuncios', 'clienteMensagensPedido', 'profissionalMensagensPedido', 'clienteFinalizarPedido', 'enviar_email', 'profissionalFinalizarPedido', 'avaliarPedido', 'email');
-		}
+		}*/
 	}
 ?>

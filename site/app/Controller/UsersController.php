@@ -7,15 +7,15 @@
 	class UsersController extends AppController
 	{
 		var $components = array('Auth'); 
-		public $helpers = array('Html', 'Form'/*,'Facebook.Facebook'*/);
+		public $helpers = array('Html', 'Form',/*'Facebook.Facebook'*/);
 		
 		
 		public function beforeFilter() 
 		{
 			parent::beforeFilter();
 			$this->Auth->allow('logout', 'login');
-			//$this->Auth->loginRedirect = array('action' => 'index');     //3
-			//$this->layout='facebook';
+			$this->Auth->loginRedirect = array('action' => 'index');     
+			$this->layout='facebook';
 		}
 		
 		public function isAuthorized($user) 
@@ -23,7 +23,7 @@
 			return parent::isAuthorized($user);
 		}
 		
-		public function login() 
+		/*public function login() 
 		{
 			$this->layout = 'home';
 		
@@ -33,9 +33,9 @@
 				}
 				//$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
 			}
-		}
+		}*/
 		
-		/*public function login()
+		public function login()
 		{
 			$this->layout = 'home';
 	    	// If it is a post request we can assume this is a local login request
@@ -54,7 +54,7 @@
         		$fb_user = $this->Facebook->getUser();          # Returns facebook user_id
         		if ($fb_user){
 		            $fb_user = $this->Facebook->api('/me');     # Returns user information
-		
+					
 		            // We will varify if a local user exists first
 		            $local_user = $this->User->find('first', array(
 		                'conditions' => array('username' => $fb_user['email'])
@@ -87,7 +87,7 @@
         		}
 	   		}
 		}
-		*/		
+		
 		
 		public function logout() 
 		{

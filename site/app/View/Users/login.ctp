@@ -74,13 +74,13 @@
 <?php
     if($user) echo 'Bem Vindo ' . $user['nome_pessoa'];
     else {
-echo $this->Html->link(
+	echo $this->Html->link(
 		$this->Html->tag('span', '', array('class' => 'fa fa-facebook')) . " Entre com o Facebook",
 		$fb_login_url,
-		array('role' => 'button', 'class' => 'btn btn-block btn-social btn-facebook', 'escape' => false, 'style'=> 'width:200px;')
+		array('role' => 'button', 'class' => 'btn btn-block btn-social btn-facebook', 'escape' => false, 'style'=> 'width:200px;', 'scope' => 'email')
 );
         echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'));
-        }
+        }      
 ?>
 <button class="btn btn-default data-toggle" data-toggle="modal" data-target="#myModal">Esqueci minha senha</button>
 </body>

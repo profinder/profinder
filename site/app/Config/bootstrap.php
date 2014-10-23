@@ -86,6 +86,10 @@ Cache::config('default', array('engine' => 'File'));
  *
  * ));
  */
+CakePlugin::loadAll(
+array('Facebook' => array('bootstrap' => true))
+);
+
 Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'
