@@ -54,20 +54,36 @@
 				
 																	$anuncios = new AnunciosController;
 																	$anuncios->constructClasses();
+																	
+																	App::import('Controller', 'Categorias');
+				
+																	$categorias = new CategoriasController;
+																	$categorias->constructClasses();
+																	$nomeCategorias=$categorias->nomeCategorias();
 																	$servicos=$anuncios->nomeServico();
 																	$anuncios->tipoAnuncio("salvar");
 																	
 																	$contador=0;
-																	$options= array();
 																	
-																	while($contador<sizeof($servicos))
-																	{
-																		array_push($options, array($servicos[$contador]['Servico']['id'] => $servicos[$contador]['Servico']['nome_servico']));
-																		$contador++;
-																	}
+																	?>
+																	<select class="form-control" id="categorias" name="categorias">
+																		<option>Selecione a categoria</option>
+																		<?php
+																			while($contador<sizeof($nomeCategorias))
+																			{
+																				?>
+																				<option value='<?php echo $nomeCategorias[$contador]['Categoria']['id']?>'><?php echo $nomeCategorias[$contador]['Categoria']['nome_categoria']?></option>
+																				<?php
+																				$contador++;
+																			}
+																			?>
+																	</select>
 																	
-																	echo $this->Form->select('servico_id', $options, array('class' => 'form-control'));
-																?>
+																	<select class="form-control" id="servico" name="servico">
+																		<option>Selecione o servico</option>
+																		
+																	</select>
+																	
 															</div>
 														</td>
 														<tr>
@@ -75,6 +91,7 @@
 														<div class="input-group">
 															<span class="input-group-addon">Descrição </span>
 																<?php
+																	echo $this->Form->input('servico_id', array('type'=>'hidden'));
 																	echo $this->Form->input ( 'descricao_anuncio', array (
 																		'class' => 'form-control',
 																		'type' => 'textarea',
@@ -146,8 +163,15 @@
 										echo "<br />";
 										echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'label' => 'Bairro ', 'type'=>'hidden'));
 										echo "<br />";
-										echo $this->Form->input('Endereco.estado', array('id' => 'uf', 'label' => 'Estado ', 'type'=>'hidden'));
-										echo "<br />";	
+										$opcoes[0]='';
+										$contador=0;
+										while ($contador<sizeof($estados))
+										{
+											$opcoes[$contador+1]=$estados[$contador]['tb_cidade']['estado_cidade'];
+											$contador++;
+										}
+										
+										echo $this->Form->input('Endereco.estado', array('options' => $opcoes,'id' => 'uf', 'style'=>'display:none;', 'label'=>''));echo "<br />";	
 										echo $this->Form->input('Endereco.numero_endereco', array('label' => 'Número ', 'type'=>'hidden', 'value' => '1'));
 										echo "<br />";	
 									
@@ -202,6 +226,22 @@
 		});
 	});
 });
+
+	$(function(){
+			$("#categorias").change(function(){
+			var categoria = $(this).val();
+				$.ajax({
+					type:"POST",
+					url: "/profinder/site/pages/ajax_buscar_servicos.php?categoria="+categoria,
+					dataType:"text",
+					success: function(res){
+						$("#servico").children(".servicosOption").remove();
+						$("#servico").append(res);
+					}
+			});
+		});
+	});
+	
 	function consultacepAnuncio(cep)
 	{
 		cep = cep.replace(/\D/g,"")
@@ -219,7 +259,7 @@
 			document.getElementById('logradouro').type = 'text';	
 			document.getElementById('localidade').type = 'text';
 			document.getElementById('bairro').type = 'text';
-			document.getElementById('uf').type = 'text';
+			document.getElementById('uf').style.display = 'inline';
 			document.getElementById('estado').style.display = 'none';
 			document.getElementById('cidadesSelect').style.display = 'none';
 		}
