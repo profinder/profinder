@@ -41,7 +41,7 @@
 	    	// If it is a post request we can assume this is a local login request
 		    if ($this->request->isPost()){
 		        if ($this->Auth->login()){
-		            $this->redirect($this->Auth->redirectUrl());
+		            $this->redirect(array('controller' => 'pages', 'action' => 'index'));
 		        } else {
 		            $this->Session->setFlash(__('Invalid Username or password. Try again.'));
 		        }
@@ -63,7 +63,7 @@
 		            // If exists, we will log them in
 		            if ($local_user){
 		                $this->Auth->login($local_user['User']);            # Manual Login
-		                $this->redirect($this->Auth->redirectUrl());
+		                $this->redirect(array('controller' => 'pages', 'action' => 'index'));
 		            } 
 		
 		            // Otherwise we ll add a new user (Registration)

@@ -49,15 +49,15 @@
 
 			$this->Auth->allow(
 				'add', 'ajax_buscar_cidades.php', 'anuncioBairro', 'anuncios', 'avaliarPedido', 
-				'cadastro', 'caminho_foto', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'clienteSolicitacaoFinalizarPedido', 'clienteMensagensPedido', 'clienteFinalizarPedido', 'comentariosAvaliacao', 
-				'dadosProfissionalSugestao', 'detalhesAnuncio', 'display', 'delete',
+				'cadastro', 'caminho_foto', 'categorias', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'clienteSolicitacaoFinalizarPedido', 'clienteMensagensPedido', 'clienteFinalizarPedido', 'comentariosAvaliacao', 
+				'dadosProfissional', 'dadosProfissionalSugestao', 'detalhesAnuncio', 'display', 'delete',
 				'edit', 'editar', 'enviar_email', 'email',
 				'facebook',
 				'google_map',
 				'upload_foto',
 				'perfil', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'profissionalAnuncios', 'profissionalMensagensPedido', 'profissionalFinalizarPedido',
-				'salvar_mensagem', 
-				'redirecionar_mensagem', 'remover'
+				'redirecionar_mensagem', 'remover',
+				'salvar_mensagem', 'servicos'
 			); 
 		}
 		/*
