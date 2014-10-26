@@ -109,7 +109,7 @@
 							echo "  ";
 							echo $this->Html->link(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-arrow-left')) . " Voltar",
-								array('controller' => 'Pedidos', 'action' => 'profissionalPedidosSolicitados'),
+								array('controller' => 'Pedidos', 'action' => 'clientePedidos'),
 								array('role' => 'button', 'class' => 'btn btn-warning', 'escape' => false)
 							);	
 						?>

@@ -81,6 +81,7 @@
 		/* lista pedidos do cliente */
 		public function clientePedidos($cliente_id = null)
 		{
+			$this->pedidoFoiVisualizadoCliente(AuthComponent::user('id'));
 			$this->layout = 'home';
 			$sql = $this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id='".$cliente_id."';");
 			return $sql;
@@ -116,6 +117,7 @@
 		/* lista os pedidos que foram solicitados pelo profissisonal*/
 		public function profissionalPedidosSolicitados($profissional_id = null)
 		{
+			$this->pedidoFoiVisualizado(AuthComponent::user('id'));
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido INNER JOIN tb_anuncio ON tb_pedido.anuncio_id = tb_anuncio.id WHERE tb_pedido.cliente_fim = 0 AND tb_pedido.profissional_fim = 0 AND tb_pedido.status_pedido = 'andamento' AND tb_anuncio.profissional_id ='".$profissional_id."';");
 			return $sql;
@@ -177,7 +179,6 @@
 		public function salvar_mensagem()
 		{
 			$this->layout = 'home';
-			$this->Session->setFlash(__('Mensagem salva com sucesso.'), "flash_notification");
 		}
 		
 		public function salvarPedido($cliente_id = null, $anuncio_id=null)
@@ -210,6 +211,35 @@
 		public function aumentarQntAvaliacao($pedido_id)
 		{
 			$sql=$this->Pedido->query("UPDATE tb_pedido SET tb_pedido.qnt_avaliacao = tb_pedido.qnt_avaliacao +1 WHERE tb_pedido.id =".$pedido_id.";");
+			return $sql;
+		}
+		
+		public function pedidoNaoVisualizado($id)
+		{
+			$sql=$this->Pedido->query("select tb_pedido.* from tb_pedido inner join tb_anuncio on tb_pedido.anuncio_id=tb_anuncio.id where tb_anuncio.profissional_id=".$id." and tb_pedido.visualizado=1;");
+			return $sql;
+		}
+		
+		public function pedidoNaoVisualizadoCliente($id)
+		{
+			$sql=$this->Pedido->query("select tb_pedido.* from tb_pedido inner join tb_anuncio on tb_pedido.anuncio_id=tb_anuncio.id where tb_pedido.cliente_id=".$id." and tb_pedido.visualizado=1;");
+			return $sql;
+		}
+		
+		public function pedidoFoiVisualizado($id)
+		{
+			$sql=$this->Pedido->query("UPDATE tb_pedido
+										SET visualizado = 0
+										WHERE tb_pedido.anuncio_id IN (SELECT tb_anuncio.id
+										FROM tb_anuncio where tb_anuncio.profissional_id=".$id.");");
+			return $sql;
+		}
+		
+		public function pedidoFoiVisualizadoCliente($id)
+		{
+			$sql=$this->Pedido->query("UPDATE tb_pedido
+										SET visualizado = 0
+										WHERE tb_pedido.cliente_id=".$id.";");
 			return $sql;
 		}
 	}

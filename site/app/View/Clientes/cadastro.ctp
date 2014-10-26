@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="css/bootstrap.css"/>
 	<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
-
+<body>
 <div class="main">					
 	<div class="wrap">
 		<div class="content-top">

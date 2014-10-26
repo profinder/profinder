@@ -21,6 +21,11 @@
 						App::import('Controller', 'Avaliacaos');
 						$avalicaoController = new AvaliacaosController;
 						$avalicaoController->constructClasses();
+						
+						App::import('Controller', 'Profissionals');
+						$profissionalController = new ProfissionalsController;
+						$profissionalController->constructClasses();
+						
 						$sqlavaliacao = $avalicaoController->buscarAvaliacao($id);
 						$quantidadeAvaliacoes = $avalicaoController->quantidadeAvaliacao($id);
 						
@@ -37,6 +42,13 @@
 						$dados = $anuncioController->dadosAnuncios($id);
 						
 						$dadosProfissional = $anuncioController->dadosProfissionalAnuncio($id);
+						$bairrosProf = $anuncioController->bairrosAnuncio($id);
+						
+						$nome_prof = $dadosProfissional[0]['tb_pessoa']['nome_pessoa'];
+						$email = $dadosProfissional[0]['tb_pessoa']['username'];
+						$id_profissional = $dadosProfissional[0]['tb_pessoa']['id'];
+						
+						$telefoneProfissional = $profissionalController->buscarTelefone($id_profissional);
 						
 						App::import('Controller', 'Comentarios');
 						$comentarioController = new ComentariosController;
@@ -54,7 +66,7 @@
 					<?php 
 						if ($dados[0]['tb_anuncio']['modo_atendimento'] == "escritorio")
 						{?>
-							<div style="height: 312px; width: 312px; float: left;">
+							<div class = "panel panel-default" style="height: 312px; width: 312px; float: left;">
 								<?php 
 									if($foto==null||$foto==0)
 									{
@@ -92,7 +104,7 @@
 									}
 								?>
 							</div>
-							<div align = "left" style="margin: 2px; height: 250px; width: 550px; float: left; margin-left: 20px;">
+							<div class = "panel panel-default" align = "left" style="margin: 2px; height: 250px; width: 550px; float: left; margin-left: 20px;">
 								<?php 
 									echo 'Título do anúncio: '.$dados[0]['tb_anuncio']['titulo_anuncio'];
 									echo '<br /><br />Descrição do anúncio: <br /><br /><center>'.$dados[0]['tb_anuncio']['descricao_anuncio'];
@@ -168,7 +180,7 @@
 						else if( $dados[0]['tb_anuncio']['modo_atendimento'] == "online" || $dados[0]['tb_anuncio']['modo_atendimento'] == "domiciliar")
 						{?>
 						
-						<div style="height: 302px; width: 302px; float: left;">
+						<div class = "panel panel-default" style="height: 302px; width: 302px; float: left;">
 							<?php 
 								if($foto == null ||$foto==0){
 									echo "<img src='/profinder/site/img/sem-foto.jpg' height='300' width='300' style= 'padding-top:0px'>";
@@ -201,7 +213,7 @@
 								}
 							?>
 						</div>
-						<div align = "left" style="height: 250px; width: 800px; float: left; margin-left: 20px;">
+						<div class = "panel panel-default" align = "left" style="height: 250px; width: 800px; float: left; margin-left: 20px;">
 							<?php 
 								echo 'Título do anúncio: '.$dados[0]['tb_anuncio']['titulo_anuncio'];
 								echo '<br /><br />Descrição do anúncio: <br /><br /><center>'.$dados[0]['tb_anuncio']['descricao_anuncio'];
@@ -262,18 +274,78 @@
 						</div>
 					
 						<?php 
-						}
-						?>
-					
+						}?>
+						
+						<div align = "left" style="margin: 2px; clear: both; height: 50px; width: 800px; margin-left: 100px;">	
+						</div>
+						
+						<div class = "panel panel-default" align = "left" style="margin: 2px; height: 170px; width: 550px; float: left;">
+							<?php 
+								echo "Dados do Profissional <br />";
+								echo "Nome: ". $nome_prof;
+								echo "<br />E-mail: ". $email;
+								echo "<br />Telefone: <br />";
+								
+								$contador3 = 0;
+								
+							//	var_dump($telefoneProfissional);
+								while( $contador3 < sizeof($telefoneProfissional) )
+								{
+									$ddd = $telefoneProfissional[$contador3]['tb_telefone']['ddd_telefone'];
+									$numero = $telefoneProfissional[$contador3]['tb_telefone']['numero_telefone'];
+									$tipo = $telefoneProfissional[$contador3]['tb_telefone']['tipo_telefone'];
+									
+									echo "(". $ddd. ")  ". $numero . " - " . $tipo ."<br />"; 
+									
+									$contador3++;
+								}
+								
+							?>
+						</div>
+						
+						<?php if( $dados[0]['tb_anuncio']['modo_atendimento'] == "escritorio") {?>
+							<div class = "panel panel-default" align = "right" style="height: 170px; width: 550px; float: left; margin-left: 90px; ">
+								<?php 
+									echo "Dados do endereço: <br />";
+									echo "Cep: ". $dadosEndereco[0]['tb_endereco']['cep'];	
+									echo "<br />Logradouro: ". $dadosEndereco[0]['tb_endereco']['logradouro'];
+									echo "<br />Número: ". $dadosEndereco[0]['tb_endereco']['numero_endereco'];
+									echo "<br />Cidade: ". $dadosEndereco[0]['tb_endereco']['localidade'];
+									echo "<br />Estado: ". $dadosEndereco[0]['tb_endereco']['estado'];
+									echo "<br />Bairro: ". $dadosEndereco[0]['tb_endereco']['bairro'];
+									
+									if( $dadosEndereco[0]['tb_endereco']['complemento'] != NULL )
+									{
+										echo "<br />Complemento: ". $dadosEndereco[0]['tb_endereco']['complemento'];
+									}	
+								?>
+							</div>
+						<?php }?>
+						<?php if( $dados[0]['tb_anuncio']['modo_atendimento'] == "domiciliar") {?>
+							<div class = "panel panel-default" align = "right" style="height: 170px; width: 550px; float: left; margin-left: 90px; overflow: auto;">
+								<?php 
+									echo "Bairros que atende: <br />";
+									
+									$contador4 = 0;
+									
+									while( $contador4 < sizeof($bairrosProf) )
+									{
+										$bairro = $bairrosProf[$contador4]['tb_bairro']['nome_bairro'];
+										echo $bairro."<br />";
+										$contador4++;
+									}
+								?>
+							</div>
+						<?php }?>
 						<div align = "left" style="margin: 2px; clear: both; height: 50px; width: 800px; margin-left: 100px;">	
 						</div>
 						<?php 
-						if( $comentarios == null )
-						{
-							echo "Ainda não há comentários para esse anúncio.";
-						}					
-						else
-						{
+							if( $comentarios == null )
+							{
+								echo "Ainda não há comentários para esse anúncio.";
+							}					
+							else
+							{
 						?>
 						<center><h4>Comentários</h4></center>
 						<div class = "panel panel-default" style="height: 300px; width: 1200px; float: left; overflow: auto;">

@@ -59,7 +59,7 @@
 		 		<div class="logo">
 			 		<center><a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style= "padding-top:0px"> </a>
 		 			<br />
-		 			<hr></center>
+		 			</center>
 		 		</div>
 		 	</div>
 		 </div>
@@ -68,15 +68,6 @@
 
 			<?php echo $this->fetch('content'); ?>
 		 
-		<div class="footer">
-			<div class="wrap">
-				<div class="footer-text">
-					<div class="copy">
-						<p> © 2014 ProFinder</p>
-					</div>
-				</div>	
-			</div>
-		</div>
 
      <!-- /container -->
 </body>

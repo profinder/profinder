@@ -37,6 +37,7 @@
 			if ($this->request->is('post'))
 			{
 				$this->Anuncio->create();
+				$this->request->data['Anuncio']['servico_id']=$this->request->data['servico'];
 				var_dump($this->request->data);
 				if ($this->request->data['Anuncio']['modo_atendimento']=='escritorio')
 				{
@@ -155,19 +156,7 @@
 				return $this->redirect(array('action' => 'index'));
 			}
 		}
-		
-		public function removerAnuncio($id)
-		{
-			if ($this->request->is('get')) {
-				throw new MethodNotAllowedException();
-			}
-		  
-			$sql = $this->Pedido->query("DELETE FROM tb_anuncio WHERE tb_anuncio.id = '".$id."';");
-			$this->Session->setFlash(__('Anuncio excluido com sucesso.'), "flash_notification");
-			
-			return $this->redirect(array('action' => 'profissionalAnuncios'));
-		}
-		
+	
 		public function tipoAnuncio($tipoAnuncio) 
 		{
 			$this->Session->write('anuncio', $tipoAnuncio);
@@ -191,7 +180,7 @@
 		{
 			$this->layout = 'home';
 			$id_servico = $_GET["serv"];
-			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.servico_id='".$id_servico."';");
+			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.status_anuncio = 'ativo' AND tb_anuncio.servico_id='".$id_servico."';");
 			return $sql;
 		}
 		
@@ -232,6 +221,12 @@
 			$profissional = new ProfissionalsController;
 			$profissional->constructClasses();
 			return $profissional->dadosProfissionalAnuncio($anuncio_id);	
+		}
+		
+		public function bairrosAnuncio($anuncio_id)
+		{
+			$sql=$this->Anuncio->query("SELECT tb_bairro.* FROM tb_bairro INNER JOIN tb_bairro_anuncio ON tb_bairro.id = tb_bairro_anuncio.bairro_id INNER JOIN tb_anuncio ON tb_anuncio.id = tb_bairro_anuncio.anuncio_id WHERE tb_anuncio.id ='".$anuncio_id."';");
+			return $sql;
 		}
 		
 		public function upload($imagem = array(), $dir = 'img')
@@ -326,13 +321,27 @@
 			return $sql;
 		}
 		
-		
 		public function servicoAnuncios($id_servico)
 		{
 			$sql = $this->Anuncio->query("SELECT tb_servico.nome_servico FROM tb_servico WHERE tb_servico.id='".$id_servico."';");
-			
 			return $sql;
+		}
+		
+		public function pedidosAnuncio($id_anuncio)
+		{
+			$sql = $this->Anuncio->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.anuncio_id ='".$id_anuncio."';");
+			return $sql;
+		}
+		
+		public function setStatusAnuncio($id_anuncio)
+		{
+			if ($this->request->is('get')) {
+				throw new MethodNotAllowedException();
+			}
 			
+			$sql = $this->Anuncio->query("UPDATE tb_anuncio SET tb_anuncio.status_anuncio = 'inativo' WHERE tb_anuncio.id ='".$id_anuncio."';");
+			$this->redirect(array('action' => 'profissionalAnuncios'));
+			return $sql;
 		}
 	}
 ?>

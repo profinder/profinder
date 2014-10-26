@@ -28,13 +28,13 @@
 			}
 			return false;
 		}
-		
+		/*
 		public function beforeRender() {
 			
 		}
 		
 		public function beforeFilter() {
-			App::import('Vendor', 'facebook-php-sdk-master/src/facebook');
+			App::import('Vendor', '/facebook-php-sdk-master/src/Facebook');
 			$this->Facebook = new Facebook(array(
 					'appId'     =>  '1496505570602503',
 					'secret'    =>  '8d44047def9b253341cd80eb4deeae8d'
@@ -59,13 +59,13 @@
 				'redirecionar_mensagem', 'remover',
 				'salvar_mensagem', 'servicos'
 			); 
-		}
-		/*
+		}*/
+		
 		public function beforeFilter() {
 
 			$this->Auth->allow(
 				'add', 'ajax_buscar_cidades.php', 'anuncioBairro', 'anuncios', 'avaliarPedido', 
-				'cadastro', 'caminho_foto', 'categorias', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'clienteSolicitacaoFinalizarPedido', 'clienteMensagensPedido', 'clienteFinalizarPedido', 'comentariosAvaliacao', 
+				'cadastro', 'cadastro2', 'caminho_foto', 'categorias', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'clienteSolicitacaoFinalizarPedido', 'clienteMensagensPedido', 'clienteFinalizarPedido', 'comentariosAvaliacao', 
 				'dadosProfissional', 'dadosProfissionalSugestao', 'detalhesAnuncio', 'display', 'delete',
 				'edit', 'editar', 'enviar_email', 'email',
 				'facebook',
@@ -73,9 +73,9 @@
 				'upload_foto',
 				'perfil', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'profissionalAnuncios', 'profissionalMensagensPedido', 'profissionalFinalizarPedido',
 				'redirecionar_mensagem', 'remover',
-				'salvar_mensagem', 'servicos'
+				'salvar_mensagem', 'servicos', 'setStatusAnuncio'
 			); 
 			//$this->Auth->allow('google_map', 'ajax_buscar_cidades.php', 'anuncioBairro', 'display', 'add', 'anuncios', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'profissional_home', 'profissionalPedidosSolicitados', 'delete', 'profissionalSolicitacaoFinalizarPedido', 'clienteSolicitacaoFinalizarPedido', 'edit', 'perfil', 'editar', 'cadastro', 'profissionalAnuncios', 'clienteMensagensPedido', 'profissionalMensagensPedido', 'clienteFinalizarPedido', 'enviar_email', 'profissionalFinalizarPedido', 'avaliarPedido', 'email');
-		}*/
+		}
 	}
 ?>

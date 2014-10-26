@@ -43,6 +43,27 @@
 				//$enderecos = $this->Endereco->Cliente->find('list');
 	         	//$this->set(compact('clientes'));
 		}
+		
+		public function cadastro2()
+		{
+			$this->layout = 'home2';
+			if ($this->request->is('post'))
+			{
+				$this->Cliente->create();
+				var_dump($this->request->data);
+				if ($this->Cliente->saveAssociated($this->request->data))
+				{
+					$this->Session->setFlash(__('Cliente salvo com sucesso!'), "flash_notification");
+					return $this->redirect( array (
+						'controller' => 'clientes',
+						'action' => 'perfil' 
+					) );
+				}
+				$this->Session->setFlash(__('Erro ao salvar dados!'));
+			}
+				//$enderecos = $this->Endereco->Cliente->find('list');
+	         	//$this->set(compact('clientes'));
+		}
 			
 		public function editar($id = null) 
 		{

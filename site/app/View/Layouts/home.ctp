@@ -63,6 +63,7 @@
 	     			<div class="navbar-collapse collapse">
         				
         				<?php
+							
         					if( AuthComponent::user('id') == null )
         					{/*
 		        				<form action="/profinder/site/users/login" id="UserLoginForm" method="post" accept-charset="utf-8"
@@ -105,8 +106,24 @@
 										<li class="dropdown">
 						                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							                	<span class="glyphicon glyphicon-cog"></span>
-							                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
-							                		<b class="caret"></b>
+							                		<?php
+													$id=AuthComponent::user('id');
+													App::import('Controller', 'Pedidos');
+													$pedidos = new PedidosController;
+													$pedidos->constructClasses();
+													$visualizado=$pedidos->pedidoNaoVisualizadoCliente($id);
+													if(empty($visualizado)){
+													?>
+													Opções LOGADO: <?php echo AuthComponent::user('id'); ?> 
+													<?php
+													}
+													else 
+													{
+														?>
+														Opções LOGADO: <?php echo AuthComponent::user('id'); ?> <img src = '/profinder/site/img/sino.jpg' height = '20' width = '20' style = 'padding-top:0px'>
+														<?php
+													}
+												?><b class="caret"></b>
 							            	</a>
 											<ul class="dropdown-menu">
 												<li><a href="/profinder/site/clientes/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
@@ -120,12 +137,31 @@
 									</ul>
           						<?php }
           						else if( AuthComponent::user('role') == "profissional" )
-          						{?>
+          						{
+									$id=AuthComponent::user('id');
+									App::import('Controller', 'Pedidos');
+									$pedidos = new PedidosController;
+									$pedidos->constructClasses();
+									$visualizado=$pedidos->pedidoNaoVisualizado($id);
+								
+								?>
           							<ul class="nav navbar-nav navbar-right">
 										<li class="dropdown">
 						                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						                	<span class="glyphicon glyphicon-cog"></span>
-						                		Opções LOGADO: <?php echo AuthComponent::user('id'); ?>
+												<?php
+												if(empty($visualizado)){
+													?>
+													Opções LOGADO: <?php echo AuthComponent::user('id'); ?> 
+													<?php
+												}
+												else 
+												{
+													?>
+													Opções LOGADO: <?php echo AuthComponent::user('id'); ?> <img src = '/profinder/site/img/sino.jpg' height = '20' width = '20' style = 'padding-top:0px'>
+													<?php
+												}
+												?>
 						                		<b class="caret"></b>
 						                	</a>
 											<ul class="dropdown-menu">
@@ -207,33 +243,44 @@
 					<?php
 						while($contador<sizeof($categorias))
 						{
+							if( $contador < 7 )
+							{
 					?>
 					
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $categorias[$contador]['Categoria']['nome_categoria'] ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<?php
-									$servicos=$pages->nomeServicos($categorias[$contador]['Categoria']['id']);
+									$servicos = $pages->nomeServicos($categorias[$contador]['Categoria']['id']);
 									$contadorServicos=0;
 									while($contadorServicos<sizeof($servicos))
 									{
-										$id_servico = $servicos[$contadorServicos]['Servico']['id'];
-										$nome_servico = $servicos[$contadorServicos]['Servico']['nome_servico']; 
-								/*<li><a href = "/profinder/site/anuncios/anuncios?serv=".<?php echo $id_servico;?>><?php echo $servicos[$contadorServicos]['Servico']['nome_servico']; ?></a></li>
-								*/
-								echo "<li><a href = '/profinder/site/anuncios/anuncios?serv=".$id_servico;
-								echo "'>$nome_servico</a></li>";
-								
-								/*echo "<a href = '/Loja/clienteForm.php?usr=".$row['id_cliente'];
-								echo "'>Editar</a> ";
-				
-								<?php*/
-									$contadorServicos++;
-						}
-					?>
+										if( $contadorServicos < 15 )
+										{
+											$id_servico = $servicos[$contadorServicos]['Servico']['id'];
+											$nome_servico = $servicos[$contadorServicos]['Servico']['nome_servico']; 
+											echo "<li><a href = '/profinder/site/anuncios/anuncios?pag=1&serv=".$id_servico;
+											echo "'>$nome_servico</a></li>";
+										}
+										else
+										{
+											echo "<li><a href = '/profinder/site/servicos/servicos?cat=".$categorias[$contador]['Categoria']['id'];
+											echo "'><span class='glyphicon glyphicon-plus'></span> Mais serviços</a></li>";
+											break;
+										}
+										$contadorServicos++;
+									}
+									
+								?>
 							</ul>
 							<?php
-						$contador++;
+						
+							}
+							else
+							{
+								break;
+							}
+							$contador++;
 					}
 							?>
 					<li class="dropdown">

@@ -15,6 +15,7 @@
 					<?php 
 						$anuncios = new AnunciosController;
 						$anuncios->constructClasses();
+						
 						$profissionalAnuncios = $anuncios->profissionalAnuncios(AuthComponent::user('id'));
 						
 						$contador=0;
@@ -25,8 +26,7 @@
 							$descricao = $profissionalAnuncios[$contador]['tb_anuncio']['descricao_anuncio'];
 							$modo_atendimento = $profissionalAnuncios[$contador]['tb_anuncio']['modo_atendimento'];
 							
-							//echo $anuncio_titulo;
-							//echo "<br/>";
+							$pedidosAnuncio = $anuncios->pedidosAnuncio($id);
 							
 					?>
 					<div class="panel panel-warning">
@@ -37,10 +37,20 @@
 									<br />
 									
 									<?php
-						        		echo $this->Form->postLink(
-						        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Remover",
-						        		array('controller' => 'anuncios','action' => 'remover', $id),
-						        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
+										if( $pedidosAnuncio == NULL )
+										{
+											echo $this->Form->postLink(
+								        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Remover",
+								        		array('controller' => 'anuncios','action' => 'remover', $id),
+								        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));		
+										}
+										else 
+										{
+											echo $this->Form->postLink(
+								        		$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Remover",
+								        		array('controller' => 'anuncios','action' => 'setStatusAnuncio', $id),
+								        		array('confirm' => 'Tem certeza?', 'role' => 'button', 'class' => 'btn btn-danger', 'escape' => false));
+										}
 						        	?>
 									
 									<div class="panel panel-default"
@@ -103,4 +113,5 @@
 						</div>							
 					</div>
 					</div>
-					</div>
+</body>
+</html>

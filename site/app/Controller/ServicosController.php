@@ -113,5 +113,11 @@
 			$sql=$this->Servico->query("SELECT tb_servico.* FROM tb_servico WHERE tb_servico.categoria_id = '".$categoria_id."' ORDER BY tb_servico.nome_servico;");
 			return $sql;
 		}
+		
+		public function servicosCategoria($categoria)
+		{
+			$sql=$this->Servico->query("SELECT tb_servico.* FROM tb_servico WHERE tb_servico.categoria_id = ".$categoria.";");
+			return $sql;
+		}
 	}
 ?>

@@ -64,16 +64,22 @@
 					$servicos = new ServicosController;
 					$servicos->constructClasses();
 					$categorias=$servicos->nomeCategorias();
-					$contador=0;
-					$options= array();
+					?>
 					
-					while($contador<sizeof($categorias))
-					{
-						array_push($options, array($categorias[$contador]['Categoria']['id'] => $categorias[$contador]['Categoria']['nome_categoria']));
-						$contador++;
-					}
+					<select class="form-control" id="categorias" name="categorias">
+					<option>Selecione a categoria</option>
+						<?php
+						while($contador<sizeof($categorias))
+						{
+						?>
+							<option value='<?php echo $categorias[$contador]['Categoria']['id']?>'><?php echo $categorias[$contador]['Categoria']['nome_categoria']?></option>
+							<?php
+							$contador++;
+						}
+						?>
+					</select>
 					
-					echo $this->Form->select('categoria_id', $options);
+					<?php
 					echo $this->Form->button(
 							$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok'))." Salvar",
 							array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false));

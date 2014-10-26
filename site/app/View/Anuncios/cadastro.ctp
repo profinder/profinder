@@ -1,15 +1,11 @@
-<link rel="stylesheet" href="css/bootstrap.css"/>
-<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
-
-<div class="header">
-	<div class="wrap">
-		<div class="header-top">
-			<div class="logo">
-				<a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style="padding-top: 0px"> </a>
-			</div>
-		</div>
-	</div>
-</div>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>ProFinder</title>
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
 <div class="main">					
 	<div class="wrap">
 		<div class="content-top">
