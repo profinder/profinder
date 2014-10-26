@@ -130,9 +130,9 @@
 				$Email->to($username);
 				$Email->subject('Nova Senha ProFinder');
 				$Email->replyTo('profindertcc@gmail.com');
-				//$Email->message('teste');
 				$Email->from('profindertcc@gmail.com');
 				$Email->send("Sua nova senha é ".$novaSenha);
+				
 				return $this->redirect(array('action' => 'cadastro'));
 			}
 			else
