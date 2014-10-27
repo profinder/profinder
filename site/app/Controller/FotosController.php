@@ -52,6 +52,10 @@
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
 		}
+		public function cadastro2()
+		{
+			
+		}
 		
 		public function edit($id = null)
 		{

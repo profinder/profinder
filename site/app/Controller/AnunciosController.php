@@ -176,6 +176,61 @@
 			return $this->Anuncio->find('all', array( 'conditions'=>$conditions));
 		}
 		
+		public function cadastro2()
+	{
+			$this->layout = 'home';
+			
+			if ($this->request->is('post'))
+			{
+				
+				$this->Anuncio->create();
+				$this->request->data['Anuncio']['servico_id']=$this->request->data['servico'];
+				var_dump($this->request->data);
+				if ($this->request->data['Anuncio']['modo_atendimento']=='escritorio')
+				{
+					if ($this->Anuncio->saveAssociated($this->request->data, array("deep" => true)))
+					{
+						$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
+						$idAnuncio = $this->Anuncio->id;
+						$this->Session->write('codigoAnuncio', $idAnuncio);
+						return $this->redirect(array('controller'=> 'fotos', 'action' => 'cadastro'));					}
+					$this->Session->setFlash(__('Erro ao salvar dados!'));
+				}
+				else if ($this->request->data['Anuncio']['modo_atendimento']=='online')
+				{
+					
+					if ($this->Anuncio->save($this->request->data, array("deep" => true)))
+					{
+						$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
+						$idAnuncio = $this->Anuncio->id;
+						$this->Session->write('idAnuncio', $idAnuncio);
+						return $this->redirect(array('controller'=> 'fotos', 'action' => 'cadastro'));
+					}
+					$this->Session->setFlash(__('Erro ao salvar dados!'));
+				}
+				else if ($this->request->data['Anuncio']['modo_atendimento']=='domiciliar')
+				{
+					if ($this->Anuncio->save($this->request->data, array("deep" => true)))
+					{
+						$cidade=$this->request->data['cidadesSelect'];
+						$this->Session->write('cidade', $cidade);
+						$idAnuncio = $this->Anuncio->id;
+						var_dump($idAnuncio);
+						$this->Session->write('idAnuncio', $idAnuncio);
+						$this->Session->setFlash(__('Anúncio salvo com sucesso!'), "flash_notification");
+						if($this->Session->read('anuncio')=='salvar')
+						{
+							return $this->redirect(array('controller'=> 'pages', 'action' => 'mostrar_bairro'));
+						}
+						else{
+							return $this->redirect(array('controller'=> 'pages', 'action' => 'mostrar_bairro_editar'));
+						}
+						
+					}
+					$this->Session->setFlash(__('Erro ao salvar dados!'));
+				}
+			}
+		}
 		public function anuncios()
 		{
 			$this->layout = 'home';

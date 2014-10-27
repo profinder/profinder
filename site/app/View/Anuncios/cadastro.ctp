@@ -1,36 +1,23 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>ProFinder</title>
-	<link rel="stylesheet" href="css/bootstrap.css"/>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/profinder/site/js/jquery.easyWizard.js"></script>
+<link href="/profinder/site/css/steps.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="css/bootstrap.css"/>
 	<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
-</head>
-<body>
-<div class="main">					
-	<div class="wrap">
-		<div class="content-top">
-			<div class="top-box">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-					
-						<h2 class="panel-title">Novo Anúncio</h2>
-					</div>
-					
-					<div class="panel-body">
-						<?php
+	<script src="lib/sweet-alert.min.js"></script> <link rel="stylesheet" type="text/css" href="lib/sweet-alert.css">
+
+<form id="myWizard"  action="" method="post" class="form-horizontal easyWizardElement easyPager" style="position: relative; overflow: hidden; text-align:center;">
+					<?php
 							echo $this->Form->create('Anuncio', array('action' => 'cadastro'));	
 						?>
+					<section class="step active" data-step-title="Dados do Anúncio" data-step="1" style="float: left; width: 968px;">
+						<center>
 						<table height = "200">
+						
+						<div class="control-group">
 							<tr>
-								<td>
-									<div class="top-box">
-										<div class="panel panel-default">
-											
-											<div class="panel-body">
-											<center>
-												<table border="1" width="1120" height = "500">
-													<tr>
 														<td>
+														</br>
 															<div class="input-group">
 																<span class="input-group-addon">Título </span>
 																	<?php
@@ -40,8 +27,11 @@
 														</td>
 													</tr>
 													
-													<tr>
+						</div>
+						<div class="control-group">
+							<tr>
 														<td>
+														</br>
 															<div class="input-group">
 																<span class="input-group-addon">Serviço </span>
 																<?php
@@ -82,8 +72,14 @@
 																	
 															</div>
 														</td>
-														<tr>
+						</div>
+						
+						<div class="control-group">
+						<tr>
+						
 														<td>
+														
+						</br>
 														<div class="input-group">
 															<span class="input-group-addon">Descrição </span>
 																<?php
@@ -100,26 +96,15 @@
 															</td>
 															</tr>
 													
-												</table>	
-											</center>		
-											</div>
-										</div>
-									</div>
-							
-								</td>
-									</tr>
-													
-
-						</table>
-						<div class="top-box">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									Modo de Atendimento
-								</div>
-								
-								<div class="panel-body">
-								
-								<?php 
+															</div>
+														
+									</table>	
+									</center>						
+					</section>
+					
+					<section class="step" data-step-title="Modo de atendimento" data-step="2" style="float: left; width: 968px; height: 1px;">
+						<div class="control-group">
+							<?php 
 									echo $this->Form->input('modo_atendimento', array('label' => 'Modo de atendimento: ', 'options' => array(
 										'online' => 'On-line',
 										'domiciliar' => 'Domiciliar',
@@ -151,13 +136,13 @@
 									<center>
 									<?php
 									
-										echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'type'=>'hidden', 'onblur' => 'consultacepAnuncio(this.value)', 'label' => 'CEP: '));	
+										echo $this->Form->input('Endereco.cep', array('id' => 'cep', 'type'=>'hidden', 'onblur' => 'consultacepAnuncio(this.value)', 'placeholder' => 'CEP'));	
 										echo "<br />";
-										echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'label' => 'Rua ', 'type'=>'hidden'));
+										echo $this->Form->input('Endereco.logradouro', array('id' => 'logradouro', 'placeholder' => 'Rua ', 'type'=>'hidden'));
 										echo "<br />";
-										echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'label' => 'Cidade ', 'type'=>'hidden'));
+										echo $this->Form->input('Endereco.localidade', array('id' => 'localidade', 'placeholder' => 'Cidade ', 'type'=>'hidden'));
 										echo "<br />";
-										echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'label' => 'Bairro ', 'type'=>'hidden'));
+										echo $this->Form->input('Endereco.bairro', array('id' => 'bairro', 'placeholder' => 'Bairro ', 'type'=>'hidden'));
 										echo "<br />";
 										$opcoes[0]='';
 										$contador=0;
@@ -167,138 +152,138 @@
 											$contador++;
 										}
 										
+										
 										echo $this->Form->input('Endereco.estado', array('options' => $opcoes,'id' => 'uf', 'style'=>'display:none;', 'label'=>''));echo "<br />";	
 										echo $this->Form->input('Endereco.numero_endereco', array('label' => 'Número ', 'type'=>'hidden', 'value' => '1'));
 										echo "<br />";	
-									
+										
+										echo $this->Form->button(
+												$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar Anúncio",
+												array('type' => 'submit', 'class' => 'btn btn-info', 'escape' => false)
+										);
+									$this->Form->end();
 									?>
 													
 									</center>
 								</div>
 							</div>
 						</div>
-						
-					<?php 
+					</section>
 					
-						echo $this->Form->button(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Próximo",
-								array('type' => 'submit', 'class' => 'btn btn-default', 'escape' => false)
-						);
-						echo " ";
-						echo $this->Html->link(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
-								array('controller' => 'Users','action' => 'index'),
-								array('role' => 'button', 'class' => 'btn btn-default', 'escape' => false)
-						);	
-						echo " ";
-						echo $this->Form->button(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-pencil'))." Limpar",
-								array('type' => 'reset', 'class' => 'btn btn-default', 'escape' => false)
-						);			
-						echo $this->Form->end();
-						
-					?>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>	
-		
 <script>
-	$(function(){
-		$("#estado").change(function(){
-		var estado = $(this).val();
-		alert(estado)
+$('#myWizard').easyWizard({
+    buttonsClass: 'btn',
+   
+    submitButton: false,
+    nextButton: 'Próximo >',
+    prevButton: ' < Anterior',
+    before: function(wizardObj, currentStepObj, nextStepObj) {
+        
+    },
+    after: function(wizardObj, prevStepObj, currentStepObj) {
+       
+    },
+    beforeSubmit: function(wizardObj) {
+       
+    }
+    
+});
+function goToStep3()
+{
+	$('#myWizard').easyWizard('goToStep', 3);
+}
+
+
+$(function(){
+	$("#estado").change(function(){
+	var estado = $(this).val();
+	alert(estado)
+		$.ajax({
+			type:"POST",
+			url: "/profinder/site/pages/ajax_buscar_cidades.php?estado="+estado,
+			dataType:"text",
+			success: function(res){
+				$("#cidadesSelect").children(".cidadesOption").remove();
+				$("#cidadesSelect").append(res);
+			}
+	});
+});
+});
+
+$(function(){
+		$("#categorias").change(function(){
+		var categoria = $(this).val();
 			$.ajax({
 				type:"POST",
-				url: "/profinder/site/pages/ajax_buscar_cidades.php?estado="+estado,
+				url: "/profinder/site/pages/ajax_buscar_servicos.php?categoria="+categoria,
 				dataType:"text",
 				success: function(res){
-					$("#cidadesSelect").children(".cidadesOption").remove();
-					$("#cidadesSelect").append(res);
+					$("#servico").children(".servicosOption").remove();
+					$("#servico").append(res);
 				}
 		});
 	});
 });
 
-	$(function(){
-			$("#categorias").change(function(){
-			var categoria = $(this).val();
-				$.ajax({
-					type:"POST",
-					url: "/profinder/site/pages/ajax_buscar_servicos.php?categoria="+categoria,
-					dataType:"text",
-					success: function(res){
-						$("#servico").children(".servicosOption").remove();
-						$("#servico").append(res);
-					}
-			});
-		});
-	});
-	
-	function consultacepAnuncio(cep)
+function consultacepAnuncio(cep)
+{
+	cep = cep.replace(/\D/g,"")
+ 	url="http://cep.correiocontrol.com.br/"+cep+".js"
+	s=document.createElement('script')
+	s.setAttribute('charset','utf-8')
+	s.src=url
+	document.querySelector('head').appendChild(s)
+}				
+function show(modo_atendimento)
+{
+	if (modo_atendimento=="escritorio")
 	{
-		cep = cep.replace(/\D/g,"")
-	 	url="http://cep.correiocontrol.com.br/"+cep+".js"
-		s=document.createElement('script')
-		s.setAttribute('charset','utf-8')
-		s.src=url
-		document.querySelector('head').appendChild(s)
-	}				
-	function show(modo_atendimento)
-	{
-		if (modo_atendimento=="escritorio")
-		{
-			document.getElementById('cep').type = 'text';
-			document.getElementById('logradouro').type = 'text';	
-			document.getElementById('localidade').type = 'text';
-			document.getElementById('bairro').type = 'text';
-			document.getElementById('uf').style.display = 'inline';
-			document.getElementById('estado').style.display = 'none';
-			document.getElementById('cidadesSelect').style.display = 'none';
-		}
-		else if(modo_atendimento=="domiciliar")
-		{
-			document.getElementById('estado').style.display = 'inline';
-			document.getElementById('cidadesSelect').style.display = 'inline';
-			document.getElementById('cep').type = 'hidden';
-			document.getElementById('logradouro').type = 'hidden';	
-			document.getElementById('localidade').type = 'hidden';
-			document.getElementById('bairro').type = 'hidden';
-			document.getElementById('uf').type = 'hidden';
-		}
-		else if(modo_atendimento=="online")
-		{
-			document.getElementById('estado').style.display = 'none';
-			document.getElementById('cidadesSelect').style.display = 'none';
-			document.getElementById('cep').type = 'hidden';
-			document.getElementById('logradouro').type = 'hidden';	
-			document.getElementById('localidade').type = 'hidden';
-			document.getElementById('bairro').type = 'hidden';
-			document.getElementById('uf').type = 'hidden';
-		}
+		document.getElementById('cep').type = 'text';
+		document.getElementById('logradouro').type = 'text';	
+		document.getElementById('localidade').type = 'text';
+		document.getElementById('bairro').type = 'text';
+		document.getElementById('uf').style.display = 'inline';
+		document.getElementById('estado').style.display = 'none';
+		document.getElementById('cidadesSelect').style.display = 'none';
 	}
+	else if(modo_atendimento=="domiciliar")
+	{
+		document.getElementById('estado').style.display = 'inline';
+		document.getElementById('cidadesSelect').style.display = 'inline';
+		document.getElementById('cep').type = 'hidden';
+		document.getElementById('logradouro').type = 'hidden';	
+		document.getElementById('localidade').type = 'hidden';
+		document.getElementById('bairro').type = 'hidden';
+		document.getElementById('uf').type = 'hidden';
+	}
+	else if(modo_atendimento=="online")
+	{
+		document.getElementById('estado').style.display = 'none';
+		document.getElementById('cidadesSelect').style.display = 'none';
+		document.getElementById('cep').type = 'hidden';
+		document.getElementById('logradouro').type = 'hidden';	
+		document.getElementById('localidade').type = 'hidden';
+		document.getElementById('bairro').type = 'hidden';
+		document.getElementById('uf').type = 'hidden';
+	}
+}
 
-	function correiocontrolcep(valor)
+function correiocontrolcep(valor)
+{
+	if (valor.erro) 
 	{
-		if (valor.erro) 
-		{
-			alert('Cep não encontrado');       
-			return;
-		};
+		alert('Cep não encontrado');       
+		return;
+	};
 
-		document.getElementById('logradouro').value=valor.logradouro
-		document.getElementById('bairro').value=valor.bairro
-		document.getElementById('localidade').value=valor.localidade
-		document.getElementById('uf').value=valor.uf
-	}
-					
-	function addCampo() 
-	{
-		document.getElementById("duplicaCampo").innerHTML += "<input type='text' name='campo[]' />";
-	}
+	document.getElementById('logradouro').value=valor.logradouro
+	document.getElementById('bairro').value=valor.bairro
+	document.getElementById('localidade').value=valor.localidade
+	document.getElementById('uf').value=valor.uf
+}
+				
+function addCampo() 
+{
+	document.getElementById("duplicaCampo").innerHTML += "<input type='text' name='campo[]' />";
+}
 </script>
-	
-	

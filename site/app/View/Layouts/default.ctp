@@ -17,7 +17,12 @@
 		echo $this->Html->css('slider.css');
 		echo $this->Html->css('style.css');
 		echo $this->Html->css('swipebox.css');
+		echo $this->Html->css('sweet-alert.css');
 		echo $this->Html->script('jquery.maskedinput-1.3');
+		echo $this->Html->script('sweet-alert.js');
+		echo $this->Html->script('sweet-alert.js.min');
+		
+		
 		//echo $this->Html->css('fitness.css');
 
 		echo $this->fetch('meta');

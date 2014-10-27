@@ -1,15 +1,7 @@
 <link rel="stylesheet" href="css/bootstrap.css"/>
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<div class="header">
-	<div class="wrap">
-		<div class="header-top">
-			<div class="logo">
-				<a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style="padding-top: 0px"> </a>
-			</div>
-		</div>
-	</div>
-</div>
+
 <div class="main">					
 	<div class="wrap">
 		<div class="content-top">
@@ -17,11 +9,13 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 					
-						<h2 class="panel-title">Novo Anúncio</h2>
+						<h2 class="panel-title">Novo Anúncio </h2>
 					</div>
 					
 					<div class="panel-body">
+					
 						<?php
+						
 							echo $this->Form->create('Foto', array('action' => 'cadastro', 'type' => 'file'));
 							App::import('Controller', 'Anuncios');
 							$anuncio = new AnunciosController;
@@ -50,8 +44,8 @@
 										</div>
 										<?php
 									}
-								echo $this->Form->input('legenda_foto', array('type' => 'file'));
-										echo $this->Form->input('caminho_foto');
+								echo $this->Form->input('legenda_foto', array('type' => 'file', 'label' => 'Insira algumas fotos do seu serviço'));
+							
 					
 						echo $this->Form->button(
 								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Enviar",
@@ -70,9 +64,9 @@
 						);			
 						echo "<br /> <br />";
 						echo $this->Html->link(
-								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Finalizar",
+								$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-ok')) . " Finalizar",
 								array('controller' => 'Anuncios', 'action' => 'profissionalAnuncios'),
-								array('role' => 'button', 'class' => 'btn btn-warning', 'escape' => false)
+								array('role' => 'button', 'class' => 'btn btn-success', 'escape' => false)
 						);	
 						echo $this->Form->end();
 					?>
