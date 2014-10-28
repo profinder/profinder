@@ -235,7 +235,8 @@
 		{
 			$this->layout = 'home';
 			$id_servico = $_GET["serv"];
-			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.status_anuncio = 'ativo' AND tb_anuncio.servico_id='".$id_servico."';");
+			$sql = $this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.status_anuncio = 'ativo' AND tb_anuncio.servico_id =".$id_servico." AND tb_anuncio.id NOT IN (SELECT DISTINCT tb_anuncio.id FROM tb_anuncio INNER JOIN tb_pedido ON tb_pedido.anuncio_id = tb_anuncio.id INNER JOIN tb_avaliacao ON tb_avaliacao.pedido_id = tb_pedido.id)");
+			
 			return $sql;
 		}
 		
@@ -396,6 +397,17 @@
 			
 			$sql = $this->Anuncio->query("UPDATE tb_anuncio SET tb_anuncio.status_anuncio = 'inativo' WHERE tb_anuncio.id ='".$id_anuncio."';");
 			$this->redirect(array('action' => 'profissionalAnuncios'));
+			return $sql;
+		}
+		
+		public function anunciosOrdemAvaliacao($id_servico)
+		{
+			$sql = $this->Anuncio->query("SELECT tb_anuncio.*, AVG(tb_avaliacao.nota_avaliacao) FROM tb_avaliacao 
+					INNER JOIN tb_pedido ON tb_pedido.id = tb_avaliacao.pedido_id 
+					INNER JOIN tb_anuncio ON tb_anuncio.id = tb_pedido.anuncio_id
+					WHERE tb_anuncio.servico_id ='".$id_servico."'
+					GROUP BY tb_anuncio.id
+					ORDER BY AVG(tb_avaliacao.nota_avaliacao) DESC;");
 			return $sql;
 		}
 	}
