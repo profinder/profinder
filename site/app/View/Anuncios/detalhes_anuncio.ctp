@@ -180,7 +180,7 @@
 						else if( $dados[0]['tb_anuncio']['modo_atendimento'] == "online" || $dados[0]['tb_anuncio']['modo_atendimento'] == "domiciliar")
 						{?>
 						
-						<div class = "panel panel-default" style="height: 250px; width: 302px; float: left;">
+						<div class = "panel panel-default" style="height: 280px; width: 300px; float: left;">
 							<?php 
 								if($foto == null ||$foto==0){
 									echo "<img src='/profinder/site/img/sem-foto.jpg' height='300' width='300' style= 'padding-top:0px'>";
@@ -197,11 +197,11 @@
 									{
 										if ($contador==0)
 										{
-											echo "<img src='".$foto[0]['tb_foto']['caminho_foto']."' height='240' width='300' style= 'padding-top:0px'>";								
+											echo "<img src='".$foto[0]['tb_foto']['caminho_foto']."' height='270' width='300' style= 'padding-top:0px'>";								
 										}
 										else
 										{
-											echo "<img src='".$foto[$contador]['tb_foto']['caminho_foto']."' height='240' width='300' style= 'padding-top:0px'> ";							
+											echo "<img src='".$foto[$contador]['tb_foto']['caminho_foto']."' height='270' width='300' style= 'padding-top:0px'> ";							
 										}
 										
 										$contador++;

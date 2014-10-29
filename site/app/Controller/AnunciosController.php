@@ -30,7 +30,7 @@
 			}
 			$this->set('anuncio', $anuncio);
 		}
-	
+	/*
 		public function cadastro()
 		{
 			$this->layout = 'home2';
@@ -82,7 +82,7 @@
 					$this->Session->setFlash(__('Erro ao salvar dados!'));
 				}
 			}
-		}
+		}*/
 	
 		public function editar($id = null)
 		{
@@ -176,7 +176,7 @@
 			return $this->Anuncio->find('all', array( 'conditions'=>$conditions));
 		}
 		
-		public function cadastro2()
+		public function cadastro()
 	{
 			$this->layout = 'home';
 			

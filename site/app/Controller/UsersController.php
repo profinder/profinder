@@ -29,7 +29,7 @@
 		
 			if ($this->request->is('post')) {
 				if ($this->Auth->login()) {
-					return $this->redirect($this->Auth->redirect());
+					 $this->redirect(array('controller' => 'pages', 'action' => 'index'));
 				}
 				//$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
 			}
