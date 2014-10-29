@@ -21,30 +21,46 @@
 			$this->set('profissional', $profissional);
 		}
 	
-	public function cadastro()
+		public function cadastro()
 		{
 			$this->layout = 'home2';
 			if ($this->request->is('post'))
 			{
 				$this->Profissional->create();
 				$contador=3;
-				if ($this->request->data['Telefone'][1]['ddd_telefone']=='')
+				$numero_telefone=$this->request->data['Telefone'][0]['numero_telefone'];
+				$this->request->data['Telefone'][0]['ddd_telefone']=substr($numero_telefone,1,2);
+				$this->request->data['Telefone'][0]['numero_telefone']=substr($numero_telefone,4,5).substr($numero_telefone,10,13);
+				var_dump($this->request->data['Telefone'][0]['numero_telefone']);
+				if ($this->request->data['Telefone'][1]['numero_telefone']=='')
 				{
 					unset($this->request->data['Telefone'][1]);
 					$contador=1;
 				}
-				else if ($this->request->data['Telefone'][2]['ddd_telefone']=='')
+				else{
+					$numero_telefone=$this->request->data['Telefone'][1]['numero_telefone'];
+					$this->request->data['Telefone'][1]['ddd_telefone']=substr($numero_telefone,1,2);
+					$this->request->data['Telefone'][1]['numero_telefone']=substr($numero_telefone,4,5).substr($numero_telefone,10,13);
+				}
+				
+				if ($this->request->data['Telefone'][2]['numero_telefone']=='')
 				{
 					unset($this->request->data['Telefone'][2]);
 					$contador=2;
 				}	
+				else{
+					$numero_telefone=$this->request->data['Telefone'][2]['numero_telefone'];
+					$this->request->data['Telefone'][2]['ddd_telefone']=substr($numero_telefone,1,2);
+					$this->request->data['Telefone'][2]['numero_telefone']=substr($numero_telefone,4,5).substr($numero_telefone,10,13);
+				}
+				
 				if ($this->Profissional->save($this->request->data))
 				{
 					$this->Session->setFlash(__('Profissional salvo com sucesso.'), "flash_notification");
 					$idProfissional = $this->Profissional->id;
 					$contadorWhile=0;
 					$this->deletarTelefone($idProfissional);
-					while($contadorWhile<$contador){
+					while($contadorWhile<sizeof($this->request->data['Telefone'])){
 						$ddd=$this->request->data['Telefone'][$contadorWhile]['ddd_telefone'];
 						$tipo=$this->request->data['Telefone'][$contadorWhile]['tipo_telefone'];
 						$numero=$this->request->data['Telefone'][$contadorWhile]['numero_telefone'];
@@ -65,7 +81,6 @@
 				$this->Session->setFlash(__('Erro ao salvar dados!'));
 			}
 		}
-	
 	
 		public function editar($id = null) 
 		{

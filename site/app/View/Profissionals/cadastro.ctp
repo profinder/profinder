@@ -5,6 +5,7 @@
 	<div class="wrap">
 		<div class="content-top">
 			<div class="top-box">
+			
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h2 class="panel-title">Novo Profissional</h2>
@@ -51,9 +52,20 @@
 														<td>
 															<div class="input-group">
 																<span class="input-group-addon">Senha &nbsp &nbsp &nbsp &nbsp </span>
+																	<input type="password", class="form-control", onblur="senha1(this.value)"/>
 																<?php
-																	echo $this->Form->input('password', array('class' => 'form-control', 'label' => ''));
-																	echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'profissional'));?>
+																	echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'profissional'));
+																?>
+															</div>
+														</td>
+													</tr>
+													
+													<tr>
+														<td>
+															<div class="input-group">
+																<span class="input-group-addon">Senha &nbsp &nbsp &nbsp &nbsp </span>
+																	<input type="password", class="form-control", onblur="verificarSenha(this.value)"/>
+																	
 															</div>
 														</td>
 													</tr>
@@ -78,24 +90,16 @@
 												<center>
 												<table border="1" width="550" height = "300">
 													<tr>
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">DDD &nbsp &nbsp &nbsp &nbsp</span>
-																	<?php
-																		echo $this->Form->input('Telefone.0.ddd_telefone', array('class' => 'form-control', 'label' => ''));
-																	?>
-															</div>
-														</td>	
+															
 														<td>
 															<div class="input-group">
 																<span class="input-group-addon">Número</span>
 																	<?php
-																		echo $this->Form->input('Telefone.0.numero_telefone', array('class' => 'form-control', 'label' => ''));
+																		echo $this->Form->input('Telefone.0.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14", 'class' => 'form-control', 'label' => ''));
 																	?>
 															</div>
 														</td>
-													</tr>
-													<tr>
+													
 														<td> 
 															<div class="input-group">
 																<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
@@ -113,24 +117,16 @@
 													</tr>
 													
 													 <tr>
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">DDD</span>
-																	<?php
-																		echo $this->Form->input('Telefone.1.ddd_telefone', array('class' => 'form-control', 'label' => ''));
-																	?>
-															</div>
-														</td>	
+		
 														<td>
 															<div class="input-group">
 																<span class="input-group-addon">Número</span>
 																	<?php
-																		echo $this->Form->input('Telefone.1.numero_telefone', array('class' => 'form-control', 'label' => ''));
+																		echo $this->Form->input('Telefone.1.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => ''));
 																	?>
 															</div>
 														</td>
-													</tr>
-													<tr>
+													
 														<td> 
 															<div class="input-group">
 																<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
@@ -147,24 +143,15 @@
 														</td>
 													</tr>
 													<tr>
-														<td>
-															<div class="input-group">
-																<span class="input-group-addon">DDD</span>
-																	<?php
-																		echo $this->Form->input('Telefone.2.ddd_telefone', array('class' => 'form-control', 'label' => ''));
-																	?>
-															</div>
-														</td>	
+															
 														<td>
 															<div class="input-group">
 																<span class="input-group-addon">Número</span>
 																	<?php
-																		echo $this->Form->input('Telefone.2.numero_telefone', array('class' => 'form-control', 'label' => ''));
+																		echo $this->Form->input('Telefone.2.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => ''));
 																	?>
 															</div>
-														</td>
-													</tr>
-													<tr>
+														
 														<td> 
 															<div class="input-group">
 																<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
@@ -212,3 +199,29 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var senha1;
+	function mascara(telefone){ 
+	   if(telefone.value.length == 0)
+		 telefone.value = '(' + telefone.value; //quando começamos a digitar, o script irá inserir um parênteses no começo do campo.
+	   if(telefone.value.length == 3)
+		  telefone.value = telefone.value + ') '; //quando o campo já tiver 3 caracteres (um parênteses e 2 números) o script irá inserir mais um parênteses, fechando assim o código de área.
+	 
+	 if(telefone.value.length == 9)
+		 telefone.value = telefone.value + '-'; //quando o campo já tiver 8 caracteres, o script irá inserir um tracinho, para melhor visualização do telefone.
+	  
+	}
+	function senha1(senha){
+		senha1=senha;
+	}
+	
+	function verificarSenha(senha){
+		
+	 
+		if (senha1 == senha)
+			alert("SENHAS IGUAIS")
+		else
+			alert("SENHAS DIFERENTES")
+	}
+</script>

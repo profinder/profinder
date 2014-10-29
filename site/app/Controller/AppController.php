@@ -28,13 +28,14 @@
 			}
 			return false;
 		}
-		/*
-		public function beforeRender() {
+		
+		/*public function beforeRender() {
 			
 		}
 		
 		public function beforeFilter() {
-			App::import('Vendor', '/facebook-php-sdk-master/src/Facebook');
+			App::import('Vendor', 'facebook-php-sdk-master/src/facebook');
+			App::import('Vendor', 'Facebook', array('file' => 'facebook-php-sdk-master/src/facebook.php'));
 			$this->Facebook = new Facebook(array(
 					'appId'     =>  '1496505570602503',
 					'secret'    =>  '8d44047def9b253341cd80eb4deeae8d'
