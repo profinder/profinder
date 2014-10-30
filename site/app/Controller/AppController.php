@@ -29,18 +29,16 @@
 			return false;
 		}
 		
-		public function beforeRender() {
-			
-		}
-		
+
 		public function beforeFilter() {
+
 			if( AuthComponent::user('id') == null )
 			{
 				App::import('Vendor', 'facebook-php-sdk-master/src/facebook');
 				$this->Facebook = new Facebook(array(
 						'appId'     =>  '1496505570602503',
 						'secret'    =>  '8d44047def9b253341cd80eb4deeae8d'
-			
+
 		
 				));
 					

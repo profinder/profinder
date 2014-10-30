@@ -88,7 +88,6 @@
 	   		}
 		}
 		
-		
 		public function logout() 
 		{
 			$this->Session->destroy();
