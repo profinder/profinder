@@ -30,7 +30,7 @@
 			}
 			$this->set('anuncio', $anuncio);
 		}
-	/*
+		/*
 		public function cadastro()
 		{
 			$this->layout = 'home2';

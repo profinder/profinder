@@ -29,7 +29,7 @@
 			return false;
 		}
 		
-
+		/*
 		public function beforeFilter() {
 
 			if( AuthComponent::user('id') == null )
@@ -62,7 +62,7 @@
 				'salvar_mensagem', 'servicos'
 			); 
 		}
-		/*
+		*/
 		public function beforeFilter() {
 
 			$this->Auth->allow(
@@ -78,6 +78,6 @@
 				'salvar_mensagem', 'servicos'
 			); 
 			//$this->Auth->allow('google_map', 'ajax_buscar_cidades.php', 'anuncioBairro', 'display', 'add', 'anuncios', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'profissional_home', 'profissionalPedidosSolicitados', 'delete', 'profissionalSolicitacaoFinalizarPedido', 'clienteSolicitacaoFinalizarPedido', 'edit', 'perfil', 'editar', 'cadastro', 'profissionalAnuncios', 'clienteMensagensPedido', 'profissionalMensagensPedido', 'clienteFinalizarPedido', 'enviar_email', 'profissionalFinalizarPedido', 'avaliarPedido', 'email');
-		}*/
+		}
 	}
 ?>

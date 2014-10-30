@@ -22,7 +22,7 @@
 		{
 			return parent::isAuthorized($user);
 		}
-		/*
+		
 		public function login() 
 		{
 			$this->layout = 'home';
@@ -33,8 +33,8 @@
 				}
 				//$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
 			}
-		}*/
-		
+		}
+		/*
 		public function login()
 		{
 			$this->layout = 'home';
@@ -87,7 +87,7 @@
         		}
 	   		}
 		}
-		
+		*/
 		public function logout() 
 		{
 			$this->Session->destroy();
