@@ -410,5 +410,10 @@
 					ORDER BY AVG(tb_avaliacao.nota_avaliacao) DESC;");
 			return $sql;
 		}
+		
+		public function sessaoPasso($passo)
+		{
+			$id_pedido = $this->Session->write('sessaoPasso', $passo);
+		}
 	}
 ?>
