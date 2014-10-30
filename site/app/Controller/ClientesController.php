@@ -29,10 +29,54 @@
 			if ($this->request->is('post'))
 			{
 				$this->Cliente->create();
+				
+			$contador=3;
+				$numero_telefone=$this->request->data['Telefone'][0]['numero_telefone'];
+				$this->request->data['Telefone'][0]['ddd_telefone']=substr($numero_telefone,1,2);
+				$this->request->data['Telefone'][0]['numero_telefone']=substr($numero_telefone,4,5).substr($numero_telefone,10,13);
+				var_dump($this->request->data['Telefone'][0]['numero_telefone']);
+				if ($this->request->data['Telefone'][1]['numero_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][1]);
+					$contador=1;
+				}
+				else{
+					$numero_telefone=$this->request->data['Telefone'][1]['numero_telefone'];
+					$this->request->data['Telefone'][1]['ddd_telefone']=substr($numero_telefone,1,2);
+					$this->request->data['Telefone'][1]['numero_telefone']=substr($numero_telefone,4,5).substr($numero_telefone,10,13);
+				}
+				
+				if ($this->request->data['Telefone'][2]['numero_telefone']=='')
+				{
+					unset($this->request->data['Telefone'][2]);
+					$contador=2;
+				}	
+				else{
+					$numero_telefone=$this->request->data['Telefone'][2]['numero_telefone'];
+					$this->request->data['Telefone'][2]['ddd_telefone']=substr($numero_telefone,1,2);
+					$this->request->data['Telefone'][2]['numero_telefone']=substr($numero_telefone,4,5).substr($numero_telefone,10,13);
+				}
+				
 				var_dump($this->request->data);
 				if ($this->Cliente->saveAssociated($this->request->data))
 				{
 					$this->Session->setFlash(__('Cliente salvo com sucesso!'), "flash_notification");
+					
+					$idProfissional = $this->Cliente->id;
+					$contadorWhile=0;
+					$this->deletarTelefone($idProfissional);
+					while($contadorWhile<sizeof($this->request->data['Telefone'])){
+						$ddd=$this->request->data['Telefone'][$contadorWhile]['ddd_telefone'];
+						$tipo=$this->request->data['Telefone'][$contadorWhile]['tipo_telefone'];
+						$numero=$this->request->data['Telefone'][$contadorWhile]['numero_telefone'];
+						$id=$idProfissional;
+						$editar=$this->buscarTelefone($id);
+						var_dump($editar);
+						$this->salvarTelefone($ddd, $tipo, $numero, $id);
+						
+						
+						$contadorWhile++;
+					}
 					return $this->redirect( array (
 						'controller' => 'clientes',
 						'action' => 'perfil' 
@@ -191,6 +235,24 @@
 			}
 			
 			return $retorno;
+		}
+		
+		public function salvarTelefone($ddd, $tipo, $numero, $id)
+		{
+			$sql=$this->Cliente->query("insert into tb_telefone (ddd_telefone, tipo_telefone, numero_telefone, pessoa_id) values (".$ddd.", '".$tipo."', ".$numero.",".$id.");");
+			return $sql;
+		}
+		
+		public function buscarTelefone($id)
+		{
+			$sql=$this->Cliente->query("select * from tb_telefone where tb_telefone.pessoa_id=".$id.";");
+			return $sql;
+		}
+		
+		public function deletarTelefone($id)
+		{
+			$sql=$this->Cliente->query("delete from tb_telefone where pessoa_id=".$id.";");
+			return $sql;
 		}
 	}
 ?>
