@@ -25,6 +25,7 @@
 				<div class="top-box">	
 					<div class="container">
 						<div class="row">
+							
 							<?php 
 								$servico = $_GET["serv"];
 								
@@ -56,7 +57,7 @@
 								{?>
 									<form name="formBairros" action="/profinder/site/anuncios/anuncioBairro?serv=<?php echo $servico; ?>" method="post">
 							            <div class="col-md-3">
-							                <p class="lead"><font size = "3">Pesquise por bairro:</font></p>
+							                <p class="lead"><font size = "4" color = "black">Pesquise por bairro:</font></p>
 							                <div class="list-group">
 							                
 							                    <a href="#" class="list-group-item">
@@ -121,6 +122,12 @@
 									
 											<form action="/profinder/site/pedidos/cadastro" id="idAnuncio" method="post" accept-charset="utf-8">
 									            <div class = "panel panel-default" align="left" style="height: 379px; width: 270px; float: left; margin-left: 10px;">
+									            <?php 
+									            /*
+									             * <div class = "panel panel-default" align="left" style="background-color: gray; height: 379px; width: 270px; float: left; margin-left: 10px;">
+									             * */
+									             
+									            ?>
 													<div class = "panel panel-default" align="left" style="height: 160px; width: 260px; float: left; margin-left: 4px; margin-top: 4px;">
 														<?php 
 															$foto = $anunciosController->caminho_foto ( $id );
@@ -251,6 +258,9 @@
 											<br />
 											<br />
 											<?php echo "<font color = '#b8b8b8'> Modo de atendimento:   " . $modo_atendimento. "</font>"; ?>
+										</div>
+										<div align="left" style="height: 160px; width: 260px; float: left; margin-left: 4px;">
+											<center> Nenhuma avaliação. </center>
 										</div>
 									</div>
 											

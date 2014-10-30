@@ -178,7 +178,7 @@
 		
 		public function cadastro()
 	{
-			$this->layout = 'home';
+			$this->layout = 'home2';
 			
 			if ($this->request->is('post'))
 			{

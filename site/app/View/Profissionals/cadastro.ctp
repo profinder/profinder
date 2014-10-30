@@ -33,16 +33,20 @@
 								<br />
 								<div class="input-group">
 									<span class="input-group-addon">Senha &nbsp &nbsp &nbsp &nbsp &nbsp </span>
-									<input type="password", class="form-control", onblur="senha1(this.value)"/>
 									<?php
 										echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'profissional'));
-										echo $this->Form->input('password', array('type' => 'hidden', 'default' => '123'));
+										echo $this->Form->input('password', array('class' => 'form-control', 'label' => ''));
 									?>
 								</div>
 								<br />
 								<div class="input-group">
 									<span class="input-group-addon">Confirmação &nbsp </span>
-									<input type="password", class="form-control", onblur="verificarSenha(this.value)"/>				
+									<?php
+										echo $this->Form->input('confirmar_senha', array('onblur'=>"verificarSenha(this.value)", 'class' => 'form-control', 'label' => ''));
+									?>
+								</div>
+								<div align = "left">
+								<label><font id="label" color = "white">As senhas não correspondem!</font></label>
 								</div>
 								<br /><br />
 								<center><hr></center>
@@ -155,6 +159,6 @@
 		if (senha1 == senha)
 			alert("SENHAS IGUAIS")
 		else
-			alert("SENHAS DIFERENTES")
+			document.getElementById('label').color = 'red';
 	}
 </script>

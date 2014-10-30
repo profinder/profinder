@@ -5,6 +5,8 @@
 		public $name  = 'Profissional'; 
 		public $useTable = "tb_profissional";
 		public $primaryKey = "id";
+		
+		
 	
 	    public $actsAs = array( 'Inherit' ); 
 	
