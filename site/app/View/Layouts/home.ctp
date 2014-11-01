@@ -165,8 +165,12 @@
 						                		<b class="caret"></b>
 						                	</a>
 											<ul class="dropdown-menu">
-							               		<li><a href="/profinder/site/profissionals/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-							               		<li><a href="/profinder/site/anuncios/profissionalAnuncios">Meus anúncios</a></li>
+												<?php 
+													echo $this->Html->link(
+									        			$this->Html->tag('span', '', array()) . " Editar",
+									        			array('controller' => 'profissionals', 'action' => 'editar', AuthComponent::user('id')));
+												?>
+							               		<li><a href="/profinder/site/anuncios/profissionalAnunciosAtivos">Meus anúncios</a></li>
 							               		<li><a href="/profinder/site/pedidos/profissionalPedidosSolicitados">Solicitações</a></li>
 							               		<li><a href="/profinder/site/sugestaos/cadastro">Enviar sugestão</a></li>
 							               		<li class="divider"></li>

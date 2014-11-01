@@ -73,7 +73,7 @@
 				'facebook',
 				'google_map',
 				'upload_foto',
-				'perfil', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'profissionalAnuncios', 'profissionalMensagensPedido', 'profissionalFinalizarPedido',
+				'perfil', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'profissionalAnunciosAtivos', 'profissionalAnunciosInativos', 'profissionalMensagensPedido', 'profissionalFinalizarPedido',
 				'redirecionar_mensagem', 'remover',
 				'salvar_mensagem', 'servicos'
 			); 

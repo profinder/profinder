@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="css/bootstrap.css"/>
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<div class="main">					
+<div class="main" style="background:url(/profinder/site/app/webroot/img/background.png) bottom no-repeat; height: 810px; width: 1770px; margin-left: -200px; margin-top:-100px;">					
 	<div class="wrap">
 		<div class="content-top">
 			<div class="top-box">
-				<div style="background:url(/profinder/site/app/webroot/img/background.png) bottom no-repeat; height: 700px; width: 1600px; margin-left: -200px; margin-top:-100px;">
-					<div class="panel panel-default" style="height: 570px; width: 1000px; margin-left: 300px; margin-top:70px;">
+				<div>
+					<div class="panel panel-default" style="height: 610px; width: 1000px; margin-left: 300px; margin-top:70px;">
 						<div class="panel-heading">
 							<font size = "4">Cadastro de Profissional</font>
 						</div>
@@ -15,7 +15,7 @@
 							<?php
 								echo $this->Form->create('Profissional', array('action' => 'cadastro'));	
 							?>
-							
+							<br /><br />
 							<div align = "center" style="height: 580px; width: 700px; margin-left: 120px;">
 								<div class="input-group">
 									<span class="input-group-addon">Nome &nbsp &nbsp &nbsp &nbsp &nbsp</span>

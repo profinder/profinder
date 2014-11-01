@@ -5,11 +5,11 @@
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <script src="lib/sweet-alert.min.js"></script> <link rel="stylesheet" type="text/css" href="lib/sweet-alert.css">
 
-<div class="main">					
+<div class="main" style="background:url(/profinder/site/app/webroot/img/background.png) bottom no-repeat; height: 800px; width: 1770px; margin-left: -200px; margin-top:-100px;">					
 	<div class="wrap">
 		<div class="content-top">
 			<div class="top-box">
-				<div style="background:url(/profinder/site/app/webroot/img/background.png) bottom no-repeat; height: 700px; width: 1600px; margin-left: -200px; margin-top:-100px;">
+				<div>
 					<div class="panel panel-default" style="height: 570px; width: 1000px; margin-left: 300px; margin-top:70px;">
 						<form id="myWizard"  action="" method="post" class="form-horizontal easyWizardElement easyPager" style="position: relative; overflow: hidden; text-align:center;">
 							<?php
@@ -76,7 +76,7 @@
 											<span class="input-group-addon">Descrição &nbsp &nbsp &nbsp</span>
 											<?php
 												echo $this->Form->input('servico_id', array('type'=>'hidden'));
-												echo $this->Form->input ( 'descricao_anuncio', array (
+												echo $this->Form->input ('descricao_anuncio', array (
 													'class' => 'form-control',
 													'type' => 'textarea',
 													'label' => '',
@@ -85,13 +85,15 @@
 											?>
 										</div>
 									</div>
+									<div style="height: 330px; width: 700px; margin-left: 270px;">
+										<font color = "#b8b8b8">Máximo 400 caracteres.</font>
+									</div>
 								</div>	
 							</center>						
 					</section>
 					
 					<section class="step" data-step-title="Modo de atendimento" data-step="2" style="float: left; width: 968px; height: 1px;">
-						<br /><br />
-						<div class = "panel panel-default" align = "center" style="height: 330px; width: 700px; margin-left: 145px;">
+						<div align = "center" style="height: 330px; width: 700px; margin-left: 145px;">
 							<div class="control-group">
 								<div class="input-group">
 									<span class="input-group-addon">Modo de atendimento &nbsp &nbsp &nbsp</span>
@@ -112,24 +114,24 @@
 								</div>
 							</div>
 									
-							<select name="estado" id="estado" style="display:none;">
-								<option value="">Selecione...</option>
-									<?php 
-									   $contador=0;
-										while ($contador<sizeof($estados))
-										{
-										  echo "<option value='{$estados[$contador]['tb_cidade']['estado_cidade']}'>{$estados[$contador]['tb_cidade']['estado_cidade']}</option>";
-										  $contador++;
-										}
-									?>
-							</select>
-							<select id="cidadesSelect" name="cidadesSelect" style="display:none;">
-								<option>Selecione a cidade</option>
-							</select>
+									<select name="estado" id="estado" style="display:none;">
+										<option value="">Selecione...</option>
+										<?php 
+										   $contador=0;
+											while ($contador<sizeof($estados))
+											{
+											  echo "<option value='{$estados[$contador]['tb_cidade']['estado_cidade']}'>{$estados[$contador]['tb_cidade']['estado_cidade']}</option>";
+											  $contador++;
+											}
+										?>
+									</select>
+									<select id="cidadesSelect" name="cidadesSelect" style="display:none;">
+										<option>Selecione a cidade</option>
+									</select>
+								
 							<center>
-							
-							<br />
 							<div class="control-group" style="display: none;" id="div-cep">
+							<br />
 								<div class="input-group">
 									<span class="input-group-addon">CEP &nbsp &nbsp &nbsp &nbsp &nbsp</span>
 									<?php 
@@ -198,22 +200,27 @@
 										?>
 									</div>
 								</div>
-								<br />	
+								<br />
+							</div>	
+									<?php 	
+										echo $this->Form->button(
+												$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar Anúncio",
+												array('type' => 'submit', 'class' => 'btn btn-info', 'escape' => false)
+										);
+									$this->Form->end();
+									?>
+													
+									</center>
+								</div>
 							</div>
-								
-							</center>
-							</div>
-							<?php 
-								echo $this->Form->button(
-									$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar Anúncio",
-									array('type' => 'submit', 'class' => 'btn btn-info', 'escape' => false)
-								);
-								$this->Form->end();
-							?>
-						</div>
+						</div>	
+							
+					</section>
 					</div>
-				</section>
-					
+			</div>
+		</div>
+	</div>	
+				
 <script>
 $('#myWizard').easyWizard({
     buttonsClass: 'btn',
@@ -292,7 +299,7 @@ function show(modo_atendimento)
 		document.getElementById('bairro').style.display = 'inline';
 		document.getElementById('logradouro').style.display = 'inline';	
 		document.getElementById('numero_endereco').style.display = 'inline';	
-		document.getElementById('complemento').style.display = 'inline';	
+		document.getElementById('complemento').style.display = 'inline';
 		document.getElementById('div1').style.display = 'inline';
 		document.getElementById('div2').style.display = 'inline';
 		document.getElementById('div3').style.display = 'inline';
@@ -303,7 +310,8 @@ function show(modo_atendimento)
 		document.getElementById('div8').style.display = 'inline';
 		document.getElementById('div9').style.display = 'inline';
 		document.getElementById('div10').style.display = 'inline';
-		
+		document.getElementById('div11').style.display = 'none';
+		document.getElementById('div12').style.display = 'none';
 	}
 	else if(modo_atendimento=="domiciliar")
 	{
@@ -327,6 +335,8 @@ function show(modo_atendimento)
 		document.getElementById('div8').style.display = 'none';
 		document.getElementById('div9').style.display = 'none';
 		document.getElementById('div10').style.display = 'none';
+		document.getElementById('div11').style.display = 'inline';
+		document.getElementById('div12').style.display = 'inline';
 		
 	}
 	else if(modo_atendimento=="online")
@@ -351,6 +361,8 @@ function show(modo_atendimento)
 		document.getElementById('div8').style.display = 'none';
 		document.getElementById('div9').style.display = 'none';
 		document.getElementById('div10').style.display = 'none';
+		document.getElementById('div11').style.display = 'none';
+		document.getElementById('div12').style.display = 'none';
 	}
 }
 
@@ -373,10 +385,3 @@ function addCampo()
 	document.getElementById("duplicaCampo").innerHTML += "<input type='text' name='campo[]' />";
 }
 </script>
-						</div>	
-					</div>	
-				</div>
-			</div>
-		</div>
-	</div>
-</div>

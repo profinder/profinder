@@ -177,7 +177,7 @@
 		}
 		
 		public function cadastro()
-	{
+		{
 			$this->layout = 'home2';
 			
 			if ($this->request->is('post'))
@@ -252,10 +252,17 @@
 			return $sql;
 		}
 		
-		public function profissionalAnuncios($profissional_id = null)
+		public function profissionalAnunciosAtivos($profissional_id = null)
 		{
 			$this->layout = 'home';
-			$sql=$this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.profissional_id='".$profissional_id."';");
+			$sql=$this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.status_anuncio = 'ativo' AND tb_anuncio.profissional_id='".$profissional_id."';");
+			return $sql;
+		}
+		
+		public function profissionalAnunciosInativos($profissional_id = null)
+		{
+			$this->layout = 'home';
+			$sql=$this->Anuncio->query("SELECT tb_anuncio.* FROM tb_anuncio WHERE tb_anuncio.status_anuncio = 'inativo' AND tb_anuncio.profissional_id='".$profissional_id."';");
 			return $sql;
 		}
 		

@@ -5,18 +5,28 @@
 	<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-	<div class="main">
+	<div class="main" style = "background-color: #f0f0f0;">
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
-			
-					<h2>Meus anúncios</h2>
-					
+					<div class="btn-group btn-group-justified">
+						<?php 
+							echo $this->Html->link(
+			        			$this->Html->tag('span', '', array('class' => '')) . " Ativos",
+			        			array('controller' => 'anuncios', 'action' => 'profissionalAnunciosAtivos'),
+								array('class' => 'btn btn-success', 'escape' => false));
+							echo $this->Html->link(
+			        			$this->Html->tag('span', '', array('class' => '')) . " Inativos",
+			        			array('controller' => 'anuncios', 'action' => 'profissionalAnunciosInativos'),
+								array('class' => 'btn btn-default', 'escape' => false));
+						?>
+					</div>
+					<br /><br />
 					<?php 
 						$anuncios = new AnunciosController;
 						$anuncios->constructClasses();
 						
-						$profissionalAnuncios = $anuncios->profissionalAnuncios(AuthComponent::user('id'));
+						$profissionalAnuncios = $anuncios->profissionalAnunciosAtivos(AuthComponent::user('id'));
 						
 						$contador=0;
 						while ($contador!=sizeof($profissionalAnuncios))

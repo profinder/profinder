@@ -19,7 +19,7 @@
 	
 </head>
 <body>
-	<div class="main">
+	<div class="main" style = "background-color: #f0f0f0;">
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">	
