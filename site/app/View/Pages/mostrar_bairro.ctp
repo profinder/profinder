@@ -19,9 +19,14 @@
 						$pages->constructClasses();
 						$bairros=$pages->bairros($cidade);
 						
+						
+						
 						$contador=0;
 						?>
+							</br>
+							<input type="checkbox" value="Selecionar Todos" name="Selecionar todos" id="selecionarTodos" onclick="verificar()"/><?php echo "Selecionar Todos"?> <br/>
 							<form name="formBairro" action="/profinder/site/pages/checkValue" method="post">
+							
 							<?php
 							while ($contador!=sizeof($bairros)){
 								$bairro_nome=$bairros[$contador]['tb_bairro']['nome_bairro'];
@@ -29,7 +34,7 @@
 						?>
 						
 							
-							<input type="checkbox" name='<?php echo $bairro_id?>'> <?php echo $bairro_nome?> <br/>
+							<input type="checkbox" name='<?php echo $bairro_id?>' value='<?php echo $contador ?>'> <?php echo $bairro_nome?> <br/>
 							
 							
 						<?php
@@ -41,7 +46,41 @@
 						</form>
 						
 			 	</div>
+			
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+	var on="off";
+	
+	function verificar(){
+		if(on=="off"){
+			on="on"
+			for (i=0;i<document.formBairro.elements.length;i++) 
+			  if(document.formBairro.elements[i].type == "checkbox")	
+				 document.formBairro.elements[i].checked=1
+		}
+		else if(on=="on"){
+			on="off"
+			for (i=0;i<document.formBairro.elements.length;i++) 
+				  if(document.formBairro.elements[i].type == "checkbox")	
+					 document.formBairro.elements[i].checked=0
+		}
+		
+	}
+	function selecionarTodos(){ 
+		   for (i=0;i<document.formBairro.elements.length;i++) 
+			  if(document.formBairro.elements[i].type == "checkbox")	
+				 document.formBairro.elements[i].checked=1
+			
+	} 
+
+	function naoSelecionarTodos(){ 
+			   for (i=0;i<document.formBairro.elements.length;i++) 
+				  if(document.formBairro.elements[i].type == "checkbox")	
+					 document.formBairro.elements[i].checked=0
+				
+	} 
+</script>

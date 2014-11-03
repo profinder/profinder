@@ -28,11 +28,26 @@
 							
 							<?php 
 								$servico = $_GET["serv"];
+								$pagina = $_GET["pag"];
+								$limite=($pagina*10);
+								$contadorLimite=($limite-10)+1;
 								
 								$anunciosController = new AnunciosController ();
 								$anunciosController->constructClasses ();
 								$anuncios = $anunciosController->anuncios ();
 								$anunciosAvaliacao = $anunciosController->anunciosOrdemAvaliacao($servico);
+								$qnt_anuncios=sizeof($anunciosAvaliacao)+sizeof($anuncios);
+								$qnt_anuncios=sizeof($anunciosAvaliacao)+sizeof($anuncios);
+								
+								if($contadorLimite>=sizeof($anunciosAvaliacao))
+								{
+									$contador3=$contadorLimite;
+								}
+								else if($contadorLimite<sizeof($anunciosAvaliacao))
+								{
+									
+									$contador3=$contadorLimite+sizeof($anunciosAvaliacao);
+								}
 								
 								App::import('Controller', 'Cidades');
 				
@@ -61,7 +76,7 @@
 							                <div class="list-group">
 							                
 							                    <a href="#" class="list-group-item">
-													<select name="estado" id="estado">
+													<select name="estado" id="estado" style="width:200px">
 														<option value="">Estado</option>
 															<?php 
 															   $contador=0;
@@ -74,12 +89,12 @@
 													</select>
 												</a>
 							                    <a href="#" class="list-group-item">
-							                    	<select id="cidadesSelect" name="cidadesSelect">
+							                    	<select id="cidadesSelect" name="cidadesSelect" style="width:200px">
 														<option>Cidade</option>
 													</select>
 							                    </a>
 							                    <a href="#" class="list-group-item">
-							                    	<select id="bairros" name="bairros">
+							                    	<select id="bairros" name="bairros" style="width:200px">
 														<option>Bairro</option>
 													</select>
 							                    </a>
@@ -95,11 +110,11 @@
 							            </div>
 									</form>
 									<div align = "left" style = "width: 875px; float: left;">
-							<?php 	if ( $anunciosAvaliacao != null )
+							<?php 	if ( $anunciosAvaliacao != null && $contadorLimite<sizeof($anunciosAvaliacao))
 									{
-										$contador = 0;
+										$contador = $contadorLimite;
 										
-										while ( $contador != sizeof ( $anunciosAvaliacao ) ) 
+										while ( $contador != sizeof ( $anunciosAvaliacao ) && $contadorLimite<=$limite) 
 										{
 											$titulo = $anunciosAvaliacao [$contador] ['tb_anuncio'] ['titulo_anuncio'];
 											$id = $anunciosAvaliacao [$contador] ['tb_anuncio'] ['id'];
@@ -144,7 +159,7 @@
 													</div>
 													<div align="left" style="height: 160px; width: 260px; float: left; margin-left: 4px;">
 														<input type="checkbox" name="anuncio[]"	value=<?php echo $id ?> /> 
-														<a href = "#"><font size = "4"> <?php echo $titulo; ?> </font></a>
+														<a href = "#"><font size = "4"> <?php echo $titulo.$id; ?> </font></a>
 														<br /><br />
 														<span class="fa fa-spinner fa-spin"></span>
 														<?php echo substr($descricao, 0, 100) . "..."; ?>
@@ -206,15 +221,24 @@
 													</div>
 												</div>
 										
-									<?php 	$contador++;?>
+									<?php 	$contador++;
+											$contadorLimite++;
+											?>
 										
 										<?php 
 										}	
 									}
-									
-									$contador2 = 0;
-									while ( $contador2 != sizeof ( $anuncios ) ) 
+									if($pagina==1)
 									{
+										$contador2 = $contadorLimite-sizeof($anunciosAvaliacao);
+									}
+									else
+									{
+										$contador2 = $contadorLimite-sizeof($anunciosAvaliacao)-1;
+									}
+									while ( $contador2 != sizeof ( $anuncios ) && $contador3<$limite) 
+									{
+									
 										$titulo = $anuncios [$contador2] ['tb_anuncio'] ['titulo_anuncio'];
 										$id = $anuncios [$contador2] ['tb_anuncio'] ['id'];
 										$descricao = $anuncios [$contador2] ['tb_anuncio'] ['descricao_anuncio'];
@@ -251,7 +275,7 @@
 										</div>
 										<div align="left" style="height: 160px; width: 260px; float: left; margin-left: 4px;">
 											<input type="checkbox" name="anuncio[]"	value=<?php echo $id ?> /> 
-											<a href = "#"><font size = "4"> <?php echo $titulo; ?> </font></a>
+											<a href = "#"><font size = "4"> <?php echo $titulo.$id; ?> </font></a>
 											<br /><br />
 											<span class="fa fa-spinner fa-spin"></span>
 											<?php echo substr($descricao, 0, 100) . "..."; ?>
@@ -265,6 +289,7 @@
 									</div>
 											
 								<?php 	$contador2++;
+										$contador3++;
 									}	
 								?>			
 									</div>	
@@ -297,6 +322,7 @@
 <?php 
 	}
 ?>		
+</body></html>
 <script>
 	$(function(){
 		$("#estado").change(function(){
@@ -330,5 +356,3 @@ $(function(){
 </script>
 <script src="js/jquery-1.11.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
-</body>
-</html>

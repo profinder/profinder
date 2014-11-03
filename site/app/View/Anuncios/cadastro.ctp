@@ -9,7 +9,6 @@
 	<div class="wrap">
 		<div class="content-top">
 			<div class="top-box">
-				<div>
 					<div class="panel panel-default" style="height: 570px; width: 1000px; margin-left: 300px; margin-top:70px;">
 						<form id="myWizard"  action="" method="post" class="form-horizontal easyWizardElement easyPager" style="position: relative; overflow: hidden; text-align:center;">
 							<?php
@@ -213,13 +212,11 @@
 									</center>
 								</div>
 							</div>
-						</div>	
-							
 					</section>
-					</div>
 			</div>
 		</div>
-	</div>	
+	</div>
+</div>
 				
 <script>
 $('#myWizard').easyWizard({
@@ -292,7 +289,6 @@ function show(modo_atendimento)
 
 		document.getElementById('estado').style.display = 'none';
 		document.getElementById('cidadesSelect').style.display = 'none';
-		document.getElementById('div-cep').style.display = 'inline';
 		document.getElementById('cep').style.display = 'inline';
 		document.getElementById('uf').style.display = 'inline';
 		document.getElementById('localidade').style.display = 'inline';
@@ -300,6 +296,7 @@ function show(modo_atendimento)
 		document.getElementById('logradouro').style.display = 'inline';	
 		document.getElementById('numero_endereco').style.display = 'inline';	
 		document.getElementById('complemento').style.display = 'inline';
+		document.getElementById('div-cep').style.display = 'inline';
 		document.getElementById('div1').style.display = 'inline';
 		document.getElementById('div2').style.display = 'inline';
 		document.getElementById('div3').style.display = 'inline';
@@ -310,14 +307,11 @@ function show(modo_atendimento)
 		document.getElementById('div8').style.display = 'inline';
 		document.getElementById('div9').style.display = 'inline';
 		document.getElementById('div10').style.display = 'inline';
-		document.getElementById('div11').style.display = 'none';
-		document.getElementById('div12').style.display = 'none';
 	}
 	else if(modo_atendimento=="domiciliar")
 	{
 		document.getElementById('estado').style.display = 'inline';
 		document.getElementById('cidadesSelect').style.display = 'inline';
-		document.getElementById('div-cep').style.display = 'none';
 		document.getElementById('cep').style.display = 'none';
 		document.getElementById('uf').style.display = 'none';
 		document.getElementById('localidade').style.display = 'none';
@@ -325,6 +319,7 @@ function show(modo_atendimento)
 		document.getElementById('logradouro').style.display = 'none';	
 		document.getElementById('numero_endereco').style.display = 'none';	
 		document.getElementById('complemento').style.display = 'none';	
+		document.getElementById('div-cep').style.display = 'none';
 		document.getElementById('div1').style.display = 'none';
 		document.getElementById('div2').style.display = 'none';
 		document.getElementById('div3').style.display = 'none';
@@ -335,15 +330,12 @@ function show(modo_atendimento)
 		document.getElementById('div8').style.display = 'none';
 		document.getElementById('div9').style.display = 'none';
 		document.getElementById('div10').style.display = 'none';
-		document.getElementById('div11').style.display = 'inline';
-		document.getElementById('div12').style.display = 'inline';
 		
 	}
 	else if(modo_atendimento=="online")
 	{
 		document.getElementById('estado').style.display = 'none';
 		document.getElementById('cidadesSelect').style.display = 'none';
-		document.getElementById('div-cep').style.display = 'none';
 		document.getElementById('cep').style.display = 'none';
 		document.getElementById('uf').style.display = 'none';
 		document.getElementById('localidade').style.display = 'none';
@@ -351,6 +343,7 @@ function show(modo_atendimento)
 		document.getElementById('logradouro').style.display = 'none';	
 		document.getElementById('numero_endereco').style.display = 'none';	
 		document.getElementById('complemento').style.display = 'none';	
+		document.getElementById('div-cep').style.display = 'none';
 		document.getElementById('div1').style.display = 'none';
 		document.getElementById('div2').style.display = 'none';
 		document.getElementById('div3').style.display = 'none';
@@ -361,8 +354,6 @@ function show(modo_atendimento)
 		document.getElementById('div8').style.display = 'none';
 		document.getElementById('div9').style.display = 'none';
 		document.getElementById('div10').style.display = 'none';
-		document.getElementById('div11').style.display = 'none';
-		document.getElementById('div12').style.display = 'none';
 	}
 }
 

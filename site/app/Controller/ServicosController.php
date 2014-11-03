@@ -114,6 +114,13 @@
 			return $sql;
 		}
 		
+		public function categoriaServico($categoria_id)
+		{
+			$this->layout = 'home';
+			$sql=$this->Servico->query("SELECT tb_categoria.* FROM tb_categoria WHERE tb_categoria.id = '".$categoria_id."';");
+			return $sql;
+		}
+		
 		public function servicosCategoria($categoria)
 		{
 			$sql=$this->Servico->query("SELECT tb_servico.* FROM tb_servico WHERE tb_servico.categoria_id = ".$categoria.";");

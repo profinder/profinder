@@ -31,7 +31,7 @@
 				if ($this->Auth->login()) {
 					 $this->redirect(array('controller' => 'pages', 'action' => 'index'));
 				}
-				//$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
+				$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
 			}
 		}
 		/*

@@ -8,7 +8,7 @@
 </head>
 
 <body onload="initialize()">
-	<div class="main">
+	<div class="main" style = "background-color: #f0f0f0;">
 		<div class="wrap">
 			<div class="content-top">
 				<div class="top-box">
@@ -61,7 +61,7 @@
 						$aumentarQntAvaliacao = $pedidoController->aumentarQntAvaliacao($pedido_id);
 						*/
 					?>	
-					<h4> Dados do Anúncio </h4><br />
+					<h2> Dados do Anúncio </h2><br />
 					
 					<?php 
 						if ($dados[0]['tb_anuncio']['modo_atendimento'] == "escritorio")
@@ -71,7 +71,7 @@
 									if($foto==null||$foto==0)
 									{
 										echo "<div class = 'panel panel-default'>";
-										echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='310' width='310' style= 'padding-top:0px'> </a>";
+										echo "<a href='/profinder/site/anuncios/visualizar?id=".$id."'><img src='/profinder/site/img/sem-foto.jpg' height='300' width='300' style= 'padding-top:0px'> </a>";
 										echo "</div>";
 									}
 									else
