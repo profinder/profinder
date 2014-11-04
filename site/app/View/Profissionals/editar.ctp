@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="css/bootstrap.css"/>
 <link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<div class="main" style="background:url(/profinder/site/app/webroot/img/background.png) bottom no-repeat; height: 810px; width: 1770px; margin-left: -200px; margin-top:-100px;">					
+<div class="main">					
 	<div class="wrap">
 		<div class="content-top">
 			<div class="top-box">
-				<div>
-					<div class="panel panel-default" style="height: 610px; width: 1000px; margin-left: 300px; margin-top:70px;">
+				<div style="background:url(/profinder/site/app/webroot/img/background.png) bottom no-repeat; height: 700px; width: 1600px; margin-left: -200px; margin-top:-100px;">
+					<div class="panel panel-default" style="height: 570px; width: 1000px; margin-left: 300px; margin-top:70px;">
 						<div class="panel-heading">
 							<font size = "4">Cadastro de Profissional</font>
 						</div>
@@ -14,9 +14,9 @@
 						<div class="panel-body">
 							<?php
 								echo $this->Form->create('Profissional', array('action' => 'cadastro'));	
-								echo $this->Form->input('id', array('type' => 'hidden'));
+								echo $this->Form->input('id', array('type'=>'hidden'));
 							?>
-							<br /><br />
+							
 							<div align = "center" style="height: 580px; width: 700px; margin-left: 120px;">
 								<div class="input-group">
 									<span class="input-group-addon">Nome &nbsp &nbsp &nbsp &nbsp &nbsp</span>
@@ -33,26 +33,23 @@
 								</div>	
 								<br />
 								<div class="input-group">
-									<span class="input-group-addon">Senha &nbsp &nbsp &nbsp &nbsp &nbsp </span>
+									<span class="input-group-addon">Senha &nbsp &nbsp &nbsp &nbsp &nbsp</span>
 									<?php
-										echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'profissional'));
-										echo $this->Form->input('password', array('class' => 'form-control', 'label' => '', 'value' => ''));
-									?>
-								</div>
+										echo $this->Form->input('password', array (
+											'class' => 'form-control',
+											'label' => '', 
+											'value'=>''
+										));
+										echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'profissional'));?>
+								</div>	
 								<br />
-								<div class="input-group">
-									<span class="input-group-addon">Confirmação &nbsp </span>
-									<?php
-										echo $this->Form->input('confirmar_senha', array('type' => 'password','onblur'=>"verificarSenha(this.value)", 'class' => 'form-control', 'label' => ''));
-									?>
-								</div>
 								<div align = "left">
 								<label><font id="label" color = "white">As senhas não correspondem!</font></label>
 								</div>
 								<br /><br />
 								<center><hr></center>
 								<br /><br />
-								<?php 
+								<?php
 									App::import('Controller', 'Profissionals');
 					
 									$profissional = new ProfissionalsController;
@@ -83,22 +80,44 @@
 									<div class="input-group">
 										<span class="input-group-addon">Número</span>
 										<?php
-											echo $this->Form->input('Telefone.0.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14", 'class' => 'form-control', 'label' => '', 'placeholder' => "(00) 0000-0000", 'value'=>$telefones[0]['tb_telefone']['numero_telefone']));
+											if($telefones[0]['tb_telefone']['numero_telefone']=="")
+											{
+												echo $this->Form->input('Telefone.0.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14", 'class' => 'form-control', 'label' => '','placeholder' => "(00) 0000-0000"));
+											}
+											else
+											{
+												echo $this->Form->input('Telefone.0.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14", 'class' => 'form-control', 'label' => '', 'value'=>'('.$telefones[0]['tb_telefone']['ddd_telefone'].') '.substr($telefones[0]['tb_telefone']['numero_telefone'],0,4).'-'.substr($telefones[0]['tb_telefone']['numero_telefone'],4,8),'placeholder' => "(00) 0000-0000"));
+											}
+											
 										?>
 									</div>
 									<br />
 									<div class="input-group">
 										<span class="input-group-addon">Número</span>
 										<?php
-											echo $this->Form->input('Telefone.1.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '', 'placeholder' => "(00) 0000-0000", 'value'=>$telefones[1]['tb_telefone']['numero_telefone']));
-										?>
+											if($telefones[1]['tb_telefone']['numero_telefone']=="")
+											{
+												echo $this->Form->input('Telefone.1.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '','placeholder' => "(00) 0000-0000"));
+											}
+											else
+											{
+												echo $this->Form->input('Telefone.1.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '', 'value'=>'('.$telefones[1]['tb_telefone']['ddd_telefone'].') '.substr($telefones[1]['tb_telefone']['numero_telefone'],0,4).'-'.substr($telefones[1]['tb_telefone']['numero_telefone'],4,8),'placeholder' => "(00) 0000-0000"));
+											}
+											?>
 									</div>	
 									<br />
 									<div class="input-group">
 										<span class="input-group-addon">Número</span>
 										<?php
-											echo $this->Form->input('Telefone.2.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '', 'placeholder' => "(00) 0000-0000", 'value'=>$telefones[2]['tb_telefone']['numero_telefone']));
-										?>
+											if($telefones[2]['tb_telefone']['numero_telefone']=="")
+											{
+												echo $this->Form->input('Telefone.2.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '', 'placeholder' => "(00) 0000-0000"));
+											}
+											else
+											{
+												echo $this->Form->input('Telefone.2.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '', 'value'=>'('.$telefones[1]['tb_telefone']['ddd_telefone'].') '.substr($telefones[1]['tb_telefone']['numero_telefone'],0,4).'-'.substr($telefones[1]['tb_telefone']['numero_telefone'],4,8), 'placeholder' => "(00) 0000-0000"));
+											}
+											?>
 									</div>
 									<br />
 								</div>	
@@ -106,7 +125,7 @@
 									<div class="input-group">
 										<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
 											<?php 
-												echo $this->Form->input('Telefone.0.tipo_telefone', array('class' => 'form-control', 'label' => '', 'value'=>$telefones[0]['tb_telefone']['tipo_telefone'], 'options' => array(
+												echo $this->Form->input('Telefone.0.tipo_telefone', array('class' => 'form-control', 'value'=>$telefones[0]['tb_telefone']['tipo_telefone'], 'label' => '', 'options' => array(
 													'' => '',
 													'residencial' => 'Residencial',
 													'celular' => 'Celular',
@@ -118,7 +137,7 @@
 									<div class="input-group">
 										<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
 										<?php 
-											echo $this->Form->input('Telefone.1.tipo_telefone', array('class' => 'form-control', 'label' => '', 'value'=>$telefones[1]['tb_telefone']['tipo_telefone'], 'options' => array(
+											echo $this->Form->input('Telefone.1.tipo_telefone', array('class' => 'form-control', 'value'=>$telefones[1]['tb_telefone']['tipo_telefone'], 'label' => '', 'options' => array(
 												'' => '',
 												'residencial' => 'Residencial',
 												'celular' => 'Celular',
@@ -130,7 +149,7 @@
 									<div class="input-group">
 										<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
 											<?php 
-												echo $this->Form->input('Telefone.2.tipo_telefone', array('class' => 'form-control', 'label' => '', 'value'=>$telefones[2]['tb_telefone']['tipo_telefone'], 'options' => array(
+												echo $this->Form->input('Telefone.2.tipo_telefone', array('class' => 'form-control', 'value'=>$telefones[2]['tb_telefone']['tipo_telefone'], 'label' => '', 'options' => array(
 													'' => '',
 													'residencial' => 'Residencial',
 													'celular' => 'Celular',
@@ -182,9 +201,8 @@
 	
 	function verificarSenha(senha){
 		
-	 
 		if (senha1 == senha)
-			alert("SENHAS IGUAIS")
+			document.getElementById('label').color = 'white';
 		else
 			document.getElementById('label').color = 'red';
 	}

@@ -101,6 +101,7 @@
 
 					$this->Session->setFlash(__('Profissional salvo com sucesso'),
 		    					"flash_notification");
+
 					return $this->redirect(array('action' => 'perfil'));
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados.'));

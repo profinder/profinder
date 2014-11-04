@@ -60,13 +60,13 @@
 					<div class="top-box">
 						<div style = "border: 1px solid GREEN; margin: 2px;" >
 							<div class="panel-body">
-								<div align = "left" style="height: 200px; width: 350px; float: left; margin-left: 10px;">
+								<div align = "left" style="background-color: #f0f0f0; height: 200px; width: 350px; float: left; margin-left: 10px;">
 									<center> Dados do Pedido: </center>
 									<br /> <br />
 									Status: <?php echo $status; ?>
 									<br /> <br /> 
 								</div>
-								<div align="left" style="height: 202px; width: 430px; float: left; margin-left: 10px;">
+								<div align="left" style="background-color: #f0f0f0; height: 202px; width: 430px; float: left; margin-left: 10px;">
 									<center> Dados do Anúncio: </center>
 									<br /> <br />
 									Título: <?php echo $titulo_anuncio; ?>
@@ -79,7 +79,7 @@
 										echo "<center>Para mais detalhes, clique <a href='/profinder/site/anuncios/detalhesAnuncio?id=" . $id_anuncio . "'>aqui</a></center>";
 									?>
 								</div>
-								<div align="left" style="height: 202px; width: 350px; float: left; margin-left: 10px;">
+								<div align="left" style="background-color: #f0f0f0; height: 202px; width: 350px; float: left; margin-left: 10px;">
 									<center> Dados do Profissional: </center>
 									<br /> <br />
 									Nome: <?php echo $nome_profissional; ?>

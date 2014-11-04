@@ -114,13 +114,13 @@
 													$visualizado=$pedidos->pedidoNaoVisualizadoCliente($id);
 													if(empty($visualizado)){
 													?>
-													Opções LOGADO: <?php echo AuthComponent::user('id'); ?> 
+													<font color = "black"> Opções LOGADO: <?php echo AuthComponent::user('id'); ?></font> 
 													<?php
 													}
 													else 
 													{
 														?>
-														Opções LOGADO: <?php echo AuthComponent::user('id'); ?> <img src = '/profinder/site/img/sino.jpg' height = '20' width = '20' style = 'padding-top:0px'>
+														<font color = "black">Opções LOGADO: <?php echo AuthComponent::user('id'); ?></font> <img src = '/profinder/site/img/sino.jpg' height = '20' width = '20' style = 'padding-top:0px'>
 														<?php
 													}
 												?><b class="caret"></b>

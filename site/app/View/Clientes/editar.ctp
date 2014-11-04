@@ -1,255 +1,194 @@
-<link rel="stylesheet" href="css/bootstrap.css"/>
-<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
-
-<div class="header">
-	<div class="wrap">
-		<div class="header-top">
-			<div class="logo">
-				<center><a href="/profinder/site"><img src="/profinder/site/img/logo1.png" height="70" width="338" style="padding-top: 0px"> </a></center>
-			</div>
-		</div>
-		<center><hr></center>
-	</div>
-</div>
-
-<div class="main">					
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link href="/profinder/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<div class="main" style = "background:url(/profinder/site/app/webroot/img/background.png) bottom no-repeat; height: 1180px; width: 1770px; margin-left: -200px; margin-top:-100px;">					
 	<div class="wrap">
 		<div class="content-top">
 			<div class="top-box">
-				<?php
-					echo $this->Form->create('Cliente', array('action' => 'cadastro'));	
-					echo $this->Form->input('id', array('type' => 'hidden'));
-				?>
-				
-				<div class = "panel panel-default" style="height: 250px; width: 590px; float: left;">
-					<h4> Dados Pessoais </h4>
-					<br />
-					<div style="float: left; margin-left: 10px">
-						Nome <br /><br />
+				<div>
+					<div class="panel panel-default" style="height: 970px; width: 1000px; margin-left: 300px; margin-top:70px;">
+						<div class="panel-heading">
+							<font size = "4">Cadastro de Cliente</font>
+						</div>
 						
-						E-mail <br /><br />
+						<div class="panel-body">
+							<?php
+								echo $this->Form->create('Cliente', array('action' => 'cadastro'));	
+								echo $this->Form->input('id', array('type'=>'hidden'));
+							?>
+							<br /><br />
+							<div align = "center" style="height: 700px; width: 700px; margin-left: 120px;">
+								<div class="input-group">
+									<span class="input-group-addon">Nome &nbsp &nbsp &nbsp &nbsp &nbsp</span>
+									<?php
+										echo $this->Form->input('nome_pessoa', array('class' => 'form-control', 'label' => ''));
+									?>
+								</div>
+								<br />
+								<div class="input-group">
+									<span class="input-group-addon">E-mail &nbsp &nbsp &nbsp &nbsp &nbsp</span>
+									<?php
+										echo $this->Form->input('username', array('class' => 'form-control', 'label' => '', 'placeholder' => 'email@email.com'));
+									?>
+								</div>	
+								<br />
+								<div class="input-group">
+									<span class="input-group-addon">Senha &nbsp &nbsp &nbsp &nbsp &nbsp </span>
+									<?php
+										echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'cliente'));
+										echo $this->Form->input('password', array('class' => 'form-control', 'label' => ''));
+									?>
+								</div>
+								<br />
+								<div class="input-group">
+									<span class="input-group-addon">Confirmação &nbsp </span>
+									<?php
+										echo $this->Form->input('confirmar_senha', array('type' => 'password','onblur'=>"verificarSenha(this.value)", 'class' => 'form-control', 'label' => ''));
+									?>
+								</div>
+								<div align = "left">
+								<label><font id="label" color = "white">As senhas não correspondem!</font></label>
+								</div>
+								<br /><br />
+								<center><hr></center>
+								<br /><br />
+								
+										<?php
+										App::import('Controller', 'Clientes');
 						
-						Senha <br /><br />
-						
-						
-					</div>
-					
-					<div style="float: left; margin-left: 30px">
-						<?php 
-							echo $this->Form->input('nome_pessoa', array (
-								'type' => 'text',
-								'label' => '',
-								'style' => 'width:300px; height:20px; resize:none;' 
-							));
-						?>	
-						<br />
-						<?php 
-							echo $this->Form->input('username', array (
-								'type' => 'text',
-								'label' => '',
-								'style' => 'width:300px; height:20px; resize:none;',
-								'placeholder' => 'email@email.com', 
-								'type' => 'email' 
-							));
-						?>	
-						<br />
-						<?php 
-							echo $this->Form->input('password', array (
-								'label' => '',
-								'value' => '',
-								'style' => 'width:300px; height:20px; resize:none;'
-							));
-							echo $this->Form->input('role', array('type' => 'hidden', 'default' => 'cliente'));
-						?>	
-					</div>
-				</div>
-				<div class = "panel panel-default" style="height: 250px; width: 590px; float: left; margin-left: 15px;">
-					<h4> Telefones </h4>
-					<br />
-					<div style="float: left; margin-left: 10px">
-						1: <br /><br />
-						
-						2: <br /><br />
-						
-						3: <br /><br />
-						
-						
-					</div>
-					<div style="float: left; margin-left: 15px">
-						<?php 
-							echo $this->Form->input('Telefone.0.ddd_telefone', array (
-								'type' => 'text',
-								'label' => 'DDD &nbsp',
-								'style' => 'width:30px; height:20px; resize:none;' 
-							));
-						?>
-						<br />
-						<?php 
-							echo $this->Form->input('Telefone.1.ddd_telefone', array (
-								'type' => 'text',
-								'label' => 'DDD &nbsp',
-								'style' => 'width:30px; height:20px; resize:none;' 
-							));
-						?>
-						<br />
-						<?php 
-							echo $this->Form->input('Telefone.2.ddd_telefone', array (
-								'type' => 'text',
-								'label' => 'DDD &nbsp',
-								'style' => 'width:30px; height:20px; resize:none;' 
-							));
-						?>
-					</div>
-					<div style="float: left; margin-left: 45px">
-						<?php 
-							echo $this->Form->input('Telefone.0.numero_telefone', array (
-								'type' => 'text',
-								'label' => 'Número &nbsp',
-								'style' => 'width:100px; height:20px; resize:none;' 
-							));
-						?>
-						<br />
-						<?php 
-							echo $this->Form->input('Telefone.1.numero_telefone', array (
-								'type' => 'text',
-								'label' => 'Número &nbsp',
-								'style' => 'width:100px; height:20px; resize:none;' 
-							));
-						?>
-						<br />
-						<?php 
-							echo $this->Form->input('Telefone.2.numero_telefone', array (
-								'type' => 'text',
-								'label' => 'Número &nbsp',
-								'style' => 'width:100px; height:20px; resize:none;' 
-							));
-						?>
-					</div>
-					<div style="float: left; margin-left: 70px">
-						<?php 
-							echo $this->Form->input('Telefone.0.tipo_telefone', array(
-								'label' => 'Tipo &nbsp', 
-								'style' => 'width:130px; height:20px; resize:none;',
-								'options' => array(
-									'' => '',
-									'residencial' => 'Residencial',
-									'celular' => 'Celular',
-									'escritorio' => 'Escritório'))
-							);
-						?>
-						<br />
-						<?php 
-							echo $this->Form->input('Telefone.1.tipo_telefone', array(
-								'label' => 'Tipo &nbsp', 
-								'style' => 'width:130px; height:20px; resize:none;',
-								'options' => array(
-									'' => '',
-									'residencial' => 'Residencial',
-									'celular' => 'Celular',
-									'escritorio' => 'Escritório'))
-							);
-						?>
-						<br />
-						<?php 
-							echo $this->Form->input('Telefone.2.tipo_telefone', array(
-								'label' => 'Tipo &nbsp', 
-								'style' => 'width:130px; height:20px; resize:none;',
-								'options' => array(
-									'' => '',
-									'residencial' => 'Residencial',
-									'celular' => 'Celular',
-									'escritorio' => 'Escritório'))
-							);
-						?>
-					</div>					
-				</div>
-				<div class = "panel panel-default" style="height: 330px; width: 1194px; float: left;">
-				 	<h4> Endereço </h4>
-				 	<br />
-				 	<div align = "left" style="float: left; margin-left: 350px">
-						CEP: <br /><br />
-						
-						Logradouro: <br /><br />
-						
-						Cidade: <br /><br />
-						
-						Bairro: <br /><br />
-						
-						Estado: <br /><br />
-						
-						Número: <br /><br />
-						
-						Complemento: <br /><br />
-					</div>
-					<div style="float: left; margin-left: 30px">
-						<?php 
-							echo $this->Form->input('Endereco.cep', array(
-								'id' => 'cep', 
-								'onblur' => 'consultacep(this.value)', 
-								'label' => '',
-								'style' => 'width:300px; height:20px; resize:none;'
-							)); 
-							echo "<br />";
-
-							echo $this->Form->input('Endereco.logradouro', array(
-								'id' => 'logradouro', 
-								'label' => '',
-								'style' => 'width:300px; height:20px; resize:none;'
-							));
-							echo "<br />";
-							
-							echo $this->Form->input('Endereco.localidade', array(
-								'id' => 'localidade', 
-								'label' => '',
-								'style' => 'width:300px; height:20px; resize:none;'
-							));
-							echo "<br />";
-							
-							echo $this->Form->input('Endereco.bairro', array(
-								'id' => 'bairro', 
-								'label' => '',
-								'style' => 'width:300px; height:20px; resize:none;'
-							));
-							echo "<br />";
-							echo $this->Form->input('Endereco.estado', array(
-								'id' => 'uf', 
-								'label' => '',
-								'style' => 'width:300px; height:20px; resize:none;'
-							));
-							echo "</br>";
-							echo $this->Form->input('Endereco.numero_endereco', array(
-								'label' => '',
-								'style' => 'width:300px; height:20px; resize:none;'
-							));
-							echo "<br />";
-							
-							echo $this->Form->input('Endereco.complemento', array(
-								'label' => '',
-								'style' => 'width:300px; height:20px; resize:none;'
-							));
-						?>
+										$cliente = new ClientesController;
+										$cliente->constructClasses();
+										$cliente->tipoCliente("editar");
+										$idCliente=$this->Session->read('idCliente');
+										
+										$telefones=$cliente->buscarTelefone($idCliente);
+										$contador=1;
+										$contador2=2;
+										if ($contador2==sizeof($telefones))
+										{
+											$telefones[2]['tb_telefone']['ddd_telefone']="";
+											$telefones[2]['tb_telefone']['numero_telefone']="";
+											$telefones[2]['tb_telefone']['tipo_telefone']="";
+										}
+										else if ($contador==sizeof($telefones))
+										{
+											$telefones[1]['tb_telefone']['ddd_telefone']="";
+											$telefones[1]['tb_telefone']['numero_telefone']="";
+											$telefones[1]['tb_telefone']['tipo_telefone']="";
+											$telefones[2]['tb_telefone']['ddd_telefone']="";
+											$telefones[2]['tb_telefone']['numero_telefone']="";
+											$telefones[2]['tb_telefone']['tipo_telefone']="";
+										}
+										?>
+										<br /><br />
+											<div align = "left" style="height: 160px; width: 350px; float: left;">
+									<div class="input-group">
+										<span class="input-group-addon">Número</span>
+										<?php
+											if($telefones[0]['tb_telefone']['numero_telefone']=="")
+											{
+												echo $this->Form->input('Telefone.0.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14", 'class' => 'form-control', 'label' => '','placeholder' => "(00) 0000-0000"));
+											}
+											else
+											{
+												echo $this->Form->input('Telefone.0.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14", 'class' => 'form-control', 'label' => '', 'value'=>'('.$telefones[0]['tb_telefone']['ddd_telefone'].') '.substr($telefones[0]['tb_telefone']['numero_telefone'],0,4).'-'.substr($telefones[0]['tb_telefone']['numero_telefone'],4,8),'placeholder' => "(00) 0000-0000"));
+											}
 											
+										?>
+									</div>
+									<br />
+									<div class="input-group">
+										<span class="input-group-addon">Número</span>
+										<?php
+											if($telefones[1]['tb_telefone']['numero_telefone']=="")
+											{
+												echo $this->Form->input('Telefone.1.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '','placeholder' => "(00) 0000-0000"));
+											}
+											else
+											{
+												echo $this->Form->input('Telefone.1.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '', 'value'=>'('.$telefones[1]['tb_telefone']['ddd_telefone'].') '.substr($telefones[1]['tb_telefone']['numero_telefone'],0,4).'-'.substr($telefones[1]['tb_telefone']['numero_telefone'],4,8),'placeholder' => "(00) 0000-0000"));
+											}
+											?>
+									</div>	
+									<br />
+									<div class="input-group">
+										<span class="input-group-addon">Número</span>
+										<?php
+											if($telefones[2]['tb_telefone']['numero_telefone']=="")
+											{
+												echo $this->Form->input('Telefone.2.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '', 'placeholder' => "(00) 0000-0000"));
+											}
+											else
+											{
+												echo $this->Form->input('Telefone.2.numero_telefone', array("onkeypress"=>"mascara( this);","maxlength"=>"14",'class' => 'form-control', 'label' => '', 'value'=>'('.$telefones[1]['tb_telefone']['ddd_telefone'].') '.substr($telefones[1]['tb_telefone']['numero_telefone'],0,4).'-'.substr($telefones[1]['tb_telefone']['numero_telefone'],4,8), 'placeholder' => "(00) 0000-0000"));
+											}
+											?>
+									</div>
+									<br />
+								</div>	
+								<div align = "left" style="height: 160px; width: 300px; float: left; margin-left: 50px;">
+									<div class="input-group">
+										<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
+											<?php 
+												echo $this->Form->input('Telefone.0.tipo_telefone', array('class' => 'form-control', 'value'=>$telefones[0]['tb_telefone']['tipo_telefone'], 'label' => '', 'options' => array(
+													'' => '',
+													'residencial' => 'Residencial',
+													'celular' => 'Celular',
+													'escritorio' => 'Escritório',))
+												);
+											?>
+									</div>
+									<br />
+									<div class="input-group">
+										<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
+										<?php 
+											echo $this->Form->input('Telefone.1.tipo_telefone', array('class' => 'form-control', 'value'=>$telefones[1]['tb_telefone']['tipo_telefone'], 'label' => '', 'options' => array(
+												'' => '',
+												'residencial' => 'Residencial',
+												'celular' => 'Celular',
+												'escritorio' => 'Escritório',))
+											);
+										?>
+									</div>
+									<br />
+									<div class="input-group">
+										<span class="input-group-addon">Tipo &nbsp &nbsp &nbsp &nbsp </span>
+											<?php 
+												echo $this->Form->input('Telefone.2.tipo_telefone', array('class' => 'form-control', 'value'=>$telefones[2]['tb_telefone']['tipo_telefone'], 'label' => '', 'options' => array(
+													'' => '',
+													'residencial' => 'Residencial',
+													'celular' => 'Celular',
+													'escritorio' => 'Escritório',))
+												);
+											?>
+									</div>	
+									<div align = "left">
+										<?php 
+											echo $this->Form->button(
+													$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
+													array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
+											);
+											echo " ";
+											echo $this->Html->link(
+													$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-remove')) . " Cancelar",
+													array('controller' => 'pages','action' => 'index'),
+													array('role' => 'button', 'class' => 'btn btn-danger', 'escape' => false)
+											);	
+											
+											echo $this->Form->end();
+										?>
+									</div>
+								</div>	
+							</div>					
+						</div>
 					</div>
 				</div>
 			</div>
-		<?php 
-			echo "<center>";
-			echo $this->Form->button(
-				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-floppy-saved'))." Salvar",
-				array('type' => 'submit', 'class' => 'btn btn-success', 'escape' => false)
-			);
-			echo " ";
-			echo $this->Html->link(
-				$this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-arrow-left')) . " Cancelar",
-				array('controller' => 'pages', 'action' => 'index'),
-				array('role' => 'button', 'class' => 'btn btn-warning', 'escape' => false)
-			);	
-			echo " ";
-			
-			echo "</center>";
-			echo $this->Form->end();
-		?>
-
+		</div>
 	</div>
 </div>
 
@@ -273,14 +212,39 @@
 	        return;
 		};
 
-	    document.getElementById('logradouro').value=valor.logradouro
-	    document.getElementById('bairro').value=valor.bairro
+		document.getElementById('uf').value=valor.uf
 	    document.getElementById('localidade').value=valor.localidade
-	    document.getElementById('uf').value=valor.uf
+	    document.getElementById('bairro').value=valor.bairro
+	    document.getElementById('logradouro').value=valor.logradouro
 	}
 		
 	function addCampo() 
 	{
 		document.getElementById("duplicaCampo").innerHTML += "<input type='text' name='campo[]' />";
 	}
+
+	var senha1;
+	function mascara(telefone){ 
+	   if(telefone.value.length == 0)
+		 telefone.value = '(' + telefone.value; //quando começamos a digitar, o script irá inserir um parênteses no começo do campo.
+	   if(telefone.value.length == 3)
+		  telefone.value = telefone.value + ') '; //quando o campo já tiver 3 caracteres (um parênteses e 2 números) o script irá inserir mais um parênteses, fechando assim o código de área.
+	 
+	 if(telefone.value.length == 9)
+		 telefone.value = telefone.value + '-'; //quando o campo já tiver 8 caracteres, o script irá inserir um tracinho, para melhor visualização do telefone.
+	  
+	}
+	function senha1(senha){
+		senha1=senha;
+	}
+	
+	function verificarSenha(senha){
+		
+	 
+		if (senha1 == senha)
+			alert("SENHAS IGUAIS")
+		else
+			document.getElementById('label').color = 'red';
+	}
 </script>
+

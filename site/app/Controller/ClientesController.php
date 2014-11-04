@@ -115,7 +115,7 @@
 			if (!$id) {
 				throw new NotFoundException(__('Cliente inválido'));
 			}
-		  
+			$this->Session->write('idCliente', $id);
 			$cliente = $this->Cliente->findById($id);
 			if (!$cliente) {
 				throw new NotFoundException(__('Cliente não encontrado'));
@@ -253,6 +253,11 @@
 		{
 			$sql=$this->Cliente->query("delete from tb_telefone where pessoa_id=".$id.";");
 			return $sql;
+		}
+		
+		public function tipoCliente($tipo) 
+		{
+			$this->Session->write('tipoCliente', $tipo);
 		}
 	}
 ?>

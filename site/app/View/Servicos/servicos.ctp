@@ -28,10 +28,10 @@
 								$nome = $servicos [$contador] ['tb_servico'] ['nome_servico'];
 								$id = $servicos [$contador] ['tb_servico'] ['id'];
 								?>
-								<div class = "panel panel-default" align="left" style="background-color: #f0f0f0; height: 24px; width: 280px; float: left; margin-left: 10px;">
+								<div align="left" style="background-color: #f0f0f0; height: 24px; width: 280px; float: left; margin-left: 10px; margin-top: 10px; border-radius:7px;">
 								<center>
 									<?php echo "<a href = '/profinder/site/anuncios/anuncios?serv=".$id;
-									echo "'><font color = gray>$nome</font></a>";?>
+									echo "'><font color = #565656>$nome</font></a>";?>
 								</center>
 								</div>
 								<?php 	
