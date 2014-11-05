@@ -74,8 +74,8 @@
 					}
 					
 					return $this->redirect( array (
-							'controller' => 'profissionals',
-							'action' => 'perfil' 
+							'controller' => 'pages',
+							'action' => 'index' 
 					) );
 				}
 				$this->Session->setFlash(__('Erro ao salvar dados!'));

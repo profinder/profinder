@@ -129,7 +129,7 @@
 												<li><a href="/profinder/site/clientes/perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
 							               		<li><a href="/profinder/site/pedidos/clientePedidos">Meus pedidos</a></li>
 							               		<li class="divider"></li>
-												<li><a href="/profinder/site/users/delete"><span class="glyphicon glyphicon-remove"></span> Remover Conta</a></li>
+												<li onclick="remover()"><span class="glyphicon glyphicon-remove"></span> Remover Conta</li>
 							               		<li><a href="/profinder/site/users/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
 
 						               		</ul>
@@ -317,3 +317,11 @@
      <!-- /container -->
 </body>
 </html>
+
+<script>
+
+	function remover(){
+		swal({   title: "Are you sure?",   text: "You will not be able to recover this imaginary file!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",   cancelButtonText: "No, cancel plx!",   closeOnConfirm: false,   closeOnCancel: false }, function(isConfirm){   if (isConfirm) {     swal("Deleted!", "Your imaginary file has been deleted.", "success");   } else {     swal("Cancelled", "Your imaginary file is safe :)", "error");   } });
+	}
+	
+</script>
