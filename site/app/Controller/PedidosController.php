@@ -89,6 +89,7 @@
 		/* lista os pedidos disponível para o cliente avaliar */
 		public function clientePedidosAvaliar($cliente_id = null)
 		{
+			$this->Session->write('avaliacaoContador', 1);
 			$this->layout = 'home';
 			$sql=$this->Pedido->query("SELECT tb_pedido.* FROM tb_pedido WHERE tb_pedido.cliente_fim = 1 AND tb_pedido.profissional_fim = 1 AND tb_pedido.status_pedido = 'andamento' AND tb_pedido.cliente_id ='".$cliente_id."';");
 			return $sql;

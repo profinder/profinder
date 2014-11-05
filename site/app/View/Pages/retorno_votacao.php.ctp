@@ -9,11 +9,7 @@ if( $_SERVER['REQUEST_METHOD']=='POST' ){
 	$avalicao->constructClasses();
 	$id_pedido = $this->Session->read('pedido_id');
 	$avalicao->salvarVoto($voto);
-	
-	
 }
- 
- 
 function getPost( $key ){
 	return isset( $_POST[ $key ] ) ? filter( $_POST[ $key ] ) : null;
 }

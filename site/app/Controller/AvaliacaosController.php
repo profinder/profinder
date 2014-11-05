@@ -107,6 +107,8 @@
 		
 		public function salvarVoto($voto)
 		{
+			$this->layout='clean';
+			$this->Session->write('avaliacaoContador', 0);
 			$this->Session->write('voto', $voto);
 		}
 		
@@ -124,7 +126,7 @@
 		
 		public function avaliarPedido() 
 		{
-			$this->layout='home';
+				$this->layout='clean';
 		}
 		
 		public function quantidadeVotos($id_anuncio) 
