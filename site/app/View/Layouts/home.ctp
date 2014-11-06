@@ -170,7 +170,7 @@
 									        			$this->Html->tag('span', '', array()) . " Editar",
 									        			array('controller' => 'profissionals', 'action' => 'editar', AuthComponent::user('id')));
 												?>
-							               		<li><a href="/profinder/site/anuncios/profissionalAnunciosAtivos">Meus anúncios</a></li>
+							               		<li><a href="/profinder/site/anuncios/profissionalAnunciosAtivos?pag=1">Meus anúncios</a></li>
 							               		<li><a href="/profinder/site/pedidos/profissionalPedidosSolicitados">Solicitações</a></li>
 							               		<li><a href="/profinder/site/sugestaos/cadastro">Enviar sugestão</a></li>
 							               		<li class="divider"></li>

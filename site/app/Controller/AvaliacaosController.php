@@ -134,6 +134,11 @@
 			$sql=$this->Avaliacao->query('select count(tb_avaliacao.nota_avaliacao) from tb_avaliacao inner join tb_pedido on tb_avaliacao.pedido_id=tb_pedido.id where tb_pedido.anuncio_id='.$id_anuncio.';');
 			return $sql;
 		}
-	
+		
+		public function anuncioComAvaliacao($id_anuncio)
+		{
+			$sql=$this->Avaliacao->query('select tb_anuncio.* from tb_anuncio where tb_anuncio.id in (select tb_anuncio.id from tb_avaliacao inner join tb_pedido on tb_avaliacao.pedido_id = tb_pedido.id inner join tb_anuncio on tb_anuncio.id = tb_pedido.anuncio_id where tb_anuncio.id = '.$id_anuncio.');');
+			return $sql;
+		}
 	}
 ?>

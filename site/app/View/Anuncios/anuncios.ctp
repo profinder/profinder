@@ -70,7 +70,7 @@
 								} 
 								else 
 								{?>
-									<form name="formBairros" action="/profinder/site/anuncios/anuncioBairro?serv=<?php echo $servico; ?>" method="post">
+									<form name="formBairros" action="/profinder/site/anuncios/anuncioBairro?pag=1&serv=<?php echo $servico; ?>" method="post">
 							            <div class="col-md-3">
 							                <p class="lead"><font size = "4" color = "black">Pesquise por bairro:</font></p>
 							                <div class="list-group">

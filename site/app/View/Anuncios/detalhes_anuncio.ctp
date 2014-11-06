@@ -89,7 +89,7 @@
 												echo "<div class='slider'>";
 												echo "<div class='slider-wrapper theme-default'>";
 												echo "<div id='slider'' class='nivoSlider'>";
-												echo "<img src='".$foto[$contador]['tb_foto']['caminho_foto']."' height='310' width='310' /> ";
+												echo "<a href='".$foto[$contador]['tb_foto']['caminho_foto']."'img src='".$foto[$contador]['tb_foto']['caminho_foto']."' height='310' width='310' /> ";
 												echo "</div>";
 												echo "</div>";
 												echo "</div>";

@@ -47,10 +47,10 @@
 							$email = $dadosClientePedido[0]['tb_pessoa']['username'];
 					?>
 					<div class="top-box">
-						<div style = "border: 1px solid RED; margin: 2px;" >
+						<div style = "border: 1px solid RED; margin: 2px; float:left; height: 400px; width: 270px; float: left; margin-left: 20px; margin-top: 10px;" >
 							
 							<div class="panel-body">
-								<div align = "left" style="height: 200px; width: 350px; float: left; margin-left: 10px;">
+								<div align = "left" style="height: 200px; width: 100px; float: left;">
 									<center> Dados do Anúncio: </center>
 									<br /> <br />
 									Título: <?php echo $titulo_anuncio; ?>
@@ -64,7 +64,7 @@
 									?>
 								</div>
 								
-								<div align="left" style="height: 202px; width: 430px; float: left; margin-left: 200px;">
+								<div align="left" style="height: 202px; width: 200px; float: left;">
 									<center> Dados do Cliente: </center>
 									<br /> <br />
 									Nome: <?php echo $nome_cliente; ?>
@@ -72,8 +72,8 @@
 									E-mail: <?php echo $email; ?>
 									<br /> <br /> 
 									
-								</div>
-								<div align="right" style="height: 10px; width: 570px; float: left; margin-left: 10px;">
+								
+								<div align="right" style="height: 10px; width: 200px; float: left; margin-left: 10px;">
 									
 									<?php
 								        		
@@ -87,7 +87,7 @@
 									<input type="hidden" name="id_pedido" value=<?php echo $id ?> />
 									<button type="submit" class="btn btn-success">Conversa</button>
 								</div>			
-									
+								</div>	
 							</div>
 						</div>
 					</div>
@@ -104,4 +104,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+	<div style="width: 340px; clear:both;"></div>
+	<br/><br/>
+</body>
+</html>

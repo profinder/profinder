@@ -98,7 +98,7 @@
       <div class="modal-body">
       	
         	<form id = "formEmail" action = "/profinder/site/clientes/enviar_email" method = "post">
-			<input type='text' name='username'>
+			<input type='text' name='username' placeholder="E-mail">
 				
 			<button type="submit" class="btn btn-default">Solicitar Senha</button>
 			</form>
