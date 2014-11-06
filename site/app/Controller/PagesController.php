@@ -83,6 +83,9 @@
 			return $cliente->email($username);	
 		}
 				
+		public function escolhaCadastro(){
+			
+		}
 		public function bairros($cidade) 
 		{
 			App::import('Controller', 'Bairros');

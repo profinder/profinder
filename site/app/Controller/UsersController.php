@@ -23,6 +23,7 @@
 			return parent::isAuthorized($user);
 		}
 		
+		/*
 		public function login() 
 		{
 			$this->layout = 'home';
@@ -33,8 +34,8 @@
 				}
 				$this->Session->setFlash(__('Erro no login, usuário e/ou senha incorretos'), "flash_notification");
 			}
-		}
-		/*
+		}*/
+		
 		public function login()
 		{
 			$this->layout = 'home';
@@ -43,7 +44,7 @@
 		        if ($this->Auth->login()){
 		            $this->redirect(array('controller' => 'pages', 'action' => 'index'));
 		        } else {
-		            $this->Session->setFlash(__('Invalid Username or password. Try again.'));
+		            $this->Session->setFlash(__('Login efetuado com sucesso!'));
 		        }
 		    } 
 
@@ -68,26 +69,19 @@
 		
 		            // Otherwise we ll add a new user (Registration)
 	            	else {
-		                $data['User'] = array(
-		                    'username'      => $fb_user['email'],                               # Normally Unique
-		                    'password'      => AuthComponent::password(uniqid(md5(mt_rand()))), # Set random password
-		                    'role'          => 'cliente',
-		                	'nome_pessoa' => $fb_user['name']
-		                );
-
-                		// You should change this part to include data validation
-                		$this->User->save($data, array('validate' => false));
-
-                		// After registration we will redirect them back here so they will be logged in
-                		$this->redirect(Router::url('/users/login?code=true', true));
+		                $this->Session->write('username', $fb_user['email']);
+	            		$this->Session->write('nome', $fb_user['name']);
+	            		$this->redirect(array('controller'=>'pages', 'action'=>'escolha_cadastro'));
             		}
+            		$this->redirect(array('controller' => 'users', 'action' => 'login'));
         		}
 				else{
             		// User login failed..
         		}
+        		
 	   		}
 		}
-		*/
+		
 		public function logout() 
 		{
 			$this->Session->destroy();
@@ -101,6 +95,10 @@
 			$this->set('users', $this->paginate('User'));
 			
 	         
+	    }
+	    public function escolhaCadastro()
+	    {	
+	    	$this->layout = 'home2';	
 	    }
 	
 	    public function view($id = null) 

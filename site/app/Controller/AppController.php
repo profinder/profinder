@@ -29,7 +29,7 @@
 			return false;
 		}
 		
-		/*
+		
 		public function beforeFilter() {
 
 			if( AuthComponent::user('id') == null )
@@ -59,10 +59,10 @@
 				'upload_foto',
 				'perfil', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'profissionalAnuncios', 'profissionalMensagensPedido', 'profissionalFinalizarPedido',
 				'redirecionar_mensagem', 'remover',
-				'salvar_mensagem', 'servicos'
+				'salvar_mensagem', 'servicos', 'escolha_cadastro'
 			); 
 		}
-		*/
+		
 		public function beforeFilter() {
 			
 			if(AuthComponent::user('role') == "admin")
@@ -141,9 +141,14 @@
 				'upload_foto',
 				'perfil', 'profissional_home', 'profissionalPedidosSolicitados', 'profissionalSolicitacaoFinalizarPedido', 'profissionalAnunciosAtivos', 'profissionalAnunciosInativos', 'profissionalMensagensPedido', 'profissionalFinalizarPedido',
 				'redirecionar_mensagem', 'remover',
-				'salvar_mensagem', 'servicos'
+				'salvar_mensagem', 'servicos', 'escolhaCadastro'
 			); 
 			 */
+
 		}
-	}
+
+			//$this->Auth->allow('google_map', 'ajax_buscar_cidades.php', 'anuncioBairro', 'display', 'add', 'anuncios', 'cliente_home', 'clientePedidos', 'clientePedidosFinalizados', 'clientePedidosAvaliar', 'profissional_home', 'profissionalPedidosSolicitados', 'delete', 'profissionalSolicitacaoFinalizarPedido', 'clienteSolicitacaoFinalizarPedido', 'edit', 'perfil', 'editar', 'cadastro', 'profissionalAnuncios', 'clienteMensagensPedido', 'profissionalMensagensPedido', 'clienteFinalizarPedido', 'enviar_email', 'profissionalFinalizarPedido', 'avaliarPedido', 'email');
+		}
+
+	
 ?>

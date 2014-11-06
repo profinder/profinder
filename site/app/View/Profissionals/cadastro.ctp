@@ -20,14 +20,16 @@
 								<div class="input-group">
 									<span class="input-group-addon">Nome &nbsp &nbsp &nbsp &nbsp &nbsp</span>
 									<?php
-										echo $this->Form->input('nome_pessoa', array('class' => 'form-control', 'label' => ''));
+										$nome=$this->Session->read('nome');
+										echo $this->Form->input('nome_pessoa', array('value'=>$nome, 'class' => 'form-control', 'label' => ''));
 									?>
 								</div>
 								<br />
 								<div class="input-group">
 									<span class="input-group-addon">E-mail &nbsp &nbsp &nbsp &nbsp &nbsp</span>
 									<?php
-										echo $this->Form->input('username', array('class' => 'form-control', 'label' => '', 'placeholder' => 'email@email.com'));
+										$username=$this->Session->read('username');
+										echo $this->Form->input('username', array('value'=>$username,'class' => 'form-control', 'label' => '', 'placeholder' => 'email@email.com'));
 									?>
 								</div>	
 								<br />
@@ -42,7 +44,7 @@
 								<div class="input-group">
 									<span class="input-group-addon">Confirmação &nbsp </span>
 									<?php
-										echo $this->Form->input('confirmar_senha', array('onblur'=>"verificarSenha(this.value)", 'class' => 'form-control', 'label' => ''));
+										echo $this->Form->input('confirmar_senha', array('onblur'=>"verificarSenha(this.value)", 'class' => 'form-control', 'label' => '', 'type' => 'password'));
 									?>
 								</div>
 								<div align = "left">
